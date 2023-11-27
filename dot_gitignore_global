@@ -1,0 +1,4 @@
+.DS_Store
+.nova
+*.code-workspace
+node_modules
