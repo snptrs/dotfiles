@@ -6,7 +6,8 @@ local options = {
   relativenumber = true,
   expandtab = true,
   shiftwidth = 2,
-  tabstop = 8,
+  softtabstop = 2,
+  tabstop = 4,
   mouse = 'a', -- Enable mouse mode
 }
 
