@@ -8,5 +8,5 @@ end
 set -Ux EDITOR "nvim"
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set -a fish_function_path ~/.config/fish/functions/sp
-set -Ux BAT_THEME "TwoDark"
+set -Ux BAT_THEME "base16"
 set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
