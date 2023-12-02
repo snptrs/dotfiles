@@ -9,6 +9,7 @@ local options = {
   softtabstop = 2,
   tabstop = 4,
   mouse = 'a', -- Enable mouse mode
+  guicursor = 'i-ci:ver50-iCursor-blinkwait300-blinkon300-blinkoff200',
 }
 
 local globals = {
