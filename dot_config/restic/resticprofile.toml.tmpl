@@ -2,7 +2,7 @@ version = "1"
 
 [default]
 repository = "{{ onepasswordRead "op://Personal/sh2fdqejg3dzadywafj2hdigmi/restic-sftp-url" }}"
-password= "{{ onepasswordRead "op://Personal/vvmaw3wcsuwjmweyhxtisryyda/password" }}"
+password-command = "echo {{ onepasswordRead "op://Personal/vvmaw3wcsuwjmweyhxtisryyda/password" }}"
 
 [default.backup]
 verbose = true
@@ -10,9 +10,20 @@ source = ["~"]
 exclude-file = "~/.config/restic/excludes"
 exclude-caches = true
 run-after = "curl -m 10 --retry 5 -X POST -H 'Content-Type: text/plain' --data 'Backup successful' {{ .sp.restic_healthchecks_success }}"
-schedule = "*:40"
+schedule = "*:{{ .sp.restic_backup_time }}"
 schedule-permission = "user"
 schedule-priority = "background"
 schedule-log = "~/.config/restic/backup.log"
 schedule-lock-mode = "default"
 schedule-lock-wait = "15m30s"
+force-inactive-lock = true
+
+[default.retention]
+before-backup = false
+after-backup = true
+keep-daily = 14
+keep-weekly = 12
+keep-monthly = 48
+keep-within = "72h"
+prune = true
+host = true
