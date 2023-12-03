@@ -6,7 +6,7 @@ password-command = "echo {{ onepasswordRead "op://Personal/vvmaw3wcsuwjmweyhxtis
 
 [default.backup]
 verbose = true
-source = ["~"]
+source = ["/Users/seanpeters"]
 exclude-file = "~/.config/restic/excludes"
 exclude-caches = true
 run-after = "curl -m 10 --retry 5 -X POST -H 'Content-Type: text/plain' --data 'Backup successful' {{ .sp.restic_healthchecks_success }}"
