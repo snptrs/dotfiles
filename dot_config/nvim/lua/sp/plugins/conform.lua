@@ -30,7 +30,7 @@ return {
       graphql = { { 'prettierd', 'prettier' } },
       lua = { 'stylua' },
       python = { 'isort', 'black' },
-      php = { 'phpcbf' },
+      php = { 'pint', 'phpcbf' },
       toml = { 'taplo' },
     },
     format_on_save = function(bufnr)
