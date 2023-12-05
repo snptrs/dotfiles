@@ -29,7 +29,7 @@ return {
 			markdown = { { "prettierd", "prettier" } },
 			graphql = { { "prettierd", "prettier" } },
 			lua = { "stylua" },
-			python = { "isort", "black" },
+			python = { "isort", "ruff" },
 			php = { "phpcbf" },
 			toml = { "taplo" },
 		},
