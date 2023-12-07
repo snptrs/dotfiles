@@ -1,3 +1,3 @@
 function tree 
-    ls &> /dev/null && command tree
+    ls &> /dev/null && command tree $argv
 end
