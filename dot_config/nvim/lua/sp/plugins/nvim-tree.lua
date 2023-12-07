@@ -25,10 +25,10 @@ return {
 			hijack_unnamed_buffer_when_opening = true,
 			actions = {
 				open_file = {
-					-- resize_window = false,
+					resize_window = false,
 				},
 			},
-			view = { relativenumber = true, width = 45 },
+			view = { relativenumber = true, width = 40 },
 			renderer = {
 				icons = {
 					web_devicons = { folder = { enable = true } },
