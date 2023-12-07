@@ -28,7 +28,7 @@ return {
 					resize_window = false,
 				},
 			},
-			view = { relativenumber = true },
+			view = { relativenumber = true, width = 45 },
 			renderer = {
 				icons = {
 					web_devicons = { folder = { enable = true } },
