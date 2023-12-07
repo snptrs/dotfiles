@@ -23,8 +23,10 @@ return {
 			end,
 
 			hijack_unnamed_buffer_when_opening = true,
-			open_file = {
-				resize_window = false,
+			actions = {
+				open_file = {
+					resize_window = false,
+				},
 			},
 			view = { relativenumber = true },
 			renderer = {
