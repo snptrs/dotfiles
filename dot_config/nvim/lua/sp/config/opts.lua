@@ -9,7 +9,7 @@ local options = {
 	softtabstop = 2,
 	tabstop = 4,
 	mouse = "a", -- Enable mouse mode
-	guicursor = "n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20",
+	guicursor = "n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20-blinkon250-blinkwait700-blinkoff400,i:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
 	cursorline = true,
 }
 
