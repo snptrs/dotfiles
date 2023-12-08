@@ -10,6 +10,7 @@ local options = {
 	tabstop = 4,
 	mouse = "a", -- Enable mouse mode
 	guicursor = "i-ci:ver50-iCursor-blinkwait300-blinkon300-blinkoff200",
+	cursorline = true,
 }
 
 local globals = {
