@@ -15,7 +15,11 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ SP's keymaps ]]
-vim.keymap.set('n', '\\', ':NvimTreeToggle<cr>', { desc = 'Tree focus' })
+vim.keymap.set('n', '\\', function()
+  if not MiniFiles.close() then
+    MiniFiles.open()
+  end
+end, { desc = 'Tree focus' })
 
 vim.keymap.set({ 'n', 'i' }, '<C-\\>', ':ToggleTerm size=10 direction=horizontal<CR>', {})
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
