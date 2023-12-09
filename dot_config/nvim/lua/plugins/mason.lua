@@ -54,10 +54,10 @@ return {
 		-- [[ Configure LSP ]]
 		--  This function gets run when an LSP connects to a particular buffer.
 		local on_attach = function(_, bufnr)
-			if _.name == "tsserver" then
-				local ns = vim.lsp.diagnostic.get_namespace(_.id)
-				vim.diagnostic.disable(nil, ns)
-			end
+			-- if _.name == "tsserver" then
+			-- 	local ns = vim.lsp.diagnostic.get_namespace(_.id)
+			-- 	vim.diagnostic.disable(nil, ns)
+			-- end
 
 			vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, ctx, ...)
 				local client = vim.lsp.get_client_by_id(ctx.client_id)
