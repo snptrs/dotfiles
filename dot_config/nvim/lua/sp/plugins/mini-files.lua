@@ -1,1 +1,7 @@
-return { 'echasnovski/mini.files', opts = {}, lazy = false, version = false }
+return {
+  'echasnovski/mini.files',
+  opts = {},
+  config = {},
+  lazy = false,
+  version = false,
+}
