@@ -1,4 +1,4 @@
--- [[ Basic Keymaps ]]
+local map = vim.keymap.set
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -23,3 +23,5 @@ end, { desc = 'Tree focus' })
 
 vim.keymap.set({ 'n', 'i' }, '<C-\\>', ':ToggleTerm size=10 direction=horizontal<CR>', {})
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
+map('n', 'x', '"xx', { desc = 'Delete single characters to the x register' })
+map('n', 'c', '"cc', { desc = 'Yank change text to the c register' })
