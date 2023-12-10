@@ -25,3 +25,12 @@ vim.keymap.set({ 'n', 'i' }, '<C-\\>', ':ToggleTerm size=10 direction=horizontal
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
 map('n', 'x', '"xx', { desc = 'Delete single characters to the x register' })
 map('n', 'c', '"cc', { desc = 'Yank change text to the c register' })
+
+map({ 'n', 'v' }, 'H', '^', { desc = 'Move to beginning of line' })
+map({ 'n', 'v' }, 'L', '$', { desc = 'Move to end of line' })
+
+-- Split Navigation
+map('n', '<C-h>', '<C-w>h', { desc = 'Switch to the left split' })
+map('n', '<C-l>', '<C-w>l', { desc = 'Switch to the right split' })
+map('n', '<C-j>', '<C-w>j', { desc = 'Switch to the bottom split' })
+map('n', '<C-k>', '<C-w>k', { desc = 'Switch to the top split' })
