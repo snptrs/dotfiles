@@ -12,6 +12,8 @@ local options = {
   guicursor = 'n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20-blinkon250-blinkwait700-blinkoff400,i:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
   cursorline = true,
   colorcolumn = '80',
+  showmode = false,
+  autoread = true,
 }
 
 local globals = {
