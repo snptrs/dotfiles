@@ -14,6 +14,7 @@ local options = {
   colorcolumn = '80',
   showmode = false,
   autoread = true,
+  linebreak = true,
 }
 
 local globals = {
