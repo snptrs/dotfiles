@@ -15,6 +15,8 @@ local options = {
   showmode = false,
   autoread = true,
   linebreak = true,
+  winbar = '%f',
+  laststatus = 3,
 }
 
 local globals = {
