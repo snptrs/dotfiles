@@ -15,7 +15,7 @@ local options = {
   showmode = false,
   autoread = true,
   linebreak = true,
-  winbar = '%f',
+  winbar = '%t',
   laststatus = 3,
 }
 
