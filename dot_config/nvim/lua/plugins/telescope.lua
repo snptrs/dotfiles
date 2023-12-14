@@ -26,7 +26,7 @@ return {
           i = {
             ['<C-t>'] = trouble.smart_open_with_trouble,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
-            ['<esc><esc>'] = telescopeActions.close,
+            ['<esc>'] = telescopeActions.close,
             ['<C-c>'] = telescopeActions.delete_buffer,
           },
           n = {
