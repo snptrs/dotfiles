@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  branch = '0.1.x',
+  branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -34,8 +34,22 @@ return {
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
           },
         },
+        preview = {
+          ls_short = true,
+        },
+      },
+      extensions = {
+        file_browser = {
+          display_stat = false,
+          preview = {
+            ls_short = true,
+          },
+          theme = 'dropdown',
+        },
       },
     }
+
+    require('telescope').load_extension 'file_browser'
 
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
@@ -113,6 +127,7 @@ return {
     vim.keymap.set('n', '<leader>fG', ':LiveGrepGitRoot<cr>', { desc = '[F]ind by [G]rep on Git Root' })
     vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
     vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
-    vim.keymap.set('n', '<leader>fm', ':Telescope harpoon marks<cr>', { desc = '[F]ind Harpoon [M]arks' })
+    vim.keymap.set('n', '<leader>fm', ':Telescope harpoon marks<cr>', { silent = true, desc = '[F]ind Harpoon [M]arks' })
+    vim.keymap.set('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<cr>', { silent = true, desc = '[F]ind [B]rowser at current path' })
   end,
 }
