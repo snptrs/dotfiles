@@ -33,7 +33,13 @@ map({ 'n', 'v' }, 'H', '^', { desc = 'Move to beginning of line' })
 map({ 'n', 'v' }, 'L', '$', { desc = 'Move to end of line' })
 
 -- Split Navigation
-map('n', '<C-h>', '<C-w>h', { desc = 'Switch to the left split' })
-map('n', '<C-l>', '<C-w>l', { desc = 'Switch to the right split' })
-map('n', '<C-j>', '<C-w>j', { desc = 'Switch to the bottom split' })
-map('n', '<C-k>', '<C-w>k', { desc = 'Switch to the top split' })
+map('n', '<Left>', '<C-w>h', { desc = 'Switch to the left split' })
+map('n', '<Right>', '<C-w>l', { desc = 'Switch to the right split' })
+map('n', '<Down>', '<C-w>j', { desc = 'Switch to the bottom split' })
+map('n', '<Up>', '<C-w>k', { desc = 'Switch to the top split' })
+
+-- Disable arrow keys in insert mode
+vim.keymap.set({ 'i' }, '<Left>', '<Nop>', { silent = true })
+vim.keymap.set({ 'i' }, '<Right>', '<Nop>', { silent = true })
+vim.keymap.set({ 'i' }, '<Up>', '<Nop>', { silent = true })
+vim.keymap.set({ 'i' }, '<Down>', '<Nop>', { silent = true })
