@@ -39,7 +39,7 @@ map('n', '<Down>', '<C-w>j', { desc = 'Switch to the bottom split' })
 map('n', '<Up>', '<C-w>k', { desc = 'Switch to the top split' })
 
 -- Disable arrow keys in insert mode
-vim.keymap.set({ 'i' }, '<Left>', '<Nop>', { silent = true })
-vim.keymap.set({ 'i' }, '<Right>', '<Nop>', { silent = true })
-vim.keymap.set({ 'i' }, '<Up>', '<Nop>', { silent = true })
-vim.keymap.set({ 'i' }, '<Down>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'i' }, '<Left>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'i' }, '<Right>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'i' }, '<Up>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'i' }, '<Down>', '<Nop>', { silent = true })
