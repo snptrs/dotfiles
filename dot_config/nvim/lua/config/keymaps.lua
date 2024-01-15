@@ -26,6 +26,8 @@ vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
 map('n', 'x', '"xx', { desc = 'Delete single characters to the x register' })
 map('n', 'c', '"cc', { desc = 'Yank change text to the c register' })
 
+map({ 'n', 'i' }, '<C-l>', ':nohl<cr>', { desc = 'Search highlighting off' })
+
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
 
