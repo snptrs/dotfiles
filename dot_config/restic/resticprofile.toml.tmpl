@@ -5,6 +5,10 @@ repository = "{{ onepasswordRead "op://Personal/k5auawgbs33yb44hrm2dw5fsy4/b2-bu
 password-command = "echo {{ onepasswordRead "op://Personal/vvmaw3wcsuwjmweyhxtisryyda/password" }}"
 force-inactive-lock = true
 
+[default.env]
+AWS_ACCESS_KEY_ID = "{{ onepasswordRead "op://Personal/k5auawgbs33yb44hrm2dw5fsy4/username" }}"
+AWS_SECRET_ACCESS_KEY = "{{ onepasswordRead "op://Personal/k5auawgbs33yb44hrm2dw5fsy4/password" }}"
+
 [default.backup]
 verbose = true
 source = ["/Users/seanpeters"]
