@@ -89,7 +89,7 @@ return {
       nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
       nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
       nmap('<leader>dm', function()
-        require('telescope.builtin').lsp_document_symbols { symbols = 'function' }
+        require('telescope.builtin').lsp_document_symbols { symbols = { 'function', 'method' } }
       end, '[D]ocument [M]ethods')
       nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
