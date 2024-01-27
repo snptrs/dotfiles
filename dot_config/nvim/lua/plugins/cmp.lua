@@ -21,12 +21,23 @@ return {
     luasnip.config.setup {}
 
     cmp.setup {
+      window = {
+        completion = {
+          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+          col_offset = -3,
+          side_padding = 0,
+        },
+      },
       formatting = {
-        format = require("lspkind").cmp_format({
-          mode = 'symbol',   -- show only symbol annotations
-          maxwidth = 50,     -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-        })
+        fields = { 'kind', 'abbr', 'menu' },
+        format = function(entry, vim_item)
+          local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
+          local strings = vim.split(kind.kind, '%s', { trimempty = true })
+          kind.kind = ' ' .. (strings[1] or '') .. ' '
+          kind.menu = '    (' .. (strings[2] or '') .. ')'
+
+          return kind
+        end,
       },
       snippet = {
         expand = function(args)
@@ -40,7 +51,7 @@ return {
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete {},
         ['<CR>'] = cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Replace,
+          behavior = cmp.ConfirmBehavior.Insert,
           select = true,
         },
         ['<Tab>'] = cmp.mapping(function(fallback)
@@ -67,5 +78,5 @@ return {
         { name = 'luasnip' },
       },
     }
-  end
+  end,
 }
