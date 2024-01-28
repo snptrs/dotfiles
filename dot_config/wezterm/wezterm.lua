@@ -24,6 +24,15 @@ config.font_size = 13.5
 config.line_height = 1.2
 config.colors = colors
 config.window_frame = window_frame
+config.window_decorations = "RESIZE"
+config.window_padding = {
+	left = "1cell",
+	right = "1cell",
+	top = "0.5cell",
+	bottom = "0.1 cell",
+}
+config.initial_rows = 32
+config.initial_cols = 130
 
 config.keys = {
 	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
