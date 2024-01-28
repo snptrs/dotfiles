@@ -17,6 +17,7 @@ local options = {
   linebreak = true,
   winbar = '%t',
   laststatus = 3,
+  cmdheight = 0,
 }
 
 local globals = {
