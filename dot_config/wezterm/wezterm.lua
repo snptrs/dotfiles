@@ -39,8 +39,8 @@ config.initial_rows = 32
 config.initial_cols = 130
 
 config.keys = {
-	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
-	{ key = "s", mods = "ALT", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
+	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
 }
 
 wezterm.on("update-right-status", function(window, pane)
@@ -89,6 +89,28 @@ wezterm.on("update-right-status", function(window, pane)
 	end
 
 	window:set_right_status(wezterm.format(elements))
+end)
+
+local function basename(s)
+	return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
+
+local function tab_title(tab_info)
+	local title = tab_info.tab_title
+	-- if the tab title is explicitly set, take that
+	if title and #title > 0 then
+		return title
+	end
+	-- Otherwise, use the title from the active pane
+	-- in that tab
+	return basename(tab_info.active_pane.foreground_process_name)
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = tab_title(tab)
+	return {
+		{ Text = " " .. tab.tab_index + 1 .. ": " .. title .. " " },
+	}
 end)
 
 -- and finally, return the configuration to wezterm
