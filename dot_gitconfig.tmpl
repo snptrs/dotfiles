@@ -2,6 +2,12 @@
   name = Sean Peters
   email = {{ .sp.email }}
 
+{{- if eq .chezmoi.hostname .sp.mac_hostname }}
+
+[includeIf "gitdir:~/Work/"]
+  path = ~/Work/.gitconfig
+{{- end }}
+
 [core]
   autocrlf = input
   safecrlf = true
