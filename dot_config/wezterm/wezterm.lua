@@ -20,7 +20,7 @@ end
 if wezterm.target_triple == "x86_64-apple-darwin" then
 	config.default_prog = { "/usr/local/bin/fish", "-l" }
 else
-	condif.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+	config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 end
 config.set_environment_variables = { VTE_VERSION = "6003" }
 config.font = wezterm.font("FiraCode Nerd Font Mono")
