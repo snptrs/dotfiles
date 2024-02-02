@@ -39,6 +39,7 @@ return {
         'php',
         'python',
         'query',
+        'regex',
         'ruby',
         'rust',
         'sql',

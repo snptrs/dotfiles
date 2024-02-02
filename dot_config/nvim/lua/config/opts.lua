@@ -1,5 +1,5 @@
 local options = {
-  sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions',
+  -- sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions',
   hlsearch = true,
   number = true,
   scrolloff = 4,
