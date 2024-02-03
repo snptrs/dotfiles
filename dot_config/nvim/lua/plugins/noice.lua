@@ -2,6 +2,9 @@ return {
   'folke/noice.nvim',
   event = 'VeryLazy',
   opts = {
+    cmdline = {
+      -- view = 'cmdline',
+    },
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
@@ -40,6 +43,7 @@ return {
             { find = '; before #%d+' },
             { find = '%d fewer lines' },
             { find = '%d more lines' },
+            { find = '%d lines yanked' },
           },
         },
         opts = { skip = true },
@@ -52,6 +56,12 @@ return {
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
-    'rcarriga/nvim-notify',
+    {
+      'rcarriga/nvim-notify',
+      opts = {
+        render = 'compact',
+        timeout = 2000,
+      },
+    },
   },
 }

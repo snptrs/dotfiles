@@ -18,11 +18,12 @@ local options = {
   winbar = '%t',
   laststatus = 3,
   cmdheight = 0,
+  shortmess = 'IltToOCF',
 }
 
 local globals = {
-  loaded_netrw = 1,
-  loaded_netrwPlugin = 1,
+  -- loaded_netrw = 1,
+  -- loaded_netrwPlugin = 1,
 }
 
 -- Sync clipboard between OS and Neovim.

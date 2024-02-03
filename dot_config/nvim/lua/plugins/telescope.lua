@@ -27,7 +27,7 @@ return {
             ['<C-t>'] = trouble.smart_open_with_trouble,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<esc>'] = telescopeActions.close,
-            ['<C-c>'] = telescopeActions.delete_buffer,
+            ['<C-b>'] = telescopeActions.delete_buffer,
           },
           n = {
             ['<C-t>'] = trouble.smart_open_with_trouble,
@@ -38,6 +38,28 @@ return {
           ls_short = true,
         },
       },
+      pickers = {
+        find_files = {
+          layout_config = {
+            preview_width = 0.5,
+          },
+        },
+        live_grep = {
+          layout_config = {
+            preview_width = 0.5,
+          },
+        },
+        buffers = {
+          layout_config = {
+            preview_width = 0.5,
+          },
+        },
+        help_tags = {
+          layout_config = {
+            preview_width = 0.6,
+          },
+        },
+      },
       extensions = {
         file_browser = {
           display_stat = false,
@@ -45,6 +67,9 @@ return {
             ls_short = true,
           },
           theme = 'dropdown',
+          layout_config = {
+            height = 0.5,
+          },
         },
       },
     }
