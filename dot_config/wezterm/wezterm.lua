@@ -23,7 +23,7 @@ else
 	config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 end
 config.set_environment_variables = { VTE_VERSION = "6003" }
-config.font = wezterm.font("FiraCode Nerd Font Mono")
+config.font = wezterm.font("Fira Code")
 config.font_size = 13.5
 config.line_height = 1.2
 config.colors = colors
