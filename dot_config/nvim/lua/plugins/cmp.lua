@@ -17,7 +17,7 @@ return {
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    require('luasnip.loaders.from_vscode').lazy_load()
+    require('luasnip.loaders.from_vscode').lazy_load { paths = { '~/.config/nvim/lua/snippets' } }
     luasnip.config.setup {}
 
     cmp.setup {
@@ -25,7 +25,7 @@ return {
         completion = {
           winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
           col_offset = -3,
-          side_padding = 0,
+          side_poadding = 0,
         },
       },
       formatting = {
