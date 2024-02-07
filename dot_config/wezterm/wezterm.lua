@@ -25,7 +25,7 @@ end
 config.set_environment_variables = { VTE_VERSION = "6003" }
 config.font = wezterm.font("Fira Code")
 config.font_size = 13.5
-config.line_height = 1.2
+config.line_height = 1.225
 config.colors = colors
 config.window_frame = window_frame
 config.window_decorations = "RESIZE"
@@ -41,6 +41,13 @@ config.initial_cols = 130
 config.keys = {
 	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
 	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+	{ key = "q", mods = "SHIFT|CTRL|OPT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
+	{ key = "v", mods = "SHIFT|CTRL|OPT", action = wezterm.action.SplitPane({
+		direction = "Right",
+	}) },
+	{ key = "s", mods = "SHIFT|CTRL|OPT", action = wezterm.action.SplitPane({
+		direction = "Down",
+	}) },
 }
 
 wezterm.on("update-right-status", function(window, pane)

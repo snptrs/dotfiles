@@ -1,0 +1,12 @@
+{
+  "dev email": {
+    "prefix": "emldev",
+    "body": ["sp@snptrs.dev"],
+    "description": "Dev email address"
+  },
+  "email": {
+    "prefix": "eml",
+    "body": ["sp@snptrs.com"],
+    "description": "Email address"
+  }
+}
