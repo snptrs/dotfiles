@@ -17,7 +17,10 @@ return {
     -- don't use `defaults = { }` here, do this in the main telescope spec
     extensions = {
       undo = {
-        -- telescope-undo.nvim config, see below
+        side_by_side = true,
+        layout_config = {
+          preview_width = 0.8,
+        },
       },
       -- no other extensions here, they can have their own spec too
     },
