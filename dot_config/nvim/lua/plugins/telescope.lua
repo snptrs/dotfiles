@@ -41,12 +41,12 @@ return {
       pickers = {
         find_files = {
           layout_config = {
-            preview_width = 0.5,
+            preview_width = 0.4,
           },
         },
         live_grep = {
           layout_config = {
-            preview_width = 0.5,
+            preview_width = 0.4,
           },
         },
         buffers = {
