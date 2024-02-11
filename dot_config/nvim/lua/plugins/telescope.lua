@@ -19,6 +19,7 @@ return {
   config = function()
     local trouble = require 'trouble.providers.telescope'
     local telescopeActions = require 'telescope.actions'
+    local action_layout = require 'telescope.actions.layout'
 
     require('telescope').setup {
       defaults = {
@@ -26,12 +27,14 @@ return {
           i = {
             ['<C-t>'] = trouble.smart_open_with_trouble,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
-            ['<esc>'] = telescopeActions.close,
-            ['<C-b>'] = telescopeActions.delete_buffer,
+            ['<M-p>'] = action_layout.toggle_preview,
+            ['<C-u>'] = false,
+            -- ['<esc>'] = telescopeActions.close,
           },
           n = {
             ['<C-t>'] = trouble.smart_open_with_trouble,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
+            ['<M-p>'] = action_layout.toggle_preview,
           },
         },
         preview = {
@@ -50,11 +53,25 @@ return {
           },
         },
         buffers = {
+          initial_mode = 'normal',
           layout_config = {
             preview_width = 0.5,
           },
+          mappings = {
+            i = {
+              ['<C-b>'] = telescopeActions.delete_buffer,
+            },
+            n = {
+              ['<C-b>'] = telescopeActions.delete_buffer,
+            },
+          },
         },
         help_tags = {
+          layout_config = {
+            preview_width = 0.6,
+          },
+        },
+        git_status = {
           layout_config = {
             preview_width = 0.6,
           },
@@ -63,6 +80,7 @@ return {
       extensions = {
         file_browser = {
           display_stat = false,
+          initial_mode = 'normal',
           preview = {
             ls_short = true,
           },

@@ -62,18 +62,18 @@ return {
         -- vim.diagnostic.disable(nil, ns)
       end
 
-      vim.lsp.handlers['textDocument/publishDiagnostics'] = function(_, result, ctx, ...)
-        local client = vim.lsp.get_client_by_id(ctx.client_id)
-
-        if client and client.name == 'tsserver' then
-          result.diagnostics = vim.tbl_filter(function(diagnostic)
-            -- use whatever condition you want to filter diagnostics
-            return not diagnostic.message
-          end, result.diagnostics)
-        end
-
-        return vim.lsp.diagnostic.on_publish_diagnostics(nil, result, ctx, ...)
-      end
+      -- vim.lsp.handlers['textDocument/publishDiagnostics'] = function(_, result, ctx, ...)
+      --   local client = vim.lsp.get_client_by_id(ctx.client_id)
+      --
+      --   if client and client.name == 'tsserver' then
+      --     result.diagnostics = vim.tbl_filter(function(diagnostic)
+      --       -- use whatever condition you want to filter diagnostics
+      --       return not diagnostic.message
+      --     end, result.diagnostics)
+      --   end
+      --
+      --   return vim.lsp.diagnostic.on_publish_diagnostics(nil, result, ctx, ...)
+      -- end
 
       local nmap = function(keys, func, desc)
         if desc then
