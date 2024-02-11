@@ -33,12 +33,14 @@ return {
           },
           n = {
             ['<C-t>'] = trouble.smart_open_with_trouble,
+            ['l'] = telescopeActions.select_default,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<M-p>'] = action_layout.toggle_preview,
           },
         },
         preview = {
           ls_short = true,
+          filesize_limit = 0.3, -- MB
         },
       },
       pickers = {
