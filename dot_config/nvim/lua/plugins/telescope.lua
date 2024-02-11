@@ -81,6 +81,7 @@ return {
       },
       extensions = {
         file_browser = {
+          hijack_netrw = true,
           display_stat = false,
           initial_mode = 'normal',
           preview = {
