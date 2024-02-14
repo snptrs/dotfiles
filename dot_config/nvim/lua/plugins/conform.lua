@@ -30,7 +30,7 @@ return {
       graphql = { { 'prettierd', 'prettier' } },
       lua = { 'stylua' },
       python = { 'isort', 'ruff' },
-      php = { 'phpcbf' },
+      php = { 'pint', 'phpcbf' },
       toml = { 'taplo' },
     },
     format_on_save = function(bufnr)
@@ -49,6 +49,9 @@ return {
     formatters = {
       phpcbf = {
         prepend_args = { '--standard=PSR12', '--extensions=php' },
+      },
+      pint = {
+        prepend_args = { '--preset', 'psr12' },
       },
     },
   },
