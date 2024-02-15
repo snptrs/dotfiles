@@ -38,6 +38,7 @@ config.window_padding = {
 config.initial_rows = 32
 config.initial_cols = 130
 config.scrollback_lines = 1000
+config.quit_when_all_windows_are_closed = false
 
 config.keys = {
 	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
@@ -49,14 +50,14 @@ config.keys = {
 	{ key = "s", mods = "SHIFT|CTRL|OPT", action = wezterm.action.SplitPane({
 		direction = "Down",
 	}) },
-	{
-		key = "k",
-		mods = "SUPER",
-		action = wezterm.action.Multiple({
-			wezterm.action.ClearScrollback("ScrollbackAndViewport"),
-			wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
-		}),
-	},
+	-- {
+	-- 	key = "k",
+	-- 	mods = "SUPER",
+	-- 	action = wezterm.action.Multiple({
+	-- 		wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+	-- 		wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
+	-- 	}),
+	-- },
 }
 
 wezterm.on("update-right-status", function(window, pane)
