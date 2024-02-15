@@ -38,7 +38,6 @@ return {
       graphql = {},
       cssls = {},
       eslint = {},
-      pint = {},
     }
 
     -- Ensure the servers above are installed
