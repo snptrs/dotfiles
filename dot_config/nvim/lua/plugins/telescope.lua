@@ -72,7 +72,7 @@ return {
           },
         },
         buffers = {
-          initial_mode = 'normal',
+          initial_mode = 'insert',
           layout_config = {
             preview_width = 0.5,
           },
@@ -100,7 +100,7 @@ return {
         file_browser = {
           hijack_netrw = true,
           display_stat = false,
-          initial_mode = 'normal',
+          initial_mode = 'insert',
           preview = {
             ls_short = true,
           },
