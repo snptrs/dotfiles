@@ -2,3 +2,4 @@
 .config/nvim/lua/plugins/_disabled/poimandres.lua
 .config/nvim/lua/plugins/_disabled/bufferline.lua
 .config/nvim/lua/snippets/javascript.lua
+.config/nvim/lua/plugins/colorizer.lua
