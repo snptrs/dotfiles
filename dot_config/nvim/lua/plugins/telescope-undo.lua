@@ -17,7 +17,7 @@ return {
     -- don't use `defaults = { }` here, do this in the main telescope spec
     extensions = {
       undo = {
-        side_by_side = true,
+        side_by_side = false,
         layout_config = {
           preview_width = 0.8,
         },
