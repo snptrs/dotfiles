@@ -19,17 +19,22 @@
 
 [interactive]
   diffFilter = delta --color-only --features=interactive
+[diff]
+colorMoved = default
+
+[merge]
+  tool = nvimdiff
+
+[mergetool]
+  keepBackup = false
 
 [delta]
   features = decorations
   navigate = true
   line-numbers = true
-  minus=style = red
-  plus-style = "#98C379"
 
 [delta "interactive"]
   keep-plus-minus-markers = false
-
 [delta "decorations"]
   commit-decoration-style = blue ol
   commit-style = raw
