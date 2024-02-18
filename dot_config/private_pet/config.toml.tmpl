@@ -1,0 +1,23 @@
+[General]
+snippetfile = "/Users/seanpeters/.config/pet/snippet.toml"
+editor = "nvim"
+column = 40
+selectcmd = "fzf --ansi --layout=reverse --border --height=60% --pointer='*' --cycle --prompt='Snippets: '"
+backend = "gist"
+sortby = ""
+
+[Gist]
+file_name = "pet-snippet.toml"
+access_token = "{{ onepasswordRead "op://Personal/oeivf7qpdqyaw5t6hkvxpoouhy/access-token" }}"
+gist_id = "{{ onepasswordRead "op://Personal/oeivf7qpdqyaw5t6hkvxpoouhy/gist-id" }}"
+public = false
+auto_sync = true
+
+[GitLab]
+file_name = "pet-snippet.toml"
+access_token = ""
+url = ""
+id = ""
+visibility = "private"
+auto_sync = false
+skip_ssl = false
