@@ -5,6 +5,7 @@ abbr -a snb snibbets
 abbr -a lg lazygit
 abbr -a cm chezmoi
 abbr -a tm tmux
+abbr -a pss "pet search --color"
 
 function multicd; echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../); end
 abbr --add dotdot --regex '^\.\.+$' --function multicd
