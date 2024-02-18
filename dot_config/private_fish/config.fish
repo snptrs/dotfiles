@@ -18,5 +18,5 @@ set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
 # set fish_cursor_external line
 
 # fish_vi_key_bindings --no-erase insert
-bind \cs 'pet-select'
-
+bind \ec 'pet-select'
+bind \cs 'history-pager'
