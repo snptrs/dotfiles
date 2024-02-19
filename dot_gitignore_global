@@ -2,3 +2,4 @@
 .nova
 *.code-workspace
 node_modules
+.stignore
