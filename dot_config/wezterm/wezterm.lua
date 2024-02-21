@@ -40,6 +40,14 @@ config.initial_cols = 130
 config.scrollback_lines = 1000
 config.quit_when_all_windows_are_closed = false
 
+config.mouse_bindings = {
+	{
+		event = { Down = { streak = 3, button = "Left" } },
+		action = wezterm.action.SelectTextAtMouseCursor("SemanticZone"),
+		mods = "NONE",
+	},
+}
+
 config.keys = {
 	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
 	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
@@ -50,6 +58,8 @@ config.keys = {
 	{ key = "s", mods = "SHIFT|CTRL|OPT", action = wezterm.action.SplitPane({
 		direction = "Down",
 	}) },
+	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
+	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
 	-- {
 	-- 	key = "k",
 	-- 	mods = "SUPER",
@@ -124,10 +134,18 @@ local function tab_title(tab_info)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local title = tab_title(tab)
-	return {
-		{ Text = " " .. tab.tab_index + 1 .. ": " .. title .. " " },
-	}
+	if tab.active_pane.title:find("^Copy mode") ~= nil then
+		local title = "📋 COPY MODE"
+		return {
+			{ Background = { Color = "#eb6f92" } },
+			{ Text = " " .. tab.tab_index + 1 .. ": " .. title .. " " },
+		}
+	else
+		local title = tab_title(tab)
+		return {
+			{ Text = " " .. tab.tab_index + 1 .. ": " .. title .. " " },
+		}
+	end
 end)
 
 -- and finally, return the configuration to wezterm
