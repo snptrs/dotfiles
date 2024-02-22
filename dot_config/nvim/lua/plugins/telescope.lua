@@ -44,7 +44,6 @@ return {
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<M-p>'] = action_layout.toggle_preview,
             ['<C-u>'] = false,
-            ['<CR>'] = select_one_or_multi,
             -- ['<esc>'] = telescopeActions.close,
           },
           n = {
@@ -52,7 +51,6 @@ return {
             ['l'] = telescopeActions.select_default,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<M-p>'] = action_layout.toggle_preview,
-            ['<CR>'] = select_one_or_multi,
           },
         },
         preview = {
@@ -64,6 +62,14 @@ return {
         find_files = {
           layout_config = {
             preview_width = 0.4,
+          },
+          mappings = {
+            i = {
+              ['<CR>'] = select_one_or_multi,
+            },
+            n = {
+              ['<CR>'] = select_one_or_multi,
+            },
           },
         },
         live_grep = {
