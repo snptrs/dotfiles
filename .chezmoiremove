@@ -3,3 +3,4 @@
 .config/nvim/lua/plugins/_disabled/bufferline.lua
 .config/nvim/lua/snippets/javascript.lua
 .config/nvim/lua/plugins/colorizer.lua
+.config/fish/conf.d/tree.fish
