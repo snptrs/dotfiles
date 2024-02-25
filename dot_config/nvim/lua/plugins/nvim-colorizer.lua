@@ -8,6 +8,7 @@ return {
       'html',
       'php',
       'lua',
+      'yaml',
     },
     user_default_options = { names = 'false' },
   },
