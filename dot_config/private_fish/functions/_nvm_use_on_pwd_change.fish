@@ -1,3 +1,4 @@
+# I added this function, cobbled together from something I found online
 function _nvm_use_on_pwd_change --argument-names _ op --on-variable nvm_use_on_pwd_change
     if test "$op" = ERASE
         functions --erase _nvm_pwd_change
@@ -7,4 +8,3 @@ function _nvm_use_on_pwd_change --argument-names _ op --on-variable nvm_use_on_p
         end
     end
 end
-_nvm_use_on_pwd_change
