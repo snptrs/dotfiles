@@ -11,7 +11,7 @@ if status is-interactive
 
   bind \ec 'pet-select'
   bind \cs 'history-pager'
-  set -gx LS_COLORS (vivid generate /Users/seanpeters/.config/vivid/rose-pine.yml)
+  set -gx LS_COLORS (vivid generate rose-pine)
 
   abbr -a cht cht.sh
   abbr -a chts cht.sh --shell
