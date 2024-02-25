@@ -1,6 +1,6 @@
 function pj
 
-set session (fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null | fzf)
+set session (fd --color=always -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null | fzf --ansi)
 set session_name (basename "$session")
 wezterm cli spawn --cwd $session --workspace $session_name --new-window
 
