@@ -37,7 +37,7 @@ config.window_padding = {
 }
 config.initial_rows = 32
 config.initial_cols = 130
-config.scrollback_lines = 1000
+config.scrollback_lines = 3000
 config.quit_when_all_windows_are_closed = false
 
 config.mouse_bindings = {
