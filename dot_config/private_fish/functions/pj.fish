@@ -1,4 +1,4 @@
-function tmpj
+function pj
 
 set session (fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null | fzf)
 set session_name (basename "$session")
