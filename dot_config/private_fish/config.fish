@@ -20,9 +20,7 @@ if status is-interactive
   abbr -a cm chezmoi
   abbr -a tm tmux
   abbr -a pss "pet search --color"
-
-  function multicd; echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../); end
-  abbr --add dotdot --regex '^\.\.+$' --function multicd
+  abbr -a dotdot --regex '^\.\.+$' --function multicd
 
   _nvm_use_on_pwd_change
   zoxide init fish | source
