@@ -10,5 +10,9 @@ return {
       'RainbowDelimiterViolet',
       'RainbowDelimiterCyan',
     },
+    blacklist = { 'html' },
+    query = {
+      [''] = 'rainbow-delimiters',
+    },
   },
 }
