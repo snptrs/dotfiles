@@ -8,6 +8,7 @@ return {
   config = function()
     require('ibl').setup {
       indent = { highlight = { 'CursorColumn', 'Whitespace' }, char = '' },
+      scope = { enabled = false },
       whitespace = {
         highlight = { 'CursorColumn', 'Whitespace' },
         remove_blankline_trail = false,
