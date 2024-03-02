@@ -22,6 +22,6 @@ if status is-interactive
   abbr -a pss "pet search --color"
   abbr -a dotdot --regex '^\.\.+$' --function multicd
 
-  _nvm_use_on_pwd_change
+  # _nvm_use_on_pwd_change
   zoxide init fish | source
 end
