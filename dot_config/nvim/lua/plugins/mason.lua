@@ -36,8 +36,15 @@ return {
       marksman = {},
       pyright = {},
       graphql = {},
-      cssls = {},
+      cssls = {
+        css = {
+          lint = {
+            validProperties = { 'composes' },
+          },
+        },
+      },
       eslint = {},
+      cssmodules_ls = {},
     }
 
     -- Ensure the servers above are installed
