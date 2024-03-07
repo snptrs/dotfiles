@@ -23,13 +23,10 @@ return {
       sections = {
         lualine_a = {
           'mode',
-          function()
-            local reg = vim.fn.reg_recording()
-            if reg == '' then
-              return ''
-            end -- not recording
-            return 'recording @' .. reg
-          end,
+          {
+            require('noice').api.statusline.mode.get,
+            cond = require('noice').api.statusline.mode.has,
+          },
           function()
             local statusline = require 'arrow.statusline'
             return statusline.text_for_statusline_with_icons()
