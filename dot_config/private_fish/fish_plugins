@@ -4,6 +4,5 @@ jhillyerd/plugin-git
 patrickf1/fzf.fish
 ilancosman/tide@v6
 rstacruz/fish-npm-global
-otms61/fish-pet
 kobanyan/pet-completions
-acomagu/fish-osc133
+snptrs/fish-osc133
