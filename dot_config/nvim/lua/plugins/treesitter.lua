@@ -37,6 +37,7 @@ return {
         'markdown_inline',
         'mermaid',
         'php',
+        'prisma',
         'python',
         'query',
         'regex',

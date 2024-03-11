@@ -34,6 +34,7 @@ return {
         },
       },
       marksman = {},
+      prismals = {},
       pyright = {},
       graphql = {},
       cssls = {
