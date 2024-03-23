@@ -11,6 +11,8 @@ return {
 
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
+
+    { 'jackieaskins/cmp-emmet', build = 'npm run release' },
   },
   config = function()
     -- [[ Configure nvim-cmp ]]
@@ -80,6 +82,7 @@ return {
       sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'emmet' },
       },
     }
   end,
