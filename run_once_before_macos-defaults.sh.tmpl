@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# Parts of this are based on or directly copied from:
+# https://gist.github.com/ChristopherA/98628f8cd00c94f11ee6035d53b0d3c6
+# 
+
+# Test if Terminal has Full Disk Access, and if it doesn't, prompt user to set		
+# it and start over.
+printf "Testing for Full Disk Access:\n\n"		
+errstr=$( /bin/ls /Users/seanpeters/Library/Containers/com.apple.Safari 3>&1 1>&2 2>&3 3>&- )		
+
+if [[ $errstr == *"Operation not permitted" ]]; then		
+   printf "Terminal needs Full Disk Access permission\n"		
+    exit # as we can't proceed until Terminal has been granted full Disk Access
+else
+   printf "Terminal has permission to continue\n"
+fi
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+#### Dock
+
+## Position Dock on left
+defaults write com.apple.dock "orientation" -string "left"
+
+## Set Dock size
+defaults write com.apple.dock "tilesize" -int "23"
+
+## Don't show recents in Dock
+defaults write com.apple.dock "show-recents" -boolean false
+
+sudo killall Dock
+
+#### Finder
+
+## Set default Finder search scope to current folder
+defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf"
+
+## Show path bar
+defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+
+# show status bar in Finder windows
+defaults write com.apple.finder ShowStatusBar -bool true
+
+## Show full path in title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# Spring loaded directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Delay for spring loaded directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0.3
+
+## Default to column view
+defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
+
+# After configuring preferred view style, clear all `.DS_Store` files
+# to ensure settings are applied for every directory
+find . -name '.DS_Store' -type f -delete
+
+sudo killall Finder
+
+## Safari
+
+# Show Develop menu in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+
+
+
