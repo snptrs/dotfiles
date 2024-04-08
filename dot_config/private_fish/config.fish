@@ -24,6 +24,9 @@ if status is-interactive
   abbr -a pss "pet search --color"
   abbr -a dotdot --regex '^\.\.+$' --function multicd
 
+  set -gx FNM_COREPACK_ENABLED true
+  /usr/bin/env fnm env --use-on-cd | source
+
   # _nvm_use_on_pwd_change
   zoxide init fish | source
 end

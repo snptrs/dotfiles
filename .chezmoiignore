@@ -2,3 +2,6 @@
 **/.DS_Store
 **/stylua.toml
 **/.git/**
+{{- if ne .chezmoi.hostname .sp.mac_hostname }}
+Work # only manage .work on work-laptop
+{{- end }}

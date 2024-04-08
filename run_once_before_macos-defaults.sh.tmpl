@@ -32,7 +32,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 defaults write com.apple.dock "orientation" -string "left"
 
 ## Set Dock size
-defaults write com.apple.dock "tilesize" -int "23"
+defaults write com.apple.dock "tilesize" -int "26"
 
 ## Don't show recents in Dock
 defaults write com.apple.dock "show-recents" -boolean false
@@ -45,13 +45,13 @@ sudo killall Dock
 defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf"
 
 ## Show path bar
-defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowPathbar" -bool "true"
 
 # show status bar in Finder windows
 defaults write com.apple.finder ShowStatusBar -bool true
 
 ## Show full path in title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
 
 # Spring loaded directories
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
@@ -64,7 +64,7 @@ defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
 
 # After configuring preferred view style, clear all `.DS_Store` files
 # to ensure settings are applied for every directory
-find . -name '.DS_Store' -type f -delete
+fd -H -g '.DS_Store' ~ -x rm
 
 sudo killall Finder
 
@@ -72,6 +72,4 @@ sudo killall Finder
 
 # Show Develop menu in Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
-
-
 
