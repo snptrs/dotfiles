@@ -23,7 +23,14 @@ return {
 
     -- Enable the following language servers
     local servers = {
-      tsserver = {},
+      --[[ tsserver = {
+        hostInfo = 'neovim',
+        preferences = {
+          includeCompletionsForModuleExports = true,
+          includeCompletionsForImportStatements = true,
+          importModuleSpecifierPreference = 'relative',
+        },
+      }, ]]
       jsonls = {},
       intelephense = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
