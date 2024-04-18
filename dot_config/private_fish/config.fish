@@ -2,7 +2,7 @@ set -g fish_greeting
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
-  /opt/homebrew/bin/brew shellenv | source
+  /usr/bin/env brew shellenv | source
   
   # test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
   set -gx EDITOR "nvim"
