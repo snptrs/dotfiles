@@ -48,6 +48,14 @@ config.mouse_bindings = {
 	},
 }
 
+config.ssh_domains = {
+	{
+		name = "imac",
+		remote_address = "imac",
+		remote_wezterm_path = "/opt/homebrew/bin/wezterm",
+	},
+}
+
 config.keys = {
 	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
 	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
@@ -60,20 +68,13 @@ config.keys = {
 	}) },
 	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
-	-- {
-	-- 	key = "k",
-	-- 	mods = "SUPER",
-	-- 	action = wezterm.action.Multiple({
-	-- 		wezterm.action.ClearScrollback("ScrollbackAndViewport"),
-	-- 		wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
-	-- 	}),
-	-- },
 }
 
 wezterm.on("update-right-status", function(window, pane)
 	-- Each element holds the text for a cell in a "powerline" style << fade
 	local cells = {}
 	table.insert(cells, window:active_workspace())
+	table.insert(cells, pane:get_domain_name())
 
 	-- The powerline < symbol
 	local LEFT_ARROW = utf8.char(0xe0b3)
