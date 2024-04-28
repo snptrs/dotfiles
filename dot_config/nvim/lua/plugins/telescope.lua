@@ -123,8 +123,6 @@ return {
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
 
-    require('telescope').load_extension 'harpoon'
-
     -- Telescope live_grep in git root
     -- Function to find the git root directory based on the current buffer's path
     local function find_git_root()
@@ -202,7 +200,6 @@ return {
     vim.keymap.set('n', '<leader>fG', ':LiveGrepGitRoot<cr>', { desc = '[F]ind by [G]rep on Git Root' })
     vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
     vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
-    vim.keymap.set('n', '<leader>fm', ':Telescope harpoon marks<cr>', { silent = true, desc = '[F]ind Harpoon [M]arks' })
     vim.keymap.set('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<cr>', { silent = true, desc = '[F]ile [B]rowser at current path' })
   end,
 }

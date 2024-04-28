@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list', unique = true })
 
 -- [[ SP's keymaps ]]
-vim.keymap.set('n', '\\', function()
+vim.keymap.set('n', '<leader>\\', function()
   if not MiniFiles.close() then
     MiniFiles.open(vim.api.nvim_buf_get_name(0))
     MiniFiles.reveal_cwd()

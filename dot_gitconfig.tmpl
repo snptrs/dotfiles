@@ -5,7 +5,7 @@
 {{- if eq .chezmoi.hostname .sp.mac_hostname }}
 
 [includeIf "gitdir:~/Work/"]
-  path = {{ .sp.work_gitconfig }}
+  path = {{ .sp.work_git_config }}
 {{- end }}
 
 [includeIf "gitdir:~/.local/share/chezmoi/"]
