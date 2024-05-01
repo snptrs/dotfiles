@@ -27,6 +27,7 @@ if status is-interactive
   abbr -a tm tmux
   abbr -a pss "pet search --color"
   abbr -a dotdot --regex '^\.\.+$' --function multicd
+  abbr -a imactnl "ssh -L 8080:localhost:80 -L 3000:localhost:3000 -L 3306:db:3306 -N -T seanpeters@seans-imac"
 
   set -gx FNM_COREPACK_ENABLED true
   /usr/bin/env fnm env --use-on-cd | source
