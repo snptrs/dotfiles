@@ -101,14 +101,19 @@ wezterm.on("update-right-status", function(window, pane)
 	-- Translate a cell into elements
 	local function push(text, is_last)
 		local cell_no = num_cells + 1
-		table.insert(elements, { Foreground = { Color = text_fg } })
-		table.insert(elements, { Background = { Color = colors[cell_no] } })
+		if text == "imac" or text == "unix" then
+			table.insert(elements, { Foreground = { Color = "#f6c177" } })
+			table.insert(elements, { Background = { Color = colors[cell_no] } })
+		else
+			table.insert(elements, { Foreground = { Color = text_fg } })
+			table.insert(elements, { Background = { Color = colors[cell_no] } })
+		end
 		table.insert(elements, { Text = " " .. text .. " " })
 		if not is_last then
 			table.insert(elements, { Foreground = { Color = colors[cell_no + 1] } })
 			table.insert(elements, { Text = SOLID_LEFT_ARROW })
+			num_cells = num_cells + 1
 		end
-		num_cells = num_cells + 1
 	end
 
 	while #cells > 0 do
