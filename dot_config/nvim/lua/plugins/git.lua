@@ -22,12 +22,42 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      current_line_blame_opts = { virt_text_pos = 'right_align' },
+      current_line_blame_opts = { virt_text_pos = 'right_align', delay = 250 },
+      current_line_blame_formatter_opts = { relative_time = true },
 
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+        local gitsigns = require 'gitsigns'
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
 
-        vim.keymap.set('n', '<leader>gl', '<cmd>Gitsigns toggle_current_line_blame<cr>', { desc = 'Toggle current line blame' })
+        map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Stage git hunk' })
+        map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Reset git hunk' })
+        map('v', '<leader>hs', function()
+          gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'Stage git hunk' })
+        map('v', '<leader>hr', function()
+          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'Reset git hunk' })
+        map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'Stage all git hunks' })
+        map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'Undo stage git hunk' })
+        map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'Reset all git hunks' })
+        map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Preview git hunk' })
+        map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'Preview git hunk inline' })
+        map('n', '<leader>hb', function()
+          gitsigns.blame_line { full = true }
+        end, { desc = 'Blame line' })
+        map('n', '<leader>ht', gitsigns.toggle_current_line_blame, { desc = 'Toggle current line blame' })
+        map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Diff this' })
+        map('n', '<leader>hD', function()
+          gitsigns.diffthis '~'
+        end, { desc = 'Diff this' })
+        map('n', '<leader>hx', gitsigns.toggle_deleted, { desc = 'Toggle deleted' })
+
+        -- vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+        -- vim.keymap.set('n', '<leader>gl', '<cmd>Gitsigns toggle_current_line_blame<cr>', { desc = 'Toggle current line blame' })
 
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
