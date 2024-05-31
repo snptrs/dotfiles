@@ -80,7 +80,8 @@ return {
         end, { 'i', 's' }),
       },
       sources = {
-        { name = 'supermaven' },
+        -- { name = 'supermaven' },
+        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'emmet' },

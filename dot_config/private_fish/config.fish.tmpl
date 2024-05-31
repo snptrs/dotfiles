@@ -1,6 +1,9 @@
 set -g fish_greeting
 
 set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
+set -gx PATH $PATH:$ANDROID_HOME/emulator
+set -gx PATH $PATH:$ANDROID_HOME/platform-tools
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
