@@ -15,6 +15,10 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
+    {
+      'isak102/telescope-git-file-history.nvim',
+      dependencies = { 'tpope/vim-fugitive' },
+    },
   },
   config = function()
     local trouble = require 'trouble.providers.telescope'
@@ -119,6 +123,7 @@ return {
     }
 
     require('telescope').load_extension 'file_browser'
+    require('telescope').load_extension 'git_file_history'
 
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
@@ -175,6 +180,9 @@ return {
     vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Search [G]it [B]ranches' })
     vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = 'Search [G]it [S]tatus' })
     vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_commits, { desc = 'Search [G]it [C]ommits' })
+    vim.keymap.set('n', '<leader>gh', function()
+      require('telescope').extensions.git_file_history.git_file_history()
+    end, { desc = '[G]it file [H]istory' })
 
     vim.keymap.set('n', '<leader>ff', function()
       require('telescope.builtin').find_files {
