@@ -20,8 +20,6 @@ if status is-interactive
   set -Ux BAT_THEME "base16"
   set -gx fzf_diff_highlighter delta --diff-so-fancy --width=110 --paging=never -- --preview-window=right,70% 
 
-  tide_context_always_display true
-
   bind \ec 'pet-select'
   bind \cs 'history-pager'
   set -gx LS_COLORS (vivid generate rose-pine)
