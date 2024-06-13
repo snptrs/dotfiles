@@ -1,9 +1,10 @@
 set -g fish_greeting
 
-set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+## set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
-set -gx PATH $PATH:$ANDROID_HOME/emulator
-set -gx PATH $PATH:$ANDROID_HOME/platform-tools
+fish_add_path $ANDROID_HOME/emulator 
+fish_add_path $ANDROID_HOME/platform-tools
+fish_add_path $ANDROID_HOME/cmdline-tools/latest/bin
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
@@ -13,7 +14,6 @@ if status is-interactive
   /usr/local/bin/brew shellenv | source
   {{- end }}
   
-  # test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
   set -gx EDITOR "nvim"
   set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
   set -a fish_function_path ~/.config/fish/functions/sp
@@ -40,6 +40,7 @@ if status is-interactive
   set -gx FNM_COREPACK_ENABLED true
   /usr/bin/env fnm env --use-on-cd | source
 
-  # _nvm_use_on_pwd_change
   zoxide init fish | source
+
+  rbenv init - fish | source
 end
