@@ -6,6 +6,10 @@ fish_add_path $ANDROID_HOME/emulator
 fish_add_path $ANDROID_HOME/platform-tools
 fish_add_path $ANDROID_HOME/cmdline-tools/latest/bin
 
+set -g tide_left_prompt_items pwd git newline character
+set -g tide_git_icon 
+set -g tide_pwd_icon
+
 if status is-interactive
   # Commands to run in interactive sessions can go here
   {{- if eq .chezmoi.arch "arm64" }}
