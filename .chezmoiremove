@@ -1,3 +1,4 @@
+.config/nvim/lua/plugins/boole.lua
 .config/nvim/lua/plugins/_disabled/onedark.lua
 .config/nvim/lua/plugins/_disabled/poimandres.lua
 .config/nvim/lua/plugins/_disabled/bufferline.lua
