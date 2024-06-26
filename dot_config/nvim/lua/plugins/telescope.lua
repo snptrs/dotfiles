@@ -19,6 +19,7 @@ return {
       'isak102/telescope-git-file-history.nvim',
       dependencies = { 'tpope/vim-fugitive' },
     },
+    { 'GianniBYoung/chezmoi-telescope.nvim' },
   },
   config = function()
     local trouble = require 'trouble.providers.telescope'
@@ -124,6 +125,7 @@ return {
 
     require('telescope').load_extension 'file_browser'
     require('telescope').load_extension 'git_file_history'
+    require('telescope').load_extension 'chezmoi'
 
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
