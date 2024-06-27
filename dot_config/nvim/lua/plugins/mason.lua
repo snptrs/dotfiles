@@ -33,6 +33,12 @@ return {
       }, ]]
       jsonls = {},
       intelephense = {},
+      --[[ phpactor = {
+        init_options = {
+          ['language_server_phpstan.enabled'] = false,
+          ['language_server_psalm.enabled'] = false,
+        },
+      }, ]]
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       lua_ls = {
         Lua = {
@@ -106,10 +112,11 @@ return {
       nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
       nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
       nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-      nmap('<leader>dm', function()
+      --[[ nmap('<leader>dm', function()
         require('telescope.builtin').lsp_document_symbols { symbols = { 'function', 'method' } }
-      end, '[D]ocument [M]ethods')
+      end, '[D]ocument [M]ethods') ]]
       nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+      nmap('<leader>dm', require('telescope').extensions.aerial.aerial, '[D]ocument [M]ethods')
 
       -- See `:help K` for why this keymap
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')

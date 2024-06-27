@@ -27,13 +27,13 @@ map('n', 'x', '"xx', { desc = 'Delete single characters to the x register', uniq
 map('n', 'c', '"cc', { desc = 'Yank change text to the c register', unique = true })
 
 -- map({ 'n', 'i' }, '<C-M-l>', ':nohl<cr>', { desc = 'Search highlighting off', silent = true, unique = true })
-map('n', '*', '*``b', { desc = 'Search for word under cursor without jumping to next occurrence', unique = true })
+-- map('n', '*', '*``b', { desc = 'Search for word under cursor without jumping to next occurrence', unique = true })
 
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down', unique = true, silent = true })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up', unique = true, silent = true })
 
-map({ 'n', 'v' }, 'H', '^', { desc = 'Move to beginning of line', unique = true })
-map({ 'n', 'v' }, 'L', '$', { desc = 'Move to end of line', unique = true })
+-- map({ 'n', 'v' }, 'H', '^', { desc = 'Move to beginning of line', unique = true })
+-- map({ 'n', 'v' }, 'L', '$', { desc = 'Move to end of line', unique = true })
 
 -- Split Navigation
 map('n', '<Left>', '<C-w>h', { desc = 'Switch to the left split', unique = true })
