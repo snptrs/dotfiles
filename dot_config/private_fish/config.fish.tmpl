@@ -20,9 +20,10 @@ if status is-interactive
   
   set -gx EDITOR "nvim"
   set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
+  set -x FZF_DEFAULT_OPTS --cycle --layout=reverse --border --height=90% --marker="*" --preview-window=right:65%,wrap
   set -a fish_function_path ~/.config/fish/functions/sp
   set -Ux BAT_THEME "base16"
-  set -gx fzf_diff_highlighter delta --diff-so-fancy --width=110 --paging=never -- --preview-window=right,70% 
+  set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
 
   bind \ec 'pet-select'
   bind \cs 'history-pager'
