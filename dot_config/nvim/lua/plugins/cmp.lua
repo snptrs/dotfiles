@@ -12,6 +12,9 @@ return {
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
 
+    -- To automatically add () after function insertion
+    'windwp/nvim-autopairs',
+
     { 'jackieaskins/cmp-emmet', build = 'npm run release' },
   },
   config = function()
@@ -21,6 +24,10 @@ return {
     local luasnip = require 'luasnip'
     require('luasnip.loaders.from_vscode').lazy_load { paths = { '~/.config/nvim/lua/snippets' } }
     luasnip.config.setup {}
+
+    -- If you want insert `(` after select function or method item
+    local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
     cmp.setup {
       window = {
@@ -87,11 +94,27 @@ return {
         end, { 'i', 's' }),
       },
       sources = {
-        -- { name = 'supermaven' },
-        { name = 'copilot' },
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'emmet' },
+        { name = 'copilot', priority = 10 },
+        { name = 'nvim_lsp', priority = 8 },
+        { name = 'luasnip', priority = 5 },
+        { name = 'emmet', priority = 4 },
+        { name = 'buffer', priority = 7 },
+      },
+      sorting = {
+        priority_weight = 1,
+        comparators = {
+          -- compare.score_offset, -- not good at all
+          cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+          cmp.config.compare.order,
+          cmp.config.compare.kind,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.offset,
+          -- compare.scopes, -- what?
+          -- compare.sort_text,
+          -- compare.exact,
+          -- compare.length, -- useless
+        },
       },
     }
   end,
