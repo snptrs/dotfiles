@@ -19,6 +19,7 @@ local options = {
   laststatus = 3,
   cmdheight = 0,
   shortmess = 'IltToOCF',
+  pumheight = 15, -- Number of entries to show in popup menu
 }
 
 local globals = {
