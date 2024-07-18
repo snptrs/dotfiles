@@ -32,7 +32,7 @@ return {
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
     cmp.setup {
-      completion = { completeopt = 'menu,menuone,noinsert' },
+      completion = { completeopt = 'menu,menuone,noinsert,noselect' },
       window = {
         completion = {
           winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:PmenuSel',
