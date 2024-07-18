@@ -11,7 +11,7 @@ return {
         punctuation = 'subtle',
       },
       highlight_groups = {
-        PmenuSel = { bg = '#282C34', fg = 'NONE' },
+        PmenuSel = { bg = '#353A45', fg = 'NONE' },
         Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
 
         CmpItemAbbrDeprecated = { fg = '#7E8294', bg = 'NONE', strikethrough = true },
