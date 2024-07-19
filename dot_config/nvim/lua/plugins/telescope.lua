@@ -106,6 +106,11 @@ return {
             preview_width = 0.6,
           },
         },
+        git_commits = {
+          layout_config = {
+            preview_width = 0.6,
+          },
+        },
       },
       extensions = {
         file_browser = {
@@ -118,6 +123,11 @@ return {
           theme = 'dropdown',
           layout_config = {
             height = 0.5,
+          },
+        },
+        git_file_history = {
+          layout_config = {
+            preview_width = 0.6,
           },
         },
       },
