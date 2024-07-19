@@ -1,6 +1,16 @@
 return {
   'folke/noice.nvim',
   event = 'VeryLazy',
+  -- stylua: ignore
+  keys = {
+    { '<leader>n', '', desc = '+noice' },
+    { '<leader>nl', function() require('noice').cmd('last') end, desc = 'Noice Last Message' },
+    { '<leader>nh', function() require('noice').cmd('history') end, desc = 'Noice History' },
+    { '<leader>na', function() require('noice').cmd('all') end, desc = 'Noice All' },
+    { '<leader>nt', function() require('noice').cmd('pick') end, desc = 'Noice Picker (Telescope/FzfLua)' },
+    { '<C-f>', function() if not require('noice.lsp').scroll(4) then return '<C-f>' end end, silent = true, expr = true, desc = 'Scroll Forward', mode = {'i', 'n', 's'} },
+    { '<C-b>', function() if not require('noice.lsp').scroll(-4) then return '<C-b>' end end, silent = true, expr = true, desc = 'Scroll Backward', mode = {'i', 'n', 's'}},
+  },
   opts = {
     cmdline = {
       -- view = 'cmdline',
@@ -11,6 +21,14 @@ return {
         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
         ['vim.lsp.util.stylize_markdown'] = true,
         ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+      },
+      documentation = {
+        opts = { -- Move docs and signature help up so they don't overlap CMP popup
+          anchor = 'SW',
+          position = {
+            row = 1,
+          },
+        },
       },
     },
     -- you can enable a preset for easier configuration
@@ -28,6 +46,7 @@ return {
           kind = '',
           find = 'written',
         },
+
         opts = { skip = true },
       },
       {
@@ -48,6 +67,7 @@ return {
             { find = '%d fewer lines' },
             { find = '%d more lines' },
             { find = '%d lines yanked' },
+            { kind = 'emsg', find = 'E37' },
           },
         },
         opts = { skip = true },

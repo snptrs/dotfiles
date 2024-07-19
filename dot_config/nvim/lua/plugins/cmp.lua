@@ -15,6 +15,8 @@ return {
     -- To automatically add () after function insertion
     'windwp/nvim-autopairs',
 
+    'https://codeberg.org/FelipeLema/cmp-async-path',
+
     { 'jackieaskins/cmp-emmet', build = 'npm run release' },
   },
   config = function()
@@ -30,11 +32,15 @@ return {
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
     cmp.setup {
+      completion = { completeopt = 'menu,menuone,noinsert,noselect' },
       window = {
         completion = {
-          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:PmenuSel',
           col_offset = -3,
-          side_poadding = 0,
+          side_padding = 0,
+        },
+        documentation = cmp.config.window.bordered {
+          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
         },
       },
       formatting = {
@@ -54,27 +60,24 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert {
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete {},
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<CR>'] = cmp.mapping {
           i = function(fallback)
             if cmp.visible() and cmp.get_active_entry() then
-              cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+              cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = false }
             else
               fallback()
             end
           end,
           s = cmp.mapping.confirm { select = true },
-          c = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
         },
         ['<S-CR>'] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
+          select = false,
         },
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<C-n>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expand_or_locally_jumpable() then
@@ -83,7 +86,7 @@ return {
             fallback()
           end
         end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<C-p>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           elseif luasnip.locally_jumpable(-1) then
@@ -96,6 +99,7 @@ return {
       sources = {
         { name = 'copilot', priority = 10 },
         { name = 'nvim_lsp', priority = 8 },
+        { name = 'async_path', priority = 6 },
         { name = 'luasnip', priority = 5 },
         { name = 'emmet', priority = 4 },
         { name = 'buffer', priority = 7 },
