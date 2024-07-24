@@ -17,7 +17,7 @@ return {
       { '[', group = 'prev' },
       { ']', group = 'next' },
       { 'g', group = 'goto' },
-      { 'gs', group = 'surround' },
+      { 'gz', group = 'surround' },
       { 'z', group = 'fold' },
       { '<leader>t', group = 'Tabs' },
       { '<leader>tn', '<cmd>tabn<cr>', desc = 'Next tab' },
