@@ -32,21 +32,5 @@ return {
         desc = 'Toggle inlay hints',
       },
     },
-    keys = {
-      {
-        '<c-w><space>',
-        function()
-          require('which-key').show { keys = '<c-w>', loop = true }
-        end,
-        desc = 'Window Hydra Mode (which-key)',
-      },
-      {
-        '<leader>t<space>',
-        function()
-          require('which-key').show { keys = '<leader>t', loop = true }
-        end,
-        desc = 'Tabs Hydra Mode (which-key)',
-      },
-    },
   },
 }
