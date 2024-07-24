@@ -83,8 +83,12 @@ return {
     {
       'rcarriga/nvim-notify',
       opts = {
-        render = 'compact',
-        timeout = 2000,
+        render = 'wrapped-compact',
+        stages = 'fade_in_slide_out',
+        timeout = 4000,
+        minimum_width = 30,
+        max_width = 60,
+        fps = 60,
       },
     },
   },
