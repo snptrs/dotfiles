@@ -17,7 +17,7 @@ if status is-interactive
   {{- else }}
   /usr/local/bin/brew shellenv | source
   {{- end }}
-  
+
   set -gx EDITOR "nvim"
   set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
   set -x FZF_DEFAULT_OPTS --cycle --layout=reverse --border --height=90% --marker="*" --preview-window=right:65%,wrap --bind "ctrl-f:preview-page-down,ctrl-b:preview-page-up"
