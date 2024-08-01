@@ -40,7 +40,7 @@ return {
           { 'filename', path = 1 },
         },
         lualine_x = { 'filetype' },
-        lualine_y = { 'progress' },
+        lualine_y = { 'hostname' },
         lualine_z = { 'location' },
       },
       inactive_sections = {
