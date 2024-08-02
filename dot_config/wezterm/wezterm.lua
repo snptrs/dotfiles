@@ -6,6 +6,7 @@ local window_frame = require("themes/rose-pine").window_frame()
 
 -- This table will hold the configuration.
 local config = {}
+local brew_path = ""
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -18,10 +19,16 @@ end
 -- For example, changing the color scheme:
 -- config.color_scheme = "rose-pine"
 if wezterm.target_triple == "x86_64-apple-darwin" then
-	config.default_prog = { "/usr/local/bin/fish", "-l" }
+	brew_path = "/usr/local/bin/"
+	config.default_prog = { brew_path .. "fish", "-l" }
 else
-	config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+	brew_path = "/opt/homebrew/bin/"
+	config.default_prog = { brew_path .. "fish", "-l" }
 end
+
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+workspace_switcher.set_zoxide_path(brew_path .. "zoxide")
+
 config.set_environment_variables = { VTE_VERSION = "6003" }
 config.font = wezterm.font("Fira Code")
 config.font_size = 14
@@ -68,6 +75,15 @@ config.keys = {
 	}) },
 	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
+	{
+		key = "s",
+		mods = "OPT",
+		action = workspace_switcher.switch_workspace(
+			" | "
+				.. brew_path
+				.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
+		),
+	},
 }
 
 wezterm.on("update-right-status", function(window, pane)
@@ -176,6 +192,14 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 		end
 	end
 	window:set_config_overrides(overrides)
+end)
+
+workspace_switcher.set_workspace_formatter(function(label)
+	return wezterm.format({
+		{ Attribute = { Italic = true } },
+		{ Foreground = { Color = "#f6c177" } },
+		{ Text = "󱂬: " .. label },
+	})
 end)
 
 -- and finally, return the configuration to wezterm
