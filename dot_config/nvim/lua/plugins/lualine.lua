@@ -13,6 +13,11 @@ return {
       end
     end
 
+    local host_map = {
+      ['Seans-MacBook-Pro.local'] = 'MBP',
+      ['Seans-iMac.local'] = 'iMac',
+    }
+
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -40,7 +45,14 @@ return {
           { 'filename', path = 1 },
         },
         lualine_x = { 'filetype' },
-        lualine_y = { 'hostname' },
+        lualine_y = {
+          {
+            'hostname',
+            fmt = function(res)
+              return host_map[res] or ''
+            end,
+          },
+        },
         lualine_z = { 'location' },
       },
       inactive_sections = {
