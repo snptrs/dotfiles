@@ -31,6 +31,7 @@ return {
           augend.semver.alias.semver,
           augend.constant.new { elements = { 'let', 'const' } },
           augend.constant.new { elements = { 'private', 'public' } },
+          augend.constant.new { elements = { 'GET', 'POST', 'PATCH', 'DELETE' } },
         },
       }
     end,
