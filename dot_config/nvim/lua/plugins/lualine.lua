@@ -15,15 +15,37 @@ return {
 
     local host_map = {
       ['Seans-MacBook-Pro.local'] = 'MBP',
-      ['Seans-iMac.local'] = 'iMac',
+      ['Seans-iMac.local'] = 'Mac',
     }
+
+    local lsp_map = {
+      ['copilot'] = '',
+      ['lua_ls'] = '',
+      ['typescript-tools'] = '',
+      ['eslint'] = '',
+      ['cssmodules_ls'] = '',
+      ['intelephense'] = '',
+      ['jsonls'] = '',
+    }
+
+    local function get_lsps()
+      local lsp_clients = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
+      local client_names = {}
+      for _, client in ipairs(lsp_clients) do
+        table.insert(client_names, lsp_map[client.name] or client.name)
+      end
+      local client_names_str = table.concat(client_names, '  ')
+      return client_names_str
+    end
 
     require('lualine').setup {
       options = {
         icons_enabled = true,
         theme = 'rose-pine',
-        component_separators = '|',
-        section_separators = '',
+        -- component_separators = '|',
+        -- section_separators = '',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
       },
       sections = {
         lualine_a = {
@@ -44,7 +66,10 @@ return {
         lualine_c = {
           { 'filename', path = 1 },
         },
-        lualine_x = { 'filetype' },
+        lualine_x = {
+          { get_lsps, color = { fg = '#c4a7e7' }, padding = 2 },
+          { 'filetype' },
+        },
         lualine_y = {
           {
             'hostname',
