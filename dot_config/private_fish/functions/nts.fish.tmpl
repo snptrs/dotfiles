@@ -1,0 +1,8 @@
+function nts
+  if test -z $argv[1]
+    echo "You need to enter a search string"
+    return 1
+  end
+
+  rg $argv[1] {{ .notes_directories  }} --line-number --no-heading --color=always | fzf --ansi --delimiter : --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' --preview-window '+{2}+3/3' --with-nth 1 -d: --bind 'enter:become(nvim +{2} {1})' --bind 'alt-c:execute(sed -n {2}p {1} | tr -d "\n" | pbcopy)+abort'
+end
