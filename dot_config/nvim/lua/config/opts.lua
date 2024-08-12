@@ -42,6 +42,26 @@ vim.wo.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
 -- vim.o.completeopt = 'menu,menuone,noselect'
+--
+
+local function paste()
+  return {
+    vim.fn.split(vim.fn.getreg '', '\n'),
+    vim.fn.getregtype '',
+  }
+end
+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = paste,
+    ['*'] = paste,
+  },
+}
 
 vim.opt.fillchars:append { diff = '╱' }
 
