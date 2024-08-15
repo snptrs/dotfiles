@@ -110,7 +110,7 @@ return {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-          statusline = { 'trouble' },
+          statusline = { 'trouble', 'NeogitStatus', 'NeogitCommitView' },
           winbar = { 'trouble', 'aerial' },
         },
       },
