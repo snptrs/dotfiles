@@ -2,7 +2,7 @@ return {
   'pmizio/typescript-tools.nvim',
   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
   opts = {
-    on_attach = function()
+    on_attach = function(client, bufnr)
       vim.keymap.set('n', '<leader>dio', '<cmd>TSToolsOrganizeImports<cr>', { desc = 'Organise imports' })
       vim.keymap.set('n', '<leader>dis', '<cmd>TSToolsSortImports<cr>', { desc = 'Sort imports' })
       vim.keymap.set('n', '<leader>dr', '<cmd>TSToolsRemoveUnused<cr>', { desc = 'Remove all unused statements' })

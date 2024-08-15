@@ -41,6 +41,8 @@ map('n', '<Right>', '<C-w>l', { desc = 'Switch to the right split', unique = tru
 map('n', '<Down>', '<C-w>j', { desc = 'Switch to the bottom split', unique = true })
 map('n', '<Up>', '<C-w>k', { desc = 'Switch to the top split', unique = true })
 
+map('n', '<Space>z', ':ZenMode<cr>', { desc = 'Enter ZenMode', unique = true })
+
 -- Disable arrow keys in insert mode
 -- vim.keymap.set({ 'i' }, '<Left>', '<Nop>', { silent = true })
 -- vim.keymap.set({ 'i' }, '<Right>', '<Nop>', { silent = true })

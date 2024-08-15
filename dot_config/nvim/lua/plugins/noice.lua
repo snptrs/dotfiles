@@ -85,7 +85,7 @@ return {
       opts = {
         render = 'wrapped-compact',
         stages = 'fade_in_slide_out',
-        timeout = 4000,
+        timeout = 3000,
         minimum_width = 30,
         max_width = 60,
         fps = 60,

@@ -22,7 +22,6 @@ return {
     { 'GianniBYoung/chezmoi-telescope.nvim' },
   },
   config = function()
-    local trouble = require 'trouble.sources.telescope'
     local telescopeActions = require 'telescope.actions'
     local action_layout = require 'telescope.actions.layout'
 
@@ -45,14 +44,14 @@ return {
       defaults = {
         mappings = {
           i = {
-            ['<C-t>'] = trouble.open,
+            ['<C-t>'] = require('trouble.sources.telescope').add,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<M-p>'] = action_layout.toggle_preview,
             ['<C-u>'] = false,
             -- ['<esc>'] = telescopeActions.close,
           },
           n = {
-            ['<C-t>'] = trouble.open,
+            ['<C-t>'] = require('trouble.sources.telescope').add,
             ['l'] = telescopeActions.select_default,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<M-p>'] = action_layout.toggle_preview,
