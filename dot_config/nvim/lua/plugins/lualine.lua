@@ -63,7 +63,7 @@ return {
 
     local trouble = require 'trouble'
     local symbols = trouble.statusline {
-      mode = 'lsp_document_symbols',
+      mode = 'symbols',
       groups = {},
       title = false,
       filter = {

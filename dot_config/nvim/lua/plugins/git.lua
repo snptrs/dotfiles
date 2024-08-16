@@ -1,18 +1,10 @@
 return {
   { 'tpope/vim-fugitive' },
-  { 'tpope/vim-rhubarb' },
   { 'akinsho/git-conflict.nvim', version = '*', config = true },
-  -- {
-  --   'kdheepak/lazygit.nvim',
-  --   -- optional for floating window border decoration
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --   },
-  --   vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { desc = 'Open LazyGit' }),
-  -- },
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',
+    event = 'BufEnter',
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
