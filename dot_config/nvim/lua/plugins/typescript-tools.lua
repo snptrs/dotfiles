@@ -1,6 +1,6 @@
 return {
   'pmizio/typescript-tools.nvim',
-  enabled = false,
+  enabled = true,
   lazy = 'true',
   event = { 'BufEnter *.js,*jsx', 'BufEnter *.jsx', 'BufEnter *.ts', 'BufEnter *.tsx' },
   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },

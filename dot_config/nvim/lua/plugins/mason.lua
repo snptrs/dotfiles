@@ -1,7 +1,6 @@
 return {
   -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
-  event = 'VeryLazy',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
     'williamboman/mason.nvim',
@@ -32,53 +31,6 @@ return {
           importModuleSpecifierPreference = 'relative',
         },
       }, ]]
-      tsserver = {
-        enabled = false,
-      },
-      vtsls = {
-        -- {
-        --   settings = {
-        --     complete_function_calls = true,
-        --     vtsls = {
-        --       enableMoveToFileCodeAction = true,
-        --       autoUseWorkspaceTsdk = true,
-        --       experimental = {
-        --         completion = {
-        --           enableServerSideFuzzyMatch = true,
-        --         },
-        --       },
-        --     },
-        --     typescript = {
-        --       updateImportsOnFileMove = { enabled = 'always' },
-        --       suggest = {
-        --         completeFunctionCalls = true,
-        --       },
-        --       inlayHints = {
-        --         enumMemberValues = { enabled = true },
-        --         functionLikeReturnTypes = { enabled = true },
-        --         parameterNames = { enabled = 'literals' },
-        --         parameterTypes = { enabled = true },
-        --         propertyDeclarationTypes = { enabled = true },
-        --         variableTypes = { enabled = false },
-        --       },
-        --     },
-        --     javascript = {
-        --       updateImportsOnFileMove = { enabled = 'always' },
-        --       suggest = {
-        --         completeFunctionCalls = true,
-        --       },
-        --       inlayHints = {
-        --         enumMemberValues = { enabled = true },
-        --         functionLikeReturnTypes = { enabled = true },
-        --         parameterNames = { enabled = 'literals' },
-        --         parameterTypes = { enabled = true },
-        --         propertyDeclarationTypes = { enabled = true },
-        --         variableTypes = { enabled = false },
-        --       },
-        --     },
-        --   },
-        -- },
-      },
       jsonls = {},
       intelephense = {},
       --[[ phpactor = {
@@ -186,9 +138,6 @@ return {
 
     mason_lspconfig.setup_handlers {
       function(server_name)
-        if server_name == 'tsserver' then
-          return true
-        end
         require('lspconfig')[server_name].setup {
           capabilities = capabilities,
           on_attach = on_attach,

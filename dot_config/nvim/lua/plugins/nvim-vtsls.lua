@@ -1,6 +1,7 @@
 return {
   {
     'yioneko/nvim-vtsls',
+    enabled = false,
     config = function()
       require('vtsls').config {
         -- customize handlers for commands
