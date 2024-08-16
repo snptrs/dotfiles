@@ -1,6 +1,7 @@
 return {
   'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
   main = 'rainbow-delimiters.setup',
+  event = 'VeryLazy',
   opts = {
     highlight = {
       'RainbowDelimiterYellow',

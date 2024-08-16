@@ -1,8 +1,9 @@
 return {
   'folke/todo-comments.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  opts = {
-    vim.keymap.set('n', '<leader>ft', ':TodoTelescope<cr>', { desc = 'Search [t]odos' }),
-    vim.keymap.set('n', '<leader>xt', ':TodoTrouble<cr>', { desc = 'Show [t]odos in Trouble' }),
+  keys = {
+    { '<leader>ft', '<cmd>TodoTelescope<cr>', noremap = true, silent = true, desc = 'Find [t]odos' },
+    { '<leader>xt', '<cmd>TodoTrouble<cr>', noremap = true, silent = true, desc = 'Open [t]odos in Trouble' },
   },
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  opts = {},
 }

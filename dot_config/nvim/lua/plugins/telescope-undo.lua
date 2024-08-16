@@ -1,5 +1,6 @@
 return {
   'debugloop/telescope-undo.nvim',
+  lazy = true,
   dependencies = { -- note how they're inverted to above example
     {
       'nvim-telescope/telescope.nvim',
