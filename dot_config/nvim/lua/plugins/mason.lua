@@ -1,6 +1,7 @@
 return {
   -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
+  event = 'VeryLazy',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
     'williamboman/mason.nvim',
@@ -31,6 +32,47 @@ return {
           importModuleSpecifierPreference = 'relative',
         },
       }, ]]
+      tsserver = {
+        enabled = false,
+      },
+      vtsls = {
+        -- explicitly add default filetypes, so that we can extend
+        -- them in related extras
+        filetypes = {
+          'javascript',
+          'javascriptreact',
+          'javascript.jsx',
+          'typescript',
+          'typescriptreact',
+          'typescript.tsx',
+        },
+        settings = {
+          complete_function_calls = true,
+          vtsls = {
+            enableMoveToFileCodeAction = true,
+            autoUseWorkspaceTsdk = true,
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
+            },
+          },
+          typescript = {
+            updateImportsOnFileMove = { enabled = 'always' },
+            suggest = {
+              completeFunctionCalls = true,
+            },
+            inlayHints = {
+              enumMemberValues = { enabled = false },
+              functionLikeReturnTypes = { enabled = false },
+              parameterNames = { enabled = false },
+              parameterTypes = { enabled = false },
+              propertyDeclarationTypes = { enabled = false },
+              variableTypes = { enabled = false },
+            },
+          },
+        },
+      },
       jsonls = {},
       intelephense = {},
       --[[ phpactor = {
@@ -138,6 +180,9 @@ return {
 
     mason_lspconfig.setup_handlers {
       function(server_name)
+        if server_name == 'tsserver' then
+          return true
+        end
         require('lspconfig')[server_name].setup {
           capabilities = capabilities,
           on_attach = on_attach,
