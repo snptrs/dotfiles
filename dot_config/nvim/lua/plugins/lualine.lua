@@ -111,7 +111,7 @@ return {
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
           statusline = { 'trouble', 'NeogitStatus', 'NeogitCommitView' },
-          winbar = { 'trouble', 'aerial' },
+          winbar = { 'trouble', 'aerial', 'oil', 'NeogitStatus', 'NeogitCommitView' },
         },
       },
       extensions = { 'oil', 'lazy', 'aerial', 'man' },
@@ -132,7 +132,7 @@ return {
           { 'diff', source = diff_source },
         },
         lualine_c = {
-          { 'diagnostics', sources = { 'nvim_lsp', 'nvim_diagnostic' } },
+          { 'diagnostics', sources = { 'nvim_diagnostic' } },
           { 'filename', path = 1 },
           {
             symbols.get,
