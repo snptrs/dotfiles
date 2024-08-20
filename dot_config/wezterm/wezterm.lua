@@ -34,6 +34,7 @@ config.font = wezterm.font("Fira Code")
 config.font_size = 14
 config.line_height = 1.25
 config.colors = colors
+config.default_cursor_style = 'SteadyBar'
 config.window_frame = window_frame
 config.window_decorations = "RESIZE"
 config.window_padding = {
@@ -64,24 +65,32 @@ config.ssh_domains = {
 }
 
 config.keys = {
-	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
-	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+	{ key = "l", mods = "SUPER",          action = wezterm.action.ShowLauncher },
+	{ key = "s", mods = "SUPER",          action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
 	{ key = "q", mods = "SHIFT|CTRL|OPT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
-	{ key = "v", mods = "SHIFT|CTRL|OPT", action = wezterm.action.SplitPane({
-		direction = "Right",
-	}) },
-	{ key = "s", mods = "SHIFT|CTRL|OPT", action = wezterm.action.SplitPane({
-		direction = "Down",
-	}) },
-	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
+	{
+		key = "v",
+		mods = "SHIFT|CTRL|OPT",
+		action = wezterm.action.SplitPane({
+			direction = "Right",
+		})
+	},
+	{
+		key = "s",
+		mods = "SHIFT|CTRL|OPT",
+		action = wezterm.action.SplitPane({
+			direction = "Down",
+		})
+	},
+	{ key = "UpArrow",   mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
 	{
 		key = "s",
 		mods = "OPT",
 		action = workspace_switcher.switch_workspace(
 			" | "
-				.. brew_path
-				.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
+			.. brew_path
+			.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
 		),
 	},
 }
