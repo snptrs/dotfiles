@@ -3,13 +3,13 @@ return {
   event = 'VeryLazy',
   -- stylua: ignore
   keys = {
-    { '<leader>n', '', desc = '+noice' },
-    { '<leader>nl', function() require('noice').cmd('last') end, desc = 'Noice Last Message' },
-    { '<leader>nh', function() require('noice').cmd('history') end, desc = 'Noice History' },
-    { '<leader>na', function() require('noice').cmd('all') end, desc = 'Noice All' },
-    { '<leader>nt', function() require('noice').cmd('pick') end, desc = 'Noice Picker (Telescope/FzfLua)' },
-    { '<C-f>', function() if not require('noice.lsp').scroll(4) then return '<C-f>' end end, silent = true, expr = true, desc = 'Scroll Forward', mode = {'i', 'n', 's'} },
-    { '<C-b>', function() if not require('noice.lsp').scroll(-4) then return '<C-b>' end end, silent = true, expr = true, desc = 'Scroll Backward', mode = {'i', 'n', 's'}},
+    { '<leader>n',  '',                                                                            desc = '+noice' },
+    { '<leader>nl', function() require('noice').cmd('last') end,                                   desc = 'Noice Last Message' },
+    { '<leader>nh', function() require('noice').cmd('history') end,                                desc = 'Noice History' },
+    { '<leader>na', function() require('noice').cmd('all') end,                                    desc = 'Noice All' },
+    { '<leader>nt', function() require('noice').cmd('pick') end,                                   desc = 'Noice Picker (Telescope/FzfLua)' },
+    { '<C-f>',      function() if not require('noice.lsp').scroll(4) then return '<C-f>' end end,  silent = true,                           expr = true, desc = 'Scroll Forward',  mode = { 'i', 'n', 's' } },
+    { '<C-b>',      function() if not require('noice.lsp').scroll(-4) then return '<C-b>' end end, silent = true,                           expr = true, desc = 'Scroll Backward', mode = { 'i', 'n', 's' } },
   },
   opts = {
     cmdline = {
@@ -30,14 +30,17 @@ return {
           },
         },
       },
+      hover = {
+        silent = true,
+      },
     },
     -- you can enable a preset for easier configuration
     presets = {
-      bottom_search = true, -- use a classic bottom cmdline for search
-      command_palette = true, -- position the cmdline and popupmenu together
+      bottom_search = true,         -- use a classic bottom cmdline for search
+      command_palette = true,       -- position the cmdline and popupmenu together
       long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = true, -- enables an input dialog for inc-rename.nvim
-      lsp_doc_border = true, -- add a border to hover docs and signature help
+      inc_rename = true,            -- enables an input dialog for inc-rename.nvim
+      lsp_doc_border = true,        -- add a border to hover docs and signature help
     },
     routes = {
       {
@@ -50,12 +53,23 @@ return {
         opts = { skip = true },
       },
       {
+        filter = {
+          event = 'msg_show',
+          kind = '',
+          find = 'No information available',
+        },
+
+        opts = { skip = true },
+      },
+      {
         view = 'mini',
         filter = { any = { { find = '.*[Pp]arser[s]? are up%-to%-date' }, { find = 'Treesitter parser for .* has been installed' } } },
       },
       {
         view = 'notify',
-        filter = { event = 'msg_showmode' },
+        filter = {
+          event = 'msg_showmode',
+        },
       },
       {
         filter = {
@@ -67,7 +81,7 @@ return {
             { find = '%d fewer lines' },
             { find = '%d more lines' },
             { find = '%d lines yanked' },
-            { kind = 'emsg', find = 'E37' },
+            { kind = 'emsg',           find = 'E37' },
           },
         },
         opts = { skip = true },
