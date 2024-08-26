@@ -36,7 +36,7 @@ config.font = wezterm.font_with_fallback({
 		harfbuzz_features = {
 			"cv03", -- Low-stem g
 			"cv09", -- Barless units
-			"cv10", -- High asterisk
+			-- "cv10", -- High asterisk
 			"cv11", -- Connected bar
 			"ss01", -- Arrows
 			"ss03", -- Light double backslash
