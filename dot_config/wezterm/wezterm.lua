@@ -30,11 +30,50 @@ local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/s
 workspace_switcher.set_zoxide_path(brew_path .. "zoxide")
 
 config.set_environment_variables = { VTE_VERSION = "6003" }
-config.font = wezterm.font("Fira Code")
-config.font_size = 14
-config.line_height = 1.25
+config.font = wezterm.font_with_fallback({
+	{
+		family = "Lilex",
+		harfbuzz_features = {
+			"cv03", -- Low-stem g
+			"cv09", -- Barless units
+			"cv10", -- High asterisk
+			"cv11", -- Connected bar
+			"ss01", -- Arrows
+			"ss03", -- Light double backslash
+			"ss04", -- Broken hashes
+		},
+	},
+	--[[ {
+		family = "JetBrains Mono",
+		harfbuzz_features = {
+			"cv02", -- t
+			"cv03", -- g
+			-- "cv04", -- j
+			-- "cv11", -- y
+			"cv14", -- $
+			"cv16", -- Q
+			"cv17", -- f
+			-- "cv18", -- 2, 6, 9
+			"cv20", -- 5
+		},
+	}, ]]
+	--[[ {
+		family = "CommitMono",
+		harfbuzz_features = {
+			"ss01",
+			"ss02",
+			"ss03",
+			"ss04",
+			"ss05", -- intelligent spacing
+			"cv07",
+			"cv08",
+		},
+	}, ]]
+})
+config.font_size = 16
+config.line_height = 1.15
 config.colors = colors
-config.default_cursor_style = 'SteadyBar'
+config.default_cursor_style = "BlinkingBar"
 config.window_frame = window_frame
 config.window_decorations = "RESIZE"
 config.window_padding = {
@@ -65,32 +104,32 @@ config.ssh_domains = {
 }
 
 config.keys = {
-	{ key = "l", mods = "SUPER",          action = wezterm.action.ShowLauncher },
-	{ key = "s", mods = "SUPER",          action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
+	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
 	{ key = "q", mods = "SHIFT|CTRL|OPT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 	{
 		key = "v",
 		mods = "SHIFT|CTRL|OPT",
 		action = wezterm.action.SplitPane({
 			direction = "Right",
-		})
+		}),
 	},
 	{
 		key = "s",
 		mods = "SHIFT|CTRL|OPT",
 		action = wezterm.action.SplitPane({
 			direction = "Down",
-		})
+		}),
 	},
-	{ key = "UpArrow",   mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
+	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
 	{
 		key = "s",
 		mods = "OPT",
 		action = workspace_switcher.switch_workspace(
 			" | "
-			.. brew_path
-			.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
+				.. brew_path
+				.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
 		),
 	},
 }
