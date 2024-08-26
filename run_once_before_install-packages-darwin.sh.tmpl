@@ -2,12 +2,9 @@
 #!/bin/bash
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
-tap "creativeprojects/tap"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "jesseduffield/lazygit"
-tap "knqyf263/pet"
 brew "coreutils"
 brew "bat"
 brew "curl"
@@ -28,60 +25,59 @@ brew "tree"
 brew "vivid"
 brew "wget"
 brew "zoxide"
-brew "creativeprojects/tap/resticprofile"
 brew "jesseduffield/lazygit/lazygit"
-brew "knqyf263/pet/pet"
 cask "1password-cli"
-cask "anki"
 cask "bbedit"
-cask "black-ink"
 cask "bruno"
-cask "calibre"
-cask "chronosync"
 cask "daisydisk"
 cask "dash"
-cask "devonthink"
 cask "docker"
+cask "firefox@developer-edition"
 cask "font-fira-code"
 cask "google-chrome"
 cask "hazel"
 cask "imageoptim"
+cask "font-commit-mono"
+cask "font-jetbrains-mono"
+cask "font-lilex"
 cask "karabiner-elements"
 cask "keyboard-maestro"
 cask "launchcontrol"
 cask "microsoft-teams"
-cask "mountain-duck"
 cask "qlmarkdown"
 cask "raycast"
-cask "setapp"
-cask "soulver"
 cask "syncthing"
 cask "wezterm"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Consent-O-Matic", id: 1606897889
 mas "Drafts", id: 1435957248
-mas "GoodLinks", id: 1474335294
-mas "iA Writer", id: 775737590
-mas "Ivory", id: 6444602274
 mas "Keeper for Safari", id: 6444685332
 mas "Keynote", id: 409183694
-mas "Mela", id: 1568924476
 mas "Noir", id: 1592917505
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
-mas "Reeder", id: 1529448980
-mas "Save to Reader", id: 1640236961
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
-mas "Subtrack", id: 1519946553
 mas "TableFlip", id: 1462643128
 mas "Velja", id: 1607635845
 mas "Wipr", id: 1320666476
-mas "WorldWideWeb", id: 1621370168
-mas "xSearch", id: 1579902068
+{{- if eq .chezmoi.hostname .personal_mac_hostname }}
+cask "anki"
+cask "chronosync"
+cask "calibre"
+cask "black-ink"
+cask "devonthink"
+cask "mountain-duck"
+cask "setapp"
+cask "soulver"
+mas "Mela", id: 1568924476
+mas "Reeder", id: 1529448980
+mas "Save to Reader", id: 1640236961
+mas "Subtrack", id: 1519946553
+{{- end}}
 EOF
 
-read -n 1 -s -r -p "Make sure the 1Password CLI integration is enabled (https://developer.1password.com/docs/cli/get-started), then press any key to continue"
+## read -n 1 -s -r -p "Make sure the 1Password CLI integration is enabled (https://developer.1password.com/docs/cli/get-started), then press any key to continue"
 {{ end -}}
