@@ -28,6 +28,7 @@ return {
       ['cssls'] = '',
       ['intelephense'] = '',
       ['jsonls'] = '',
+      ['gopls'] = '',
     }
 
     local function get_lsps()

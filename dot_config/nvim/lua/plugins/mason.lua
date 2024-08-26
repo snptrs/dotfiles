@@ -29,6 +29,7 @@ return {
         },
       },
       marksman = {},
+      gopls = {},
       prismals = {},
       pyright = {},
       graphql = {},
@@ -50,34 +51,34 @@ return {
           },
         },
         javascript = {
-          updateImportsOnFileMove = { enabled = "always" },
+          updateImportsOnFileMove = { enabled = 'always' },
           suggest = {
             completeFunctionCalls = true,
           },
           inlayHints = {
-            parameterNames = { enabled = "literals" },
+            parameterNames = { enabled = 'literals' },
             parameterTypes = { enabled = true },
             variableTypes = { enabled = true },
             propertyDeclarationTypes = { enabled = true },
             functionLikeReturnTypes = { enabled = true },
             enumMemberValues = { enabled = true },
-          }
+          },
         },
         typescript = {
-          updateImportsOnFileMove = { enabled = "always" },
+          updateImportsOnFileMove = { enabled = 'always' },
           suggest = {
             completeFunctionCalls = true,
           },
           inlayHints = {
-            parameterNames = { enabled = "literals" },
+            parameterNames = { enabled = 'literals' },
             parameterTypes = { enabled = true },
             variableTypes = { enabled = true },
             propertyDeclarationTypes = { enabled = true },
             functionLikeReturnTypes = { enabled = true },
             enumMemberValues = { enabled = true },
-          }
+          },
         },
-      }
+      },
     }
 
     -- Ensure the servers above are installed

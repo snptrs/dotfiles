@@ -30,48 +30,91 @@ local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/s
 workspace_switcher.set_zoxide_path(brew_path .. "zoxide")
 
 config.set_environment_variables = { VTE_VERSION = "6003" }
-config.font = wezterm.font_with_fallback({
-	{
-		family = "Lilex",
-		harfbuzz_features = {
-			"cv03", -- Low-stem g
-			"cv09", -- Barless units
-			-- "cv10", -- High asterisk
-			"cv11", -- Connected bar
-			"ss01", -- Arrows
-			"ss03", -- Light double backslash
-			"ss04", -- Broken hashes
-		},
+
+config.font_size = 16
+config.line_height = 1.20
+
+config.font = wezterm.font({
+	family = "Lilex",
+	harfbuzz_features = {
+		"cv03", -- Low-stem g
+		"cv09", -- Barless units
+		"cv11", -- Connected bar
+		"ss01", -- Arrows
+		"ss03", -- Light double backslash
+		"ss04", -- Broken hashes
 	},
-	--[[ {
-		family = "JetBrains Mono",
-		harfbuzz_features = {
-			"cv02", -- t
-			"cv03", -- g
-			-- "cv04", -- j
-			-- "cv11", -- y
-			"cv14", -- $
-			"cv16", -- Q
-			"cv17", -- f
-			-- "cv18", -- 2, 6, 9
-			"cv20", -- 5
-		},
-	}, ]]
-	--[[ {
-		family = "CommitMono",
-		harfbuzz_features = {
-			"ss01",
-			"ss02",
-			"ss03",
-			"ss04",
-			"ss05", -- intelligent spacing
-			"cv07",
-			"cv08",
-		},
-	}, ]]
+})
+
+config.font_rules = {
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font({
+			family = "Lilex",
+			weight = "SemiBold",
+		}),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({
+			family = "Lilex",
+			weight = "Bold",
+			style = "Italic",
+		}),
+	},
+}
+
+-- {
+-- family = "CommitMono",
+-- harfbuzz_features = {
+-- 	"ss01",
+-- 	"ss02",
+-- 	"ss03",
+-- 	"ss04",
+-- 	"ss05", -- intelligent spacing
+-- 	"cv07",
+-- 	"cv08",
+-- },
+
+--[[ config.font = wezterm.font({
+	family = "JetBrains Mono",
+	harfbuzz_features = {
+		"cv02", -- t
+		"cv03", -- g
+		-- "cv04", -- j
+		-- "cv11", -- y
+		"cv14", -- $
+		"cv16", -- Q
+		"cv17", -- f
+		-- "cv18", -- 2, 6, 9
+		"cv20", -- 5
+	},
 })
 config.font_size = 16
-config.line_height = 1.15
+config.line_height = 1.20
+
+config.font_rules = {
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font({
+			family = "JetBrains Mono",
+			weight = "Bold",
+		}),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({
+			family = "JetBrains Mono",
+			weight = "Bold",
+			style = "Italic",
+		}),
+	},
+} ]]
+
 config.colors = colors
 config.default_cursor_style = "BlinkingBar"
 config.window_frame = window_frame
