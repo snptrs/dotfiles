@@ -52,7 +52,7 @@ function M.colors()
 		},
 
 		brights = {
-			palette.muted,
+			palette.highlight_high,
 			palette.love,
 			palette.foam,
 			palette.gold,

@@ -40,10 +40,29 @@ return {
       return client_names_str
     end
 
+    local formatter_map = {
+      [0] = '󰉥',
+      [1] = '󰲠',
+      [2] = '󰲢',
+      [3] = '󰲤',
+      [4] = '󰲦',
+    }
+
+    local function get_formatters()
+      local formatters = require('conform').list_formatters_to_run(0)
+      local formatter_names = {}
+      local count = 0
+      for _, formatter in ipairs(formatters) do
+        table.insert(formatter_names, formatter.name)
+        count = count + 1
+      end
+      local formatter_names_str = table.concat(formatter_names, ' ')
+      return formatter_map[count] or count
+    end
+
     local custom_fname = require('lualine.components.filename'):extend()
     local highlight = require 'lualine.highlight'
     local default_status_colors = { saved = '#fff', modified = '#eb6f92' }
-
     function custom_fname:init(options)
       custom_fname.super.init(self, options)
       self.status_colors = {
@@ -140,8 +159,23 @@ return {
           },
         },
         lualine_x = {
-          { get_lsps, color = { fg = '#c4a7e7' }, padding = 2 },
-          { 'fileformat', padding = { right = 2, left = 1.75 } },
+          {
+            get_formatters,
+            color = { fg = '#9ccfd8' },
+            padding = 2,
+            on_click = function()
+              vim.cmd 'ConformInfo'
+            end,
+          },
+          {
+            get_lsps,
+            color = { fg = '#c4a7e7' },
+            padding = 2,
+          },
+          {
+            'fileformat',
+            padding = { right = 2, left = 1.75 },
+          },
           { 'encoding' },
         },
         lualine_y = {
