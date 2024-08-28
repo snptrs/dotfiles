@@ -1,0 +1,24 @@
+{{- $personal_email := promptStringOnce . "personal_email" "Personal email address" -}}
+{{- $work_email := promptStringOnce . "work_email" "Work email address" -}}
+{{- $personal_mac := promptStringOnce . "personal_mac_hostname" "Personal Mac hostname" -}}
+{{- $work_mac := promptStringOnce . "work_mac_hostname" "Work Mac hostname" -}}
+{{- $restic_healthchecks_success := promptStringOnce . "restic_healthchecks_success" "Restic success URL" -}}
+{{- if eq .chezmoi.arch "arm64" -}}
+cd.command = "/opt/homebrew/bin/fish"
+{{- else -}}
+cd.command = "/usr/local/bin/fish"
+{{- end }}
+
+[diff]
+command = "delta"
+args = ["--diff-so-fancy"]
+
+[data]
+personal_email = {{ $personal_email | quote }}
+work_email = {{ $work_email | quote }}
+work_git_config = "~/Work/.gitconfig"
+personal_mac_hostname = {{ $personal_mac | quote }}
+work_mac_hostname = {{ $work_mac | quote }}
+notes_directories = "~/Code/Projects/til"
+restic_healthchecks_success = {{ $restic_healthchecks_success | quote }}
+restic_backup_time = 40

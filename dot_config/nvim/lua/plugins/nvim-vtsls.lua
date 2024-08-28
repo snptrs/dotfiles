@@ -25,6 +25,13 @@ return {
         desc = 'Organize Imports',
       },
       {
+        '<leader>cs',
+        function()
+          require('vtsls').commands.sort_imports(0)
+        end,
+        desc = 'Sort Imports',
+      },
+      {
         '<leader>cM',
         function()
           require('vtsls').commands.add_missing_imports(0)

@@ -22,12 +22,13 @@ return {
     local lsp_map = {
       ['copilot'] = '',
       ['lua_ls'] = '',
-      ['typescript-tools'] = '',
+      ['vtsls'] = '',
       ['eslint'] = '',
       ['cssmodules_ls'] = '',
       ['cssls'] = '',
       ['intelephense'] = '',
       ['jsonls'] = '',
+      ['gopls'] = '',
     }
 
     local function get_lsps()
