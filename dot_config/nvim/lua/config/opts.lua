@@ -63,7 +63,7 @@ vim.g.clipboard = {
   },
 }
 
-vim.opt.fillchars:append { diff = '╱' }
+vim.opt.fillchars:append { diff = ' ' }
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
