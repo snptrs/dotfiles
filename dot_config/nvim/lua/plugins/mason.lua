@@ -37,6 +37,7 @@ return {
         css = {
           lint = {
             validProperties = { 'composes' },
+            unknownAtRules = 'ignore',
           },
         },
       },
