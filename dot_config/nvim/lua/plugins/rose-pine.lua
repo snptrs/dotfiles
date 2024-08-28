@@ -5,13 +5,21 @@ return {
   priority = 1000,
   config = function()
     require('rose-pine').setup {
-      disable_italics = false,
+      disable_italics = true,
       bold_vert_split = false,
       dim_nc_background = true,
       groups = {
         punctuation = 'subtle',
       },
       highlight_groups = {
+        Comment = { italic = true },
+        Keyword = { italic = true },
+        ['@keyword.conditional'] = { italic = true },
+        ['@keyword.control'] = { italic = true },
+        ['@keyword.repeat'] = { italic = true },
+        ['@keyword.return'] = { italic = true },
+        -- ['@lsp.type.variable'] = { italic = true },
+
         PmenuSel = { bg = '#353A45', fg = 'NONE' },
         Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
 
