@@ -24,7 +24,7 @@ end, { desc = 'Tree focus', unique = true })
 
 -- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
 -- map('n', 'x', '"xx', { desc = 'Delete single characters to the x register', unique = true })
-map('n', 'c', '"cc', { desc = 'Yank change text to the c register', unique = true })
+-- map('n', 'c', '"cc', { desc = 'Yank change text to the c register', unique = true })
 
 -- map({ 'n', 'i' }, '<C-M-l>', ':nohl<cr>', { desc = 'Search highlighting off', silent = true, unique = true })
 -- map('n', '*', '*``b', { desc = 'Search for word under cursor without jumping to next occurrence', unique = true })

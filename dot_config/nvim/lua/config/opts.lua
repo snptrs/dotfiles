@@ -11,6 +11,7 @@ local options = {
   ignorecase = true, -- Case insensitive searching (unless: see smartcase...)
   laststatus = 3,
   linebreak = true,
+  listchars = 'tab:>-,lead:\\xB7',
   mouse = 'a', -- Enable mouse mode
   number = true,
   pumheight = 15, -- Number of entries to show in popup menu

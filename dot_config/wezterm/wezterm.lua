@@ -46,8 +46,8 @@ config.font = wezterm.font_with_fallback({
 		},
 	},
 })
-config.font_size = 16.2
-config.line_height = 1.25
+config.font_size = 15.8
+config.line_height = 1.18
 config.colors = colors
 config.default_cursor_style = "BlinkingBar"
 config.window_frame = window_frame

@@ -1,6 +1,8 @@
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
   event = 'ColorScheme',
   config = function()
     local function diff_source()
@@ -15,8 +17,8 @@ return {
     end
 
     local host_map = {
-      ['Seans-MacBook-Pro.local'] = 'MBP',
-      ['Seans-iMac.local'] = 'Mac',
+      ['Seans-MacBook-Pro.local'] = '󰌢',
+      ['Seans-iMac.local'] = '󰇄',
     }
 
     local lsp_map = {
@@ -171,19 +173,30 @@ return {
           {
             get_lsps,
             color = { fg = '#c4a7e7' },
-            padding = 2,
+            padding = { right = 2.25, left = 2 },
           },
           {
             'fileformat',
             padding = { right = 2, left = 1.75 },
+            color = { fg = '#eb6f92' },
+            cond = function()
+              return vim.bo.fileformat ~= 'unix'
+            end,
           },
-          { 'encoding' },
+          {
+            'encoding',
+            color = { fg = '#eb6f92' },
+            cond = function()
+              return (vim.bo.fenc or vim.go.enc) ~= 'utf-8'
+            end,
+          },
         },
         lualine_y = {
           {
             'hostname',
+            padding = { right = 2, left = 1.75 },
             fmt = function(res)
-              return host_map[res] or ''
+              return host_map[res] or '󰒍'
             end,
           },
         },

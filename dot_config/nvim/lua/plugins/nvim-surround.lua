@@ -14,6 +14,7 @@ return {
       visual_line = 'gZ',
       delete = 'gzd',
       change = 'gzc',
+      change_line = 'gzC',
     },
   },
 }

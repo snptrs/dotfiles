@@ -1,8 +1,49 @@
 return {
+  { 'echasnovski/mini.align', version = false, opts = {} },
+  {
+    'echasnovski/mini.indentscope',
+    version = false,
+    enabled = true,
+    opts = {
+      symbol = '▏',
+      -- symbol = '│',
+      options = {
+        try_as_border = true,
+        indent_at_cursor = true,
+      },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = {
+          'alpha',
+          'dashboard',
+          'fzf',
+          'help',
+          'lazy',
+          'lazyterm',
+          'mason',
+          'neo-tree',
+          'notify',
+          'toggleterm',
+          'Trouble',
+          'trouble',
+        },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+  },
   {
     'echasnovski/mini.operators',
     version = false,
-    opts = {},
+    opts = {
+      replace = {
+        prefix = 'gR',
+        -- Whether to reindent new text to match previous indent
+        reindent_linewise = true,
+      },
+    },
   },
   {
     {
