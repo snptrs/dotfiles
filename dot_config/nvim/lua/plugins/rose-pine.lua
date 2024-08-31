@@ -14,10 +14,12 @@ return {
       highlight_groups = {
         Comment = { italic = true },
         Keyword = { italic = true },
+        LspSignatureActiveParameter = { bg = '#c4a7e7', fg = '#26233a' },
         ['@keyword.conditional'] = { italic = true },
         ['@keyword.control'] = { italic = true },
         ['@keyword.repeat'] = { italic = true },
         ['@keyword.return'] = { italic = true },
+        ['@variable.member'] = { italic = true },
         -- ['@lsp.type.variable'] = { italic = true },
 
         PmenuSel = { bg = '#353A45', fg = 'NONE' },
