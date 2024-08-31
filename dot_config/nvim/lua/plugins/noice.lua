@@ -36,11 +36,11 @@ return {
     },
     -- you can enable a preset for easier configuration
     presets = {
-      bottom_search = true,         -- use a classic bottom cmdline for search
-      command_palette = true,       -- position the cmdline and popupmenu together
+      bottom_search = true, -- use a classic bottom cmdline for search
+      command_palette = true, -- position the cmdline and popupmenu together
       long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-      lsp_doc_border = true,        -- add a border to hover docs and signature help
+      inc_rename = true, -- enables an input dialog for inc-rename.nvim
+      lsp_doc_border = true, -- add a border to hover docs and signature help
     },
     routes = {
       {
@@ -49,7 +49,6 @@ return {
           kind = '',
           find = 'written',
         },
-
         opts = { skip = true },
       },
       {
@@ -61,9 +60,13 @@ return {
 
         opts = { skip = true },
       },
+      -- {
+      --   view = 'mini',
+      --   filter = { any = { { find = '.*[Pp]arser[s]? are up%-to%-date' }, { find = 'Treesitter parser for .* has been installed' } } },
+      -- },
       {
-        view = 'mini',
-        filter = { any = { { find = '.*[Pp]arser[s]? are up%-to%-date' }, { find = 'Treesitter parser for .* has been installed' } } },
+        filter = { find = 'nvim-treesitter' },
+        opts = { skip = true },
       },
       {
         view = 'notify',
@@ -81,10 +84,14 @@ return {
             { find = '%d fewer lines' },
             { find = '%d more lines' },
             { find = '%d lines yanked' },
-            { kind = 'emsg',           find = 'E37' },
+            { kind = 'emsg', find = 'E37' },
           },
         },
         opts = { skip = true },
+      },
+      {
+        view = 'split',
+        filter = { event = 'msg_show', min_height = 20 },
       },
     },
   },

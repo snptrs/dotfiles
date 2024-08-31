@@ -9,15 +9,13 @@ return {
 
     -- Adds LSP completion capabilities
     'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-path',
 
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
 
     -- To automatically add () after function insertion
     'windwp/nvim-autopairs',
-
-    'https://codeberg.org/FelipeLema/cmp-async-path',
-
     { 'jackieaskins/cmp-emmet', build = 'npm run release' },
   },
   config = function()
@@ -100,7 +98,7 @@ return {
       sources = {
         { name = 'copilot', priority = 10 },
         { name = 'nvim_lsp', priority = 8 },
-        { name = 'async_path', priority = 6 },
+        { name = 'path', priority = 9 },
         { name = 'luasnip', priority = 5 },
         { name = 'emmet', priority = 4 },
         { name = 'buffer', priority = 7 },

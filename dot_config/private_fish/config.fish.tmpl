@@ -10,6 +10,11 @@ set -g tide_left_prompt_items pwd git newline character
 set -g tide_git_icon 
 set -g tide_pwd_icon
 
+# Added these to see if they help with Treesitter compilation
+set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
+set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
+set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/curl/lib/pkgconfig"
+
 if status is-interactive
   # Commands to run in interactive sessions can go here
   {{- if eq .chezmoi.arch "arm64" }}
