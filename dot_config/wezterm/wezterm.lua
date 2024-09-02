@@ -47,7 +47,7 @@ config.font = wezterm.font_with_fallback({
 	},
 })
 config.font_size = 15.8
-config.line_height = 1.18
+config.line_height = 1.20
 config.colors = colors
 config.default_cursor_style = "BlinkingBar"
 config.window_frame = window_frame
@@ -80,8 +80,8 @@ config.ssh_domains = {
 }
 
 config.keys = {
-	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
-	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+	{ key = "l", mods = "SUPER",          action = wezterm.action.ShowLauncher },
+	{ key = "s", mods = "SUPER",          action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
 	{ key = "q", mods = "SHIFT|CTRL|OPT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 	{
 		key = "v",
@@ -97,15 +97,15 @@ config.keys = {
 			direction = "Down",
 		}),
 	},
-	{ key = "UpArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
+	{ key = "UpArrow",   mods = "SHIFT", action = wezterm.action.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
 	{
 		key = "s",
 		mods = "OPT",
 		action = workspace_switcher.switch_workspace(
 			" | "
-				.. brew_path
-				.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
+			.. brew_path
+			.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
 		),
 	},
 }
