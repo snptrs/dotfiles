@@ -107,10 +107,11 @@ return {
 
     local winbar_config = {
       lualine_a = {},
-      lualine_b = { { 'filetype', icon_only = true } },
-      lualine_c = {
+      lualine_b = {
+        { 'filetype', icon_only = true },
         {
           custom_fname,
+          path = 4,
           newfile_status = true,
           symbols = {
             modified = '[+]', -- Text to show when the file is modified.
@@ -120,6 +121,7 @@ return {
           },
         },
       },
+      lualine_c = {},
       lualine_x = {},
       lualine_y = {},
       lualine_z = {},

@@ -6,7 +6,7 @@ return {
     enabled = true,
     opts = {
       symbol = '▏',
-      -- symbol = '│',
+      -- symbol = '╎',
       options = {
         try_as_border = true,
         indent_at_cursor = true,
