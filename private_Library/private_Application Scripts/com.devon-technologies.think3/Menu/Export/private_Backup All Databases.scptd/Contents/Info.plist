@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.ScriptEditor.id.Backup-All-Databases-scriptobject</string>
+	<key>CFBundleName</key>
+	<string>Backup Databases</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>WindowState</key>
+	<dict>
+		<key>bundleDividerCollapsed</key>
+		<false/>
+		<key>bundlePositionOfDivider</key>
+		<real>1255</real>
+		<key>dividerCollapsed</key>
+		<false/>
+		<key>eventLogLevel</key>
+		<integer>2</integer>
+		<key>name</key>
+		<string>ScriptWindowState</string>
+		<key>positionOfDivider</key>
+		<real>1083</real>
+		<key>savedFrame</key>
+		<string>659 86 1554 1329 0 0 2560 1415 </string>
+		<key>selectedTab</key>
+		<string>log</string>
+	</dict>
+</dict>
+</plist>

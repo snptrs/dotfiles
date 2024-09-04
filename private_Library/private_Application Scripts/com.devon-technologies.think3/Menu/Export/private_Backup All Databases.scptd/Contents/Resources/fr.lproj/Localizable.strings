@@ -1,0 +1,10 @@
+"Creating backup for: " = "Création de sauvegarde pour: ";
+"Verifying…" = "Vérification...";
+"Database is damaged." = "La base de données est endommagée.";
+"Optimizing…" = "Optimisation...";
+"Optimization failed." = "L'optimisation a échoué.";
+"Compressing…" = "Compression...";
+"Backup failed." = "Échec de la sauvegarde.";
+" succeeded. " = " réussi. ";
+" failed." = " Échoué.";
+"Database backups done." = "Sauvegardes de base de données effectuées.";
