@@ -20,6 +20,7 @@ return {
         ['@keyword.repeat'] = { italic = true },
         ['@keyword.return'] = { italic = true },
         ['@variable.member'] = { italic = true },
+        ['@variable.parameter.bash'] = { fg = '' },
         -- ['@lsp.type.variable'] = { italic = true },
 
         PmenuSel = { bg = '#353A45', fg = 'NONE' },
