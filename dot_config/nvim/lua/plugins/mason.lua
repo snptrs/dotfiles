@@ -66,6 +66,11 @@ return {
           },
         },
         typescript = {
+          tsserver = {
+            experimental = {
+              enableProjectDiagnostics = true,
+            },
+          },
           updateImportsOnFileMove = { enabled = 'always' },
           suggest = {
             completeFunctionCalls = true,

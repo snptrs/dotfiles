@@ -12,9 +12,6 @@ return {
     { '<C-b>',      function() if not require('noice.lsp').scroll(-4) then return '<C-b>' end end, silent = true,                           expr = true, desc = 'Scroll Backward', mode = { 'i', 'n', 's' } },
   },
   opts = {
-    cmdline = {
-      -- view = 'cmdline',
-    },
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
@@ -60,10 +57,6 @@ return {
 
         opts = { skip = true },
       },
-      -- {
-      --   view = 'mini',
-      --   filter = { any = { { find = '.*[Pp]arser[s]? are up%-to%-date' }, { find = 'Treesitter parser for .* has been installed' } } },
-      -- },
       {
         filter = { find = 'nvim-treesitter' },
         opts = { skip = true },
@@ -104,11 +97,11 @@ return {
     {
       'rcarriga/nvim-notify',
       opts = {
-        render = 'wrapped-compact',
+        render = 'compact',
         stages = 'fade_in_slide_out',
-        timeout = 3000,
-        minimum_width = 30,
-        max_width = 60,
+        timeout = 1500,
+        minimum_width = 25,
+        max_width = 55,
         fps = 60,
       },
     },

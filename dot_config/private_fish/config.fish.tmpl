@@ -11,9 +11,9 @@ set -g tide_git_icon 
 set -g tide_pwd_icon
 
 # Added these to see if they help with Treesitter compilation
-set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
-set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
-set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/curl/lib/pkgconfig"
+## set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
+## set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
+## set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/curl/lib/pkgconfig"
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
@@ -47,6 +47,9 @@ if status is-interactive
   abbr -a pss "pet search --color"
   abbr -a dotdot --regex '^\.\.+$' --function multicd
   abbr -a imactnl "ssh -L 8080:localhost:80 -L 3000:localhost:3000 -L 3306:db:3306 -N -T seanpeters@seans-imac"
+  abbr -a dcu "docker compose up -d"
+  abbr -a dcd "docker compose down"
+  abbr -a dce "docker compose exec app sh"
 
   set -gx FNM_COREPACK_ENABLED true
   /usr/bin/env fnm env --use-on-cd | source

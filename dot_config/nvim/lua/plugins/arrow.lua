@@ -1,7 +1,9 @@
 return {
   'otavioschwanck/arrow.nvim',
+  enabled = false,
   opts = {
     show_icons = true,
-    leader_key = '<leader>,', -- Recommended to be a single key
+    hide_handbook = true,
+    leader_key = '<leader>,',
   },
 }

@@ -12,8 +12,9 @@ return {
       rainbow = {
         enabled = false,
         -- number between 1 and 9
-        shade = 5,
+        shade = 6,
       },
+      min_pattern_length = 2,
     },
   },
   -- stylua: ignore

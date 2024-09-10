@@ -202,7 +202,31 @@ return {
             end,
           },
         },
-        lualine_z = { 'location' },
+        lualine_z = {
+          {
+            function()
+              return require('grapple').statusline()
+            end,
+            cond = function()
+              return package.loaded['grapple'] and require('grapple').exists()
+            end,
+          },
+          {
+            function()
+              local ok, pomo = pcall(require, 'pomo')
+              if not ok then
+                return ''
+              end
+
+              local timer = pomo.get_first_to_finish()
+              if timer == nil then
+                return ''
+              end
+
+              return '󰄉 ' .. tostring(timer)
+            end,
+          },
+        },
       },
       winbar = winbar_config,
       inactive_winbar = winbar_config,

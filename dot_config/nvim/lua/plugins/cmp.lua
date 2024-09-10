@@ -101,7 +101,6 @@ return {
         { name = 'path', priority = 9 },
         { name = 'luasnip', priority = 5 },
         { name = 'emmet', priority = 4 },
-        { name = 'buffer', priority = 7 },
       },
       sorting = {
         priority_weight = 1,

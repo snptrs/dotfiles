@@ -1,23 +1,42 @@
-Library
-node_modules
-vendor
 *.dmg
-nvm
-.nvm
-.npm
-.rvm
 .Trash
 .Trashes
+.android
 .cache
+.docker
+.expo
 .gradle
-cache
+.node
+.npm
+.nvm
+.rvm
+.synamedia
+.vscode/extensions
 Cache
 Caches
-Logs
-Downloads/*.zip
 Downloads/*.app
+Downloads/*.zip
+Library/Android
+Library/Application Support/FileProvider/628FE4C1*
+Library/Application Support/Firefox
+Library/Application Support/Google
+Library/Application Support/Knowledge
+Library/Application Support/Mozilla
+Library/Biome
+Library/Containers
+Library/Developer
+Library/Google
+Library/Group Containers
+Library/Mail/V10/MailData/recentSearches.plist
+Library/Metadata
+Library/Mobile Documents
+Library/Safari
+Logs
 Movies
 Music
-.vscode/extensions
+Setapp
+cache
+node_modules
+nvm
 temp
-.synamedia
+vendor
