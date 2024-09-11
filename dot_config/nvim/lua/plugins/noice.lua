@@ -78,6 +78,7 @@ return {
             { find = '%d more lines' },
             { find = '%d lines yanked' },
             { kind = 'emsg', find = 'E37' },
+            { find = '^[/?].*' }, -- Search not found
           },
         },
         opts = { skip = true },
@@ -97,11 +98,11 @@ return {
     {
       'rcarriga/nvim-notify',
       opts = {
-        render = 'compact',
+        render = 'wrapped-compact',
         stages = 'fade_in_slide_out',
         timeout = 1500,
         minimum_width = 25,
-        max_width = 55,
+        max_width = 50,
         fps = 60,
       },
     },
