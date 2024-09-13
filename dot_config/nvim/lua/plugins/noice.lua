@@ -78,7 +78,6 @@ return {
             { find = '%d more lines' },
             { find = '%d lines yanked' },
             { kind = 'emsg', find = 'E37' },
-            { find = '^[/?].*' }, -- Search not found
           },
         },
         opts = { skip = true },

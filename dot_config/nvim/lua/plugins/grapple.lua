@@ -4,9 +4,11 @@ return {
     { 'nvim-tree/nvim-web-devicons' },
   },
   opts = {
-    scope = 'git_branch',
+    scope = 'git',
     icons = true,
-    -- quick_select = '123456789',
+    name_pos = 'end',
+    style = 'relative',
+    quick_select = '1234567890',
   },
   keys = {
     { '<leader>,', '<cmd>Grapple toggle_tags<cr>', desc = 'Toggle tags menu' },

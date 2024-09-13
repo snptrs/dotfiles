@@ -12,7 +12,7 @@ return {
       rainbow = {
         enabled = false,
         -- number between 1 and 9
-        shade = 6,
+        shade = 8,
       },
       min_pattern_length = 2,
     },
