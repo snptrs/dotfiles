@@ -22,6 +22,7 @@ Library/Application Support/Firefox
 Library/Application Support/Google
 Library/Application Support/Knowledge
 Library/Application Support/Mozilla
+Library/Application Support/Mountain Duck
 Library/Biome
 Library/Containers
 Library/Developer
@@ -40,3 +41,4 @@ node_modules
 nvm
 temp
 vendor
+Group Containers/G69SCX94XU.duck
