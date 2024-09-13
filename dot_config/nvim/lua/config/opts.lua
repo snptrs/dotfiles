@@ -47,14 +47,14 @@ vim.wo.signcolumn = 'yes'
 -- vim.o.completeopt = 'menu,menuone,noselect'
 --
 
-local function paste()
+--[[ local function paste()
   return {
     vim.fn.split(vim.fn.getreg '', '\n'),
     vim.fn.getregtype '',
   }
-end
+end ]]
 
-vim.g.clipboard = {
+--[[ vim.g.clipboard = {
   name = 'OSC 52',
   copy = {
     ['+'] = require('vim.ui.clipboard.osc52').copy '+',
@@ -64,7 +64,7 @@ vim.g.clipboard = {
     ['+'] = paste,
     ['*'] = paste,
   },
-}
+} ]]
 
 vim.opt.fillchars:append { diff = ' ' }
 
