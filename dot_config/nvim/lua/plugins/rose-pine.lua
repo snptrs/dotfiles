@@ -14,7 +14,8 @@ return {
       highlight_groups = {
         Comment = { italic = true },
         Keyword = { italic = true },
-        LspSignatureActiveParameter = { bg = '#c4a7e7', fg = '#26233a' },
+        LspSignatureActiveParameter = { bg = 'iris', fg = 'overlay' },
+        YankyYanked = { fg = 'text', bg = 'gold', blend = 75 },
         ['@keyword.conditional'] = { italic = true },
         ['@keyword.control'] = { italic = true },
         ['@keyword.repeat'] = { italic = true },
