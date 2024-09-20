@@ -1,5 +1,6 @@
 return {
   'stevearc/aerial.nvim',
+  enabled = false,
   opts = {
     layout = {
       default_direction = 'right',

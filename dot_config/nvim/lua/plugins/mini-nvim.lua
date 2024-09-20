@@ -1,4 +1,16 @@
 return {
+  {
+    'echasnovski/mini.completion',
+    enabled = false,
+    version = false,
+    dependencies = { 'echasnovski/mini.icons', version = false },
+    opts = {
+      window = {
+        info = { height = 25, width = 80, border = 'single' },
+        signature = { height = 25, width = 80, border = 'single' },
+      },
+    },
+  },
   { 'echasnovski/mini.align', version = false, opts = {} },
   {
     'echasnovski/mini.indentscope',

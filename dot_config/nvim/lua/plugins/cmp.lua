@@ -31,7 +31,14 @@ return {
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
     cmp.setup {
-      completion = { completeopt = 'menu,menuone,noinsert,noselect' },
+      performance = {
+        -- debounce = 250,
+        max_view_entries = 30,
+      },
+      completion = {
+        completeopt = 'menu,menuone,noinsert,noselect',
+        keyword_length = 2,
+      },
       window = {
         completion = {
           winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:PmenuSel',
@@ -62,20 +69,20 @@ return {
         ['<C-Space>'] = cmp.mapping.complete {},
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<CR>'] = cmp.mapping {
-          i = function(fallback)
-            if cmp.visible() and cmp.get_active_entry() then
-              cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = false }
-            else
-              fallback()
-            end
-          end,
-          s = cmp.mapping.confirm { select = true },
-        },
-        ['<S-CR>'] = cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
-        },
+        -- ['<CR>'] = cmp.mapping {
+        --   i = function(fallback)
+        --     if cmp.visible() and cmp.get_active_entry() then
+        --       cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = false }
+        --     else
+        --       fallback()
+        --     end
+        --   end,
+        --   s = cmp.mapping.confirm { select = true },
+        -- },
+        -- ['<S-CR>'] = cmp.mapping.confirm {
+        --   behavior = cmp.ConfirmBehavior.Replace,
+        --   select = false,
+        -- },
         ['<C-n>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -99,8 +106,8 @@ return {
         { name = 'copilot', priority = 10 },
         { name = 'nvim_lsp', priority = 8 },
         { name = 'path', priority = 9 },
-        { name = 'luasnip', priority = 5 },
-        { name = 'emmet', priority = 4 },
+        -- { name = 'luasnip', priority = 5 },
+        -- { name = 'emmet', priority = 4 },
       },
       sorting = {
         priority_weight = 1,

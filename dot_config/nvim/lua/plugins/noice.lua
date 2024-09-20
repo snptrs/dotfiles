@@ -62,6 +62,10 @@ return {
         opts = { skip = true },
       },
       {
+        filter = { find = 'will return nil instead of raising' },
+        opts = { skip = true },
+      },
+      {
         view = 'notify',
         filter = {
           event = 'msg_showmode',
