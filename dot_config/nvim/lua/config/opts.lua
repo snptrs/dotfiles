@@ -1,7 +1,7 @@
 local options = {
   autoread = true,
   breakindent = true,
-  -- clipboard = 'unnamedplus',
+  clipboard = 'unnamedplus',
   cmdheight = 0,
   colorcolumn = '81',
   cursorline = true,

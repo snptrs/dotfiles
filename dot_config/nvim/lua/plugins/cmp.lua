@@ -17,6 +17,13 @@ return {
     -- To automatically add () after function insertion
     'windwp/nvim-autopairs',
     { 'jackieaskins/cmp-emmet', build = 'npm run release' },
+    {
+      'roobert/tailwindcss-colorizer-cmp.nvim',
+      -- optionally, override the default options:
+      opts = {
+        color_square_width = 2,
+      },
+    },
   },
   config = function()
     -- [[ Configure nvim-cmp ]]
@@ -32,12 +39,12 @@ return {
 
     cmp.setup {
       performance = {
-        -- debounce = 250,
+        debounce = 250,
         max_view_entries = 30,
       },
       completion = {
         completeopt = 'menu,menuone,noinsert,noselect',
-        keyword_length = 2,
+        -- keyword_length = 2,
       },
       window = {
         completion = {
@@ -52,6 +59,10 @@ return {
       formatting = {
         fields = { 'kind', 'abbr', 'menu' },
         format = function(entry, vim_item)
+          local tw_item = require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
+          if tw_item.kind == 'XX' then
+            return tw_item
+          end
           local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
           local strings = vim.split(kind.kind, '%s', { trimempty = true })
           kind.kind = ' ' .. (strings[1] or '') .. ' '
