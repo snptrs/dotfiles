@@ -4,7 +4,10 @@ return {
     { 'kkharji/sqlite.lua' },
   },
   opts = {
-    ring = { storage = 'sqlite' },
+    ring = {
+      storage = 'sqlite',
+      update_register_on_cycle = true,
+    },
     highlight = {
       on_put = true,
       on_yank = true,
