@@ -31,6 +31,7 @@ return {
       ['intelephense'] = '',
       ['jsonls'] = '',
       ['gopls'] = '',
+      ['tailwindcss'] = '󱏿',
     }
 
     local function get_lsps()
