@@ -1,8 +1,10 @@
 return {
   -- Autocompletion
   -- 'hrsh7th/nvim-cmp',
-  'yioneko/nvim-cmp',
-  branch = 'perf-up',
+  -- 'yioneko/nvim-cmp',
+  'iguanacucumber/magazine.nvim',
+  name = 'nvim-cmp', -- Otherwise highlighting gets messed up
+  -- branch = 'perf-up',
   event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
@@ -42,7 +44,7 @@ return {
     cmp.setup {
       performance = {
         -- debounce = 250,
-        max_view_entries = 40,
+        -- max_view_entries = 40,
       },
       completion = {
         completeopt = 'menu,menuone,noinsert,noselect',

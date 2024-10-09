@@ -22,6 +22,7 @@ return {
         ['@keyword.return'] = { italic = true },
         ['@variable.member'] = { italic = true },
         ['@variable.parameter.bash'] = { fg = '' },
+        ['@markup.link.label.javascript'] = { underline = false },
         -- ['@lsp.type.variable'] = { italic = true },
 
         PmenuSel = { bg = '#353A45', fg = 'NONE' },
