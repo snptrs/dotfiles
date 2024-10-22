@@ -43,3 +43,62 @@ temp
 vendor
 Group Containers/G69SCX94XU.duck
 Library/Application Support/CloudDocs
+Library/Preferences/com.apple.homed.plist
+Library/HomeKit
+Library/IdentityServices
+Library/Preferences/com.apple.homed.plist
+Library/IdentityServices
+Library/IntelligencePlatform
+Library/Mail
+Library/Messages
+Library/PersonalizationPortrait
+Library/Reminders
+Library/Sharing
+Library/Shortcuts
+Library/StatusKit
+Library/Suggestions
+Library/Trial
+Library/Weather
+Library/com.apple.aiml.instrumentation
+Library/com.apple.bluetooth.services.cloud/CachedRecords/SoundProfileAsset
+Library/Preferences/com.apple.AddressBook.plist
+Library/Preferences/com.apple.MobileSMS.plist
+Library/Preferences/com.apple.homed.plist
+Library/IdentityServices
+Library/IntelligencePlatform
+Library/Mail
+Library/Messages
+Library/PersonalizationPortrait
+Library/Reminders
+Library/Sharing
+Library/Shortcuts
+Library/StatusKit
+Library/Suggestions
+Library/Trial
+Library/Weather
+Library/com.apple.aiml.instrumentation
+Library/com.apple.bluetooth.services.cloud/CachedRecords/SoundProfileAsset
+Library/Preferences/com.apple.AddressBook.plist
+Library/Preferences/com.apple.MobileSMS.plist
+Library/Preferences/com.apple.homed.plist
+Library/Accounts
+Library/AppleMediaServices
+Library/Application Support/AddressBook
+Library/Application Support/CallHistoryDB
+Library/Application Support/CallHistoryTransactions
+Library/Application Support/DifferentialPrivacy
+Library/Application Support/FaceTime
+Library/Application Support/FileProvider
+Library/Application Support/com.apple.TCC
+Library/Application Support/com.apple.avfoundation/Frecents
+Library/Application Support/com.apple.sharedfilelist
+Library/Assistant/SiriVocabulary
+Library/Autosave Information
+Library/Calendars
+Library/ContainerManager
+Library/Cookies
+Library/CoreFollowUp
+Library/Daemon Containers
+Library/DoNotDisturb
+Library/DuetExpertCenter
+Library/HomeKit

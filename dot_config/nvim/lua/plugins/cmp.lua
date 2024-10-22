@@ -14,6 +14,7 @@ return {
     -- Adds LSP completion capabilities
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-buffer',
 
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
@@ -121,6 +122,8 @@ return {
         { name = 'copilot', priority = 10 },
         { name = 'nvim_lsp', priority = 8 },
         { name = 'path', priority = 9 },
+        { name = 'buffer', priority = 7 },
+        { name = 'tailwindcss', priority = 2 },
         -- { name = 'luasnip', priority = 5 },
         -- { name = 'emmet', priority = 4 },
       },
