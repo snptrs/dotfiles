@@ -1,6 +1,5 @@
 return {
   'onsails/lspkind.nvim',
-  enabled = false,
   init = function()
     local lspkind = require 'lspkind'
     lspkind.init {

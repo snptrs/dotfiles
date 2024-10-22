@@ -6,8 +6,8 @@ return {
     require('copilot').setup {
       auto_refresh = true,
       suggestion = {
-        enabled = true,
-        auto_trigger = false,
+        enabled = false,
+        auto_trigger = true,
         keymap = {
           accept = '<C-j>',
           accept_word = '<M-Right>',
@@ -23,10 +23,10 @@ return {
       copilot_node_command = '/System/Volumes/Data/Users/seanpeters/Library/Application Support/fnm/aliases/20/bin/node',
     }
   end,
-  -- dependencies = {
-  --   'zbirenbaum/copilot-cmp',
-  --   config = function()
-  --     require('copilot_cmp').setup()
-  --   end,
-  -- },
+  dependencies = {
+    'zbirenbaum/copilot-cmp',
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+  },
 }

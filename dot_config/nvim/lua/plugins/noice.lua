@@ -1,7 +1,6 @@
 return {
   'folke/noice.nvim',
   event = 'VeryLazy',
-  enabled = true,
   -- stylua: ignore
   keys = {
     { '<leader>n',  '',                                                                            desc = '+noice' },
@@ -18,21 +17,18 @@ return {
       override = {
         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
         ['vim.lsp.util.stylize_markdown'] = true,
-        -- ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+        ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
       },
-      -- documentation = {
-      --   opts = { -- Move docs and signature help up so they don't overlap CMP popup
-      --     anchor = 'SW',
-      --     position = {
-      --       row = 1,
-      --     },
-      --   },
-      -- },
+      documentation = {
+        opts = { -- Move docs and signature help up so they don't overlap CMP popup
+          anchor = 'SW',
+          position = {
+            row = 1,
+          },
+        },
+      },
       hover = {
         silent = true,
-      },
-      signature = {
-        enabled = false,
       },
     },
     -- you can enable a preset for easier configuration
