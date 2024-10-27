@@ -18,7 +18,7 @@ return {
           },
           schema = {
             model = {
-              default = 'claude-3-5-sonnet-20240620',
+              default = 'claude-3-5-sonnet-20241022',
             },
           },
         })
