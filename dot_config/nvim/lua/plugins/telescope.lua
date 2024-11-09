@@ -93,14 +93,16 @@ return {
       defaults = {
         mappings = {
           i = {
-            ['<C-t>'] = require('trouble.sources.telescope').add,
-            ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
+            ['<C-t>'] = require('trouble.sources.telescope').open,
+            ['<M-t>'] = require('trouble.sources.telescope').add,
+            ['<C-q>'] = telescopeActions.smart_send_to_qflist,
             ['<M-p>'] = action_layout.toggle_preview,
             ['<C-u>'] = false,
             -- ['<esc>'] = telescopeActions.close,
           },
           n = {
-            ['<C-t>'] = require('trouble.sources.telescope').add,
+            ['<C-t>'] = require('trouble.sources.telescope').open,
+            ['<M-t>'] = require('trouble.sources.telescope').add,
             ['l'] = telescopeActions.select_default,
             ['<C-q>'] = telescopeActions.smart_send_to_qflist + telescopeActions.open_qflist,
             ['<M-p>'] = action_layout.toggle_preview,

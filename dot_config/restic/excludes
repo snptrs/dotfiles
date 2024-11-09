@@ -62,6 +62,7 @@ Library/Weather
 Library/com.apple.aiml.instrumentation
 Library/com.apple.bluetooth.services.cloud/CachedRecords/SoundProfileAsset
 Library/Preferences/com.apple.AddressBook.plist
+Library/Preferences/com.apple.messages.pinning.plist
 Library/Preferences/com.apple.MobileSMS.plist
 Library/Preferences/com.apple.homed.plist
 Library/IdentityServices
