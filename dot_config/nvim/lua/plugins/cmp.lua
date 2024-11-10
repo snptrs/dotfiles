@@ -3,6 +3,7 @@ return {
   -- 'hrsh7th/nvim-cmp',
   -- 'yioneko/nvim-cmp',
   'iguanacucumber/magazine.nvim',
+  enabled = false,
   name = 'nvim-cmp', -- Otherwise highlighting gets messed up
   -- branch = 'perf-up',
   event = 'InsertEnter',

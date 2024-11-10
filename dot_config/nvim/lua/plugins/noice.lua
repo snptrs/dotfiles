@@ -1,5 +1,6 @@
 return {
   'folke/noice.nvim',
+  enabled = true,
   event = 'VeryLazy',
   -- stylua: ignore
   keys = {
@@ -29,6 +30,9 @@ return {
       },
       hover = {
         silent = true,
+      },
+      signature = {
+        enabled = false,
       },
     },
     -- you can enable a preset for easier configuration
