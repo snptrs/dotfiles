@@ -48,10 +48,15 @@ return {
         autoUseWorkspaceTsdk = true,
         experimental = {
           completion = {
-            enableServerSideFuzzyMatch = true,
+            enableServerSideFuzzyMatch = false,
           },
         },
         javascript = {
+          tsserver = {
+            experimental = {
+              enableProjectDiagnostics = true,
+            },
+          },
           updateImportsOnFileMove = { enabled = 'always' },
           suggest = {
             completeFunctionCalls = true,
