@@ -4,14 +4,7 @@ return {
     enabled = true,
     keys = {
       {
-        'gD',
-        function()
-          require('vtsls').commands.goto_source_definition(0)
-        end,
-        desc = 'Goto Source Definition',
-      },
-      {
-        'gR',
+        '<leader>dr',
         function()
           require('vtsls').commands.file_references(0)
         end,
