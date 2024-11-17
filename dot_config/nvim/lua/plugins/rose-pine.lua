@@ -16,6 +16,7 @@ return {
         Keyword = { italic = true },
         LspSignatureActiveParameter = { bg = 'iris', fg = 'overlay' },
         YankyYanked = { fg = 'text', bg = 'gold', blend = 75 },
+        StatusLine = { bg = 'base', fg = 'base' },
         ['@keyword.conditional'] = { italic = true },
         ['@keyword.control'] = { italic = true },
         ['@keyword.repeat'] = { italic = true },

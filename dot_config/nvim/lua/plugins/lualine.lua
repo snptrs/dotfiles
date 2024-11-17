@@ -86,24 +86,24 @@ return {
 
     local trouble = require 'trouble'
     local symbols = trouble.statusline {
-      mode = 'symbols',
+      mode = 'lsp_document_symbols',
       groups = {},
       title = false,
       filter = {
         range = true,
-        any = {
-          { kind = 'Class' },
-          { kind = 'Constructor' },
-          { kind = 'Function' },
-          { kind = 'Interface' },
-          { kind = 'Method' },
-          { kind = 'TypeParameter' },
-        },
+        -- any = {
+        --   { kind = 'Class' },
+        --   { kind = 'Constructor' },
+        --   { kind = 'Function' },
+        --   { kind = 'Interface' },
+        --   { kind = 'Method' },
+        --   { kind = 'TypeParameter' },
+        -- },
       },
       format = '{kind_icon}{symbol.name:Normal}',
       -- The following line is needed to fix the background color
       -- Set it to the lualine section you want to use
-      hl_group = 'lualine_c_normal',
+      hl_group = 'lualine_a_active',
     }
 
     local winbar_config = {
