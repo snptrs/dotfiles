@@ -1,7 +1,10 @@
 return {
-  'MeanderingProgrammer/markdown.nvim',
+  'MeanderingProgrammer/render-markdown.nvim',
   main = 'render-markdown',
-  event = 'BufEnter *.md',
-  opts = {},
+  opts = { file_types = {
+    'markdown',
+    'Avante',
+  } },
+  ft = { 'markdown', 'Avante' },
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
 }
