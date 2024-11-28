@@ -4,7 +4,8 @@ return {
   opts = { file_types = {
     'markdown',
     'Avante',
+    'codecompanion',
   } },
-  ft = { 'markdown', 'Avante' },
+  ft = { 'markdown', 'Avante', 'codecompanion' },
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
 }

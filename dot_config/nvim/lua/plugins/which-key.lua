@@ -19,7 +19,7 @@ return {
       { '<leader>h', group = 'More git' },
       { '<leader>s', group = 'Session' },
       { '<leader>w', group = 'Workspace' },
-      { '<leader>x', group = 'Trouble' },
+      { '<leader>t', group = 'Trouble' },
       { '<leader>,', desc = 'Grapple' },
       { '[', group = 'prev' },
       { ']', group = 'next' },
@@ -28,10 +28,8 @@ return {
       { 'z', group = 'fold' },
       { '<leader>C', group = 'Colour pickers' },
       { '<leader>t', group = 'Tabs' },
-      { '<leader>tn', '<cmd>tabn<cr>', desc = 'Next tab' },
-      { '<leader>tp', '<cmd>tabp<cr>', desc = 'Previous tab' },
-      { '<leader>tc', '<cmd>tabc<cr>', desc = 'Close tab' },
-      { '<leader>te', '<cmd>tabe<cr>', desc = 'New tab' },
+      { ']t', '<cmd>tabn<cr>', desc = 'Next tab' },
+      { '[t', '<cmd>tabp<cr>', desc = 'Previous tab' },
       {
         '<leader>dh',
         function()

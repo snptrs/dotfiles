@@ -1,5 +1,6 @@
 return {
   'saghen/blink.cmp',
+  enabled = true,
   lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
   dependencies = 'rafamadriz/friendly-snippets',
@@ -50,6 +51,7 @@ return {
     },
     -- experimental signature help support
     trigger = { signature_help = { enabled = true } },
+    blocked_filetypes = { 'codecompanion' },
   },
   -- allows extending the enabled_providers array elsewhere in your config
   -- without having to redefining it
