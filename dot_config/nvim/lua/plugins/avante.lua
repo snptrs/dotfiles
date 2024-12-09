@@ -15,7 +15,8 @@ return {
     'MunifTanjim/nui.nvim',
     --- The below dependencies are optional,
     'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
-    'zbirenbaum/copilot.lua', -- for providers='copilot'
+    'hrsh7th/nvim-cmp',
+    -- 'zbirenbaum/copilot.lua', -- for providers='copilot'
     'MeanderingProgrammer/render-markdown.nvim',
     {
       -- support for image pasting
