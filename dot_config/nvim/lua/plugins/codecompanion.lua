@@ -31,7 +31,7 @@ return {
         keymaps = {
           completion = {
             modes = {
-              i = '<C-Space>',
+              i = '<C-x>',
             },
           },
         },
