@@ -19,15 +19,15 @@ return {
         dim = false,
         diagnostics = false,
       },
-      win = {
-        backdrop = {
-          transparent = false
-        }
-      }
     },
     styles = {
       notification = {
-        -- wo = { wrap = true } -- Wrap notifications
+        wo = { wrap = true } -- Wrap notifications
+      },
+      zen = {
+        backdrop = {
+          transparent = false
+        }
       }
     }
   },
