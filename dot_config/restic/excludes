@@ -103,3 +103,5 @@ Library/Daemon Containers
 Library/DoNotDisturb
 Library/DuetExpertCenter
 Library/HomeKit
+com.apple.homed.notbackedup.plist
+com.apple.mail-shared.plist
