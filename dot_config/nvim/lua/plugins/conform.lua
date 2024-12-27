@@ -51,7 +51,7 @@ return {
         prepend_args = { '--standard=PSR12', '--extensions=php' },
       },
       pint = {
-        prepend_args = { '--preset', 'psr12' },
+        prepend_args = { '--preset', 'laravel' },
       },
     },
   },
