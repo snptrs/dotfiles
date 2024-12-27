@@ -8,6 +8,7 @@ return {
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
+    'saghen/blink.cmp',
   },
   config = function()
     -- Setup neovim lua configuration
