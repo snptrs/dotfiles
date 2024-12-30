@@ -10,6 +10,7 @@ fish_add_path /Users/seanpeters/.local/share/bob/nvim-bin
 set -g tide_left_prompt_items pwd git newline character
 set -g tide_git_icon 
 set -g tide_pwd_icon
+set -g tide_right_prompt_suffix " "
 
 # Added these to see if they help with Treesitter compilation
 ## set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
@@ -34,6 +35,7 @@ if status is-interactive
 
   bind \ec 'pet-select'
   bind \cs 'history-pager'
+  bind \ep 'pj'
   set -gx LS_COLORS (vivid generate rose-pine)
 
   abbr -a cht cht.sh
