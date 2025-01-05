@@ -32,6 +32,7 @@ return {
       python = { 'isort', 'ruff' },
       php = { 'pint', 'phpcbf' },
       toml = { 'taplo' },
+      fish = { 'fish_indent' },
     },
     format_on_save = function(bufnr)
       if vim.bo[bufnr].filetype == 'php' then

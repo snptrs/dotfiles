@@ -1,6 +1,5 @@
 function pet-select
-  set -l query (commandline)
-  commandline -f repaint
-  pet search --color --query "$query" $argv | read cmd
-  and commandline $cmd
+    commandline -f repaint
+    set -l query (commandline)
+    pet clip --query $query </dev/tty >/dev/tty
 end
