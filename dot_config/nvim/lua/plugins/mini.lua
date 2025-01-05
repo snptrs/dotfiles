@@ -2,6 +2,7 @@ return {
   'echasnovski/mini.nvim',
   version = false,
   event = 'VeryLazy',
+  dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring', opts = { enable_autocmd = false } },
   config = function()
     require('mini.files').setup {
       windows = {
@@ -14,6 +15,14 @@ return {
     }
 
     require('mini.align').setup {}
+
+    require('mini.comment').setup {
+      options = {
+        custom_commentstring = function()
+          return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    }
 
     require('mini.indentscope').setup {
       symbol = '▏',
@@ -52,10 +61,10 @@ return {
             a = '@assignment.lhs',
           },
           f = ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' }, -- function
-          c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' },       -- class
-          t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' },          -- tags
-          d = { '%f[%d]%d+' },                                                         -- digits
-          e = {                                                                        -- Word with case
+          c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' }, -- class
+          t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
+          d = { '%f[%d]%d+' }, -- digits
+          e = { -- Word with case
             { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
             '^().*()$',
           },
@@ -104,8 +113,8 @@ return {
       local table = {}
       for key, name in pairs(keys) do
         vim.list_extend(table, {
-          { 'i' .. key,  desc = name },
-          { 'a' .. key,  desc = name },
+          { 'i' .. key, desc = name },
+          { 'a' .. key, desc = name },
           { 'in' .. key, desc = name },
           { 'an' .. key, desc = name },
           { 'il' .. key, desc = name },
