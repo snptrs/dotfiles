@@ -25,8 +25,11 @@ return {
         ['@variable.parameter.bash'] = { fg = '' },
         ['@markup.link.label.javascript'] = { underline = false },
 
-        PmenuSel = { bg = '#353A45', fg = 'NONE' },
+        PmenuSel = { bg = '#353A45' },
         Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
+
+        MiniPickMatchCurrent = { fg = "gold", bold = true },
+        MiniPickMatchMarked = { fg = "love", bold = true }
       },
     }
     vim.cmd 'colorscheme rose-pine'

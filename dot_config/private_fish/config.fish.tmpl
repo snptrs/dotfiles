@@ -12,11 +12,6 @@ set -g tide_git_icon 
 set -g tide_pwd_icon
 set -g tide_right_prompt_suffix " "
 
-# Added these to see if they help with Treesitter compilation
-## set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
-## set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
-## set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/curl/lib/pkgconfig"
-
 if status is-interactive
   # Commands to run in interactive sessions can go here
   {{- if eq .chezmoi.arch "arm64" }}
@@ -32,6 +27,7 @@ if status is-interactive
   set -a fish_function_path ~/.config/fish/functions/sp
   set -Ux BAT_THEME "base16"
   set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
+  set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
 
   bind alt-c 'pet-select'
   bind \cs 'history-pager'
