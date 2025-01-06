@@ -62,6 +62,9 @@ return {
       },
     }
 
+    require('mini.pick').setup()
+    require('mini.extra').setup()
+
     -- ## mini.ai ##
     local ai_opts = function()
       local ai = require 'mini.ai'
