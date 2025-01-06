@@ -3,6 +3,57 @@ return {
   version = false,
   event = 'VeryLazy',
   dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring', opts = { enable_autocmd = false } },
+  keys = {
+    {
+      "<leader>ff",
+      function()
+        require("mini.pick").builtin.files()
+      end,
+      desc = "Find files",
+    },
+    {
+      "<leader>fg",
+      function()
+        require("mini.pick").builtin.grep_live()
+      end,
+      desc = "Grep files",
+    },
+    {
+      "<space><space>",
+      function()
+        require("mini.pick").builtin.buffers({ recency_weight = 1 })
+      end,
+      desc = "Open buffers"
+    },
+    {
+      "gd",
+      function()
+        require("mini.extra").pickers.lsp({ scope = "definition" })
+      end,
+      desc = "Goto definition",
+    },
+    {
+      "gr",
+      function()
+        require("mini.extra").pickers.lsp({ scope = "references" })
+      end,
+      desc = "Goto references"
+    },
+    {
+      "gD",
+      function()
+        require("mini.extra").pickers.lsp({ scope = "declaration" })
+      end,
+      desc = "Goto declaration"
+    },
+    {
+      "gT",
+      function()
+        require("mini.extra").pickers.lsp({ scope = "type_definition" })
+      end,
+      desc = "Goto type definition"
+    },
+  },
   config = function()
     require('mini.files').setup {
       windows = {
@@ -27,16 +78,16 @@ return {
     require('mini.surround').setup {
       highlight_duration = 1000,
       mappings = {
-        add = 'gza', -- Add surrounding in Normal and Visual modes
-        delete = 'gzd', -- Delete surrounding
-        find = 'gzf', -- Find surrounding (to the right)
-        find_left = 'gzF', -- Find surrounding (to the left)
-        highlight = 'gzh', -- Highlight surrounding
-        replace = 'gzr', -- Replace surrounding
+        add = 'gza',            -- Add surrounding in Normal and Visual modes
+        delete = 'gzd',         -- Delete surrounding
+        find = 'gzf',           -- Find surrounding (to the right)
+        find_left = 'gzF',      -- Find surrounding (to the left)
+        highlight = 'gzh',      -- Highlight surrounding
+        replace = 'gzr',        -- Replace surrounding
         update_n_lines = 'gzn', -- Update `n_lines`
 
-        suffix_last = 'l', -- Suffix to search with "prev" method
-        suffix_next = 'n', -- Suffix to search with "next" method
+        suffix_last = 'l',      -- Suffix to search with "prev" method
+        suffix_next = 'n',      -- Suffix to search with "next" method
       },
     }
 
@@ -62,7 +113,25 @@ return {
       },
     }
 
-    require('mini.pick').setup()
+    require('mini.pick').setup({
+      options = {
+        content_from_bottom = false,
+      },
+      window = {
+        config = function()
+          local height = math.floor(0.618 * vim.o.lines)
+          local width = math.floor(0.618 * vim.o.columns)
+          return {
+            anchor = 'NW',
+            height = height,
+            width = width,
+            row = math.floor(0.5 * (vim.o.lines - height)),
+            col = math.floor(0.5 * (vim.o.columns - width)),
+          }
+        end
+      }
+    })
+
     require('mini.extra').setup()
 
     -- ## mini.ai ##
@@ -80,10 +149,10 @@ return {
             a = '@assignment.lhs',
           },
           f = ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' }, -- function
-          c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' }, -- class
-          t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
-          d = { '%f[%d]%d+' }, -- digits
-          e = { -- Word with case
+          c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' },       -- class
+          t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' },          -- tags
+          d = { '%f[%d]%d+' },                                                         -- digits
+          e = {                                                                        -- Word with case
             { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
             '^().*()$',
           },
@@ -132,8 +201,8 @@ return {
       local table = {}
       for key, name in pairs(keys) do
         vim.list_extend(table, {
-          { 'i' .. key, desc = name },
-          { 'a' .. key, desc = name },
+          { 'i' .. key,  desc = name },
+          { 'a' .. key,  desc = name },
           { 'in' .. key, desc = name },
           { 'an' .. key, desc = name },
           { 'il' .. key, desc = name },
