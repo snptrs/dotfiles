@@ -1,57 +1,65 @@
 return {
   keys = {
     {
-      "<leader>ff",
-      function() require("mini.pick").builtin.files() end,
-      desc = "Find files",
-    },
-    {
-      "<leader>fg",
-      function() require("mini.pick").builtin.grep_live() end,
-      desc = "Grep files",
-    },
-    {
-      "<leader>fr",
-      function() require("mini.pick").builtin.resume() end,
-      desc = "Resume find",
-    },
-    {
-      "<space><space>",
-      function() require("mini.pick").builtin.buffers() end,
-      desc = "Open buffers"
-    },
-    {
-      "gd",
+      '<leader>ff',
       function()
-        require("mini.extra").pickers.lsp({ scope = "definition" })
+        require('mini.pick').builtin.files()
       end,
-      desc = "Goto definition",
+      desc = 'Find files',
     },
     {
-      "gr",
+      '<leader>fg',
       function()
-        require("mini.extra").pickers.lsp({ scope = "references" })
+        require('mini.pick').builtin.grep_live()
       end,
-      desc = "Goto references"
+      desc = 'Grep files',
     },
     {
-      "gD",
+      '<leader>fr',
       function()
-        require("mini.extra").pickers.lsp({ scope = "declaration" })
+        require('mini.pick').builtin.resume()
       end,
-      desc = "Goto declaration"
+      desc = 'Resume find',
     },
     {
-      "gT",
+      '<space><space>',
       function()
-        require("mini.extra").pickers.lsp({ scope = "type_definition" })
+        require('mini.pick').builtin.buffers {}
       end,
-      desc = "Goto type definition"
+      desc = 'Open buffers',
+    },
+    {
+      'gd',
+      function()
+        require('mini.extra').pickers.lsp { scope = 'definition' }
+      end,
+      desc = 'Goto definition',
+    },
+    {
+      'gr',
+      function()
+        require('mini.extra').pickers.lsp { scope = 'references' }
+      end,
+      desc = 'Goto references',
+    },
+    {
+      'gD',
+      function()
+        require('mini.extra').pickers.lsp { scope = 'declaration' }
+      end,
+      desc = 'Goto declaration',
+    },
+    {
+      'gT',
+      function()
+        require('mini.extra').pickers.lsp { scope = 'type_definition' }
+      end,
+      desc = 'Goto type definition',
     },
   },
 
   setup = function()
-    require('mini.pick').setup({
+    require('mini.pick').setup {
       options = {
         content_from_bottom = false,
       },
@@ -66,8 +74,34 @@ return {
             row = math.floor(0.5 * (vim.o.lines - height)),
             col = math.floor(0.5 * (vim.o.columns - width)),
           }
-        end
-      }
-    })
-  end
+        end,
+      },
+    }
+
+    local MiniPick = require 'mini.pick'
+    local MiniExtra = require 'mini.extra'
+
+    vim.ui.select = MiniPick.ui_select
+
+    MiniPick.registry.registry = function()
+      local items = vim.tbl_keys(MiniPick.registry)
+      table.sort(items)
+      local source = { items = items, name = 'Registry', choose = function() end }
+      local chosen_picker_name = MiniPick.start { source = source }
+      if chosen_picker_name == nil then
+        return
+      end
+      return MiniPick.registry[chosen_picker_name]()
+    end
+
+    MiniPick.registry.projects = function()
+      local cwd = vim.fn.expand '~/Code/Projects'
+      local choose = function(item)
+        vim.schedule(function()
+          MiniPick.builtin.files(nil, { source = { cwd = item.path } })
+        end)
+      end
+      return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
+    end
+  end,
 }
