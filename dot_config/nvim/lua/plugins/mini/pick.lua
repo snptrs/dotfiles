@@ -24,7 +24,29 @@ return {
     {
       '<space><space>',
       function()
-        require('mini.pick').builtin.buffers {}
+        require('mini.pick').builtin.buffers({ include_current = false }, {
+          mappings = {
+            wipeout = {
+              char = '<C-d>',
+              func = function()
+                vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
+              end,
+            },
+          },
+          window = {
+            config = function()
+              local height = 15
+              local width = math.floor(0.618 * vim.o.columns)
+              return {
+                anchor = 'NW',
+                height = height,
+                width = width,
+                row = math.floor(0.5 * (vim.o.lines - height)),
+                col = math.floor(0.5 * (vim.o.columns - width)),
+              }
+            end,
+          },
+        })
       end,
       desc = 'Open buffers',
     },
