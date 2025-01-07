@@ -6,6 +6,7 @@ local module_names = {
   'files',
   'indentscope',
   'operators',
+  'pairs',
   'pick',
   'surround',
 }
