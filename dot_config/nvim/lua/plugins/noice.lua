@@ -20,14 +20,14 @@ return {
         ['vim.lsp.util.stylize_markdown'] = true,
         ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
       },
-      documentation = {
-        opts = { -- Move docs and signature help up so they don't overlap CMP popup
-          anchor = 'SW',
-          position = {
-            row = 1,
-          },
-        },
-      },
+      -- documentation = {
+      --   opts = { -- Move docs and signature help up so they don't overlap CMP popup
+      --     anchor = 'SW',
+      --     position = {
+      --       row = 1,
+      --     },
+      --   },
+      -- },
       hover = {
         silent = true,
       },
@@ -37,11 +37,11 @@ return {
     },
     -- you can enable a preset for easier configuration
     presets = {
-      bottom_search = true, -- use a classic bottom cmdline for search
-      command_palette = true, -- position the cmdline and popupmenu together
+      bottom_search = true,         -- use a classic bottom cmdline for search
+      command_palette = true,       -- position the cmdline and popupmenu together
       long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = true, -- enables an input dialog for inc-rename.nvim
-      lsp_doc_border = true, -- add a border to hover docs and signature help
+      inc_rename = true,            -- enables an input dialog for inc-rename.nvim
+      lsp_doc_border = true,        -- add a border to hover docs and signature help
     },
     routes = {
       {
@@ -85,7 +85,7 @@ return {
             { find = '%d fewer lines' },
             { find = '%d more lines' },
             { find = '%d lines yanked' },
-            { kind = 'emsg', find = 'E37' },
+            { kind = 'emsg',           find = 'E37' },
           },
         },
         opts = { skip = true },
@@ -102,16 +102,16 @@ return {
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
-    {
-      'rcarriga/nvim-notify',
-      opts = {
-        render = 'wrapped-compact',
-        stages = 'fade_in_slide_out',
-        timeout = 1500,
-        minimum_width = 25,
-        max_width = 50,
-        fps = 60,
-      },
-    },
+    -- {
+    --   'rcarriga/nvim-notify',
+    --   opts = {
+    --     render = 'wrapped-compact',
+    --     stages = 'fade_in_slide_out',
+    --     timeout = 1500,
+    --     minimum_width = 25,
+    --     max_width = 50,
+    --     fps = 60,
+    --   },
+    -- },
   },
 }

@@ -1,0 +1,17 @@
+font-family = TX-02
+font-style = Regular
+font-style-bold = ExtraBold
+font-style-italic = Oblique
+font-style-bold-italic = ExtraBold Oblique
+font-size = "16"
+theme = "rose-pine"
+window-height = 35
+window-width = 130
+window-step-resize = true
+macos-option-as-alt = "left"
+cursor-invert-fg-bg = true
+{{- if eq .chezmoi.arch "arm64" }}
+command = /opt/homebrew/bin/fish --login --interactive
+{{- else }}
+command = /usr/local/bin/fish --login --interactive
+{{- end }}

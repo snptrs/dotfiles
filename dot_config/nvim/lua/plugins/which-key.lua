@@ -30,13 +30,10 @@ return {
       { '<leader>t', group = 'Tabs' },
       { ']t', '<cmd>tabn<cr>', desc = 'Next tab' },
       { '[t', '<cmd>tabp<cr>', desc = 'Previous tab' },
-      {
-        '<leader>dh',
-        function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        end,
-        desc = 'Toggle inlay hints',
-      },
+      { 'gd', icon = ' ' },
+      { 'gD', icon = ' ' },
+      { 'gD', icon = ' ' },
+      { 'gr', icon = ' ' },
     },
   },
 }
