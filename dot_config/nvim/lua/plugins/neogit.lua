@@ -3,9 +3,9 @@ return {
   branch = 'master',
   lazy = true,
   dependencies = {
-    'nvim-lua/plenary.nvim',  -- required
+    'nvim-lua/plenary.nvim', -- required
     'sindrets/diffview.nvim', -- optional - Diff integration
-    "echasnovski/mini.pick"
+    -- "echasnovski/mini.pick"
   },
   keys = {
     {

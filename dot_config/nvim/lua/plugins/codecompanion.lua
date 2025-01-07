@@ -5,6 +5,22 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
   },
+  keys = {
+    { '<Leader>cca', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, desc = 'CodeCompanion Actions' },
+    { '<Leader>ccc', '<cmd>CodeCompanionChat Toggle<cr>', mode = { 'n', 'v' }, desc = 'Toggle CodeCompanion Chat' },
+    { '<Leader>ccd', '<cmd>CodeCompanionChat Add<cr>', mode = 'v', desc = 'Add to CodeCompanion Chat' },
+    {
+      '<Leader>ccm',
+      function()
+        require('codecompanion').prompt 'commit'
+      end,
+      mode = 'n',
+      desc = 'Add to CodeCompanion Chat',
+    },
+  },
+  init = function()
+    vim.cmd [[cab cc CodeCompanion]]
+  end,
   opts = {
     adapters = {
       anthropic = function()
@@ -42,13 +58,5 @@ return {
       use_default_actions = true, -- Show the default actions in the action palette?
       use_default_prompts = true, -- Show the default prompts in the action palette?
     },
-    display = {
-      action_palette = {
-        width = 75,
-        height = 10,
-        prompt = "Prompt ",     -- Prompt used for interactive LLM calls
-        provider = "mini_pick", -- default|telescope|mini_pick
-      }
-    }
   },
 }

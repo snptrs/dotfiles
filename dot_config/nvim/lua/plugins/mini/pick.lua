@@ -1,23 +1,53 @@
+local small_window = function()
+  local height = 20
+  local width = 80
+  return {
+    anchor = 'NW',
+    height = height,
+    width = width,
+    row = math.floor(0.5 * (vim.o.lines - height)),
+    col = math.floor(0.5 * (vim.o.columns - width)),
+  }
+end
+
+local big_window = function()
+  local height = math.floor(0.618 * vim.o.lines)
+  local width = math.floor(0.618 * vim.o.columns)
+  return {
+    anchor = 'NW',
+    height = height,
+    width = width,
+    row = math.floor(0.5 * (vim.o.lines - height)),
+    col = math.floor(0.5 * (vim.o.columns - width)),
+  }
+end
+
 return {
   keys = {
     {
       '<leader>ff',
       function()
-        require('mini.pick').builtin.files()
+        require('mini.pick').builtin.files(nil, { window = {
+          config = big_window,
+        } })
       end,
       desc = 'Find files',
     },
     {
       '<leader>fg',
       function()
-        require('mini.pick').builtin.grep_live()
+        require('mini.pick').builtin.grep_live(nil, { window = {
+          config = big_window,
+        } })
       end,
       desc = 'Grep files',
     },
     {
       '<leader>fr',
       function()
-        require('mini.pick').builtin.resume()
+        require('mini.pick').builtin.resume(nil, { window = {
+          config = big_window,
+        } })
       end,
       desc = 'Resume find',
     },
@@ -29,22 +59,9 @@ return {
             wipeout = {
               char = '<C-d>',
               func = function()
-                vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
+                vim.api.nvim_buf_delete(require('mini.pick').get_picker_matches().current.bufnr, {})
               end,
             },
-          },
-          window = {
-            config = function()
-              local height = 15
-              local width = math.floor(0.618 * vim.o.columns)
-              return {
-                anchor = 'NW',
-                height = height,
-                width = width,
-                row = math.floor(0.5 * (vim.o.lines - height)),
-                col = math.floor(0.5 * (vim.o.columns - width)),
-              }
-            end,
           },
         })
       end,
@@ -53,7 +70,7 @@ return {
     {
       'gd',
       function()
-        require('mini.extra').pickers.lsp { scope = 'definition' }
+        require('mini.extra').pickers.lsp({ scope = 'definition' }, {})
       end,
       desc = 'Goto definition',
     },
@@ -86,17 +103,7 @@ return {
         content_from_bottom = false,
       },
       window = {
-        config = function()
-          local height = math.floor(0.618 * vim.o.lines)
-          local width = math.floor(0.618 * vim.o.columns)
-          return {
-            anchor = 'NW',
-            height = height,
-            width = width,
-            row = math.floor(0.5 * (vim.o.lines - height)),
-            col = math.floor(0.5 * (vim.o.columns - width)),
-          }
-        end,
+        config = small_window,
       },
     }
 
