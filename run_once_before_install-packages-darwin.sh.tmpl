@@ -59,7 +59,7 @@ mas "StopTheMadness", id: 6471380298
 mas "TableFlip", id: 1462643128
 mas "Velja", id: 1607635845
 mas "Wipr", id: 1662217862
-{{- if eq .chezmoi.hostname .personal_mac_hostname }}
+{{- if eq .is_work_mac false }}
 cask "anki"
 cask "chronosync"
 cask "calibre"
@@ -75,5 +75,4 @@ mas "Subtrack", id: 1519946553
 {{- end}}
 EOF
 
-## read -n 1 -s -r -p "Make sure the 1Password CLI integration is enabled (https://developer.1password.com/docs/cli/get-started), then press any key to continue"
 {{ end -}}

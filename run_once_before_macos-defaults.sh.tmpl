@@ -32,7 +32,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 defaults write com.apple.dock "orientation" -string "left"
 
 ## Set Dock size
-defaults write com.apple.dock "tilesize" -int "26"
+defaults write com.apple.dock "tilesize" -int "22"
 
 ## Don't show recents in Dock
 defaults write com.apple.dock "show-recents" -boolean false

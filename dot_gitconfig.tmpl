@@ -1,12 +1,12 @@
 [user]
   name = Sean Peters
-  {{- if eq .chezmoi.hostname .personal_mac_hostname }}
+  {{- if eq .is_work_mac false }}
   email = {{ .personal_email }}
   {{- else }}
   email = {{ .work_email }}
   {{- end }}
 
-{{- if eq .chezmoi.hostname .personal_mac_hostname }}
+{{- if eq .is_work_mac false }}
 
 [includeIf "gitdir:~/Work/"]
   path = {{ .work_git_config }}

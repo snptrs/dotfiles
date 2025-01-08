@@ -2,7 +2,7 @@
 **/.DS_Store
 **/stylua.toml
 **/.git/**
-{{- if ne .chezmoi.hostname .personal_mac_hostname }} # Only manage these on a personal machine
+{{- if eq .is_work_mac true }} # Ignore these on a work machine (i.e. only manage on personal Mac)
 Library/Application Scripts/com.devon-technologies.think3/Menu/Export
 Work 
 {{- end }}
