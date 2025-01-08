@@ -16,11 +16,6 @@ return {
       end
     end
 
-    local host_map = {
-      ['Seans-MacBook-Pro.local'] = '󰌢',
-      ['Seans-iMac.local'] = '󰇄',
-    }
-
     local lsp_map = {
       ['copilot'] = '',
       ['lua_ls'] = '',
@@ -194,15 +189,7 @@ return {
             end,
           },
         },
-        lualine_y = {
-          {
-            'hostname',
-            padding = { right = 2, left = 1.75 },
-            fmt = function(res)
-              return host_map[res] or '󰒍'
-            end,
-          },
-        },
+        lualine_y = {},
         lualine_z = {
           {
             function()

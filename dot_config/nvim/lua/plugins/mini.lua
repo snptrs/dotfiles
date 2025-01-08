@@ -1,6 +1,7 @@
 local module_names = {
   'ai',
   'align',
+  'bracketed',
   'comment',
   'extra',
   'files',
@@ -9,6 +10,7 @@ local module_names = {
   'pairs',
   'pick',
   'surround',
+  'visits',
 }
 
 local function merge_module_keys()

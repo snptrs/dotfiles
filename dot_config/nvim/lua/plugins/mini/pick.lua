@@ -1,6 +1,4 @@
-local small_window = function()
-  local height = 20
-  local width = 80
+local function create_window_config(height, width)
   return {
     anchor = 'NW',
     height = height,
@@ -10,16 +8,63 @@ local small_window = function()
   }
 end
 
+local small_window = function()
+  return create_window_config(20, 80)
+end
+
 local big_window = function()
   local height = math.floor(0.618 * vim.o.lines)
   local width = math.floor(0.618 * vim.o.columns)
-  return {
-    anchor = 'NW',
-    height = height,
-    width = width,
-    row = math.floor(0.5 * (vim.o.lines - height)),
-    col = math.floor(0.5 * (vim.o.columns - width)),
-  }
+  return create_window_config(height, width)
+end
+
+local wide_window = function()
+  local height = 20
+  local width = math.floor(0.618 * vim.o.columns)
+  return create_window_config(height, width)
+end
+
+---@param scope "declaration" | "definition" | "document_symbol" | "implementation" | "references" | "type_definition" | "workspace_symbol"
+---@param autojump boolean? If there is only one result it will jump to it.
+local function lsp_picker(scope, autojump)
+  ---@return string
+  local function get_symbol_query()
+    return vim.fn.input 'Symbol: '
+  end
+
+  if not autojump then
+    local opts = { scope = scope }
+
+    if scope == 'workspace_symbol' then
+      opts.symbol_query = get_symbol_query()
+    end
+
+    require('mini.extra').pickers.lsp(opts, { window = { config = wide_window } })
+    return
+  end
+
+  ---@param opts vim.lsp.LocationOpts.OnList
+  local function on_list(opts)
+    vim.fn.setqflist({}, ' ', opts)
+
+    if #opts.items == 1 then
+      vim.cmd.cfirst()
+    else
+      require('mini.extra').pickers.list({ scope = 'quickfix' }, { source = { name = opts.title } })
+    end
+  end
+
+  if scope == 'references' then
+    require('mini.extra').pickers.lsp({ scope = 'references' }, { window = { config = wide_window } })
+    return
+  end
+
+  if scope == 'workspace_symbol' then
+    vim.lsp.buf.workspace_symbol(get_symbol_query(), { on_list = on_list })
+    return
+  end
+
+  vim.lsp.buf[scope] { on_list = on_list }
 end
 
 return {
@@ -52,6 +97,19 @@ return {
       desc = 'Resume find',
     },
     {
+      '<leader>fv',
+      function()
+        require('mini.extra').pickers.visit_paths({
+          recency_weight = 1,
+        }, {
+          window = {
+            config = small_window,
+          },
+        })
+      end,
+      desc = 'Visit paths',
+    },
+    {
       '<space><space>',
       function()
         require('mini.pick').builtin.buffers({ include_current = false }, {
@@ -70,28 +128,28 @@ return {
     {
       'gd',
       function()
-        require('mini.extra').pickers.lsp({ scope = 'definition' }, {})
+        lsp_picker('definition', true)
       end,
       desc = 'Goto definition',
     },
     {
       'gr',
       function()
-        require('mini.extra').pickers.lsp { scope = 'references' }
+        lsp_picker('references', true)
       end,
       desc = 'Goto references',
     },
     {
       'gD',
       function()
-        require('mini.extra').pickers.lsp { scope = 'declaration' }
+        lsp_picker('declaration', true)
       end,
       desc = 'Goto declaration',
     },
     {
       'gT',
       function()
-        require('mini.extra').pickers.lsp { scope = 'type_definition' }
+        lsp_picker('type_definition', true)
       end,
       desc = 'Goto type definition',
     },
