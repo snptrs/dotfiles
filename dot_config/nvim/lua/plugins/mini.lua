@@ -6,6 +6,7 @@ local module_names = {
   'extra',
   'files',
   'indentscope',
+  'misc',
   'operators',
   'pairs',
   'pick',

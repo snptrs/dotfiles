@@ -67,6 +67,11 @@ local function lsp_picker(scope, autojump)
   vim.lsp.buf[scope] { on_list = on_list }
 end
 
+local choose_marked = function()
+  local mappings = MiniPick.get_picker_opts().mappings
+  vim.api.nvim_input(mappings.choose_marked)
+end
+
 return {
   keys = {
     {
@@ -117,7 +122,8 @@ return {
             wipeout = {
               char = '<C-d>',
               func = function()
-                vim.api.nvim_buf_delete(require('mini.pick').get_picker_matches().current.bufnr, {})
+                local picker = require 'mini.pick'
+                vim.api.nvim_buf_delete(picker.get_picker_matches().current.bufnr, {})
               end,
             },
           },
@@ -162,6 +168,9 @@ return {
       },
       window = {
         config = small_window,
+      },
+      mappings = {
+        choose_all = { char = '<C-q>', func = choose_marked },
       },
     }
 
