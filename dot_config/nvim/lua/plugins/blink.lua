@@ -101,6 +101,18 @@ return {
         },
         auto_show_delay_ms = 250,
       },
+      menu = {
+        auto_show = true,
+      },
+      list = {
+        selection = {
+          preselect = true,
+          auto_insert = false,
+        },
+      },
+      ghost_text = {
+        enabled = true,
+      },
     },
 
     -- experimental signature help support
