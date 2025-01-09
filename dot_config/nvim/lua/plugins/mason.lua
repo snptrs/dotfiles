@@ -60,7 +60,7 @@ return {
           },
           updateImportsOnFileMove = { enabled = 'always' },
           suggest = {
-            completeFunctionCalls = true,
+            completeFunctionCalls = false,
           },
           inlayHints = {
             parameterNames = { enabled = 'literals' },
@@ -79,7 +79,7 @@ return {
           },
           updateImportsOnFileMove = { enabled = 'always' },
           suggest = {
-            completeFunctionCalls = true,
+            completeFunctionCalls = false,
           },
           inlayHints = {
             parameterNames = { enabled = 'literals' },
