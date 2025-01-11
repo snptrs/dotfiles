@@ -1,7 +1,6 @@
 # Search in hidden files but exclude certain unwanted directories
 --hidden
---no-ignore
---ignore-file=/Users/seanpeters/.config/ripgrep/.rgignore
+# --ignore-file=/Users/seanpeters/.config/ripgrep/.rgignore
 
 # Use smart case search
 --smart-case
