@@ -1,3 +1,5 @@
+.git
+.rgignore
 .DS_Store
 .nova
 *.code-workspace
