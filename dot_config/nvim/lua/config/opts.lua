@@ -51,3 +51,13 @@ end
 for k, v in pairs(globals) do
   vim.g[k] = v
 end
+
+local gr = vim.api.nvim_create_augroup('GeneralAutocommands', {})
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = gr,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { timeout = 300 }
+  end,
+  desc = 'Highlight yanked text',
+})

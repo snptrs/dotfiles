@@ -159,7 +159,8 @@ return {
             cond = symbols.has,
           },
         },
-        lualine_x = {
+        lualine_x = {},
+        lualine_y = {
           {
             get_formatters,
             color = { fg = '#9ccfd8' },
@@ -189,7 +190,6 @@ return {
             end,
           },
         },
-        lualine_y = {},
         lualine_z = {
           {
             function()

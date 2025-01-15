@@ -8,10 +8,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true, unique = true 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, unique = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, unique = true })
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message', unique = true })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list', unique = true })
-
 -- [[ SP's keymaps ]]
 vim.keymap.set('n', '<leader>\\', function()
   if not MiniFiles.close() then
@@ -19,13 +15,6 @@ vim.keymap.set('n', '<leader>\\', function()
     MiniFiles.reveal_cwd()
   end
 end, { desc = 'Tree focus', unique = true })
-
--- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
--- map('n', 'x', '"xx', { desc = 'Delete single characters to the x register', unique = true })
--- map('n', 'c', '"cc', { desc = 'Yank change text to the c register', unique = true })
-
--- map({ 'n', 'i' }, '<C-M-l>', ':nohl<cr>', { desc = 'Search highlighting off', silent = true, unique = true })
--- map('n', '*', '*``b', { desc = 'Search for word under cursor without jumping to next occurrence', unique = true })
 
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down', unique = true, silent = true })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up', unique = true, silent = true })
@@ -35,5 +24,3 @@ map('n', '<Left>', '<C-w>h', { desc = 'Switch to the left split', unique = true 
 map('n', '<Right>', '<C-w>l', { desc = 'Switch to the right split', unique = true })
 map('n', '<Down>', '<C-w>j', { desc = 'Switch to the bottom split', unique = true })
 map('n', '<Up>', '<C-w>k', { desc = 'Switch to the top split', unique = true })
-
-map('n', '<Space>z', ':ZenMode<cr>', { desc = 'Enter ZenMode', unique = true })

@@ -2,6 +2,7 @@ return {
   {
     'nvchad/minty',
     lazy = true,
+    enabled = false,
     keys = {
       {
         '<leader>Cc',
