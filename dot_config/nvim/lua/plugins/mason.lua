@@ -5,14 +5,8 @@ return {
     -- Automatically install LSPs to stdpath for neovim
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-
-    -- Additional lua configuration, makes nvim stuff amazing!
-    'folke/neodev.nvim',
-    -- 'saghen/blink.cmp',
   },
   config = function()
-    -- Setup neovim lua configuration
-    require('neodev').setup()
     -- mason-lspconfig requires that these setup functions are called in this order
     -- before setting up the servers.
     require('mason').setup()
