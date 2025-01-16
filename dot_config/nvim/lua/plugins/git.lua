@@ -1,6 +1,15 @@
 return {
+  {
+    'akinsho/git-conflict.nvim',
+    version = '*',
+    opts = {
+      {
+        disable_diagnostics = true,
+        list_opener = 'copen', -- command or function to open the conflicts list
+      },
+    },
+  },
   -- { 'tpope/vim-fugitive' },
-  { 'akinsho/git-conflict.nvim', version = '*', config = true },
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   -- {
   --   'lewis6991/gitsigns.nvim',
