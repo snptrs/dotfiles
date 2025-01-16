@@ -9,6 +9,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     input = { enabled = true },
+    lazygit = {},
     notifier = opts.notifier,
     picker = opts.picker,
     zen = opts.zen,
