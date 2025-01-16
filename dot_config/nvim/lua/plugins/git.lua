@@ -2,9 +2,19 @@ return {
   {
     'akinsho/git-conflict.nvim',
     version = '*',
+    lazy = false,
     opts = {
+      default_mappings = true,
+      default_commands = true,
       disable_diagnostics = true,
-      list_opener = 'copen', -- command or function to open the conflicts list
+      list_opener = 'copen',
+      highlights = {
+        incoming = 'DiffAdd',
+        current = 'DiffText',
+      },
+    },
+    keys = {
+      { '<leader>gC', '<cmd>GitConflictListQf<CR>', desc = 'List conflicts' },
     },
   },
   -- { 'tpope/vim-fugitive' },

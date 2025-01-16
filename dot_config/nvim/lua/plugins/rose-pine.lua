@@ -32,7 +32,7 @@ return {
         MiniPickMatchMarked = { fg = 'love', bold = true },
 
         GitConflictAncestorLabel = { bg = 'overlay' },
-        GitConflictAncestor = { bg = 'highlight_high' },
+        GitConflictAncestor = { bg = 'overlay' },
 
         Winbar = { fg = 'foam', bg = 'overlay' },
       },

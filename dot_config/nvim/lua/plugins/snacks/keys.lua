@@ -14,7 +14,7 @@ return {
     -- { '<leader>un', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },
     { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' } },
     { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' } },
-    { '<leader>gl', function() Snacks.lazygit.open() end, desc = 'Open lazygit' },
+    { '<leader>lg', function() Snacks.lazygit.open() end, desc = 'Open lazygit' },
     -- stylua: ignore end
   },
   picker = {
