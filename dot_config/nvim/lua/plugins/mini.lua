@@ -9,7 +9,7 @@ local module_names = {
   'misc',
   'operators',
   'pairs',
-  'pick',
+  -- 'pick',
   'surround',
   'visits',
 }
@@ -28,7 +28,6 @@ end
 return {
   'echasnovski/mini.nvim',
   version = false,
-  event = 'VeryLazy',
   dependencies = {
     'JoosepAlviste/nvim-ts-context-commentstring',
     opts = { enable_autocmd = false },

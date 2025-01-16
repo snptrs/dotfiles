@@ -1,3 +1,6 @@
+local opts = require 'plugins.snacks.opts'
+local keys = require 'plugins.snacks.keys'
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -6,110 +9,12 @@ return {
   opts = {
     bigfile = { enabled = true },
     input = { enabled = true },
-    notifier = {
-      enabled = true,
-      timeout = 3000,
-    },
-    zen = {
-      enabled = true,
-      toggles = {
-        dim = false,
-        diagnostics = false,
-      },
-    },
-    styles = {
-      notification = {
-        wo = { wrap = true }, -- Wrap notifications
-      },
-      zen = {
-        backdrop = {
-          transparent = false,
-        },
-      },
-    },
+    notifier = opts.notifier,
+    picker = opts.picker,
+    zen = opts.zen,
+    styles = opts.styles,
   },
-  keys = {
-    {
-      '<leader>z',
-      function()
-        Snacks.zen()
-      end,
-      desc = 'Toggle Zen Mode',
-    },
-    {
-      '<leader>Z',
-      function()
-        Snacks.zen.zoom()
-      end,
-      desc = 'Toggle Zoom',
-    },
-    {
-      '<leader>.',
-      function()
-        Snacks.scratch()
-      end,
-      desc = 'Toggle Scratch Buffer',
-    },
-    {
-      '<leader>S',
-      function()
-        Snacks.scratch.select()
-      end,
-      desc = 'Select Scratch Buffer',
-    },
-    {
-      '<leader>bd',
-      function()
-        Snacks.bufdelete()
-      end,
-      desc = 'Delete Buffer',
-    },
-    {
-      '<leader>cR',
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = 'Rename File',
-    },
-    {
-      '<leader>gB',
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = 'Git Browse',
-      mode = { 'n', 'v' },
-    },
-    {
-      '<leader>gb',
-      function()
-        Snacks.git.blame_line()
-      end,
-      desc = 'Git Blame Line',
-    },
-    {
-      '<leader>un',
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = 'Dismiss All Notifications',
-    },
-    {
-      ']]',
-      function()
-        Snacks.words.jump(vim.v.count1)
-      end,
-      desc = 'Next Reference',
-      mode = { 'n', 't' },
-    },
-    {
-      '[[',
-      function()
-        Snacks.words.jump(-vim.v.count1)
-      end,
-      desc = 'Prev Reference',
-      mode = { 'n', 't' },
-    },
-  },
+  keys = vim.list_extend(keys.general, keys.picker),
   init = function()
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
