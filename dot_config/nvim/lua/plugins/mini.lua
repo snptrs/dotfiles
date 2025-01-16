@@ -10,8 +10,8 @@ local module_names = {
   'misc',
   'operators',
   'pairs',
+  'statusline',
   'surround',
-  'visits',
 }
 
 local function merge_module_keys()
@@ -28,6 +28,7 @@ end
 return {
   'echasnovski/mini.nvim',
   version = false,
+  lazy = false,
   dependencies = {
     'JoosepAlviste/nvim-ts-context-commentstring',
     opts = { enable_autocmd = false },

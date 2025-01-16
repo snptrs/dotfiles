@@ -8,9 +8,14 @@ return {
     win = {
       input = {
         keys = {
-          ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-          ['<C-/>'] = { 'toggle_help', mode = { 'i', 'n' } },
+          -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+          -- ['<C-/>'] = { 'toggle_help', mode = { 'i', 'n' } },
         },
+      },
+    },
+    formatters = {
+      file = {
+        filename_first = true,
       },
     },
   },

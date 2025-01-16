@@ -33,6 +33,7 @@ local options = {
   timeoutlen = 300,
   undofile = true,
   updatetime = 250,
+  winbar = '%t %m',
 }
 
 local globals = {
