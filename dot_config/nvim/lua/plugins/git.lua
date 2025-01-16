@@ -3,10 +3,8 @@ return {
     'akinsho/git-conflict.nvim',
     version = '*',
     opts = {
-      {
-        disable_diagnostics = true,
-        list_opener = 'copen', -- command or function to open the conflicts list
-      },
+      disable_diagnostics = true,
+      list_opener = 'copen', -- command or function to open the conflicts list
     },
   },
   -- { 'tpope/vim-fugitive' },

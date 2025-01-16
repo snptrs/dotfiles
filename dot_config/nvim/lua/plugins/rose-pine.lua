@@ -31,6 +31,9 @@ return {
         MiniPickMatchCurrent = { fg = 'gold', bold = true },
         MiniPickMatchMarked = { fg = 'love', bold = true },
 
+        GitConflictAncestorLabel = { bg = 'overlay' },
+        GitConflictAncestor = { bg = 'highlight_high' },
+
         Winbar = { fg = 'foam', bg = 'overlay' },
       },
     }
