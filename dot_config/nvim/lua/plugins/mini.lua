@@ -3,15 +3,17 @@ local module_names = {
   'align',
   'bracketed',
   'comment',
+  'diff',
   'extra',
   'files',
+  'git',
+  'icons',
   'indentscope',
   'misc',
   'operators',
   'pairs',
-  'pick',
+  'statusline',
   'surround',
-  'visits',
 }
 
 local function merge_module_keys()
@@ -28,7 +30,7 @@ end
 return {
   'echasnovski/mini.nvim',
   version = false,
-  event = 'VeryLazy',
+  lazy = false,
   dependencies = {
     'JoosepAlviste/nvim-ts-context-commentstring',
     opts = { enable_autocmd = false },

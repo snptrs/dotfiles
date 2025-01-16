@@ -7,5 +7,5 @@ return {
     'codecompanion',
   } },
   ft = { 'markdown', 'Avante', 'codecompanion' },
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
 }

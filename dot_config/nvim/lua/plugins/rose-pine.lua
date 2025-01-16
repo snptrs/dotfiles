@@ -28,8 +28,10 @@ return {
         PmenuSel = { bg = '#353A45' },
         Pmenu = { fg = '#C5CDD9', bg = '#22252A' },
 
-        MiniPickMatchCurrent = { fg = "gold", bold = true },
-        MiniPickMatchMarked = { fg = "love", bold = true }
+        MiniPickMatchCurrent = { fg = 'gold', bold = true },
+        MiniPickMatchMarked = { fg = 'love', bold = true },
+
+        Winbar = { fg = 'foam', bg = 'overlay' },
       },
     }
     vim.cmd 'colorscheme rose-pine'

@@ -1,9 +1,10 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    'echasnovski/mini.nvim',
   },
   event = 'ColorScheme',
+  enabled = false,
   config = function()
     local function diff_source()
       local gitsigns = vim.b.gitsigns_status_dict

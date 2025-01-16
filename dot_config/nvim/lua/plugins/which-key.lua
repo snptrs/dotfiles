@@ -31,8 +31,6 @@ return {
       { ']t', '<cmd>tabn<cr>', desc = 'Next tab' },
       { '[t', '<cmd>tabp<cr>', desc = 'Previous tab' },
       { 'gd', icon = ' ' },
-      { 'gD', icon = ' ' },
-      { 'gD', icon = ' ' },
       { 'gr', icon = ' ' },
     },
   },
