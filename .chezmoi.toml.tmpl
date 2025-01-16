@@ -2,6 +2,8 @@
 {{- $work_email := promptStringOnce . "work_email" "Work email address" -}}
 {{- $is_work_mac := promptBoolOnce . "is_work_mac" "Is this a work Mac" -}}
 {{- $restic_healthchecks_success := promptStringOnce . "restic_healthchecks_success" "Restic success URL" -}}
+{{- $pet_gist_id := promptStringOnce . "pet_gist_id" "Pet gist ID" -}}
+{{- $pet_gist_token := promptStringOnce . "pet_gist_token" "Pet gist token" -}}
 {{- if eq .chezmoi.arch "arm64" -}}
 cd.command = "/opt/homebrew/bin/fish"
 {{- else -}}
@@ -20,3 +22,5 @@ work_git_config = "~/Work/.gitconfig"
 notes_directories = "~/Code/Projects/til"
 restic_healthchecks_success = {{ $restic_healthchecks_success | quote }}
 restic_backup_time = 40
+pet_gist_id = {{ $pet_gist_id | quote }}
+pet_gist_token = {{ $pet_gist_token | quote }}

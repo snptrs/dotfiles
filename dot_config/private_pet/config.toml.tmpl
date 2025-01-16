@@ -12,6 +12,8 @@ cmd = ["fish", "-c"]
 file_name = "pet-snippet.toml"
 public = false
 auto_sync = true
+gist_id = {{ .pet_gist_id | quote }}
+access_token = {{ .pet_gist_token | quote }}
 
 [GitLab]
 file_name = "pet-snippet.toml"

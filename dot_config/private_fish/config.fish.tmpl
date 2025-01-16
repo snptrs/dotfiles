@@ -1,10 +1,5 @@
 set -g fish_greeting
 
-## set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
-set -gx ANDROID_HOME $HOME/Library/Android/sdk
-fish_add_path $ANDROID_HOME/emulator 
-fish_add_path $ANDROID_HOME/platform-tools
-fish_add_path $ANDROID_HOME/cmdline-tools/latest/bin
 fish_add_path /Users/seanpeters/.local/share/bob/nvim-bin
 
 set -g tide_left_prompt_items pwd git newline character
@@ -21,15 +16,13 @@ if status is-interactive
   {{- end }}
 
   set -gx EDITOR "nvim"
-  set -gx ZK_NOTEBOOK_DIR "/Users/seanpeters/Notes"
   set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
   set -x FZF_DEFAULT_OPTS --cycle --layout=reverse --border --height=90% --marker="*" --preview-window=right:65%,wrap --bind "ctrl-f:preview-page-down,ctrl-b:preview-page-up"
-  set -a fish_function_path ~/.config/fish/functions/sp
   set -Ux BAT_THEME "base16"
   set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
   set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
 
-  bind alt-c 'pet-select'
+  bind \ec 'pet-select'
   bind \cs 'history-pager'
   bind \ep 'pj'
   set -gx LS_COLORS (vivid generate rose-pine)

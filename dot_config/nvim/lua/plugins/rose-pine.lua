@@ -4,6 +4,7 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
+    ---@diagnostic disable-next-line:missing-fields
     require('rose-pine').setup {
       disable_italics = true,
       bold_vert_split = false,
@@ -11,6 +12,7 @@ return {
       groups = {
         punctuation = 'subtle',
       },
+
       highlight_groups = {
         Comment = { italic = true },
         Keyword = { italic = true },
@@ -34,7 +36,7 @@ return {
         GitConflictAncestorLabel = { bg = 'overlay' },
         GitConflictAncestor = { bg = 'overlay' },
 
-        Winbar = { fg = 'foam', bg = 'overlay' },
+        WinBar = { fg = 'foam', bg = 'overlay' },
       },
     }
     vim.cmd 'colorscheme rose-pine'
