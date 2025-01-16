@@ -5,11 +5,11 @@ local module_names = {
   'comment',
   'extra',
   'files',
+  'icons',
   'indentscope',
   'misc',
   'operators',
   'pairs',
-  -- 'pick',
   'surround',
   'visits',
 }

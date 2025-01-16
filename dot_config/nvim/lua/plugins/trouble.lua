@@ -1,6 +1,5 @@
 return {
   'folke/trouble.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     modes = {
       lsp_document_symbols = {
