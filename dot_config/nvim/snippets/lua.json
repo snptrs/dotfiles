@@ -1,0 +1,27 @@
+{
+  "mini deps add": {
+    "prefix": ["add", "dep"],
+    "body": ["deps.add {\n\tsource = '$1'\n}\nrequire('$2').setup {$0}"],
+    "description": "Add a plugin using mini.deps"
+  },
+  "mini deps later": {
+    "prefix": ["later"],
+    "body": ["deps.later(function()\n\t$0\nend)"],
+    "description": "Run code later with mini.deps"
+  },
+  "mini deps now": {
+    "prefix": ["now"],
+    "body": ["deps.now(function()\n\t$0\nend)"],
+    "description": "Run code now with mini.deps"
+  },
+  "set keymap": {
+    "prefix": ["keymap"],
+    "body": ["vim.keymap.set({ noremap = true, silent = true })"],
+    "description": "Set a keymap"
+  },
+  "diagnostic ignore": {
+    "prefix": ["ignore", "diagnostic"],
+    "body": ["---@diagnostic disable-next-line: $0"],
+    "description": "Ignore a diagnostic"
+  }
+}

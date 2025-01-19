@@ -12,6 +12,7 @@ local options = {
   laststatus = 3,
   linebreak = true,
   -- listchars = 'tab:>-,lead:\\xB7',
+  -- messagesopt = 'wait:3000,history:1000',
   mouse = 'a', -- Enable mouse mode
   number = true,
   pumheight = 15, -- Number of entries to show in popup menu
@@ -19,7 +20,7 @@ local options = {
   scrolloff = 8,
   sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions',
   shiftwidth = 2,
-  shortmess = 'IltToOCF',
+  shortmess = 'IltToOCFWc',
   -- showbreak = '↪',
   -- showbreak = '󱞵 ',
   showbreak = ' ',
@@ -58,7 +59,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = gr,
   pattern = '*',
   callback = function()
-    vim.highlight.on_yank { timeout = 300 }
+    vim.highlight.on_yank { timeout = 250 }
   end,
   desc = 'Highlight yanked text',
 })
+
+vim.diagnostic.config { virtual_text = true }
