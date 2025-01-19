@@ -16,9 +16,6 @@ vim.keymap.set('n', '<leader>\\', function()
   end
 end, { desc = 'Tree focus', unique = true })
 
-map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down', unique = true, silent = true })
-map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up', unique = true, silent = true })
-
 -- Split Navigation
 map('n', '<Left>', '<C-w>h', { desc = 'Switch to the left split', unique = true })
 map('n', '<Right>', '<C-w>l', { desc = 'Switch to the right split', unique = true })

@@ -1,11 +1,11 @@
 deps.later(function()
   deps.add {
-    source = 'zbirenbaum/copilot.lua'
+    source = 'zbirenbaum/copilot.lua',
   }
   require('copilot').setup {
     auto_refresh = true,
     suggestion = {
-      enabled = false,
+      enabled = true,
       auto_trigger = false,
       keymap = {
         accept = '<C-j>',
@@ -20,6 +20,5 @@ deps.later(function()
       enabled = false,
     },
     copilot_node_command = '/System/Volumes/Data/Users/seanpeters/Library/Application Support/fnm/aliases/20/bin/node',
-
   }
 end)
