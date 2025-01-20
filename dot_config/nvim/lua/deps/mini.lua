@@ -98,6 +98,7 @@ deps.later(function()
   require('mini.pairs').setup {
     mappings = {
       ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^`\\].', register = { cr = false } },
+      -- ['('] = { action = 'closeopen', pair = '()', neigh_pattern = '[^\\S]', register = { cr = false } },
     },
   }
 end)
@@ -110,7 +111,7 @@ end)
 deps.later(function()
   require('mini.misc').setup()
   require('mini.misc').setup_restore_cursor()
-  require('mini.misc').setup_auto_root()
+  -- require('mini.misc').setup_auto_root()
 end)
 
 deps.later(function()
