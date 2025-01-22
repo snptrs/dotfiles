@@ -24,7 +24,6 @@ return {
     vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
 
     -- Git mappings
-    vim.keymap.set('n', '<leader>gc', function() Snacks.picker.git_log() end, { desc = 'Git Log' })
     vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
 
     -- Grep mappings

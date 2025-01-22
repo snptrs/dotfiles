@@ -13,16 +13,6 @@ deps.now(function()
 end)
 
 deps.now(function()
-  local conf = require 'deps.config.mini-statusline'
-  require('mini.statusline').setup { content = { active = conf.active_content } }
-  conf.autocmds()
-end)
-
-deps.now(function()
-  require('deps.config.mini-sessions').config()
-end)
-
-deps.now(function()
   require('mini.diff').setup {
     options = {
       wrap_goto = true,
@@ -35,6 +25,22 @@ end)
 
 deps.now(function()
   require('mini.git').setup()
+  local git_helpers = require 'helpers.git-helpers'
+  --stylua: ignore start
+  vim.keymap.set('n', '<Leader>gc', '<cmd>Git commit -v<cr>', {desc = 'Commit'})
+  vim.keymap.set('n', '<Leader>gdd', '<cmd>Git diff<cr>', {desc = 'Git diff (basic)'})
+  vim.keymap.set('n', '<Leader>gas', function() MiniGit.show_at_cursor() end, { desc = 'Show git data' })
+  vim.keymap.set('n', '<Leader>gae', git_helpers.edit_path_at_cursor, { desc = 'Edit path at cursor' })
+  --stylua: ignore end
+end)
+
+deps.now(function()
+  local conf = require 'deps.config.mini-statusline'
+  require('mini.statusline').setup { content = { active = conf.active_content } }
+end)
+
+deps.now(function()
+  require('deps.config.mini-sessions').config()
 end)
 
 deps.later(function()

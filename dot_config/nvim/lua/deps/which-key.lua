@@ -1,5 +1,6 @@
 deps.now(function()
-  deps.add {source = 'folke/which-key.nvim'}
+  deps.add { source = 'folke/which-key.nvim' }
+  ---@diagnostic disable-next-line: missing-fields
   require('which-key').setup {
     ---@type false | "classic" | "modern" | "helix"
     preset = 'classic',
@@ -19,6 +20,7 @@ deps.now(function()
       { '<leader>s', group = 'Session' },
       { '<leader>w', group = 'Workspace' },
       { '<leader>t', group = 'Trouble' },
+      { '<leader>ga', group = 'Git (cursor actions)' },
       { '<leader>,', desc = 'Grapple' },
       { '[', group = 'prev' },
       { ']', group = 'next' },

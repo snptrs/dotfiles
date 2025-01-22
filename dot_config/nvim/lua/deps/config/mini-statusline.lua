@@ -8,6 +8,7 @@ return {
     local search_count = MiniStatusline.section_searchcount { trunc_width = 75 }
 
     local macro = vim.g.macro_recording
+    local diff_overlay = (MiniDiff.get_buf_data(0) and MiniDiff.get_buf_data(0).overlay) and '' or nil
 
     return MiniStatusline.combine_groups {
       { hl = mode_hl, strings = { mode } },
@@ -16,7 +17,7 @@ return {
       { hl = 'MiniStatuslineFilename', strings = { '%f' } },
       '%=', -- End left alignment
       { hl = 'MiniStatuslineFileinfo', strings = { lsp } },
-      { hl = mode_hl, strings = { search_count, macro } },
+      { hl = mode_hl, strings = { search_count, macro, diff_overlay } },
     }
   end,
 
