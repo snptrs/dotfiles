@@ -1,0 +1,9 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --diff-so-fancy --paging=never
+os:
+  editPreset: "nvim"
+gui:
+  sidePanelWidth: 0.25
+  expandFocusedSidePanel: true

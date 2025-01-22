@@ -9,11 +9,18 @@ return {
 
   picker = {
     opts = {
+      actions = require('trouble.sources.snacks').actions,
       win = {
         input = {
           keys = {
-            -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-            -- ['<C-/>'] = { 'toggle_help', mode = { 'i', 'n' } },
+            ['<c-t>'] = {
+              'trouble_open',
+              mode = { 'n', 'i' },
+            },
+            ['<m-t>'] = {
+              'trouble_add',
+              mode = { 'n', 'i' },
+            },
           },
         },
       },

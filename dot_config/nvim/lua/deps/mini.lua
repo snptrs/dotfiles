@@ -23,7 +23,11 @@ deps.now(function()
 end)
 
 deps.now(function()
-  require('mini.diff').setup()
+  require('mini.diff').setup {
+    options = {
+      wrap_goto = true,
+    },
+  }
   vim.keymap.set('n', '<leader>go', function()
     MiniDiff.toggle_overlay(0)
   end, { desc = 'Show mini.diff overlay' })

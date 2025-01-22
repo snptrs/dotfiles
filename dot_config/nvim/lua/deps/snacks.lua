@@ -1,6 +1,7 @@
 deps.now(function()
   deps.add {
     source = 'folke/snacks.nvim',
+    depends = { 'folke/trouble.nvim' },
   }
 
   local conf = require 'deps.config.snacks-opts'

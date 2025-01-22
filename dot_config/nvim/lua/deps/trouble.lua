@@ -1,4 +1,4 @@
-deps.later(function()
+deps.now(function()
   deps.add {
     source = 'folke/trouble.nvim',
   }
