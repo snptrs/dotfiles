@@ -37,6 +37,9 @@ deps.now(function()
       GitConflictAncestor = { bg = 'overlay' },
 
       WinBar = { fg = 'foam', bg = 'overlay' },
+      DiffText = { blend = 25 },
+      DiffChange = { blend = 10 },
+      DiffDelete = { blend = 30 },
     },
   }
 

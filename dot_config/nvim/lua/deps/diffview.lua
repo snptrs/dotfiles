@@ -5,6 +5,9 @@ deps.later(function()
   require('diffview').setup {
     enhanced_diff_hl = true,
     view = {
+      default = {
+        disable_diagnostics = true,
+      },
       merge_tool = {
         layout = 'diff3_mixed',
       },

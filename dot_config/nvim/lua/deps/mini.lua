@@ -37,6 +37,7 @@ end)
 deps.now(function()
   local conf = require 'deps.config.mini-statusline'
   require('mini.statusline').setup { content = { active = conf.active_content } }
+  conf.autocmds()
 end)
 
 deps.now(function()

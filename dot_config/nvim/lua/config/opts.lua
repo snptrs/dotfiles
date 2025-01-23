@@ -44,7 +44,7 @@ local globals = {
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 
-vim.opt.fillchars:append { diff = ' ' }
+vim.opt.fillchars:append { diff = '╱' }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
