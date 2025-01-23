@@ -39,7 +39,7 @@ deps.now(function()
       WinBar = { fg = 'foam', bg = 'overlay' },
       DiffText = { blend = 25 },
       DiffChange = { blend = 10 },
-      DiffDelete = { blend = 30 },
+      DiffDelete = { blend = 20 },
     },
   }
 
