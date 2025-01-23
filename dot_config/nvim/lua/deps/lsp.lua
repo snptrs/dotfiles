@@ -105,7 +105,7 @@ deps.now(function()
       vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>dca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ctions')
 
     if client.name == 'vtsls' then
       -- VTSLS keymaps

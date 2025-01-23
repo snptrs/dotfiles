@@ -13,10 +13,10 @@ return {
     vim.keymap.set('n', '<leader>un', function() Snacks.notifier.hide() end, { desc = 'Dismiss All Notifications' })
     vim.keymap.set('n', ']]', function() Snacks.words.jump(vim.v.count1) end, { desc = 'Next Reference' })
     vim.keymap.set('n', '[[', function() Snacks.words.jump(-vim.v.count1) end, { desc = 'Prev Reference' })
-    vim.keymap.set('n', '<leader>lg', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
+    vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
 
     -- Picker mappings
-    vim.keymap.set('n', '<leader><space>', function() Snacks.picker.buffers(opts.pickers.buffers) end, { desc = 'Buffers' })
+    vim.keymap.set('n', '<leader><space>', function() Snacks.picker.buffers(opts.pickers.buffers) end, { desc = 'Open buffers' })
     vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
     vim.keymap.set('n', '<leader>:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
     vim.keymap.set('n', '<leader>ff', function() return Snacks.picker.files(opts.pickers.files) end, { desc = 'Find Files' })
