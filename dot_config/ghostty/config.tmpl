@@ -12,8 +12,16 @@ macos-option-as-alt = "left"
 cursor-invert-fg-bg = true
 adjust-cell-height = 5%
 adjust-cursor-height = 5%
+macos-titlebar-style = "hidden"
 {{- if eq .chezmoi.arch "arm64" }}
 command = /opt/homebrew/bin/fish --login --interactive
 {{- else }}
 command = /usr/local/bin/fish --login --interactive
 {{- end }}
+keybind = cmd+t=unbind
+keybind = cmd+n=unbind
+keybind = cmd+c=unbind
+keybind = cmd+w=unbind
+keybind = cmd+shift+[=unbind
+keybind = cmd+shift+]=unbind
+keybind = cmd+d=unbind

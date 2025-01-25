@@ -4,12 +4,16 @@ function pj
     and commandline $cmd
     set fzf_status $status
     set session_name (basename "$session")
+
+    set session_list (zellij list-sessions -n | awk '{print $1}')
     # wezterm cli spawn --cwd $session --workspace $session_name --new-window
 
     if test $fzf_status -eq 0
         clear
         cd $session
     end
+
+    zellij attach -c "$session_name"
 
     # if not tmux has-session -t "$session_name"
     # tmux new-session -A -s "$session_name" -c "$session"

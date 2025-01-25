@@ -1,0 +1,38 @@
+layout {
+  tab name="fe edit" {
+    pane
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+  tab name="fe cmd" {
+    pane split_direction="vertical" {
+      pane
+      pane split_direction="horizontal" {
+        pane
+        pane
+      }
+    } 
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+  tab name="be edit" {
+    pane
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+  tab name="be cmd" {
+    pane split_direction="vertical" {
+      pane
+      pane split_direction="horizontal" {
+        pane
+        pane
+      }
+    } 
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+}

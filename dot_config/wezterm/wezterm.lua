@@ -4,6 +4,8 @@ local wezterm = require("wezterm")
 local colors = require("themes/rose-pine").colors()
 local window_frame = require("themes/rose-pine").window_frame()
 
+local workspace_path = "start"
+
 -- This table will hold the configuration.
 local config = {}
 local brew_path = ""
@@ -27,28 +29,32 @@ else
 end
 
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
-workspace_switcher.set_zoxide_path(brew_path .. "zoxide")
+workspace_switcher.zoxide_path = brew_path .. "zoxide"
+
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+
+config.leader = {
+	key = "Space",
+	mods = "OPT",
+	timeout_milliseconds = 2000,
+}
 
 config.set_environment_variables = { VTE_VERSION = "6003" }
 config.font = wezterm.font_with_fallback({
 	{
-		family = "Berkeley Mono Variable",
-		weight = "Medium",
+		family = "TX-02",
+		weight = "Regular",
 		harfbuzz_features = {
 			"calt",
 			"liga",
-			-- "ss01", -- Plain 0
-			-- "ss02", -- Dotted 0
-			-- "ss03", -- Slashed 0
-			-- "ss04", -- Alternate 0
-			-- "ss05", -- Plain 7
-			-- "ss06", -- Slashed 7
 		},
 	},
 })
+
 config.font_size = 15.8
-config.line_height = 1.20
+config.line_height = 1.15
 config.colors = colors
+config.colors.compose_cursor = "orange"
 config.default_cursor_style = "BlinkingBar"
 config.window_frame = window_frame
 config.window_decorations = "RESIZE"
@@ -73,26 +79,26 @@ config.mouse_bindings = {
 
 config.ssh_domains = {
 	{
-		name = "imac",
-		remote_address = "imac",
+		name = "mac",
+		remote_address = "mac",
 		remote_wezterm_path = "/opt/homebrew/bin/wezterm",
 	},
 }
 
 config.keys = {
-	{ key = "l", mods = "SUPER", action = wezterm.action.ShowLauncher },
+	{ key = "l", mods = "LEADER", action = wezterm.action.ShowLauncher },
 	{ key = "s", mods = "SUPER", action = wezterm.action.ShowLauncherArgs({ flags = "WORKSPACES" }) },
-	{ key = "q", mods = "SHIFT|CTRL|OPT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
+	{ key = "q", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 	{
 		key = "v",
-		mods = "SHIFT|CTRL|OPT",
+		mods = "LEADER|OPT",
 		action = wezterm.action.SplitPane({
 			direction = "Right",
 		}),
 	},
 	{
 		key = "s",
-		mods = "SHIFT|CTRL|OPT",
+		mods = "LEADER|OPT",
 		action = wezterm.action.SplitPane({
 			direction = "Down",
 		}),
@@ -101,19 +107,46 @@ config.keys = {
 	{ key = "DownArrow", mods = "SHIFT", action = wezterm.action.ScrollToPrompt(1) },
 	{
 		key = "s",
-		mods = "OPT",
-		action = workspace_switcher.switch_workspace(
-			" | "
+		mods = "LEADER",
+		action = workspace_switcher.switch_workspace({
+			extra_args = " | "
 				.. brew_path
-				.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null"
-		),
+				.. "fd -d 1 -t d --hidden . ~/Code/Projects ~/Work/Code/Projects ~/Code/Projects/ipecs-connect 2>/dev/null",
+		}),
+	},
+	-- Resurrect
+	{
+		key = "w",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(win, pane)
+			resurrect.save_state(resurrect.workspace_state.get_workspace_state())
+		end),
+	},
+	{
+		key = "W",
+		mods = "LEADER",
+		action = resurrect.window_state.save_window_action(),
+	},
+	{
+		key = "T",
+		mods = "LEADER",
+		action = resurrect.tab_state.save_tab_action(),
+	},
+	{
+		key = "s",
+		mods = "LEADER|SUPER",
+		action = wezterm.action_callback(function(win, pane)
+			resurrect.save_state(resurrect.workspace_state.get_workspace_state())
+			resurrect.window_state.save_window_action()
+		end),
 	},
 }
 
 wezterm.on("update-right-status", function(window, pane)
 	-- Each element holds the text for a cell in a "powerline" style << fade
 	local cells = {}
-	table.insert(cells, window:active_workspace())
+	-- table.insert(cells, window:active_workspace())
+	table.insert(cells, workspace_path)
 	table.insert(cells, pane:get_domain_name())
 
 	-- The powerline < symbol
@@ -122,7 +155,7 @@ wezterm.on("update-right-status", function(window, pane)
 	local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
 	-- Color palette for the backgrounds of each cell
-	local colors = {
+	local status_colors = {
 		"#31748f",
 		"#3783A1",
 		"#3D91B2",
@@ -143,14 +176,14 @@ wezterm.on("update-right-status", function(window, pane)
 		local cell_no = num_cells + 1
 		if text == "imac" or text == "unix" then
 			table.insert(elements, { Foreground = { Color = "#f6c177" } })
-			table.insert(elements, { Background = { Color = colors[cell_no] } })
+			table.insert(elements, { Background = { Color = status_colors[cell_no] } })
 		else
 			table.insert(elements, { Foreground = { Color = text_fg } })
-			table.insert(elements, { Background = { Color = colors[cell_no] } })
+			table.insert(elements, { Background = { Color = status_colors[cell_no] } })
 		end
 		table.insert(elements, { Text = " " .. text .. " " })
 		if not is_last then
-			table.insert(elements, { Foreground = { Color = colors[cell_no + 1] } })
+			table.insert(elements, { Foreground = { Color = status_colors[cell_no + 1] } })
 			table.insert(elements, { Text = SOLID_LEFT_ARROW })
 			num_cells = num_cells + 1
 		end
@@ -194,36 +227,36 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	end
 end)
 
--- This is for zenmode.nvim
-wezterm.on("user-var-changed", function(window, pane, name, value)
-	local overrides = window:get_config_overrides() or {}
-	if name == "ZEN_MODE" then
-		local incremental = value:find("+")
-		local number_value = tonumber(value)
-		if incremental ~= nil then
-			while number_value > 0 do
-				window:perform_action(wezterm.action.IncreaseFontSize, pane)
-				number_value = number_value - 1
-			end
-			overrides.enable_tab_bar = false
-		elseif number_value < 0 then
-			window:perform_action(wezterm.action.ResetFontSize, pane)
-			overrides.font_size = nil
-			overrides.enable_tab_bar = true
-		else
-			overrides.font_size = number_value
-			overrides.enable_tab_bar = false
-		end
-	end
-	window:set_config_overrides(overrides)
-end)
-
-workspace_switcher.set_workspace_formatter(function(label)
+workspace_switcher.workspace_formatter = function(label)
 	return wezterm.format({
 		{ Attribute = { Italic = true } },
 		{ Foreground = { Color = "#f6c177" } },
 		{ Text = "󱂬: " .. label },
 	})
+end
+
+wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, workspace)
+	local base_path = string.gsub(workspace, "(.*[/\\])(.*)", "%2")
+	workspace_path = base_path
+end)
+
+wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, path, label)
+	local workspace_state = resurrect.workspace_state
+
+	workspace_state.restore_workspace(resurrect.load_state(label, "workspace"), {
+		window = window,
+		relative = true,
+		restore_text = true,
+		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+	})
+	local base_path = string.gsub(path, "(.*[/\\])(.*)", "%2")
+	workspace_path = base_path
+end)
+
+-- Saves the state whenever I select a workspace
+wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(window, path, label)
+	local workspace_state = resurrect.workspace_state
+	resurrect.save_state(workspace_state.get_workspace_state())
 end)
 
 -- and finally, return the configuration to wezterm

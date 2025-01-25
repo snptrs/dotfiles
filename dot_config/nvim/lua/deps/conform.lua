@@ -22,6 +22,7 @@ deps.later(function()
       php = { 'pint', 'phpcbf' },
       toml = { 'taplo' },
       fish = { 'fish_indent' },
+      kdl = { 'kdlfmt' },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
