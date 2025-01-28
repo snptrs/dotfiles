@@ -18,7 +18,7 @@ return {
     -- Picker mappings
     vim.keymap.set('n', '<leader><space>', function() Snacks.picker.buffers(opts.pickers.buffers) end, { desc = 'Open buffers' })
     vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
-    vim.keymap.set('n', '<leader>:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
+    vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
     vim.keymap.set('n', '<leader>ff', function() return Snacks.picker.files(opts.pickers.files) end, { desc = 'Find Files' })
     vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
     vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })

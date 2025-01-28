@@ -22,6 +22,8 @@ if status is-interactive
   set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
   set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
   set -gx ZELLIJ_CONFIG_DIR ~/.config/zellij
+  set -gx COLIMA_HOME ~/.colima
+  set -gx DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
 
   bind \ec 'pet-select'
   bind \cs 'history-pager'
