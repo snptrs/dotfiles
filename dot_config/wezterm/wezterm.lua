@@ -43,7 +43,7 @@ config.leader = {
 
 config.set_environment_variables = { VTE_VERSION = "6003" }
 
-config.font = wezterm.font_with_fallback({ "TX-02" })
+config.font = wezterm.font_with_fallback({ "TX-02", "Symbols Nerd Font Mono" })
 config.font_rules = {
 	{
 		intensity = "Bold",
