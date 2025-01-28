@@ -42,16 +42,28 @@ config.leader = {
 }
 
 config.set_environment_variables = { VTE_VERSION = "6003" }
-config.font = wezterm.font_with_fallback({
+
+config.font = wezterm.font_with_fallback({ "TX-02" })
+config.font_rules = {
 	{
-		family = "TX-02",
-		weight = "Regular",
-		harfbuzz_features = {
-			"calt",
-			"liga",
-		},
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font({
+			family = "TX-02",
+			weight = "Bold",
+			italic = false,
+		}),
 	},
-})
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({
+			family = "TX-02",
+			weight = "Bold",
+			italic = true,
+		}),
+	},
+}
 
 config.font_size = 15.8
 config.line_height = 1.1

@@ -3,8 +3,8 @@ local options = {
   breakindent = true,
   clipboard = 'unnamedplus',
   cmdheight = 0,
-  colorcolumn = '81',
-  cursorline = true,
+  -- colorcolumn = '81',
+  -- cursorline = true,
   expandtab = true,
   guicursor = 'i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150,r-cr-o:hor20',
   hlsearch = true,
@@ -34,7 +34,7 @@ local options = {
   timeoutlen = 300,
   undofile = true,
   updatetime = 250,
-  winbar = '%t %m',
+  winbar = '%f %m',
 }
 
 local globals = {
@@ -62,6 +62,26 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank { timeout = 250 }
   end,
   desc = 'Highlight yanked text',
+})
+
+vim.api.nvim_create_autocmd('WinEnter', {
+  group = gr,
+  pattern = '*',
+  callback = function()
+    vim.cmd 'set cul'
+    vim.cmd 'set colorcolumn=81'
+  end,
+  desc = 'Show cursorline on WinEnter',
+})
+
+vim.api.nvim_create_autocmd('WinLeave', {
+  group = gr,
+  pattern = '*',
+  callback = function()
+    vim.cmd 'set nocul'
+    vim.cmd 'set colorcolumn=0'
+  end,
+  desc = 'Hide cursorline on WinLeave',
 })
 
 vim.diagnostic.config { virtual_text = true }

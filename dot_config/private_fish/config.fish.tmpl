@@ -24,6 +24,7 @@ if status is-interactive
   set -gx ZELLIJ_CONFIG_DIR ~/.config/zellij
   set -gx COLIMA_HOME ~/.colima
   set -gx DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
+  set -gx STARSHIP_LOG error
 
   bind \ec 'pet-select'
   bind \cs 'history-pager'
