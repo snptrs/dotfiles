@@ -381,14 +381,11 @@ keybinds clear-defaults=true {
         bind "Super Shift ]" {
             GoToNextTab
         }
-        bind "Super w" {
+        bind "Ctrl Alt Shift w" {
             CloseTab
         }
-        bind "Super t" {
+        bind "Ctrl Alt t" {
             NewTab
-        }
-        bind "Super p" {
-            NewPane
         }
         bind "Super d" {
             Detach
@@ -592,7 +589,7 @@ default_shell "fish"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "compact"
+default_layout "default"
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 //
@@ -606,7 +603,7 @@ default_layout "compact"
 //   - true (default, enabled)
 //   - false
 //
-// pane_frames false
+pane_frames false
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
 // eg. when terminal window with an active zellij session is closed
 // (Requires restart)
