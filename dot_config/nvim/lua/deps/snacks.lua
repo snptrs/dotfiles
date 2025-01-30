@@ -13,7 +13,7 @@ deps.now(function()
     input = { enabled = true },
     lazygit = {},
     notifier = conf.notifier.opts,
-    picker = conf.picker.opts,
+    picker = { enabled = false },
     zen = conf.zen.opts,
     styles = conf.styles.opts,
   }

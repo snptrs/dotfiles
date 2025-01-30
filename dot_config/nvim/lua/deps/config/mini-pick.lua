@@ -73,94 +73,6 @@ local choose_marked = function()
 end
 
 return {
-  keys = {
-    {
-      '<leader>ff',
-      function()
-        require('mini.pick').builtin.files(nil, { window = {
-          config = big_window,
-        } })
-      end,
-      desc = 'Find files',
-    },
-    {
-      '<leader>fg',
-      function()
-        require('mini.pick').builtin.grep_live(nil, { window = {
-          config = big_window,
-        } })
-      end,
-      desc = 'Grep files',
-    },
-    {
-      '<leader>fr',
-      function()
-        require('mini.pick').builtin.resume(nil, { window = {
-          config = big_window,
-        } })
-      end,
-      desc = 'Resume find',
-    },
-    {
-      '<leader>fv',
-      function()
-        require('mini.extra').pickers.visit_paths({
-          recency_weight = 1,
-        }, {
-          window = {
-            config = small_window,
-          },
-        })
-      end,
-      desc = 'Visit paths',
-    },
-    {
-      '<space><space>',
-      function()
-        require('mini.pick').builtin.buffers({ include_current = false }, {
-          mappings = {
-            wipeout = {
-              char = '<C-d>',
-              func = function()
-                local picker = require 'mini.pick'
-                vim.api.nvim_buf_delete(picker.get_picker_matches().current.bufnr, {})
-              end,
-            },
-          },
-        })
-      end,
-      desc = 'Open buffers',
-    },
-    {
-      'gd',
-      function()
-        lsp_picker('definition', true)
-      end,
-      desc = 'Goto definition',
-    },
-    {
-      'gr',
-      function()
-        lsp_picker('references', true)
-      end,
-      desc = 'Goto references',
-    },
-    {
-      'gD',
-      function()
-        lsp_picker('declaration', true)
-      end,
-      desc = 'Goto declaration',
-    },
-    {
-      'gT',
-      function()
-        lsp_picker('type_definition', true)
-      end,
-      desc = 'Goto type definition',
-    },
-  },
-
   setup = function()
     require('mini.pick').setup {
       options = {
@@ -199,5 +111,63 @@ return {
       end
       return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
     end
+
+    vim.keymap.set('n', '<leader>ff', function()
+      require('mini.pick').builtin.files(nil, { window = {
+        config = big_window,
+      } })
+    end, { desc = 'Find files' })
+
+    vim.keymap.set('n', '<leader>fg', function()
+      require('mini.pick').builtin.grep_live(nil, { window = {
+        config = big_window,
+      } })
+    end, { desc = 'Grep files' })
+
+    vim.keymap.set('n', '<leader>fr', function()
+      require('mini.pick').builtin.resume(nil, { window = {
+        config = big_window,
+      } })
+    end, { desc = 'Resume find' })
+
+    vim.keymap.set('n', '<leader>fv', function()
+      require('mini.extra').pickers.visit_paths({
+        recency_weight = 1,
+      }, {
+        window = {
+          config = small_window,
+        },
+      })
+    end, { desc = 'Visit paths' })
+
+    vim.keymap.set('n', '<space><space>', function()
+      require('mini.pick').builtin.buffers({ include_current = false }, {
+        mappings = {
+          wipeout = {
+            char = '<C-d>',
+            func = function()
+              local picker = require 'mini.pick'
+              vim.api.nvim_buf_delete(picker.get_picker_matches().current.bufnr, {})
+            end,
+          },
+        },
+      })
+    end, { desc = 'Open buffers' })
+
+    vim.keymap.set('n', 'gd', function()
+      lsp_picker('definition', true)
+    end, { desc = 'Goto definition' })
+
+    vim.keymap.set('n', 'gr', function()
+      lsp_picker('references', true)
+    end, { desc = 'Goto references' })
+
+    vim.keymap.set('n', 'gD', function()
+      lsp_picker('declaration', true)
+    end, { desc = 'Goto declaration' })
+
+    vim.keymap.set('n', 'gT', function()
+      lsp_picker('type_definition', true)
+    end, { desc = 'Goto type definition' })
   end,
 }

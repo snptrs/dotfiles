@@ -13,6 +13,10 @@ deps.now(function()
 end)
 
 deps.now(function()
+  require('deps.config.mini-pick').setup()
+end)
+
+deps.now(function()
   require('mini.diff').setup {
     options = {
       wrap_goto = true,

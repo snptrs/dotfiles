@@ -16,12 +16,12 @@ return {
     vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
 
     -- Picker mappings
-    vim.keymap.set('n', '<leader><space>', function() Snacks.picker.buffers(opts.pickers.buffers) end, { desc = 'Open buffers' })
-    vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
-    vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
-    vim.keymap.set('n', '<leader>ff', function() return Snacks.picker.files(opts.pickers.files) end, { desc = 'Find Files' })
-    vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
-    vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
+    -- vim.keymap.set('n', '<leader><space>', function() Snacks.picker.buffers(opts.pickers.buffers) end, { desc = 'Open buffers' })
+    -- vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
+    -- vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
+    -- vim.keymap.set('n', '<leader>ff', function() return Snacks.picker.files(opts.pickers.files) end, { desc = 'Find Files' })
+    -- vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
+    -- vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
 
     -- Git mappings
     vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
@@ -32,12 +32,12 @@ return {
     vim.keymap.set('n', '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'Visual selection or word' })
 
     -- Search mappings
-    vim.keymap.set('n', '<leader>fa', function() Snacks.picker.autocmds() end, { desc = 'Autocmds' })
-    vim.keymap.set('n', '<leader>fC', function() Snacks.picker.commands() end, { desc = 'Commands' })
-    vim.keymap.set('n', '<leader>fd', function() Snacks.picker.diagnostics() end, { desc = 'Diagnostics' })
-    vim.keymap.set('n', '<leader>fh', function() Snacks.picker.help() end, { desc = 'Help Pages' })
-    vim.keymap.set('n', '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'Keymaps' })
-    vim.keymap.set('n', '<leader>fq', function() Snacks.picker.qflist() end, { desc = 'Quickfix List' })
+    -- vim.keymap.set('n', '<leader>fa', function() Snacks.picker.autocmds() end, { desc = 'Autocmds' })
+    -- vim.keymap.set('n', '<leader>fC', function() Snacks.picker.commands() end, { desc = 'Commands' })
+    -- vim.keymap.set('n', '<leader>fd', function() Snacks.picker.diagnostics() end, { desc = 'Diagnostics' })
+    -- vim.keymap.set('n', '<leader>fh', function() Snacks.picker.help() end, { desc = 'Help Pages' })
+    -- vim.keymap.set('n', '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'Keymaps' })
+    -- vim.keymap.set('n', '<leader>fq', function() Snacks.picker.qflist() end, { desc = 'Quickfix List' })
 
     -- LSP mappings
     vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
