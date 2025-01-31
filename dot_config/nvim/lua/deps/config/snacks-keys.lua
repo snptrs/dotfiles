@@ -24,12 +24,12 @@ return {
     -- vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
 
     -- Git mappings
-    vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
+    -- vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
 
     -- Grep mappings
-    vim.keymap.set('n', '<leader>fb', function() Snacks.picker.lines() end, { desc = 'Buffer Lines' })
-    vim.keymap.set('n', '<leader>fB', function() Snacks.picker.grep_buffers() end, { desc = 'Grep Open Buffers' })
-    vim.keymap.set('n', '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'Visual selection or word' })
+    -- vim.keymap.set('n', '<leader>fb', function() Snacks.picker.lines() end, { desc = 'Buffer Lines' })
+    -- vim.keymap.set('n', '<leader>fB', function() Snacks.picker.grep_buffers() end, { desc = 'Grep Open Buffers' })
+    -- vim.keymap.set('n', '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'Visual selection or word' })
 
     -- Search mappings
     -- vim.keymap.set('n', '<leader>fa', function() Snacks.picker.autocmds() end, { desc = 'Autocmds' })
@@ -40,10 +40,10 @@ return {
     -- vim.keymap.set('n', '<leader>fq', function() Snacks.picker.qflist() end, { desc = 'Quickfix List' })
 
     -- LSP mappings
-    vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
-    vim.keymap.set('n', 'gr', function() Snacks.picker.lsp_references() end, { desc = 'References', nowait = true })
-    vim.keymap.set('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation' })
-    vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto T[y]pe Definition' })
+    -- vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
+    -- vim.keymap.set('n', 'gr', function() Snacks.picker.lsp_references() end, { desc = 'References', nowait = true })
+    -- vim.keymap.set('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation' })
+    -- vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto T[y]pe Definition' })
     -- stylua: ignore end
   end,
 }

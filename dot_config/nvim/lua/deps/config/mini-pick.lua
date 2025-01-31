@@ -118,6 +118,25 @@ return {
       } })
     end, { desc = 'Find files' })
 
+    vim.keymap.set('n', '<leader>fF', function()
+      MiniPick.builtin.cli {
+        command = {
+          'rg',
+          '--files',
+          '--hidden',
+          '--no-ignore',
+          '-g',
+          '!/**/.git',
+          '-g',
+          '!/**/node_modules',
+          '-g',
+          '!/**/vendor',
+          '-g',
+          '!/**/public/build',
+        },
+      }
+    end, { desc = 'Fing files (include ignored)' })
+
     vim.keymap.set('n', '<leader>fg', function()
       require('mini.pick').builtin.grep_live(nil, { window = {
         config = big_window,
