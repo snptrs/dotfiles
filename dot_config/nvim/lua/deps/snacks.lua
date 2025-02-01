@@ -14,6 +14,7 @@ deps.now(function()
     lazygit = {},
     notifier = conf.notifier.opts,
     picker = conf.picker.opts,
+    words = {},
     zen = conf.zen.opts,
     styles = conf.styles.opts,
   }
@@ -34,7 +35,7 @@ deps.now(function()
 
       -- Create some toggle mappings
       Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
-      Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
+      Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>ur'
       Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
       Snacks.toggle.diagnostics():map '<leader>ud'
       Snacks.toggle.line_number():map '<leader>ul'
@@ -44,6 +45,7 @@ deps.now(function()
       Snacks.toggle.inlay_hints():map '<leader>uh'
       Snacks.toggle.indent():map '<leader>ug'
       Snacks.toggle.dim():map '<leader>uD'
+      Snacks.toggle.words():map '<leader>uw'
     end,
   })
 end)

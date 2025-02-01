@@ -40,6 +40,10 @@ deps.now(function()
       DiffText = { blend = 25 },
       DiffChange = { blend = 10 },
       DiffDelete = { blend = 20 },
+
+      LspReferenceWrite = { underline = true, bg = '' },
+      LspReferenceRead = { underline = true, bg = '' },
+      LspReferenceText = { underline = true, bg = '' },
     },
   }
 
