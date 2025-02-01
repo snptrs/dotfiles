@@ -5,7 +5,14 @@ deps.later(function()
   -- Some comment here
   ---@diagnostic disable-next-line: missing-fields
   require('git-conflict').setup {
-    default_mappings = true,
+    default_mappings = {
+      ours = ' co',
+      theirs = ' ct',
+      none = ' c0',
+      both = ' cb',
+      next = ' cn',
+      prev = ' cp',
+    },
     default_commands = true,
     disable_diagnostics = true,
     list_opener = 'copen',
