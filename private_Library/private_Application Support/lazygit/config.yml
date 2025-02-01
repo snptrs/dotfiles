@@ -7,3 +7,6 @@ os:
 gui:
   sidePanelWidth: 0.25
   expandFocusedSidePanel: true
+  theme:
+    selectedLineBgColor:
+      - black
