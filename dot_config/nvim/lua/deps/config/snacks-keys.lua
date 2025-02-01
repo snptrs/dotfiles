@@ -16,10 +16,42 @@ return {
     vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
 
     -- Picker mappings
-    vim.keymap.set('n', '<leader><space>', function() Snacks.picker.buffers(opts.pickers.buffers) end, { desc = 'Open buffers' })
+    vim.keymap.set('n', '<leader><space>',
+      function()
+        ---@diagnostic disable-next-line: missing-fields
+        Snacks.picker.buffers {
+          layout = { preset = 'select', sort_lastused = true, },
+          current = true,
+          hidden = true
+        }
+      end,
+      { desc = 'Open buffers' })
     vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
     vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
-    vim.keymap.set('n', '<leader>ff', function() return Snacks.picker.files(opts.pickers.files) end, { desc = 'Find Files' })
+    vim.keymap.set('n', '<leader>ff',
+      function()
+        ---@diagnostic disable-next-line: missing-fields
+        Snacks.picker.smart {
+          multi = { "buffers", "files" },
+          format = "file",
+          matcher = {
+            cwd_bonus = true, -- boost cwd matches
+            frecency = true, -- use frecency boosting
+            sort_empty = true, -- sort even when the filter is empty
+          },
+          transform = "unique_file",
+          hidden = true,
+          layout = {
+            preview = false,
+            layout = {
+              width = 0.6,
+              min_width = 120,
+              height = 0.6,
+            },
+          },
+        }
+      end,
+      { desc = 'Find Files' })
     vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
     vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
 
