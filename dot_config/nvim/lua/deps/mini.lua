@@ -109,7 +109,6 @@ deps.later(function()
   require('mini.pairs').setup {
     mappings = {
       ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^`\\].', register = { cr = false } },
-      -- ['('] = { action = 'closeopen', pair = '()', neigh_pattern = '[^\\S]', register = { cr = false } },
     },
   }
 end)
