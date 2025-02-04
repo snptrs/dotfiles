@@ -8,7 +8,7 @@ deps.now(function()
   local keys = require 'deps.config.snacks-keys'
 
   require('snacks').setup {
-    bigfile = { enabled = true },
+    bigfile = { size = 0.75 * 1024 * 1024 },
     indent = { enabled = true, indent = { only_current = true } },
     input = { enabled = true },
     lazygit = {},

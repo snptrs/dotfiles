@@ -1,4 +1,3 @@
-local opts = require 'deps.config.snacks-opts'
 return {
   create = function()
     -- stylua: ignore start
@@ -15,15 +14,10 @@ return {
     vim.keymap.set('n', '[[', function() Snacks.words.jump(-vim.v.count1) end, { desc = 'Prev Reference' })
     vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
 
-    -- Picker mappings
     vim.keymap.set('n', '<leader><space>',
       function()
         ---@diagnostic disable-next-line: missing-fields
-        Snacks.picker.buffers {
-          layout = { preset = 'select', sort_lastused = true, },
-          current = true,
-          hidden = true
-        }
+        Snacks.picker.buffers({layout = {preset = "select"}})
       end,
       { desc = 'Open buffers' })
     vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
