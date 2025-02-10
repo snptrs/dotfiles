@@ -84,4 +84,22 @@ vim.api.nvim_create_autocmd('WinLeave', {
   desc = 'Hide cursorline on WinLeave',
 })
 
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  group = gr,
+  pattern = '*.log',
+  callback = function()
+    vim.cmd 'checktime'
+  end,
+  desc = 'Reload buffer when updated',
+})
+
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  group = gr,
+  pattern = '*',
+  callback = function()
+    vim.notify 'Buffer reloaded due to file change'
+  end,
+  desc = 'Notify when buffer reloaded',
+})
+
 vim.diagnostic.config { virtual_text = true }

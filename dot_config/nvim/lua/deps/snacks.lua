@@ -9,6 +9,7 @@ deps.now(function()
 
   require('snacks').setup {
     bigfile = { size = 0.75 * 1024 * 1024 },
+    image = {},
     indent = { enabled = true, indent = { only_current = true } },
     input = { enabled = true },
     lazygit = {},
