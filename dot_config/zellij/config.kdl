@@ -387,9 +387,6 @@ keybinds clear-defaults=true {
         bind "Ctrl Alt t" {
             NewTab
         }
-        bind "Super d" {
-            Detach
-        }
         bind "Super s" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
@@ -403,7 +400,7 @@ keybinds clear-defaults=true {
                 move_to_focused_tab true
                 cwd "/"
                 root_dirs "/Users/seanpeters/Code/Projects/;/Users/seanpeters/Code/Projects/ipecs-connect;/Users/seanpeters/Work/Code/Projects"
-                session_layout "monorepo"
+                session_layout "project"
             }
             SwitchToMode "Locked"
         }

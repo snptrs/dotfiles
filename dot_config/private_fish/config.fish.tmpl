@@ -2,6 +2,7 @@ set -g fish_greeting
 
 fish_add_path /Users/seanpeters/.local/share/bob/nvim-bin
 fish_add_path /Users/seanpeters/.cargo/bin
+fish_add_path /Users/seanpeters/.orbstack/bin
 
 set -g tide_left_prompt_items pwd git newline character
 set -g tide_git_icon 
@@ -23,8 +24,8 @@ if status is-interactive
   set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
   set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
   set -gx ZELLIJ_CONFIG_DIR ~/.config/zellij
-  set -gx COLIMA_HOME ~/.colima
-  set -gx DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
+  #set -gx COLIMA_HOME ~/.colima
+  #set -gx DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
   set -gx STARSHIP_LOG error
 
   bind \ec 'pet-select'

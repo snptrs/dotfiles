@@ -5,22 +5,10 @@ layout {
             plugin location="zellij:compact-bar"
         }
     }
-    tab name="fe edit" {
+    tab name="edit" {
         pane
     }
-    tab name="fe cmd" {
-        pane split_direction="vertical" {
-            pane
-            pane split_direction="horizontal" {
-                pane
-                pane
-            }
-        }
-    }
-    tab name="be edit" {
-        pane
-    }
-    tab name="be cmd" {
+    tab name="cmd" {
         pane split_direction="vertical" {
             pane
             pane split_direction="horizontal" {
