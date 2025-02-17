@@ -25,15 +25,12 @@ return {
     vim.keymap.set('n', '<leader>ff',
       function()
         ---@diagnostic disable-next-line: missing-fields
-        Snacks.picker.smart {
-          multi = { "buffers", "files" },
-          format = "file",
+        Snacks.picker.files {
           matcher = {
             cwd_bonus = true, -- boost cwd matches
             frecency = true, -- use frecency boosting
             sort_empty = true, -- sort even when the filter is empty
           },
-          transform = "unique_file",
           hidden = true,
           layout = {
             preview = false,
