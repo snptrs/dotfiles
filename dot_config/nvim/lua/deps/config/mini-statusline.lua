@@ -8,6 +8,7 @@ return {
     local search_count = MiniStatusline.section_searchcount { trunc_width = 75 }
 
     local macro = vim.g.macro_recording
+    local formatting_disabled = vim.g.disable_autoformat and '󰉥'
     local diff_overlay = (MiniDiff.get_buf_data(0) and MiniDiff.get_buf_data(0).overlay) and '' or nil
 
     -- This version will only show if the current file is tagged
@@ -21,7 +22,7 @@ return {
       { hl = 'MiniStatuslineFilename', strings = { '%t' } },
       '%=', -- End left alignment
       { hl = 'MiniStatuslineFileinfo', strings = { lsp, grapple } },
-      { hl = mode_hl, strings = { search_count, macro, diff_overlay } },
+      { hl = mode_hl, strings = { search_count, macro, diff_overlay, formatting_disabled } },
     }
   end,
 

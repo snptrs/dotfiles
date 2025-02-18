@@ -76,6 +76,18 @@ deps.later(function()
     desc = 'Re-enable autoformat-on-save',
   })
 
+  vim.keymap.set('n', '<leader>uf', function()
+    if vim.g.disable_autoformat then
+      vim.cmd 'FormatEnable'
+      vim.notify 'Format on save enabled'
+      vim.cmd 'redrawstatus'
+    else
+      vim.cmd 'FormatDisable'
+      vim.notify('Format on save disabled', 3)
+      vim.cmd 'redrawstatus'
+    end
+  end, { desc = 'Toggle format on save' })
+
   vim.keymap.set('n', '<leader>df', function()
     require('conform').format { async = true, lsp_fallback = true }
   end, { desc = 'Format buffer' })
