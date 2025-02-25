@@ -3,7 +3,7 @@ deps.later(function()
     source = 'olimorris/codecompanion.nvim',
     depends = {
       'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter'
+      'nvim-treesitter/nvim-treesitter',
     },
   }
 
@@ -13,11 +13,6 @@ deps.later(function()
         return require('codecompanion.adapters').extend('anthropic', {
           env = {
             api_key = 'cmd:cat ~/.config/anthropic-api.txt',
-          },
-          schema = {
-            model = {
-              default = 'claude-3-5-sonnet-20241022',
-            },
           },
         })
       end,
@@ -48,6 +43,6 @@ deps.later(function()
 
   vim.cmd [[cab cc CodeCompanion]]
 
-  vim.keymap.set({'n', 'v'}, '<leader>cca', '<cmd>CodeCompanionActions<cr>', {desc = 'CodeCompanion Actions'})
-  vim.keymap.set({'n', 'v'}, '<leader>ccc', '<cmd>CodeCompanionChat Toggle<cr>', {desc = 'CodeCompanion Chat'})
+  vim.keymap.set({ 'n', 'v' }, '<leader>cca', '<cmd>CodeCompanionActions<cr>', { desc = 'CodeCompanion Actions' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>ccc', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'CodeCompanion Chat' })
 end)

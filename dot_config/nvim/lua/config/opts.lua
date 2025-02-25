@@ -103,3 +103,22 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
 })
 
 vim.diagnostic.config { virtual_text = true }
+
+local function paste()
+  return {
+    vim.split(vim.fn.getreg '', '\n'),
+    vim.fn.getregtype '',
+  }
+end
+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = paste,
+    ['*'] = paste,
+  },
+}
