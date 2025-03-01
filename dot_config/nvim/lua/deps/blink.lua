@@ -2,7 +2,7 @@ deps.later(function()
   deps.add {
     source = 'Saghen/blink.cmp',
     depends = { 'rafamadriz/friendly-snippets' },
-    checkout = 'v0.10.0',
+    checkout = 'v0.13.1',
     monitor = 'main',
   }
 
@@ -29,12 +29,12 @@ deps.later(function()
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
       -- optionally disable cmdline completion
-      cmdline = {},
       providers = {
         codecompanion = {
           name = 'CodeCompanion',
           module = 'codecompanion.providers.completion.blink',
         },
+        cmdline = { enabled = true },
       },
     },
 
