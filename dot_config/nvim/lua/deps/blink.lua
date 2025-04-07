@@ -2,7 +2,7 @@ deps.later(function()
   deps.add {
     source = 'Saghen/blink.cmp',
     depends = { 'rafamadriz/friendly-snippets' },
-    checkout = 'v0.13.1',
+    checkout = 'v1.0.0',
     monitor = 'main',
   }
 
@@ -42,7 +42,7 @@ deps.later(function()
       documentation = {
         auto_show = true,
         window = {
-          border = 'single',
+          border = 'rounded',
         },
         auto_show_delay_ms = 250,
       },
@@ -77,7 +77,7 @@ deps.later(function()
     -- experimental signature help support
     signature = {
       enabled = true,
-      window = { border = 'single' },
+      window = { border = 'rounded' },
     },
   }
 end)

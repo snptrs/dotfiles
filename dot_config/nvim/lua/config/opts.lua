@@ -35,6 +35,7 @@ local options = {
   undofile = true,
   updatetime = 250,
   winbar = '%f %m',
+  winborder = 'rounded',
 }
 
 local globals = {

@@ -21,3 +21,14 @@ map('n', '<Left>', '<C-w>h', { desc = 'Switch to the left split', unique = true 
 map('n', '<Right>', '<C-w>l', { desc = 'Switch to the right split', unique = true })
 map('n', '<Down>', '<C-w>j', { desc = 'Switch to the bottom split', unique = true })
 map('n', '<Up>', '<C-w>k', { desc = 'Switch to the top split', unique = true })
+
+function YankBufferAsMarkdownCodeBlock()
+  local filename = vim.fn.expand '%:p:~:.:h' .. '/' .. vim.fn.expand '%:t'
+  local content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
+  local markdown = 'Filename: ' .. filename .. '\n```\n' .. content .. '\n```'
+  vim.fn.setreg('+', markdown)
+  vim.notify 'Yanked buffer as Markdown code block'
+end
+
+-- Map in Lua
+vim.keymap.set('n', '<leader>ymd', YankBufferAsMarkdownCodeBlock, { desc = 'Yank buffer as codeblock' })
