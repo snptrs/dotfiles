@@ -1,4 +1,4 @@
-deps.later(function()
+deps.now(function()
   deps.add {
     source = 'Saghen/blink.cmp',
     depends = { 'rafamadriz/friendly-snippets' },
