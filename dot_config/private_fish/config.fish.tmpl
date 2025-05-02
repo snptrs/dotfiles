@@ -52,7 +52,7 @@ if status is-interactive
   abbr -a dce "docker compose exec app sh"
 
   set -gx FNM_COREPACK_ENABLED true
-  /usr/bin/env fnm env --use-on-cd | source
+  /usr/bin/env fnm env --use-on-cd --shell fish | source
 
   zoxide init fish | source
 
