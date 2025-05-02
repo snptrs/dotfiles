@@ -27,13 +27,19 @@ deps.now(function()
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
+      default = {
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+        -- 'codecompanion'
+      },
       -- optionally disable cmdline completion
       providers = {
-        codecompanion = {
-          name = 'CodeCompanion',
-          module = 'codecompanion.providers.completion.blink',
-        },
+        -- codecompanion = {
+        --   name = 'CodeCompanion',
+        --   module = 'codecompanion.providers.completion.blink',
+        -- },
         cmdline = { enabled = true },
       },
     },
