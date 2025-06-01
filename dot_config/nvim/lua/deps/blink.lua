@@ -2,7 +2,7 @@ deps.now(function()
   deps.add {
     source = 'Saghen/blink.cmp',
     depends = { 'rafamadriz/friendly-snippets' },
-    checkout = 'v1.1.1',
+    checkout = 'v1.2.0',
     monitor = 'main',
   }
 
