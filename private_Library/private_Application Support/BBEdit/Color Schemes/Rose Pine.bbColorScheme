@@ -115,7 +115,7 @@
 	<key>com.barebones.bblm.markdown.QuotedContent</key>
 	<string>hsla(0.683, 0.090, 0.958, 1.000)</string>
 	<key>com.barebones.bblm.number</key>
-	<string>hsla(0.954, 0.529, 0.923, 1.000)</string>
+	<string>hsla(0.525, 0.279, 0.847, 1.000)</string>
 	<key>com.barebones.bblm.pdf.array</key>
 	<string>hsla(0.890, 1.000, 0.600, 1.000)</string>
 	<key>com.barebones.bblm.pdf.dict</key>
