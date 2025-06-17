@@ -7,6 +7,27 @@ os:
 gui:
   sidePanelWidth: 0.25
   expandFocusedSidePanel: true
+  authorColors:
+    "*": "#f3be7c"
   theme:
+    activeBorderColor:
+      - "#7e98e8"
+      - "bold"
+    inactiveBorderColor:
+      - "#606079"
+    optionsTextColor:
+      - "#606079"
     selectedLineBgColor:
-      - black
+      - "#252530"
+    cherryPickedCommitFgColor:
+      - "#d8647e"
+    cherryPickedCommitBgColor:
+      - "bg"
+    markedBaseCommitFgColor:
+      - "#f3be7c"
+    markedBaseCommitBgColor:
+      - "bg"
+    unstagedChangesColor:
+      - "#d8647e"
+    defaultFgColor:
+      - "#cdcdcd"

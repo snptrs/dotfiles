@@ -1,4 +1,6 @@
-require 'deps.rose-pine'
+-- require 'deps.rose-pine'
+require 'deps.vague'
+-- require 'deps.kanagawa-paper'
 require 'deps.mini'
 require 'deps.vtsls'
 require 'deps.blink'

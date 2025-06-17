@@ -10,9 +10,23 @@ deps.now(function()
   require('snacks').setup {
     bigfile = { size = 0.75 * 1024 * 1024 },
     image = {},
-    indent = { enabled = true, indent = { only_current = true } },
+    indent = { indent = { enabled = true, only_current = true } },
     input = { enabled = true },
-    lazygit = {},
+    lazygit = {
+      theme = {
+        [241] = { fg = 'Special' },
+        activeBorderColor = { fg = 'DiagnosticHint', bold = true },
+        cherryPickedCommitBgColor = { fg = 'Identifier' },
+        cherryPickedCommitFgColor = { fg = 'Function' },
+        defaultFgColor = { fg = 'Normal' },
+        inactiveBorderColor = { fg = 'FloatBorder' },
+        optionsTextColor = { fg = 'Function' },
+        searchingActiveBorderColor = { fg = 'MatchParen', bold = true },
+        selectedLineBgColor = { bg = 'Visual' }, -- set to `default` to have no background colour
+        unstagedChangesColor = { fg = 'DiagnosticError' },
+      },
+    },
+
     notifier = conf.notifier.opts,
     picker = conf.picker.opts,
     words = {},
