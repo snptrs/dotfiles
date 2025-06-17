@@ -19,7 +19,7 @@ deps.later(function()
     panel = {
       enabled = false,
     },
-    -- copilot_node_command = '/System/Volumes/Data/Users/seanpeters/Library/Application Support/fnm/aliases/20/bin/node',
-    copilot_node_command = 'node',
+    -- copilot_node_command = vim.fn.expand '$FNM_MULTISHELL_PATH' .. '/bin/node',
+    copilot_node_command = '/Users/seanpeters/.local/share/fnm/aliases/default/bin/node',
   }
 end)

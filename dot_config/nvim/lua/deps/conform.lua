@@ -23,6 +23,7 @@ deps.later(function()
       toml = { 'taplo' },
       fish = { 'fish_indent' },
       kdl = { 'kdlfmt' },
+      blade = { 'blade-formatter' },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

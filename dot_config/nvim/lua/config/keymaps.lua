@@ -31,4 +31,4 @@ function YankBufferAsMarkdownCodeBlock()
 end
 
 -- Map in Lua
-vim.keymap.set('n', '<leader>ymd', YankBufferAsMarkdownCodeBlock, { desc = 'Yank buffer as codeblock' })
+vim.keymap.set('n', '<leader>ym', YankBufferAsMarkdownCodeBlock, { desc = 'Yank buffer as codeblock' })
