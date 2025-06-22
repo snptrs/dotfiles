@@ -5,7 +5,7 @@ deps.later(function()
   ---@diagnostic disable-next-line: missing-fields
   require('early-retirement').setup {
     -- If a buffer has been inactive for this many minutes, close it.
-    retirementAgeMins = 60,
+    retirementAgeMins = 120,
     deleteBufferWhenFileDeleted = true,
   }
 end)

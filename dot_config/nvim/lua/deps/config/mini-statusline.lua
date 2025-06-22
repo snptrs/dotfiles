@@ -22,7 +22,8 @@ return {
       { hl = 'MiniStatuslineFilename', strings = { '%t' } },
       '%=', -- End left alignment
       { hl = 'MiniStatuslineFileinfo', strings = { lsp, grapple } },
-      { hl = mode_hl, strings = { search_count, macro, diff_overlay, formatting_disabled } },
+      { hl = mode_hl, strings = { search_count } },
+      { hl = 'MiniStatuslineModeVisual', strings = { macro, diff_overlay, formatting_disabled } },
     }
   end,
 

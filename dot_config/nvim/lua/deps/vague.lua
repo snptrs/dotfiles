@@ -6,13 +6,35 @@ deps.now(function()
 
   require('vague').setup {
     italic = true,
+    style = {
+      -- "none" is the same thing as default. But "italic" and "bold" are also valid options
+      strings = 'none',
+    },
     on_highlights = function(highlights, colors)
+      local utilities = require 'vague.utilities'
       highlights.LspReferenceText = { gui = 'underline' }
       highlights.LspReferenceRead = { gui = 'underline' }
       highlights.LspReferenceWrite = { gui = 'underline' }
-      highlights.MiniIndentscopeSymbol = { fg = colors.error, bg = colors.error }
       highlights.SnacksIndent = { fg = colors.line }
       highlights.SnacksIndentScope = { fg = colors.fg }
+      highlights.DiffChange = highlights.MiniDiffOverContext
+      highlights.DiffText = highlights.MiniDiffOverChange
+      -- More contrasty variants
+      -- highlights.DiffChange = { fg = colors.delta, bg = utilities.blend(colors.delta, colors.bg, 0.2) }
+      -- highlights.DiffText = { fg = colors.delta, bg = utilities.blend(colors.delta, colors.bg, 0.4) }
+      highlights.DiffDelete = highlights.MiniDiffOverDelete
+      highlights.DiffAdd = highlights.MiniDiffOverAdd
+      highlights.DiffviewFilePanelSelected = { fg = colors.number, gui = 'bold' }
+      highlights.MiniStatusLineModeNormal = { bg = colors.search, fg = colors.fg, gui = 'bold' }
+      highlights.MiniStatusLineModeInsert = { bg = colors.plus, fg = colors.line, gui = 'bold' }
+      highlights.MiniStatusLineModeVisual = { bg = colors.func, fg = colors.line, gui = 'bold' }
+      highlights.MiniStatusLineDevInfo = { bg = utilities.blend(colors.search, colors.bg, 0.5), fg = colors.fg }
+      highlights.MiniStatusLineFileInfo = { bg = utilities.blend(colors.search, colors.bg, 0.5), fg = colors.fg }
+      highlights.CurSearch = { bg = colors.warning, fg = colors.bg }
+      highlights.QuickFixLine = { fg = colors.number, gui = 'bold' }
+
+      GitConflictAncestorLabel = { bg = colors.search }
+      GitConflictAncestor = { bg = colors.search }
 
       -- Formatting for Markdown
       highlights.RenderMarkdownBullet = { fg = colors.keyword }
@@ -41,10 +63,6 @@ deps.now(function()
       end
       -- End formatting for Markdown
     end,
-    style = {
-      -- "none" is the same thing as default. But "italic" and "bold" are also valid options
-      strings = 'none',
-    },
   }
 
   vim.cmd.colorscheme 'vague'

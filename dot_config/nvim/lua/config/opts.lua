@@ -1,7 +1,7 @@
 local options = {
   autoread = true,
   breakindent = true,
-  clipboard = 'unnamedplus',
+  -- clipboard = 'unnamed',
   cmdheight = 0,
   -- colorcolumn = '81',
   -- cursorline = true,
@@ -112,14 +112,14 @@ local function paste()
   }
 end
 
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
-    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
-  },
-  paste = {
-    ['+'] = paste,
-    ['*'] = paste,
-  },
-}
+-- vim.g.clipboard = {
+--   name = 'OSC 52',
+--   copy = {
+--     ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+--     -- ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+--   },
+--   paste = {
+--     ['+'] = paste,
+--     -- ['*'] = paste,
+--   },
+-- }

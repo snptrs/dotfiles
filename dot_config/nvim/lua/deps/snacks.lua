@@ -8,10 +8,10 @@ deps.now(function()
   local keys = require 'deps.config.snacks-keys'
 
   require('snacks').setup {
-    bigfile = { size = 0.75 * 1024 * 1024 },
+    bigfile = {},
     image = {},
     indent = { indent = { enabled = true, only_current = true } },
-    input = { enabled = true },
+    input = {},
     lazygit = {
       theme = {
         [241] = { fg = 'Special' },

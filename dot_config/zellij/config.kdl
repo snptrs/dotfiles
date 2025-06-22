@@ -76,54 +76,6 @@ keybinds clear-defaults=true {
         }
     }
     tab {
-        bind "left" {
-            GoToPreviousTab
-        }
-        bind "down" {
-            GoToNextTab
-        }
-        bind "up" {
-            GoToPreviousTab
-        }
-        bind "right" {
-            GoToNextTab
-        }
-        bind "1" {
-            GoToTab 1
-            SwitchToMode "locked"
-        }
-        bind "2" {
-            GoToTab 2
-            SwitchToMode "locked"
-        }
-        bind "3" {
-            GoToTab 3
-            SwitchToMode "locked"
-        }
-        bind "4" {
-            GoToTab 4
-            SwitchToMode "locked"
-        }
-        bind "5" {
-            GoToTab 5
-            SwitchToMode "locked"
-        }
-        bind "6" {
-            GoToTab 6
-            SwitchToMode "locked"
-        }
-        bind "7" {
-            GoToTab 7
-            SwitchToMode "locked"
-        }
-        bind "8" {
-            GoToTab 8
-            SwitchToMode "locked"
-        }
-        bind "9" {
-            GoToTab 9
-            SwitchToMode "locked"
-        }
         bind "[" {
             BreakPaneLeft
             SwitchToMode "locked"
@@ -137,12 +89,6 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
         bind "h" {
-            GoToPreviousTab
-        }
-        bind "j" {
-            GoToNextTab
-        }
-        bind "k" {
             GoToPreviousTab
         }
         bind "l" {
@@ -277,23 +223,6 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
     }
-    search {
-        bind "c" {
-            SearchToggleOption "CaseSensitivity"
-        }
-        bind "n" {
-            Search "down"
-        }
-        bind "o" {
-            SearchToggleOption "WholeWord"
-        }
-        bind "p" {
-            Search "up"
-        }
-        bind "w" {
-            SearchToggleOption "Wrap"
-        }
-    }
     session {
         bind "c" {
             LaunchOrFocusPlugin "configuration" {
@@ -324,18 +253,6 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Ctrl Alt left" {
-            MoveFocusOrTab "left"
-        }
-        bind "Ctrl Alt down" {
-            MoveFocus "down"
-        }
-        bind "Ctrl Alt up" {
-            MoveFocus "up"
-        }
-        bind "Ctrl Alt right" {
-            MoveFocusOrTab "right"
-        }
         bind "Ctrl Alt -" {
             Resize "Decrease"
         }
@@ -343,15 +260,9 @@ keybinds clear-defaults=true {
             Resize "Increase"
         }
         bind "Ctrl Alt [" {
-            PreviousSwapLayout
-        }
-        bind "Shift Super [" {
             GoToPreviousTab
         }
         bind "Ctrl Alt ]" {
-            NextSwapLayout
-        }
-        bind "Shift Super ]" {
             GoToNextTab
         }
         bind "Super c" {
@@ -369,11 +280,11 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "locked"
         }
-        bind "Ctrl Alt h" {
-            MoveFocusOrTab "left"
-        }
         bind "Ctrl Alt i" {
             MoveTab "left"
+        }
+        bind "Ctrl Alt o" {
+            MoveTab "right"
         }
         bind "Ctrl Alt j" {
             MoveFocus "down"
@@ -381,14 +292,14 @@ keybinds clear-defaults=true {
         bind "Ctrl Alt k" {
             MoveFocus "up"
         }
+        bind "Ctrl Alt h" {
+            MoveFocusOrTab "left"
+        }
         bind "Ctrl Alt l" {
             MoveFocusOrTab "right"
         }
         bind "Ctrl Alt n" {
             NewPane
-        }
-        bind "Ctrl Alt o" {
-            MoveTab "right"
         }
         bind "Super s" {
             LaunchOrFocusPlugin "session-manager" {
@@ -402,11 +313,6 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl Alt Shift w" {
             CloseTab
-        }
-    }
-    shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl q" {
-            Quit
         }
     }
     shared_except "locked" "entersearch" {
@@ -454,79 +360,10 @@ keybinds clear-defaults=true {
             SwitchToMode "resize"
         }
     }
-    shared_among "scroll" "search" {
-        bind "PageDown" {
-            PageScrollDown
-        }
-        bind "PageUp" {
-            PageScrollUp
-        }
-        bind "left" {
-            PageScrollUp
-        }
-        bind "down" {
-            ScrollDown
-        }
-        bind "up" {
-            ScrollUp
-        }
-        bind "right" {
-            PageScrollDown
-        }
-        bind "Ctrl b" {
-            PageScrollUp
-        }
-        bind "Ctrl c" {
-            ScrollToBottom
-            SwitchToMode "locked"
-        }
-        bind "d" {
-            HalfPageScrollDown
-        }
-        bind "Ctrl f" {
-            PageScrollDown
-        }
-        bind "h" {
-            PageScrollUp
-        }
-        bind "j" {
-            ScrollDown
-        }
-        bind "k" {
-            ScrollUp
-        }
-        bind "l" {
-            PageScrollDown
-        }
-        bind "u" {
-            HalfPageScrollUp
-        }
-    }
-    entersearch {
-        bind "Ctrl c" {
-            SwitchToMode "scroll"
-        }
-        bind "esc" {
-            SwitchToMode "scroll"
-        }
-        bind "enter" {
-            SwitchToMode "search"
-        }
-    }
-    shared_among "entersearch" "prompt" "tmux" {
-        bind "Ctrl g" {
-            SwitchToMode "locked"
-        }
-    }
     renametab {
         bind "esc" {
             UndoRenameTab
             SwitchToMode "tab"
-        }
-    }
-    shared_among "renametab" "renamepane" {
-        bind "Ctrl c" {
-            SwitchToMode "locked"
         }
     }
     renamepane {

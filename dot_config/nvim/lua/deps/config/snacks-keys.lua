@@ -61,6 +61,7 @@ return {
     vim.keymap.set('n', '<leader>fh', function() Snacks.picker.help() end, { desc = 'Help Pages' })
     vim.keymap.set('n', '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'Keymaps' })
     vim.keymap.set('n', '<leader>fq', function() Snacks.picker.qflist() end, { desc = 'Quickfix List' })
+    vim.keymap.set('n', '<leader>fy', function() Snacks.picker.registers() end, { desc = 'Registers' })
 
     -- LSP mappings
     vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })

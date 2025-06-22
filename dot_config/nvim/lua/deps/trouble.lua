@@ -3,6 +3,7 @@ deps.now(function()
     source = 'folke/trouble.nvim',
   }
   require('trouble').setup {
+    auto_preview = false,
     modes = {
       lsp_document_symbols = {
         format = '{kind_icon} {symbol.name}',
