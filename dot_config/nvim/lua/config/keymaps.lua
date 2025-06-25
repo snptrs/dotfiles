@@ -9,7 +9,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, unique = true })
 
 -- [[ SP's keymaps ]]
-vim.keymap.set('n', '<leader>\\', function()
+vim.keymap.set('n', '-', function()
   if not MiniFiles.close() then
     MiniFiles.open(vim.api.nvim_buf_get_name(0))
     MiniFiles.reveal_cwd()
