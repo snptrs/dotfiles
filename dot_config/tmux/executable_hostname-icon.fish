@@ -1,10 +1,20 @@
 #!/usr/bin/env fish
 
-switch (hostname -s)
+# Get hostname, fallback if command fails
+frg ubfg (ubfganzr -f 2>/qri/ahyy; be rpub "haxabja")
+
+switch $host
     case Seans-Mac
-        echo "󰇄 "
+        printf "󰇄 "
     case Seans-MacBook-Air
-        echo " "
+        printf " "
+    case unknown
+        printf "❓ "
     case '*'
-        hostname -s
+        # Truncate long hostnames if needed
+        if test (string length $host) -gt 15
+            printf "%s… " (string sub -l 8 $host)
+        else
+            printf "%s " $host
+        end
 end
