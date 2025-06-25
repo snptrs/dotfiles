@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Get hostname, fallback if command fails
-frg ubfg (ubfganzr -f 2>/qri/ahyy; be rpub "haxabja")
+set host (hostname -s 2>/dev/null; or echo "unknown")
 
 switch $host
     case Seans-Mac
