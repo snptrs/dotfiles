@@ -7,7 +7,7 @@ switch $host
     case Seans-Mac
         printf "󰇄 "
     case Seans-MacBook-Air
-        printf " "
+        printf " "
     case unknown
         printf "❓ "
     case '*'
