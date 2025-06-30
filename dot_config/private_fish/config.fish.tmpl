@@ -6,61 +6,68 @@ fish_add_path /Users/seanpeters/.orbstack/bin
 fish_add_path /opt/homebrew/opt/sqlite/bin
 fish_add_path /Users/seanpeters/.lando/bin
 fish_add_path /Users/seanpeters/.lando/bin
+fish_add_path /Users/seanpeters/.local/bin # uv
 
 set -g tide_left_prompt_items pwd git newline character
 set -g tide_git_icon 
 set -g tide_pwd_icon
 set -g tide_right_prompt_suffix " "
 
-if status is-interactive
-  # Commands to run in interactive sessions can go here
-  {{- if eq .chezmoi.arch "arm64" }}
-  /opt/homebrew/bin/brew shellenv | source
-  {{- else }}
-  /usr/local/bin/brew shellenv | source
-  {{- end }}
+# if status is-interactive
+# Commands to run in interactive sessions can go here
+{{- if eq .chezmoi.arch "arm64" }}
+/opt/homebrew/bin/brew shellenv | source
+{{- else }}
+/usr/local/bin/brew shellenv | source
+{{- end }}
 
-  set -gx EDITOR "nvim"
-  set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
-  set -x FZF_DEFAULT_OPTS --cycle --layout=reverse --border --height=90% --marker="*" --preview-window=right:65%,wrap --bind "ctrl-f:preview-page-down,ctrl-b:preview-page-up"
-  set -Ux BAT_THEME "base16"
-  set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
-  set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
-  set -gx ZELLIJ_CONFIG_DIR ~/.config/zellij
-  #set -gx COLIMA_HOME ~/.colima
-  #set -gx DOCKER_HOST "unix://$COLIMA_HOME/default/docker.sock"
-  set -gx STARSHIP_LOG error
+set -gx EDITOR nvim
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
+set -x FZF_DEFAULT_OPTS --cycle --layout=reverse --border --height=90% --marker="*" --preview-window=right:65%,wrap --bind "ctrl-f:preview-page-down,ctrl-b:preview-page-up"
+set -Ux BAT_THEME base16
+set -gx fzf_diff_highlighter delta --diff-so-fancy --width=20 --paging=never
+set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
+set -gx ZELLIJ_CONFIG_DIR ~/.config/zellij
+set -gx STARSHIP_LOG error
 
-  bind \ec 'pet-select'
-  bind \cs 'history-pager'
-  bind \ep 'pj'
-  set -gx LS_COLORS (vivid generate rose-pine)
+set -gx GEMINI_API_KEY {{ onepasswordRead "op://personal/zqi3rsn2kuyidkbehw5sgsqo24/credential" }}
+set -gx ANTHROPIC_API_KEY {{ onepasswordRead "op://personal/u23su5f27pculhr5ibdgwtssfe/credential" }}
+set -gx OPENAI_API_KEY {{ onepasswordRead "op://personal/qwmqg6rbpngb5phqd4tj6kgcuu/credential" }}
+# AIDER
+set -gx AIDER_API_KEY gemini=$GEMINI_API_KEY
+set -gx AIDER_ANTHROPIC_API_KEY $ANTHROPIC_API_KEY
+set -gx AIDER_OPENAI_API_KEY $OPENAI_API_KEY
 
-  abbr -a cht cht.sh
-  abbr -a chts cht.sh --shell
-  abbr -a cme chezmoi edit
-  abbr -a cma chezmoi apply
-  abbr -a cms chezmoi status
-  abbr -a snb snibbets
-  abbr -a lg lazygit
-  abbr -a cm chezmoi
-  abbr -a tm tmux
-  abbr -a pss "pet search --color"
-  abbr -a dotdot --regex '^\.\.+$' --function multicd
-  abbr -a imactnl "ssh -L 8080:localhost:80 -L 3000:localhost:3000 -L 3306:db:3306 -N -T seanpeters@seans-imac"
-  abbr -a dcu "docker compose up -d"
-  abbr -a dcd "docker compose down"
-  abbr -a dce "docker compose exec app sh"
-  abbr -a updatepj "fd -d 1 -t d . ~/Work/Code/Projects ~/Code/Projects ~/Code/Projects/elevate 2>/dev/null | xargs -I {} zoxide add -s 0 {}"
+bind \ec pet-select
+bind \cs history-pager
+bind \ep pj
+set -gx LS_COLORS (vivid generate rose-pine)
 
-  set -gx FNM_COREPACK_ENABLED true
-  /usr/bin/env fnm env --use-on-cd --shell fish | source
+abbr -a cht cht.sh
+abbr -a chts cht.sh --shell
+abbr -a cme chezmoi edit
+abbr -a cma chezmoi apply
+abbr -a cms chezmoi status
+abbr -a snb snibbets
+abbr -a lg lazygit
+abbr -a cm chezmoi
+abbr -a tm tmux
+abbr -a pss "pet search --color"
+abbr -a dotdot --regex '^\.\.+$' --function multicd
+abbr -a imactnl "ssh -L 8080:localhost:80 -L 3000:localhost:3000 -L 3306:db:3306 -N -T seanpeters@seans-imac"
+abbr -a dcu "docker compose up -d"
+abbr -a dcd "docker compose down"
+abbr -a dce "docker compose exec app sh"
+abbr -a updatepj "fd -d 1 -t d . ~/Work/Code/Projects ~/Code/Projects ~/Code/Projects/elevate 2>/dev/null | xargs -I {} zoxide add -s 0 {}"
 
-  zoxide init fish | source
+set -gx FNM_COREPACK_ENABLED true
+/usr/bin/env fnm env --use-on-cd --shell fish | source
 
-  rbenv init - fish | source
+zoxide init fish | source
 
-  #eval (zellij setup --generate-auto-start fish | string collect)
+rbenv init - fish | source
 
-  starship init fish | source
-end
+#eval (zellij setup --generate-auto-start fish | string collect)
+
+starship init fish | source
+# end
