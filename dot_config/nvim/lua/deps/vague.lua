@@ -33,6 +33,8 @@ deps.now(function()
       highlights.CurSearch = { bg = colors.warning, fg = colors.bg }
       highlights.QuickFixLine = { fg = colors.number, gui = 'bold' }
 
+      highlights.MiniFilesBorder = { fg = colors.search }
+
       highlights.GitConflictAncestorLabel = { bg = colors.search }
       highlights.GitConflictAncestor = { bg = colors.search }
 
