@@ -43,8 +43,6 @@ deps.now(function()
   -- stylua: ignore start
   vim.keymap.set('n', '<leader>z', function() Snacks.zen() end, { desc = 'Toggle Zen Mode' })
   vim.keymap.set('n', '<leader>Z', function() Snacks.zen.zoom() end, { desc = 'Toggle Zoom' })
-  vim.keymap.set('n', '<leader>.', function() Snacks.scratch() end, { desc = 'Toggle Scratch Buffer' })
-  vim.keymap.set('n', '<leader>S', function() Snacks.scratch.select() end, { desc = 'Select Scratch Buffer' })
   vim.keymap.set('n', '<leader>bd', function() Snacks.bufdelete() end, { desc = 'Delete Buffer' })
   vim.keymap.set('n', '<leader>dR', function() Snacks.rename.rename_file() end, { desc = 'Rename File' })
   vim.keymap.set('n', '<leader>gB', function() Snacks.gitbrowse() end, { desc = 'Git Browse' })
@@ -52,6 +50,8 @@ deps.now(function()
   vim.keymap.set('n', ']]', function() Snacks.words.jump(vim.v.count1) end, { desc = 'Next Reference' })
   vim.keymap.set('n', '[[', function() Snacks.words.jump(-vim.v.count1) end, { desc = 'Prev Reference' })
   vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
+  vim.keymap.set({'n', 't'}, '<c-w>/', function() Snacks.terminal.toggle() end, { desc = 'Toggle terminal'})
+
 
   vim.keymap.set('n', '<leader><space>',
     function()

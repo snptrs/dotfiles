@@ -1,7 +1,7 @@
 deps.now(function()
   deps.add {
     source = 'Saghen/blink.cmp',
-    depends = { 'rafamadriz/friendly-snippets' },
+    depends = { 'rafamadriz/friendly-snippets', 'milanglacier/minuet-ai.nvim' },
     checkout = 'v1.4.1',
     monitor = 'main',
   }
@@ -13,7 +13,10 @@ deps.now(function()
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     -- see the "default configuration" section below for full documentation on how to define
     -- your own keymap.
-    keymap = { preset = 'default' },
+    keymap = {
+      preset = 'default',
+      ['<A-y>'] = require('minuet').make_blink_map(),
+    },
 
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -32,6 +35,7 @@ deps.now(function()
         'path',
         'snippets',
         'buffer',
+        -- 'minuet',
         -- 'codecompanion'
       },
       -- optionally disable cmdline completion
@@ -40,11 +44,21 @@ deps.now(function()
         --   name = 'CodeCompanion',
         --   module = 'codecompanion.providers.completion.blink',
         -- },
+        minuet = {
+          name = 'minuet',
+          module = 'minuet.blink',
+          async = true,
+          -- Should match minuet.config.request_timeout * 1000,
+          -- since minuet.config.request_timeout is in seconds
+          timeout_ms = 3000,
+          score_offset = 50, -- Gives minuet higher priority among suggestions
+        },
         cmdline = { enabled = true },
       },
     },
 
     completion = {
+      trigger = { prefetch_on_insert = false },
       documentation = {
         auto_show = true,
         window = {

@@ -173,28 +173,28 @@ model: gemini
 user-input-color: "#7fa563"
 
 ## Set the color for tool output (default: None)
-#tool-output-color: "xxx"
+tool-output-color: "#b4d4cf"
 
 ## Set the color for tool error messages (default: #FF2222)
 tool-error-color: "#d8647e"
 
 ## Set the color for tool warning messages (default: #FFA500)
-#tool-warning-color: "#FFA500"
+tool-warning-color: "#eed49f"
 
 ## Set the color for assistant output (default: #0088ff)
-#assistant-output-color: "#6e94b2"
+assistant-output-color: "#aeaed1"
 
 ## Set the color for the completion menu (default: terminal's default text color)
-#completion-menu-color: "xxx"
+completion-menu-color: "#cad3f5"
 
 ## Set the background color for the completion menu (default: terminal's default background color)
-completion-menu-bg-color: "#aeaed1"
+completion-menu-bg-color: "#252530"
 
 ## Set the color for the current item in the completion menu (default: terminal's default background color)
-#completion-menu-current-color: "xxx"
+completion-menu-current-color: "#181926"
 
 ## Set the background color for the current item in the completion menu (default: terminal's default text color)
-#completion-menu-current-bg-color: "xxx"
+completion-menu-current-bg-color: "#f4dbd6"
 
 ## Set the markdown code theme (default: default, other options include monokai, solarized-dark, solarized-light, or a Pygments builtin style, see https://pygments.org/styles for available themes)
 code-theme: lightbulb
@@ -440,39 +440,3 @@ auto-commits: false
 
 ## Print shell completion script for the specified SHELL and exit. Supported shells: bash, tcsh, zsh. Example: aider --shell-completions bash
 #shell-completions: xxx
-
-############################
-# Deprecated model settings:
-
-## Use claude-3-opus-20240229 model for the main chat (deprecated, use --model)
-#opus: false
-
-## Use anthropic/claude-3-7-sonnet-20250219 model for the main chat (deprecated, use --model)
-#sonnet: false
-
-## Use claude-3-5-haiku-20241022 model for the main chat (deprecated, use --model)
-#haiku: false
-
-## Use gpt-4-0613 model for the main chat (deprecated, use --model)
-#4: false
-
-## Use gpt-4o model for the main chat (deprecated, use --model)
-#4o: false
-
-## Use gpt-4o-mini model for the main chat (deprecated, use --model)
-#mini: false
-
-## Use gpt-4-1106-preview model for the main chat (deprecated, use --model)
-#4-turbo: false
-
-## Use gpt-3.5-turbo model for the main chat (deprecated, use --model)
-#35turbo: false
-
-## Use deepseek/deepseek-chat model for the main chat (deprecated, use --model)
-#deepseek: false
-
-## Use o1-mini model for the main chat (deprecated, use --model)
-#o1-mini: false
-
-## Use o1-preview model for the main chat (deprecated, use --model)
-#o1-preview: falsi

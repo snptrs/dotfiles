@@ -22,6 +22,12 @@ map('n', '<Right>', '<C-w>l', { desc = 'Switch to the right split', unique = tru
 map('n', '<Down>', '<C-w>j', { desc = 'Switch to the bottom split', unique = true })
 map('n', '<Up>', '<C-w>k', { desc = 'Switch to the top split', unique = true })
 
+-- Terminal window navigation
+map('t', '<C-w>h', '<C-\\><C-n><C-w>h', { desc = 'Switch to the left split', silent = true, unique = true })
+map('t', '<C-w>l', '<C-\\><C-n><C-w>l', { desc = 'Switch to the right split', silent = true, unique = true })
+map('t', '<C-w>j', '<C-\\><C-n><C-w>j', { desc = 'Switch to the bottom split', silent = true, unique = true })
+map('t', '<C-w>k', '<C-\\><C-n><C-w>k', { desc = 'Switch to the top split', silent = true, unique = true })
+
 function YankBufferAsMarkdownCodeBlock()
   local filename = vim.fn.expand '%:p:~:.:h' .. '/' .. vim.fn.expand '%:t'
   local content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
@@ -32,3 +38,11 @@ end
 
 -- Map in Lua
 vim.keymap.set('n', '<leader>ym', YankBufferAsMarkdownCodeBlock, { desc = 'Yank buffer as codeblock' })
+
+-- Remap gX to open file/URL
+map('n', 'gX', function()
+  vim.ui.open(vim.fn.expand '<cfile>')
+end, { desc = 'Open with system handler', unique = true })
+
+-- Exit terminal mode
+map('t', '<C-\\><C-\\>', '<C-\\><C-n><C-w>p', { desc = 'Exit terminal mode', silent = true, unique = true })

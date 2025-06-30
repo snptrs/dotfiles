@@ -12,32 +12,80 @@ deps.later(function()
       anthropic = function()
         return require('codecompanion.adapters').extend('anthropic', {
           env = {
-            api_key = 'cmd:cat ~/.config/anthropic-api.txt',
+            api_key = 'ANTHROPIC_API_KEY',
+          },
+        })
+      end,
+      openai = function()
+        return require('codecompanion.adapters').extend('openai', {
+          env = {
+            api_key = 'OPENAI_API_KEY',
+          },
+        })
+      end,
+      gemini = function()
+        return require('codecompanion.adapters').extend('gemini', {
+          env = {
+            api_key = 'GEMINI_API_KEY',
+          },
+          schema = {
+            model = {
+              default = 'gemini-2.5-pro-preview-06-05',
+            },
           },
         })
       end,
     },
     strategies = {
       chat = {
-        adapter = 'anthropic',
+        adapter = 'gemini',
+        slash_commands = {
+          ['buffer'] = {
+            opts = {
+              provider = 'snacks',
+            },
+          },
+          ['fetch'] = {
+            opts = {
+              provider = 'snacks',
+            },
+          },
+          ['file'] = {
+            opts = {
+              provider = 'snacks',
+            },
+          },
+          ['help'] = {
+            opts = {
+              provider = 'snacks',
+            },
+          },
+          ['image'] = {
+            opts = {
+              provider = 'snacks',
+            },
+          },
+          ['symbols'] = {
+            opts = {
+              provider = 'snacks',
+            },
+          },
+        },
       },
       inline = {
-        adapter = 'anthropic',
+        adapter = 'copilot',
       },
-      agent = {
-        adapter = 'anthropic',
+      cmd = {
+        adapter = 'openai',
       },
     },
     opts = {
       log_level = 'ERROR', -- TRACE|DEBUG|ERROR|INFO
-
-      -- If this is false then any default prompt that is marked as containing code
-      -- will not be sent to the LLM. Please note that whilst I have made every
-      -- effort to ensure no code leakage, using this is at your own risk
-      send_code = true,
-
-      use_default_actions = true, -- Show the default actions in the action palette?
-      use_default_prompts = true, -- Show the default prompts in the action palette?
+    },
+    display = {
+      action_palette = {
+        provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+      },
     },
   }
 

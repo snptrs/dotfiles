@@ -512,6 +512,7 @@ deps.later(function()
       miniclue.gen_clues.registers(),
       miniclue.gen_clues.windows(),
       miniclue.gen_clues.z(),
+      { mode = 'n', keys = '<Leader>a', desc = '+Aider' },
       { mode = 'n', keys = '<Leader>s', desc = '+Sessions' },
       { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
       { mode = 'n', keys = '<Leader>c', desc = '+Code' },
