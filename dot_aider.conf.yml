@@ -122,10 +122,10 @@ model: gemini
 # Cache settings:
 
 ## Enable caching of prompts (default: False)
-#cache-prompts: false
+cache-prompts: true
 
 ## Number of times to ping at 5min intervals to keep prompt cache warm (default: 0)
-#cache-keepalive-pings: false
+cache-keepalive-pings: true
 
 ###################
 # Repomap settings:
@@ -209,7 +209,7 @@ code-theme: lightbulb
 #git: true
 
 ## Enable/disable adding .aider* to .gitignore (default: True)
-#gitignore: true
+gitignore: false
 
 ## Enable/disable the addition of files listed in .gitignore to Aider's editing scope.
 #add-gitignore-files: false
