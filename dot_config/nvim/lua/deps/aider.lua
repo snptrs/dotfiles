@@ -10,6 +10,7 @@ deps.later(function()
       '--pretty',
       '--stream',
       '--watch-files',
+      '--notifications',
     },
     auto_reload = true,
     theme = {

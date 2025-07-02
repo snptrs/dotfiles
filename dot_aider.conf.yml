@@ -380,7 +380,7 @@ auto-commits: false
 #  - zzz
 
 ## specify a read-only file (can be used multiple times)
-#read: xxx
+read: CONVENTIONS.md
 ## Specify multiple values like this:
 #read:
 #  - xxx

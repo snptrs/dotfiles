@@ -33,6 +33,7 @@ set -gx STARSHIP_LOG error
 set -gx GEMINI_API_KEY {{ onepasswordRead "op://personal/zqi3rsn2kuyidkbehw5sgsqo24/credential" }}
 set -gx ANTHROPIC_API_KEY {{ onepasswordRead "op://personal/u23su5f27pculhr5ibdgwtssfe/credential" }}
 set -gx OPENAI_API_KEY {{ onepasswordRead "op://personal/qwmqg6rbpngb5phqd4tj6kgcuu/credential" }}
+set -gx OPENROUTER_API_KEY {{ onepasswordRead "op://personal/zinvbojwn6vjngyrnia3v5mume/credential" }}
 # AIDER
 set -gx AIDER_API_KEY gemini=$GEMINI_API_KEY
 set -gx AIDER_ANTHROPIC_API_KEY $ANTHROPIC_API_KEY
