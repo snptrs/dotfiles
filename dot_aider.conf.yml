@@ -125,7 +125,7 @@ model: gemini
 cache-prompts: true
 
 ## Number of times to ping at 5min intervals to keep prompt cache warm (default: 0)
-cache-keepalive-pings: true
+cache-keepalive-pings: 1
 
 ###################
 # Repomap settings:

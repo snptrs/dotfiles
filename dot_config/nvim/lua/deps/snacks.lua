@@ -18,6 +18,7 @@ deps.now(function()
         },
       },
     },
+    words = {},
     zen = {
       enabled = true,
       toggles = {
@@ -135,11 +136,7 @@ deps.now(function()
       Snacks.toggle.inlay_hints():map '<leader>uh'
       Snacks.toggle.indent():map '<leader>ug'
       Snacks.toggle.dim():map '<leader>uD'
-      vim.keymap.set('n', '<leader>uw', function()
-        vim.b.minicursorword_disable = not (vim.b.minicursorword_disable or false)
-        local new_state = vim.b.minicursorword_disable
-        vim.notify('Cursor word ' .. (new_state and 'disabled' or 'enabled'), new_state and vim.log.levels.WARN or vim.log.levels.INFO)
-      end, { desc = 'Toggle minicursorword' })
+      Snacks.toggle.words():map '<leader>uw'
     end,
   })
 
