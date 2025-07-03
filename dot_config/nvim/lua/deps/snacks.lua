@@ -18,6 +18,7 @@ deps.now(function()
         },
       },
     },
+    statuscolumn = {},
     words = {},
     zen = {
       enabled = true,
@@ -85,6 +86,7 @@ deps.now(function()
     { desc = 'Find Files' })
   vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
   vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
+  vim.keymap.set('n', '<leader>fm', function() Snacks.picker.marks() end, { desc = 'Marks' })
 
   -- Git mappings
   vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
