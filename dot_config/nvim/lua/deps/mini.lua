@@ -458,9 +458,9 @@ deps.later(function()
 end)
 
 --#### mini.cursorword
-deps.later(function()
-  require('mini.cursorword').setup()
-end)
+-- deps.later(function()
+--   require('mini.cursorword').setup()
+-- end)
 
 --#### mini.clue
 deps.later(function()
@@ -529,4 +529,13 @@ deps.later(function()
       { mode = 'n', keys = '[w', postkeys = '[' },
     },
   }
+end)
+
+--#### Bufremove
+deps.later(function()
+  require('mini.bufremove').setup()
+
+  vim.keymap.set('n', '<leader>bd', function()
+    MiniBufremove.delete()
+  end, { desc = 'Close buffer' })
 end)
