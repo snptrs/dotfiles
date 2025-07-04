@@ -9,5 +9,5 @@ deps.now(function()
     end,
   }
 
-  vim.keymap.set('n', '<leader>s', '<cmd>AerialToggle!<CR>')
+  vim.keymap.set('n', '<leader>S', '<cmd>AerialToggle!<CR>')
 end)

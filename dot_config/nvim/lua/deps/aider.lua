@@ -6,7 +6,6 @@ deps.later(function()
 
   require('nvim_aider').setup {
     args = {
-      '--no-auto-commits',
       '--pretty',
       '--stream',
       '--watch-files',

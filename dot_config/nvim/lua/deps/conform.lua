@@ -47,11 +47,12 @@ deps.later(function()
     end,
     -- Customize formatters
     formatters = {
-      phpcbf = {
-        prepend_args = { '--standard=PSR12', '--extensions=php' },
-      },
       pint = {
         prepend_args = { '--preset', 'laravel' },
+        -- prepend_args = { '--preset', 'psr12' },
+      },
+      phpcbf = {
+        prepend_args = { '--standard=PSR12', '--extensions=php' },
       },
     },
   }

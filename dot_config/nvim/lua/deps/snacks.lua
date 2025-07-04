@@ -18,7 +18,11 @@ deps.now(function()
         },
       },
     },
-    statuscolumn = {},
+    statuscolumn = {
+      folds = {
+        open = true,
+      },
+    },
     words = {},
     zen = {
       enabled = true,
