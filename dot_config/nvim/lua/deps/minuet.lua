@@ -5,9 +5,17 @@ deps.later(function()
   }
 
   require('minuet').setup {
-    provider = 'gemini',
+    provider = 'codestral',
     blink = {
       enable_auto_complete = true,
+    },
+    provider_options = {
+      codestral = {
+        optional = {
+          max_tokens = 256,
+          stop = { '\n\n' },
+        },
+      },
     },
   }
 end)

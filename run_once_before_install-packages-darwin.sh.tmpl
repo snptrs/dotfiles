@@ -80,4 +80,8 @@ if [ ! -d "/Users/seanpeters/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm /Users/seanpeters/.tmux/plugins/tpm
 fi
 
+if [ ! -e "/Users/seanpeters/.config/fish/functions/fisher.fish" ]; then
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fi
+
 {{ end -}}

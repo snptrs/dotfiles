@@ -15,7 +15,7 @@ deps.now(function()
     -- your own keymap.
     keymap = {
       preset = 'default',
-      ['<A-y>'] = require('minuet').make_blink_map(),
+      ['<M-Space>'] = require('minuet').make_blink_map(),
     },
 
     appearance = {

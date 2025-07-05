@@ -12,7 +12,7 @@ deps.later(function()
       augend.constant.alias.bool,
       augend.semver.alias.semver,
       augend.constant.new { elements = { 'let', 'const' } },
-      augend.constant.new { elements = { 'private', 'public' } },
+      augend.constant.new { elements = { 'private', 'public', 'protected' } },
       augend.constant.new { elements = { 'GET', 'POST', 'PATCH', 'DELETE' } },
     },
   }

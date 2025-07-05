@@ -538,4 +538,6 @@ deps.later(function()
   vim.keymap.set('n', '<leader>bd', function()
     MiniBufremove.delete()
   end, { desc = 'Close buffer' })
+
+  vim.keymap.set('n', '<leader>bD', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers' })
 end)

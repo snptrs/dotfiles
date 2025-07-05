@@ -8,10 +8,14 @@ fish_add_path /Users/seanpeters/.lando/bin
 fish_add_path /Users/seanpeters/.lando/bin
 fish_add_path /Users/seanpeters/.local/bin # uv
 
-set -g tide_left_prompt_items pwd git newline character
-set -g tide_git_icon 
-set -g tide_pwd_icon
-set -g tide_right_prompt_suffix " "
+# Hydro prompt
+set -g hydro_cmd_duration_threshold 5000
+set -g fish_prompt_pwd_dir_length 3
+set -g hydro_color_pwd blue
+set -g hydro_color_git brblack
+set -g hydro_multiline true
+
+set -g sponge_delay 5
 
 # if status is-interactive
 # Commands to run in interactive sessions can go here
@@ -34,6 +38,7 @@ set -gx GEMINI_API_KEY {{ onepasswordRead "op://personal/zqi3rsn2kuyidkbehw5sgsq
 set -gx ANTHROPIC_API_KEY {{ onepasswordRead "op://personal/u23su5f27pculhr5ibdgwtssfe/credential" }}
 set -gx OPENAI_API_KEY {{ onepasswordRead "op://personal/qwmqg6rbpngb5phqd4tj6kgcuu/credential" }}
 set -gx OPENROUTER_API_KEY {{ onepasswordRead "op://personal/zinvbojwn6vjngyrnia3v5mume/credential" }}
+set -gx CODESTRAL_API_KEY {{ onepasswordRead "op://personal/7ka2g5pwk3gtmp5bn7sur6xewq/credential" }}
 # AIDER
 set -gx AIDER_API_KEY gemini=$GEMINI_API_KEY
 set -gx AIDER_ANTHROPIC_API_KEY $ANTHROPIC_API_KEY
@@ -70,5 +75,5 @@ rbenv init - fish | source
 
 #eval (zellij setup --generate-auto-start fish | string collect)
 
-starship init fish | source
+#starship init fish | source
 # end
