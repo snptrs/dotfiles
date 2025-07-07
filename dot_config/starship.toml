@@ -5,7 +5,6 @@
 add_newline = true
 
 format = """
-$username\
 $hostname\
 $directory\
 $git_branch\
@@ -23,6 +22,9 @@ $character"""
 
 [fill]
 symbol = ' '
+
+[hostname]
+ssh_symbol = ''
 
 [directory]
 read_only = " "
