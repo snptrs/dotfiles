@@ -45,7 +45,7 @@ sketchybar --default icon.font="SF Pro:Semibold:12.0" \
   label.padding_right=6
 
 # -- Left Side Items --
-source $ITEM_DIR/spaces.sh
+source $ITEM_DIR/executable_spaces.sh
 source $ITEM_DIR/front_app.sh
 
 # -- Right Side Of Notch Items --

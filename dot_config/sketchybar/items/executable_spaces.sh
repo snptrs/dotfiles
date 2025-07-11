@@ -23,3 +23,5 @@ for m in $(aerospace list-monitors | awk '{print $1}'); do
       click_script="$PLUGIN_DIR/space_click.sh $sid"
   done
 done
+
+sketchybar --trigger aerospace_workspace_change
