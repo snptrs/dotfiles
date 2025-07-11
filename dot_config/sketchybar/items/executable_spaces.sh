@@ -21,30 +21,5 @@ for m in $(aerospace list-monitors | awk '{print $1}'); do
       label.padding_right=10 \
       label.y_offset=-1 \
       click_script="$PLUGIN_DIR/space_click.sh $sid"
-
-    apps=$(aerospace list-windows --monitor "$m" --workspace "$sid" |
-      awk -F '|' '{gsub(/^ *| *$/, "", $2); if (!seen[$2]++) print $2}')
-
-    icon_strip=""
-    if [ "${apps}" != "" ]; then
-      while read -r app; do
-        icon_strip+=" $($PLUGIN_DIR/icons.sh "$app")"
-      done <<<"${apps}"
-    else
-      icon_strip=" —"
-    fi
-
-    sketchybar --set space.$sid label="$icon_strip"
-
-  done
-  
-  for empty_space in $(aerospace list-workspaces --monitor $m --empty); do
-    sketchybar --set space.$empty_space display=0
-  done
-  for focus in $(aerospace list-workspaces --focused); do
-    sketchybar --set space.$focus background.drawing=on \
-      background.color=$ACCENT_COLOR \
-      label.color=$ITEM_COLOR \
-      icon.color=$ITEM_COLOR
   done
 done
