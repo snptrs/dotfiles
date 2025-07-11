@@ -25,6 +25,7 @@ brew "vivid"
 brew "wget"
 brew "zoxide"
 cask "1password-cli"
+cask "nikitabobko/tap/aerospace"
 cask "bbedit"
 cask "bruno"
 cask "daisydisk"
@@ -45,6 +46,7 @@ cask "raycast"
 cask "syncthing"
 cask "syntax-highlight", args: { no_quarantine: true }
 cask "tableplus"
+cask "ubersicht"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Consent-O-Matic", id: 1606897889
@@ -82,6 +84,10 @@ fi
 
 if [ ! -e "/Users/seanpeters/.config/fish/functions/fisher.fish" ]; then
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fi
+
+if [ ! -d "/Users/seanpeters/Library/Application Support/Übersicht/widgets/simple-bar" ]; then
+  git clone https://github.com/Jean-Tinland/simple-bar /Users/seanpeters/Library/Application\ Support/Übersicht/widgets/simple-bar
 fi
 
 {{ end -}}
