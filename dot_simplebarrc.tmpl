@@ -85,7 +85,11 @@
     "cpuWidget": true,
     "gpuWidget": false,
     "memoryWidget": true,
+    {{- if eq .is_work_mac false }}
+    "batteryWidget": false,
+    {{- else }}
     "batteryWidget": true,
+    {{- end }}
     "wifiWidget": true,
     "vpnWidget": false,
     "zoomWidget": false,
@@ -148,7 +152,11 @@
     "refreshFrequency": 20000,
     "showOnDisplay": "",
     "showIcon": true,
+    {{- if eq .is_work_mac false }}
+    "networkDevice": "en1",
+    {{- else }}
     "networkDevice": "en0",
+    {{- end }}
     "hideWifiIfDisabled": false,
     "toggleWifiOnClick": false,
     "hideNetworkName": true
