@@ -541,3 +541,13 @@ deps.later(function()
 
   vim.keymap.set('n', '<leader>bD', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers' })
 end)
+
+--#### Pick
+deps.later(function()
+  local pick_config = require 'deps.config.mini-pick'
+  pick_config.setup()
+  -- require('mini.pick').setup()
+  for _, keymap in ipairs(pick_config.keys) do
+    vim.keymap.set('n', keymap[1], keymap[2], { desc = keymap.desc })
+  end
+end)

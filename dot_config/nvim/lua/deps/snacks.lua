@@ -10,14 +10,14 @@ deps.now(function()
     input = {},
     lazygit = {},
     terminal = {},
-    picker = {
-      formatters = {
-        file = {
-          filename_first = true,
-          truncate = 70,
-        },
-      },
-    },
+    -- picker = {
+    --   formatters = {
+    --     file = {
+    --       filename_first = true,
+    --       truncate = 70,
+    --     },
+    --   },
+    -- },
     statuscolumn = {
       folds = {
         open = true,
@@ -58,63 +58,62 @@ deps.now(function()
   vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
   vim.keymap.set({'n', 't'}, '<c-w>/', function() Snacks.terminal.toggle() end, { desc = 'Toggle terminal'})
 
-
-  vim.keymap.set('n', '<leader><space>',
-    function()
-      ---@diagnostic disable-next-line: missing-fields
-      Snacks.picker.buffers({layout = {preset = "select"}})
-    end,
-    { desc = 'Open buffers' })
-  vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
-  vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
-  vim.keymap.set('n', '<leader>ff',
-    function()
-      ---@diagnostic disable-next-line: missing-fields
-      Snacks.picker.files {
-        matcher = {
-          cwd_bonus = true, -- boost cwd matches
-          frecency = true, -- use frecency boosting
-          sort_empty = true, -- sort even when the filter is empty
-        },
-        hidden = true,
-        layout = {
-          preview = false,
-          layout = {
-            width = 0.6,
-            min_width = 120,
-            height = 0.6,
-          },
-        },
-      }
-    end,
-    { desc = 'Find Files' })
-  vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
-  vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
-  vim.keymap.set('n', '<leader>fm', function() Snacks.picker.marks() end, { desc = 'Marks' })
-
-  -- Git mappings
-  vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
-
-  -- Grep mappings
-  vim.keymap.set('n', '<leader>fb', function() Snacks.picker.lines() end, { desc = 'Buffer Lines' })
-  vim.keymap.set('n', '<leader>fB', function() Snacks.picker.grep_buffers() end, { desc = 'Grep Open Buffers' })
-  vim.keymap.set('n', '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'Visual selection or word' })
-
-  -- Search mappings
-  vim.keymap.set('n', '<leader>fa', function() Snacks.picker.autocmds() end, { desc = 'Autocmds' })
-  vim.keymap.set('n', '<leader>fC', function() Snacks.picker.commands() end, { desc = 'Commands' })
-  vim.keymap.set('n', '<leader>fD', function() Snacks.picker.diagnostics() end, { desc = 'Diagnostics' })
-  vim.keymap.set('n', '<leader>fd', function() Snacks.picker.diagnostics_buffer() end, { desc = 'Diagnostics (buffer)' })
-  vim.keymap.set('n', '<leader>fh', function() Snacks.picker.help() end, { desc = 'Help Pages' })
-  vim.keymap.set('n', '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'Keymaps' })
-  vim.keymap.set('n', '<leader>fq', function() Snacks.picker.qflist() end, { desc = 'Quickfix List' })
-  vim.keymap.set('n', '<leader>fy', function() Snacks.picker.registers() end, { desc = 'Registers' })
-
-  -- LSP mappings
-  vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
-  vim.keymap.set('n', 'grr', function() Snacks.picker.lsp_references() end, { desc = 'References', nowait = true })
-  vim.keymap.set('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation' })
-  vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto T[y]pe Definition' })
+  -- vim.keymap.set('n', '<leader><space>',
+  --   function()
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     Snacks.picker.buffers({layout = {preset = "select"}})
+  --   end,
+  --   { desc = 'Open buffers' })
+  -- vim.keymap.set('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
+  -- vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = 'Command History' })
+  -- vim.keymap.set('n', '<leader>ff',
+  --   function()
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     Snacks.picker.files {
+  --       matcher = {
+  --         cwd_bonus = true, -- boost cwd matches
+  --         frecency = true, -- use frecency boosting
+  --         sort_empty = true, -- sort even when the filter is empty
+  --       },
+  --       hidden = true,
+  --       layout = {
+  --         preview = false,
+  --         layout = {
+  --           width = 0.6,
+  --           min_width = 120,
+  --           height = 0.6,
+  --         },
+  --       },
+  --     }
+  --   end,
+  --   { desc = 'Find Files' })
+  -- vim.keymap.set('n', '<leader>fR', function() Snacks.picker.recent() end, { desc = 'Recent' })
+  -- vim.keymap.set('n', '<leader>fr', function() Snacks.picker.resume() end, { desc = 'Resume' })
+  -- vim.keymap.set('n', '<leader>fm', function() Snacks.picker.marks() end, { desc = 'Marks' })
+  --
+  -- -- Git mappings
+  -- vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
+  --
+  -- -- Grep mappings
+  -- vim.keymap.set('n', '<leader>fb', function() Snacks.picker.lines() end, { desc = 'Buffer Lines' })
+  -- vim.keymap.set('n', '<leader>fB', function() Snacks.picker.grep_buffers() end, { desc = 'Grep Open Buffers' })
+  -- vim.keymap.set('n', '<leader>fw', function() Snacks.picker.grep_word() end, { desc = 'Visual selection or word' })
+  --
+  -- -- Search mappings
+  -- vim.keymap.set('n', '<leader>fa', function() Snacks.picker.autocmds() end, { desc = 'Autocmds' })
+  -- vim.keymap.set('n', '<leader>fC', function() Snacks.picker.commands() end, { desc = 'Commands' })
+  -- vim.keymap.set('n', '<leader>fD', function() Snacks.picker.diagnostics() end, { desc = 'Diagnostics' })
+  -- vim.keymap.set('n', '<leader>fd', function() Snacks.picker.diagnostics_buffer() end, { desc = 'Diagnostics (buffer)' })
+  -- vim.keymap.set('n', '<leader>fh', function() Snacks.picker.help() end, { desc = 'Help Pages' })
+  -- vim.keymap.set('n', '<leader>fk', function() Snacks.picker.keymaps() end, { desc = 'Keymaps' })
+  -- vim.keymap.set('n', '<leader>fq', function() Snacks.picker.qflist() end, { desc = 'Quickfix List' })
+  -- vim.keymap.set('n', '<leader>fy', function() Snacks.picker.registers() end, { desc = 'Registers' })
+  --
+  -- -- LSP mappings
+  -- vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
+  -- vim.keymap.set('n', 'grr', function() Snacks.picker.lsp_references() end, { desc = 'References', nowait = true })
+  -- vim.keymap.set('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation' })
+  -- vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto T[y]pe Definition' })
   -- stylua: ignore end
 
   -- #### AUTOCOMMANDS ####

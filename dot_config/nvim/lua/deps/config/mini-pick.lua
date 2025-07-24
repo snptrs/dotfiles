@@ -39,7 +39,7 @@ local function lsp_picker(scope, autojump)
       opts.symbol_query = get_symbol_query()
     end
 
-    require('mini.extra').pickers.lsp(opts, { window = { config = wide_window } })
+    require('mini.extra').pickers.lsp(opts)
     return
   end
 
@@ -55,7 +55,7 @@ local function lsp_picker(scope, autojump)
   end
 
   if scope == 'references' then
-    require('mini.extra').pickers.lsp({ scope = 'references' }, { window = { config = wide_window } })
+    require('mini.extra').pickers.lsp { scope = 'references' }
     return
   end
 
@@ -77,42 +77,68 @@ return {
     {
       '<leader>ff',
       function()
-        require('mini.pick').builtin.files(nil, { window = {
-          config = big_window,
-        } })
+        require('mini.pick').builtin.files(nil)
       end,
       desc = 'Find files',
     },
     {
+      '<leader>fF',
+      function()
+        MiniPick.builtin.cli {
+          command = {
+            'rg',
+            '--files',
+            '--hidden',
+            '--no-ignore',
+            '-g',
+            '!/**/.git',
+            '-g',
+            '!/**/node_modules',
+            '-g',
+            '!/**/vendor',
+            '-g',
+            '!/**/public/build',
+          },
+        }
+      end,
+      desc = 'Find files (include ignored)',
+    },
+    {
       '<leader>fg',
       function()
-        require('mini.pick').builtin.grep_live(nil, { window = {
-          config = big_window,
-        } })
+        require('mini.pick').builtin.grep_live(nil)
       end,
       desc = 'Grep files',
     },
     {
       '<leader>fr',
       function()
-        require('mini.pick').builtin.resume(nil, { window = {
-          config = big_window,
-        } })
+        require('mini.pick').builtin.resume(nil)
       end,
       desc = 'Resume find',
     },
     {
       '<leader>fv',
       function()
-        require('mini.extra').pickers.visit_paths({
+        require('mini.extra').pickers.visit_paths {
           recency_weight = 1,
-        }, {
-          window = {
-            config = small_window,
-          },
-        })
+        }
       end,
       desc = 'Visit paths',
+    },
+    {
+      '<leader>f"',
+      function()
+        require('mini.extra').pickers.registers()
+      end,
+      desc = 'Registers',
+    },
+    {
+      '<leader>fm',
+      function()
+        require('mini.extra').pickers.marks()
+      end,
+      desc = 'Marks',
     },
     {
       '<space><space>',
@@ -139,7 +165,7 @@ return {
       desc = 'Goto definition',
     },
     {
-      'gr',
+      'grr',
       function()
         lsp_picker('references', true)
       end,
@@ -165,9 +191,6 @@ return {
     require('mini.pick').setup {
       options = {
         content_from_bottom = false,
-      },
-      window = {
-        config = small_window,
       },
       mappings = {
         choose_all = { char = '<C-q>', func = choose_marked },
