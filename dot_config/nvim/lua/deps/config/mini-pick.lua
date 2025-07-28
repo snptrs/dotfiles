@@ -19,12 +19,16 @@ local function lsp_picker(scope, autojump)
 
   ---@param opts vim.lsp.LocationOpts.OnList
   local function on_list(opts)
-    vim.fn.setqflist({}, ' ', opts)
+    if not opts or not opts.items or #opts.items == 0 then
+      vim.notify('No locations found', vim.log.levels.INFO)
+      return
+    end
 
     if #opts.items == 1 then
-      vim.cmd.cfirst()
+      vim.lsp.util.jump_to_location(opts.items[1])
     else
-      require('mini.extra').pickers.list({ scope = 'quickfix' }, { source = { name = opts.title } })
+      local items = vim.lsp.util.locations_to_items(opts.items)
+      require('mini.pick').start { source = { items = items, name = opts.title } }
     end
   end
 
