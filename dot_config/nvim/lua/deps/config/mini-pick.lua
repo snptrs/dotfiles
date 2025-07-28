@@ -1,4 +1,3 @@
-
 local find_ignored_files = function()
   MiniPick.builtin.cli {
     command = {
@@ -24,7 +23,9 @@ local switch_to_ignored = function()
 
   find_ignored_files()
   local transfer_query = function()
-    MiniPick.set_picker_query(query)
+    if query then
+      MiniPick.set_picker_query(query)
+    end
   end
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniPickStart', once = true, callback = transfer_query })
 end
