@@ -28,11 +28,6 @@ local function lsp_picker(scope, autojump)
     end
   end
 
-  if scope == 'references' then
-    require('mini.extra').pickers.lsp { scope = 'references' }
-    return
-  end
-
   if scope == 'workspace_symbol' then
     vim.lsp.buf.workspace_symbol(get_symbol_query(), { on_list = on_list })
     return
@@ -41,10 +36,7 @@ local function lsp_picker(scope, autojump)
   vim.lsp.buf[scope] { on_list = on_list }
 end
 
-local switch_to_ignored = function()
-  local query = MiniPick.get_picker_query()
-  MiniPick.stop()
-
+local find_ignored_files = function()
   MiniPick.builtin.cli {
     command = {
       'rg',
@@ -61,6 +53,13 @@ local switch_to_ignored = function()
       '!/**/public/build',
     },
   }
+end
+
+local switch_to_ignored = function()
+  local query = MiniPick.get_picker_query()
+  MiniPick.stop()
+
+  find_ignored_files()
   local transfer_query = function()
     MiniPick.set_picker_query(query)
   end
@@ -95,24 +94,7 @@ return {
     },
     {
       '<leader>fF',
-      function()
-        MiniPick.builtin.cli {
-          command = {
-            'rg',
-            '--files',
-            '--hidden',
-            '--no-ignore',
-            '-g',
-            '!/**/.git',
-            '-g',
-            '!/**/node_modules',
-            '-g',
-            '!/**/vendor',
-            '-g',
-            '!/**/public/build',
-          },
-        }
-      end,
+      find_ignored_files,
       desc = 'Find files (include ignored)',
     },
     {
@@ -125,7 +107,7 @@ return {
     {
       '<leader>fr',
       function()
-        require('mini.pick').builtin.resume(nil)
+        require('mini.pick').builtin.resume()
       end,
       desc = 'Resume find',
     },
