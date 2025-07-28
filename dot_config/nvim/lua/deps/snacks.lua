@@ -55,7 +55,8 @@ deps.now(function()
   vim.keymap.set('n', '<leader>gb', function() Snacks.git.blame_line() end, { desc = 'Git Blame Line' })
   vim.keymap.set('n', ']]', function() Snacks.words.jump(vim.v.count1) end, { desc = 'Next Reference' })
   vim.keymap.set('n', '[[', function() Snacks.words.jump(-vim.v.count1) end, { desc = 'Prev Reference' })
-  vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open lazygit' })
+  vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.open() end, { desc = 'Open Lazygit' })
+  vim.keymap.set('n', '<leader>gf', function() Snacks.lazygit.log_file() end, { desc = 'Lazygit file log' })
   vim.keymap.set({'n', 't'}, '<c-w>/', function() Snacks.terminal.toggle() end, { desc = 'Toggle terminal'})
 
   -- vim.keymap.set('n', '<leader><space>',

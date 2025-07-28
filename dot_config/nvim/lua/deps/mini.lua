@@ -551,3 +551,20 @@ deps.later(function()
     vim.keymap.set('n', keymap[1], keymap[2], { desc = keymap.desc })
   end
 end)
+
+--#### Visits
+deps.now(function()
+  require('mini.visits').setup()
+
+  local map_vis = function(keys, call, desc)
+    local rhs = '<Cmd>lua MiniVisits.' .. call .. '<CR>'
+    vim.keymap.set('n', '<Leader>' .. keys, rhs, { desc = desc })
+  end
+
+  map_vis('vv', 'add_label()', 'Add label')
+  map_vis('vV', 'remove_label()', 'Remove label')
+  map_vis('v,', 'select_label()', 'Select label (cwd)')
+  map_vis('vcc', 'add_label("core")', 'Add to core')
+  map_vis('vcC', 'remove_label("core")', 'Remove from core')
+  map_vis('vc,', 'select_path(nil, { filter = "core" })', 'Select core (cwd)')
+end)

@@ -72,6 +72,54 @@ local choose_marked = function()
   vim.api.nvim_input(mappings.choose_marked)
 end
 
+local switch_to_ignored = function()
+  local query = MiniPick.get_picker_query()
+  MiniPick.stop()
+
+  MiniPick.builtin.cli {
+    command = {
+      'rg',
+      '--files',
+      '--hidden',
+      '--no-ignore',
+      '-g',
+      '!/**/.git',
+      '-g',
+      '!/**/node_modules',
+      '-g',
+      '!/**/vendor',
+      '-g',
+      '!/**/public/build',
+    },
+  }
+  local transfer_query = function()
+    MiniPick.set_picker_query(query)
+  end
+  vim.api.nvim_create_autocmd('User', { pattern = 'MiniPickStart', once = true, callback = transfer_query })
+end
+
+require('mini.pick').registry.buffers = function(local_opts, opts)
+  local_opts = vim.tbl_deep_extend('force', {
+    include_current = true,
+  }, local_opts or {})
+
+  -- Delete the current buffer
+  local wipeout_cur = function()
+    vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
+    -- MiniPick.registry.buffers(local_opts, opts)
+  end
+
+  -- Map <C-d> to delete the buffer
+  local buffer_mappings = { wipeout = { char = '<C-d>', func = wipeout_cur } }
+
+  -- Merge options
+  opts = vim.tbl_deep_extend('force', {
+    mappings = buffer_mappings,
+  }, opts or {})
+
+  return MiniPick.builtin.buffers(local_opts, opts)
+end
+
 return {
   keys = {
     {
@@ -143,17 +191,7 @@ return {
     {
       '<space><space>',
       function()
-        require('mini.pick').builtin.buffers({ include_current = false }, {
-          mappings = {
-            wipeout = {
-              char = '<C-d>',
-              func = function()
-                local picker = require 'mini.pick'
-                vim.api.nvim_buf_delete(picker.get_picker_matches().current.bufnr, {})
-              end,
-            },
-          },
-        })
+        require('mini.pick').registry.buffers()
       end,
       desc = 'Open buffers',
     },
@@ -189,11 +227,10 @@ return {
 
   setup = function()
     require('mini.pick').setup {
-      options = {
-        content_from_bottom = false,
-      },
       mappings = {
+        scroll_up = '<C-k>',
         choose_all = { char = '<C-q>', func = choose_marked },
+        switch = { char = '<M-i>', func = switch_to_ignored },
       },
     }
 
