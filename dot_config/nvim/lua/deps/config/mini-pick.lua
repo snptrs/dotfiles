@@ -24,11 +24,19 @@ local function lsp_picker(scope, autojump)
       return
     end
 
+    opts.items = vim.tbl_filter(function(item)
+      return item ~= nil
+    end, opts.items)
+
+    if #opts.items == 0 then
+      return
+    end
+
     if #opts.items == 1 then
       vim.lsp.util.jump_to_location(opts.items[1])
     else
       local items = vim.lsp.util.locations_to_items(opts.items)
-      require('mini.pick').start { source = { items = items, name = opts.title } }
+      require('mini.pick').start { source = { items = items, name = scope } }
     end
   end
 
