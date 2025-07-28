@@ -33,7 +33,7 @@ local function lsp_picker(scope, autojump)
     return
   end
 
-  vim.lsp.buf[scope] { on_list = on_list }
+  vim.lsp.buf[scope]({}, { on_list = on_list })
 end
 
 local find_ignored_files = function()
