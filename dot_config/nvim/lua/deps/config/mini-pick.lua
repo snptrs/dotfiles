@@ -1,52 +1,3 @@
----@param scope "declaration" | "definition" | "document_symbol" | "implementation" | "references" | "type_definition" | "workspace_symbol"
----@param autojump boolean? If there is only one result it will jump to it.
-local function lsp_picker(scope, autojump)
-  ---@return string
-  local function get_symbol_query()
-    return vim.fn.input 'Symbol: '
-  end
-
-  if not autojump then
-    local opts = { scope = scope }
-
-    if scope == 'workspace_symbol' then
-      opts.symbol_query = get_symbol_query()
-    end
-
-    require('mini.extra').pickers.lsp(opts)
-    return
-  end
-
-  ---@param opts vim.lsp.LocationOpts.OnList
-  local function on_list(opts)
-    if not opts or not opts.items or #opts.items == 0 then
-      vim.notify('No locations found', vim.log.levels.INFO)
-      return
-    end
-
-    opts.items = vim.tbl_filter(function(item)
-      return item and (item.uri or item.targetUri)
-    end, opts.items)
-
-    if #opts.items == 0 then
-      return
-    end
-
-    if #opts.items == 1 then
-      vim.lsp.util.show_document(opts.items[1], { focus = true })
-    else
-      local items = vim.lsp.util.locations_to_items(opts.items)
-      require('mini.pick').start { source = { items = items, name = scope } }
-    end
-  end
-
-  if scope == 'workspace_symbol' then
-    vim.lsp.buf.workspace_symbol(get_symbol_query(), { on_list = on_list })
-    return
-  end
-
-  vim.lsp.buf[scope]({}, { on_list = on_list })
-end
 
 local find_ignored_files = function()
   MiniPick.builtin.cli {
@@ -156,28 +107,28 @@ return {
     {
       'gd',
       function()
-        lsp_picker('definition', true)
+        require('mini.extra').pickers.lsp { scope = 'definition' }
       end,
       desc = 'Goto definition',
     },
     {
       'grr',
       function()
-        lsp_picker('references', true)
+        require('mini.extra').pickers.lsp { scope = 'references' }
       end,
       desc = 'Goto references',
     },
     {
       'gD',
       function()
-        lsp_picker('declaration', true)
+        require('mini.extra').pickers.lsp { scope = 'declaration' }
       end,
       desc = 'Goto declaration',
     },
     {
       'gT',
       function()
-        lsp_picker('type_definition', true)
+        require('mini.extra').pickers.lsp { scope = 'type_definition' }
       end,
       desc = 'Goto type definition',
     },
