@@ -1,29 +1,3 @@
-local function create_window_config(height, width)
-  return {
-    anchor = 'NW',
-    height = height,
-    width = width,
-    row = math.floor(0.5 * (vim.o.lines - height)),
-    col = math.floor(0.5 * (vim.o.columns - width)),
-  }
-end
-
-local small_window = function()
-  return create_window_config(20, 80)
-end
-
-local big_window = function()
-  local height = math.floor(0.618 * vim.o.lines)
-  local width = math.floor(0.618 * vim.o.columns)
-  return create_window_config(height, width)
-end
-
-local wide_window = function()
-  local height = 20
-  local width = math.floor(0.618 * vim.o.columns)
-  return create_window_config(height, width)
-end
-
 ---@param scope "declaration" | "definition" | "document_symbol" | "implementation" | "references" | "type_definition" | "workspace_symbol"
 ---@param autojump boolean? If there is only one result it will jump to it.
 local function lsp_picker(scope, autojump)
@@ -67,11 +41,6 @@ local function lsp_picker(scope, autojump)
   vim.lsp.buf[scope] { on_list = on_list }
 end
 
-local choose_marked = function()
-  local mappings = MiniPick.get_picker_opts().mappings
-  vim.api.nvim_input(mappings.choose_marked)
-end
-
 local switch_to_ignored = function()
   local query = MiniPick.get_picker_query()
   MiniPick.stop()
@@ -99,14 +68,9 @@ local switch_to_ignored = function()
 end
 
 require('mini.pick').registry.buffers = function(local_opts, opts)
-  local_opts = vim.tbl_deep_extend('force', {
-    include_current = true,
-  }, local_opts or {})
-
   -- Delete the current buffer
   local wipeout_cur = function()
     vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
-    -- MiniPick.registry.buffers(local_opts, opts)
   end
 
   -- Map <C-d> to delete the buffer
@@ -229,7 +193,6 @@ return {
     require('mini.pick').setup {
       mappings = {
         scroll_up = '<C-k>',
-        choose_all = { char = '<C-q>', func = choose_marked },
         switch = { char = '<M-i>', func = switch_to_ignored },
       },
     }
