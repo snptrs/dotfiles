@@ -6,7 +6,7 @@ deps.now(function()
 
   require('snacks').setup {
     bigfile = {},
-    image = { doc = { max_width = 40, inline = false } },
+    image = { doc = { max_width = 25, inline = false } },
     input = {},
     lazygit = {},
     terminal = {},

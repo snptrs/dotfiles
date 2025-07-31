@@ -17,13 +17,13 @@ deps.now(function()
       highlights.LspReferenceWrite = { gui = 'underline' }
       highlights.SnacksIndent = { fg = colors.line }
       highlights.SnacksIndentScope = { fg = colors.fg }
-      highlights.DiffChange = highlights.MiniDiffOverContext
-      highlights.DiffText = highlights.MiniDiffOverChange
+      -- highlights.DiffChange = highlights.MiniDiffOverContext
+      -- highlights.DiffText = highlights.MiniDiffOverChange
       -- More contrasty variants
       -- highlights.DiffChange = { fg = colors.delta, bg = utilities.blend(colors.delta, colors.bg, 0.2) }
       -- highlights.DiffText = { fg = colors.delta, bg = utilities.blend(colors.delta, colors.bg, 0.4) }
-      highlights.DiffDelete = highlights.MiniDiffOverDelete
-      highlights.DiffAdd = highlights.MiniDiffOverAdd
+      -- highlights.DiffDelete = highlights.MiniDiffOverDelete
+      -- highlights.DiffAdd = highlights.MiniDiffOverAdd
       highlights.DiffviewFilePanelSelected = { fg = colors.number, gui = 'bold' }
       highlights.MiniStatusLineModeNormal = { bg = colors.search, fg = colors.fg, gui = 'bold' }
       highlights.MiniStatusLineModeInsert = { bg = colors.plus, fg = colors.line, gui = 'bold' }

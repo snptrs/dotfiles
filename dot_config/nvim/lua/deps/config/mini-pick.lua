@@ -17,6 +17,21 @@ local find_ignored_files = function()
   }
 end
 
+local find_absolutely_all_files = function()
+  MiniPick.builtin.cli {
+    command = {
+      'rg',
+      '--files',
+      '--hidden',
+      '--no-ignore',
+      '-g',
+      '!/**/.git',
+      '-g',
+      '!/**/public/build',
+    },
+  }
+end
+
 local switch_to_ignored = function()
   local query = MiniPick.get_picker_query()
   MiniPick.stop()
@@ -60,6 +75,11 @@ return {
       '<leader>fF',
       find_ignored_files,
       desc = 'Find files (include ignored)',
+    },
+    {
+      '<leader>f!',
+      find_absolutely_all_files,
+      desc = 'Find files (absolutely everything)',
     },
     {
       '<leader>fg',
