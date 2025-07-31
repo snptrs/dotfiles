@@ -1,37 +1,49 @@
 local MiniPick = require 'mini.pick'
 
 local find_ignored_files = function()
-  MiniPick.builtin.cli {
-    command = {
-      'rg',
-      '--files',
-      '--hidden',
-      '--no-ignore',
-      '-g',
-      '!/**/.git',
-      '-g',
-      '!/**/node_modules',
-      '-g',
-      '!/**/vendor',
-      '-g',
-      '!/**/public/build',
+  MiniPick.builtin.cli(
+    {
+      command = {
+        'rg',
+        '--files',
+        '--hidden',
+        '--no-ignore',
+        '-g',
+        '!/**/.git',
+        '-g',
+        '!/**/node_modules',
+        '-g',
+        '!/**/vendor',
+        '-g',
+        '!/**/public/build',
+      },
     },
-  }
+    {
+      -- Give this picker a readable name so it is shown in the UI
+      source = { name = 'Files (include ignored)' },
+    }
+  )
 end
 
 local find_absolutely_all_files = function()
-  MiniPick.builtin.cli {
-    command = {
-      'rg',
-      '--files',
-      '--hidden',
-      '--no-ignore',
-      '-g',
-      '!/**/.git',
-      '-g',
-      '!/**/public/build',
+  MiniPick.builtin.cli(
+    {
+      command = {
+        'rg',
+        '--files',
+        '--hidden',
+        '--no-ignore',
+        '-g',
+        '!/**/.git',
+        '-g',
+        '!/**/public/build',
+      },
     },
-  }
+    {
+      -- Clear label so it stands out when resuming pickers
+      source = { name = 'All files' },
+    }
+  )
 end
 
 local switch_to_ignored = function()
