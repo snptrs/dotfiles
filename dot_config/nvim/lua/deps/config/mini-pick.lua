@@ -1,3 +1,5 @@
+local MiniPick = require 'mini.pick'
+
 local find_ignored_files = function()
   MiniPick.builtin.cli {
     command = {
@@ -45,21 +47,14 @@ local switch_to_ignored = function()
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniPickStart', once = true, callback = transfer_query })
 end
 
-require('mini.pick').registry.buffers = function(local_opts, opts)
-  -- Delete the current buffer
-  local wipeout_cur = function()
+MiniPick.registry.buffers = function(local_opts)
+  local wipeout = function()
     vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
   end
-
-  -- Map <C-d> to delete the buffer
-  local buffer_mappings = { wipeout = { char = '<C-d>', func = wipeout_cur } }
-
-  -- Merge options
-  opts = vim.tbl_deep_extend('force', {
-    mappings = buffer_mappings,
-  }, opts or {})
-
-  return MiniPick.builtin.buffers(local_opts, opts)
+  local extra = {
+    mappings = { wipeout = { char = '<C-d>', func = wipeout } },
+  }
+  return MiniPick.builtin.buffers(local_opts, extra)
 end
 
 return {
@@ -67,7 +62,7 @@ return {
     {
       '<leader>ff',
       function()
-        require('mini.pick').builtin.files(nil)
+        MiniPick.builtin.files(nil)
       end,
       desc = 'Find files',
     },
@@ -84,14 +79,14 @@ return {
     {
       '<leader>fg',
       function()
-        require('mini.pick').builtin.grep_live(nil)
+        MiniPick.builtin.grep_live(nil)
       end,
       desc = 'Grep files',
     },
     {
       '<leader>fr',
       function()
-        require('mini.pick').builtin.resume()
+        MiniPick.builtin.resume()
       end,
       desc = 'Resume find',
     },
@@ -121,7 +116,7 @@ return {
     {
       '<space><space>',
       function()
-        require('mini.pick').registry.buffers()
+        MiniPick.registry.buffers()
       end,
       desc = 'Open buffers',
     },
@@ -156,14 +151,14 @@ return {
   },
 
   setup = function()
-    require('mini.pick').setup {
+    MiniPick.setup {
       mappings = {
         scroll_up = '<C-k>',
-        switch = { char = '<M-i>', func = switch_to_ignored },
+        scroll_down = '<C-j>',
+        switch_to_ignored = { char = '<M-i>', func = switch_to_ignored },
       },
     }
 
-    local MiniPick = require 'mini.pick'
     local MiniExtra = require 'mini.extra'
 
     vim.ui.select = MiniPick.ui_select
