@@ -345,23 +345,11 @@ end)
 
 --#### mini.pairs
 deps.later(function()
-  local function custom_open(info)
-    if info.char_before == '\\' then
-      return nil
-    end
-
-    if info.char_after == '' or info.char_after:match('%s') then
-      return 'open'
-    end
-
-    return nil
-  end
-
   require('mini.pairs').setup {
     mappings = {
-      ['('] = { action = custom_open, pair = '()' },
-      ['['] = { action = custom_open, pair = '[]' },
-      ['{'] = { action = custom_open, pair = '{}' },
+      ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\][%s\\n]' },
+      ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\][%s\\n]' },
+      ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\][%s\\n]' },
       ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^`\\].', register = { cr = false } },
     },
   }
