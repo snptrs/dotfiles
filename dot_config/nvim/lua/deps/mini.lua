@@ -102,6 +102,13 @@ deps.later(function()
     local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
     local search_count = MiniStatusline.section_searchcount { trunc_width = 75 }
 
+    local filename = vim.fn.expand '%:t'
+    if filename ~= '' then
+      local devicons = require 'nvim-web-devicons'
+      local icon = devicons.get_icon(filename)
+      filename = (icon and icon .. ' ' or '') .. filename
+    end
+
     local macro = vim.g.macro_recording
     local formatting_disabled = vim.g.disable_autoformat and '󰉥'
     local diff_overlay = (MiniDiff.get_buf_data(0) and MiniDiff.get_buf_data(0).overlay) and '' or nil
@@ -110,7 +117,7 @@ deps.later(function()
       { hl = mode_hl, strings = { mode } },
       { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics } },
       '%<', -- Mark general truncate point
-      { hl = 'MiniStatuslineFilename', strings = { '%t' } },
+      { hl = 'MiniStatuslineFilename', strings = { filename } },
       '%=', -- End left alignment
       { hl = 'MiniStatuslineFileinfo', strings = { lsp } },
       { hl = mode_hl, strings = { search_count } },
