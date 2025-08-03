@@ -34,15 +34,15 @@ set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/.ripgreprc
 set -gx ZELLIJ_CONFIG_DIR ~/.config/zellij
 set -gx STARSHIP_LOG error
 
-set -gx GEMINI_API_KEY {{ onepasswordRead "op://personal/zqi3rsn2kuyidkbehw5sgsqo24/credential" }}
-set -gx ANTHROPIC_API_KEY {{ onepasswordRead "op://personal/u23su5f27pculhr5ibdgwtssfe/credential" }}
-set -gx OPENAI_API_KEY {{ onepasswordRead "op://personal/qwmqg6rbpngb5phqd4tj6kgcuu/credential" }}
-set -gx OPENROUTER_API_KEY {{ onepasswordRead "op://personal/zinvbojwn6vjngyrnia3v5mume/credential" }}
-set -gx CODESTRAL_API_KEY {{ onepasswordRead "op://personal/7ka2g5pwk3gtmp5bn7sur6xewq/credential" }}
+set -gx GEMINI_API_KEY {{ .gemini_api_key }}
+set -gx ANTHROPIC_API_KEY {{ .anthropic_api_key }}
+set -gx OPENAI_API_KEY {{ .openai_api_key }}
+set -gx OPENROUTER_API_KEY {{ .openrouter_api_key }}
+set -gx CODESTRAL_API_KEY {{ .codestral_api_key }}
 # AIDER
-set -gx AIDER_API_KEY gemini=$GEMINI_API_KEY
-set -gx AIDER_ANTHROPIC_API_KEY $ANTHROPIC_API_KEY
-set -gx AIDER_OPENAI_API_KEY $OPENAI_API_KEY
+set -gx AIDER_API_KEY gemini={{- .gemini_api_key }}
+set -gx AIDER_ANTHROPIC_API_KEY {{ .anthropic_api_key }}
+set -gx AIDER_OPENAI_API_KEY {{ .openai_api_key }}
 
 bind \ec pet-select
 bind \cs history-pager
