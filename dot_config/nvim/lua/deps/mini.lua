@@ -351,9 +351,9 @@ end)
 deps.later(function()
   require('mini.pairs').setup {
     mappings = {
-      ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\][%s\\n]' },
-      ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\][%s\\n]' },
-      ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\][%s\\n]' },
+      ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\][%s\\n(){}%[%]]' },
+      ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\][%s\\n(){}%[%]]' },
+      ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\][%s\\n(){}%[%]]' },
       ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^`\\].', register = { cr = false } },
     },
   }
