@@ -7,7 +7,7 @@
   "checkForUpdatesAutomatically" : true,
   "displayMode" : "static",
   "enableFocusManagement" : true,
-  "enableIntegrations" : true,
+  "enableIntegrations" : false,
   "enablePictureInPictureSupport" : true,
   "enableSpaceControl" : true,
   "enableSpaceControlAnimations" : false,
