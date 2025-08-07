@@ -1,6 +1,5 @@
 require 'deps.mini'
 require 'deps.vague'
--- require 'deps.rose-pine'
 require 'deps.vtsls'
 require 'deps.blink'
 require 'deps.lsp'
