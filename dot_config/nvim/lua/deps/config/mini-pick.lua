@@ -187,5 +187,23 @@ return {
       end
       return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
     end
+
+    MiniPick.registry.buffers = function()
+      local ns_id = vim.api.nvim_create_namespace 'pick-buffers'
+      local show = function(buf_id, items_to_show, query)
+        MiniPick.default_show(buf_id, items_to_show, query, { show_icons = true })
+
+        -- Show `[+] ` prefix for items representing modified buffers
+        vim.api.nvim_buf_clear_namespace(buf_id, ns_id, 0, -1)
+        local opts = { virt_text = { { '[+] ', 'Special' } }, virt_text_pos = 'inline' }
+        for i, item in ipairs(items_to_show) do
+          if vim.bo[item.bufnr].modified then
+            vim.api.nvim_buf_set_extmark(buf_id, ns_id, i - 1, 0, opts)
+          end
+        end
+      end
+
+      MiniPick.builtin.buffers(nil, { source = { show = show } })
+    end
   end,
 }
