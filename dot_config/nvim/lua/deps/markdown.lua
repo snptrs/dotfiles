@@ -6,7 +6,6 @@ deps.later(function()
   require('render-markdown').setup {
     file_types = {
       'markdown',
-      'Avante',
     },
   }
 end)
