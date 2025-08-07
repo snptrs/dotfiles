@@ -13,7 +13,6 @@ deps.now(function()
     spec = {
       { '<leader>b', group = 'Buffers' },
       { '<leader>c', group = 'Code' },
-      { '<leader>cc', group = 'CodeCompanion' },
       { '<leader>d', group = 'Document' },
       { '<leader>g', group = 'Git' },
       { '<leader>gd', group = 'Diff' },

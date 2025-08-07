@@ -36,14 +36,9 @@ deps.now(function()
         'snippets',
         'buffer',
         -- 'minuet',
-        -- 'codecompanion'
       },
       -- optionally disable cmdline completion
       providers = {
-        -- codecompanion = {
-        --   name = 'CodeCompanion',
-        --   module = 'codecompanion.providers.completion.blink',
-        -- },
         minuet = {
           name = 'minuet',
           module = 'minuet.blink',

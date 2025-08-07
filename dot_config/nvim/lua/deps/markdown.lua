@@ -7,7 +7,6 @@ deps.later(function()
     file_types = {
       'markdown',
       'Avante',
-      'codecompanion',
     },
   }
 end)
