@@ -24,7 +24,6 @@ deps.now(function()
       { '<leader>w', group = 'Workspace' },
       { '<leader>t', group = 'Trouble' },
       { '<leader>ga', group = 'Git (cursor actions)' },
-      { '<leader>,', desc = 'Grapple' },
       { '<leader>u', desc = 'Toggle' },
       { '[', group = 'prev' },
       { ']', group = 'next' },
