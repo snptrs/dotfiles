@@ -530,10 +530,6 @@ deps.later(function()
       { mode = 'n', keys = '<Leader>t', desc = '+Trouble' },
       { mode = 'n', keys = '<Leader>u', desc = '+Toggle' },
       { mode = 'n', keys = '<Leader>y', desc = '+Yank' },
-      { mode = 'n', keys = ']b', postkeys = ']' },
-      { mode = 'n', keys = ']w', postkeys = ']' },
-      { mode = 'n', keys = '[b', postkeys = '[' },
-      { mode = 'n', keys = '[w', postkeys = '[' },
     },
   }
 end)
