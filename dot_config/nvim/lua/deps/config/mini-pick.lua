@@ -81,11 +81,11 @@ return {
       desc = 'Find files (absolutely everything)',
     },
     {
-      '<leader>fg',
+      '<leader>fs',
       function()
         MiniPick.builtin.grep_live(nil)
       end,
-      desc = 'Grep files',
+      desc = 'Find string',
     },
     {
       '<leader>fr',
@@ -123,6 +123,27 @@ return {
         MiniPick.registry.buffers()
       end,
       desc = 'Open buffers',
+    },
+    {
+      '<leader>fk',
+      function()
+        MiniPick.registry.keymaps()
+      end,
+      desc = 'Keymaps',
+    },
+    {
+      '<leader>fh',
+      function()
+        MiniPick.registry.help()
+      end,
+      desc = 'Help',
+    },
+    {
+      '<leader>fb',
+      function()
+        MiniExtra.pickers.buf_lines { scope = 'current' }
+      end,
+      desc = 'Buffer lines',
     },
     {
       'gd',
