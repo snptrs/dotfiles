@@ -15,6 +15,11 @@
               "bundleIdentifier" : "coing.ClockifyDesktop",
               "iconPath" : "/Applications/Clockify Desktop.app/Contents/Resources/AppIcon.icns",
               "name" : "Clockify Desktop"
+            },
+            {
+              "bundleIdentifier" : "com.apple.iCal",
+              "iconPath" : "/System/Applications/Calendar.app/Contents/Resources/AppIcon.icns",
+              "name" : "Calendar"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+a",
@@ -95,6 +100,11 @@
               "bundleIdentifier" : "com.tinyapp.TablePlus",
               "iconPath" : "/Applications/TablePlus.app/Contents/Resources/AppIcon.icns",
               "name" : "TablePlus"
+            },
+            {
+              "bundleIdentifier" : "dev.kdrag0n.MacVirt",
+              "iconPath" : "/Applications/OrbStack.app/Contents/Resources/AppIcon.icns",
+              "name" : "OrbStack"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+d",
