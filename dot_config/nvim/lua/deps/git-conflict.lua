@@ -2,7 +2,6 @@ deps.later(function()
   deps.add {
     source = 'akinsho/git-conflict.nvim',
   }
-  -- Some comment here
   ---@diagnostic disable-next-line: missing-fields
   require('git-conflict').setup {
     default_mappings = {
