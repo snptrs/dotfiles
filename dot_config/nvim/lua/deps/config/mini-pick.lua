@@ -216,7 +216,10 @@ return {
       end
 
       local wipeout = function()
-        vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
+        local bufnr = MiniPick.get_picker_matches().current.bufnr
+        vim.schedule(function()
+          require('mini.bufremove').wipeout(bufnr)
+        end)
       end
 
       MiniPick.builtin.buffers(nil, {
