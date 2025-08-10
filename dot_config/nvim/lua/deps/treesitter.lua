@@ -1,6 +1,7 @@
 deps.later(function()
   deps.add {
     source = 'nvim-treesitter/nvim-treesitter',
+    depends = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     -- Use 'master' while monitoring updates in 'main'
     checkout = 'master',
     monitor = 'main',
