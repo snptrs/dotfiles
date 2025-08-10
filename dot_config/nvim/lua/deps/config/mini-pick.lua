@@ -51,7 +51,6 @@ local switch_to_ignored = function()
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniPickStart', once = true, callback = transfer_query })
 end
 
-
 return {
   keys = {
     {
