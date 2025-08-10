@@ -216,9 +216,8 @@ return {
 
       local wipeout = function()
         local bufnr = MiniPick.get_picker_matches().current.bufnr
-        vim.schedule(function()
-          require('mini.bufremove').wipeout(bufnr)
-        end)
+        require('mini.bufremove').wipeout(bufnr)
+        MiniPick.update()
       end
 
       MiniPick.builtin.buffers(nil, {
