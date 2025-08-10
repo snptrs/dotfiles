@@ -5,6 +5,7 @@ deps.now(function()
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'yioneko/nvim-vtsls',
     },
   }
 
@@ -51,7 +52,13 @@ deps.now(function()
     },
     eslint = {},
     cssmodules_ls = {},
-    vtsls = {},
+    vtsls = {
+      on_attach = function(_, bufnr)
+        vim.keymap.set('n', '<leader>oi', function()
+          require('vtsls').commands.organize_imports(bufnr)
+        end, { buffer = bufnr, desc = 'VTSLS: Organize Imports' })
+      end,
+    },
   }
 
   -- Install only NON-LSP tools here (use Mason package names)
@@ -76,6 +83,8 @@ deps.now(function()
   require('mason-lspconfig').setup {
     ensure_installed = lsp_names,
   }
+
+  require('lspconfig.configs').vtsls = require('vtsls').lspconfig
 
   -- Configure LSP servers. `mason-lspconfig` will automatically enable them.
   for server_name, config in pairs(servers) do

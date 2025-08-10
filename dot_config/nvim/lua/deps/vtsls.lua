@@ -1,5 +1,1 @@
-deps.now(function()
-  deps.add {
-    source = 'yioneko/nvim-vtsls',
-  }
-end)
+-- Managed by lsp.lua
