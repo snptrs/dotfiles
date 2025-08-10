@@ -54,9 +54,9 @@ deps.now(function()
     cssmodules_ls = {},
     vtsls = {
       on_attach = function(_, bufnr)
-        vim.keymap.set('n', '<leader>oi', function()
+        vim.keymap.set('n', '<leader>co', function()
           require('vtsls').commands.organize_imports(bufnr)
-        end, { buffer = bufnr, desc = 'VTSLS: Organize Imports' })
+        end, { buffer = bufnr, desc = 'VTSLS: Organise Imports' })
       end,
     },
   }
