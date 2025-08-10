@@ -51,15 +51,6 @@ local switch_to_ignored = function()
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniPickStart', once = true, callback = transfer_query })
 end
 
-MiniPick.registry.buffers = function(local_opts)
-  local wipeout = function()
-    vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
-  end
-  local extra = {
-    mappings = { wipeout = { char = '<C-d>', func = wipeout } },
-  }
-  return MiniPick.builtin.buffers(local_opts, extra)
-end
 
 return {
   keys = {
@@ -224,7 +215,14 @@ return {
         end
       end
 
-      MiniPick.builtin.buffers(nil, { source = { show = show } })
+      local wipeout = function()
+        vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
+      end
+
+      MiniPick.builtin.buffers(nil, {
+        source = { show = show },
+        mappings = { wipeout = { char = '<C-d>', func = wipeout } },
+      })
     end
   end,
 }
