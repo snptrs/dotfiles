@@ -217,7 +217,7 @@ return {
       local wipeout = function()
         local bufnr = MiniPick.get_picker_matches().current.bufnr
         require('mini.bufremove').wipeout(bufnr)
-        MiniPick.update()
+        MiniPick.refresh()
       end
 
       MiniPick.builtin.buffers(nil, {
