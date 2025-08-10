@@ -215,9 +215,13 @@ return {
       end
 
       local wipeout = function()
-        local bufnr = MiniPick.get_picker_matches().current.bufnr
-        require('mini.bufremove').delete(bufnr)
-        MiniPick.refresh()
+        local bufnr_to_delete = MiniPick.get_picker_matches().current.bufnr
+        if require('mini.bufremove').delete(bufnr_to_delete) then
+          local new_items = vim.tbl_filter(function(item)
+            return item.bufnr ~= bufnr_to_delete
+          end, MiniPick.get_picker_items())
+          MiniPick.set_picker_items(new_items)
+        end
       end
 
       MiniPick.builtin.buffers(nil, {
