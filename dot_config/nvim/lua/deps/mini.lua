@@ -180,15 +180,11 @@ deps.now(function()
 
   local minisessions = require 'mini.sessions'
   minisessions.setup {
-    autoread = false,
-    autowrite = true,
     file = '',
-    force = { read = false, write = true, delete = false },
     hooks = {
       pre = { read = nil, write = close_bad_buffers, delete = nil },
       post = { read = nil, write = nil, delete = nil },
     },
-    verbose = { read = false, write = true, delete = true },
   }
 
   vim.api.nvim_create_autocmd('VimLeavePre', {
@@ -238,7 +234,7 @@ deps.later(function()
       },
       g = gen_ai_spec.buffer(),
       D = gen_ai_spec.diagnostic(),
-      i = gen_ai_spec.indent(),
+      -- i = gen_ai_spec.indent(),
       L = gen_ai_spec.line(),
       N = gen_ai_spec.number(),
     },
