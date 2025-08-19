@@ -127,22 +127,18 @@ deps.later(function()
 
   require('mini.statusline').setup { content = { active = active_content } }
 
-  -- Autocmd to track the start of macro recording
-  vim.api.nvim_create_autocmd('RecordingEnter', {
+  vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
     pattern = '*',
     callback = function()
-      vim.g.macro_recording = 'Recording @' .. vim.fn.reg_recording()
+      local recording_reg = vim.fn.reg_recording()
+      if recording_reg ~= '' then
+        vim.g.macro_recording = 'Recording @' .. recording_reg
+      else
+        vim.g.macro_recording = nil
+      end
       vim.cmd 'redrawstatus'
     end,
-  })
-
-  -- Autocmd to track the end of macro recording
-  vim.api.nvim_create_autocmd('RecordingLeave', {
-    pattern = '*',
-    callback = function()
-      vim.g.macro_recording = ''
-      vim.cmd 'redrawstatus'
-    end,
+    desc = 'Update statusline macro indicator',
   })
 end)
 
