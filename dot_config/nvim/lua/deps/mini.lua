@@ -177,7 +177,7 @@ deps.now(function()
   local minisessions = require 'mini.sessions'
   minisessions.setup {
     autoread = false,
-    autowrite = true,
+    autowrite = false,
     file = '',
     force = { read = false, write = true, delete = false },
     hooks = {
@@ -189,7 +189,6 @@ deps.now(function()
 
   vim.api.nvim_create_autocmd('VimLeavePre', {
     callback = function()
-      close_bad_buffers()
       local number_of_open_buffers = count_open_file_buffers()
       if number_of_open_buffers > 0 then
         minisessions.write(project_name)
