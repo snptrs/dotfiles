@@ -129,10 +129,9 @@ deps.later(function()
 
   vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
     pattern = '*',
-    callback = function()
-      local recording_reg = vim.fn.reg_recording()
-      if recording_reg ~= '' then
-        vim.g.macro_recording = 'Recording @' .. recording_reg
+    callback = function(args)
+      if args.event == 'RecordingEnter' then
+        vim.g.macro_recording = 'Recording @' .. vim.fn.reg_recording()
       else
         vim.g.macro_recording = nil
       end
