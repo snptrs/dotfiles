@@ -56,9 +56,6 @@ deps.now(function()
       trigger = { prefetch_on_insert = false },
       documentation = {
         auto_show = true,
-        window = {
-          border = 'rounded',
-        },
         auto_show_delay_ms = 250,
       },
       menu = {
@@ -88,11 +85,9 @@ deps.now(function()
         enabled = false,
       },
     },
-
     -- experimental signature help support
     signature = {
       enabled = true,
-      window = { border = 'rounded' },
     },
   }
 end)

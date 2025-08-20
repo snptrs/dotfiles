@@ -68,7 +68,7 @@ abbr -a dce "docker compose exec app sh"
 abbr -a updatepj "fd -d 1 -t d . ~/Work/Code/Projects ~/Code/Projects ~/Code/Projects/elevate 2>/dev/null | xargs -I {} zoxide add -s 0 {}"
 
 set -gx FNM_COREPACK_ENABLED true
-/usr/bin/env fnm env --use-on-cd --shell fish | source
+/usr/bin/env fnm env --use-on-cd --log-level error --shell fish | source
 
 zoxide init fish | source
 

@@ -178,12 +178,10 @@ deps.now(function()
     autoread = false,
     autowrite = false,
     file = '',
-    force = { read = false, write = true, delete = false },
     hooks = {
       pre = { read = nil, write = close_bad_buffers, delete = nil },
       post = { read = nil, write = nil, delete = nil },
     },
-    verbose = { read = false, write = true, delete = true },
   }
 
   vim.api.nvim_create_autocmd('VimLeavePre', {
@@ -232,7 +230,7 @@ deps.later(function()
       },
       g = gen_ai_spec.buffer(),
       D = gen_ai_spec.diagnostic(),
-      i = gen_ai_spec.indent(),
+      -- i = gen_ai_spec.indent(),
       L = gen_ai_spec.line(),
       N = gen_ai_spec.number(),
     },
@@ -276,6 +274,17 @@ deps.later(function()
   }
 end)
 
+--#### Bufremove
+deps.later(function()
+  require('mini.bufremove').setup()
+
+  vim.keymap.set('n', '<leader>bd', function()
+    MiniBufremove.delete()
+  end, { desc = 'Close buffer' })
+
+  vim.keymap.set('n', '<leader>bD', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers' })
+end)
+
 --#### mini.files
 deps.later(function()
   require('mini.files').setup {
@@ -297,8 +306,11 @@ deps.later(function()
     callback = function(args)
       local fname = args.data.from
       local bufnr = vim.fn.bufnr(fname)
+
       if bufnr > 0 then
-        vim.api.nvim_buf_delete(bufnr, { force = true })
+        vim.schedule(function()
+          MiniBufremove.wipeout(bufnr, true)
+        end)
         vim.notify('Buffer closed for deleted file', vim.log.levels.INFO, { title = 'Buffer deleted' })
       end
     end,
@@ -526,17 +538,6 @@ deps.later(function()
       { mode = 'n', keys = '<Leader>y', desc = '+Yank' },
     },
   }
-end)
-
---#### Bufremove
-deps.later(function()
-  require('mini.bufremove').setup()
-
-  vim.keymap.set('n', '<leader>bd', function()
-    MiniBufremove.delete()
-  end, { desc = 'Close buffer' })
-
-  vim.keymap.set('n', '<leader>bD', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers' })
 end)
 
 --#### Pick

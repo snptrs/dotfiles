@@ -51,16 +51,6 @@ local switch_to_ignored = function()
   vim.api.nvim_create_autocmd('User', { pattern = 'MiniPickStart', once = true, callback = transfer_query })
 end
 
-MiniPick.registry.buffers = function(local_opts)
-  local wipeout = function()
-    vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
-  end
-  local extra = {
-    mappings = { wipeout = { char = '<C-d>', func = wipeout } },
-  }
-  return MiniPick.builtin.buffers(local_opts, extra)
-end
-
 return {
   keys = {
     {
@@ -81,11 +71,11 @@ return {
       desc = 'Find files (absolutely everything)',
     },
     {
-      '<leader>fg',
+      '<leader>fs',
       function()
         MiniPick.builtin.grep_live(nil)
       end,
-      desc = 'Grep files',
+      desc = 'Find string',
     },
     {
       '<leader>fr',
@@ -123,6 +113,27 @@ return {
         MiniPick.registry.buffers()
       end,
       desc = 'Open buffers',
+    },
+    {
+      '<leader>fk',
+      function()
+        MiniPick.registry.keymaps()
+      end,
+      desc = 'Keymaps',
+    },
+    {
+      '<leader>fh',
+      function()
+        MiniPick.registry.help()
+      end,
+      desc = 'Help',
+    },
+    {
+      '<leader>fb',
+      function()
+        MiniExtra.pickers.buf_lines { scope = 'current' }
+      end,
+      desc = 'Buffer lines',
     },
     {
       'gd',
@@ -203,7 +214,20 @@ return {
         end
       end
 
-      MiniPick.builtin.buffers(nil, { source = { show = show } })
+      local wipeout = function()
+        local bufnr_to_delete = MiniPick.get_picker_matches().current.bufnr
+        if require('mini.bufremove').delete(bufnr_to_delete) then
+          local new_items = vim.tbl_filter(function(item)
+            return item.bufnr ~= bufnr_to_delete
+          end, MiniPick.get_picker_items())
+          MiniPick.set_picker_items(new_items)
+        end
+      end
+
+      MiniPick.builtin.buffers(nil, {
+        source = { show = show },
+        mappings = { wipeout = { char = '<C-d>', func = wipeout } },
+      })
     end
   end,
 }
