@@ -1,10 +1,5 @@
 deps.later(function()
   deps.add {
-    source = 'nvim-treesitter/nvim-treesitter-textobjects',
-    depends = { 'nvim-treesitter/nvim-treesitter' },
-  }
-
-  deps.add {
     source = 'nvim-treesitter/nvim-treesitter',
     -- Use 'master' while monitoring updates in 'main'
     checkout = 'master',
@@ -84,5 +79,31 @@ deps.later(function()
         },
       },
     },
+  }
+
+  deps.add {
+    source = 'nvim-treesitter/nvim-treesitter-textobjects',
+    depends = { 'nvim-treesitter/nvim-treesitter' },
+  }
+
+  deps.add {
+    source = 'windwp/nvim-ts-autotag',
+    depends = { 'nvim-treesitter/nvim-treesitter' },
+  }
+  require('nvim-ts-autotag').setup {
+    opts = {
+      -- Defaults
+      enable_close = true, -- Auto close tags
+      enable_rename = true, -- Auto rename pairs of tags
+      enable_close_on_slash = true, -- Auto close on trailing </
+    },
+    -- Also override individual filetype configs, these take priority.
+    -- Empty by default, useful if one of the "opts" global settings
+    -- doesn't work well in a specific filetype
+    -- per_filetype = {
+    --   ['html'] = {
+    --     enable_close = false,
+    --   },
+    -- },
   }
 end)

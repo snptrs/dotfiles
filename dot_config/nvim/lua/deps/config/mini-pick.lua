@@ -129,6 +129,27 @@ return {
       desc = 'Help',
     },
     {
+      '<leader>fgm',
+      function()
+        MiniExtra.pickers.git_files { scope = 'modified' }
+      end,
+      desc = 'Git diff (modified)',
+    },
+    {
+      '<leader>fgu',
+      function()
+        MiniExtra.pickers.git_files { scope = 'untracked' }
+      end,
+      desc = 'Git diff (untracked)',
+    },
+    {
+      '<leader>fgh',
+      function()
+        MiniExtra.pickers.git_hunks()
+      end,
+      desc = 'Git diff (unstaged hunks)',
+    },
+    {
       '<leader>fb',
       function()
         MiniExtra.pickers.buf_lines { scope = 'current' }
