@@ -11,8 +11,16 @@
   "enablePictureInPictureSupport" : true,
   "enableSpaceControl" : true,
   "enableSpaceControlAnimations" : false,
+  "enableSpaceControlTilesAnimations" : true,
   "enableSwipeGestures" : false,
   "enableWorkspaceTransitions" : false,
+  "floatingApps" : [
+    {
+      "bundleIdentifier" : "com.agiletortoise.Drafts-OSX",
+      "iconPath" : "/Applications/Drafts.app/Contents/Resources/AppIcon.icns",
+      "name" : "Drafts"
+    }
+  ],
   "focusDown" : "ctrl+opt+down",
   "focusFrontmostWindow" : false,
   "focusLeft" : "ctrl+opt+left",
@@ -36,9 +44,11 @@
   "showMenuBarIcon" : true,
   "showMenuBarTitle" : true,
   "showSpaceControl" : "ctrl+opt+`",
+  "showUnassignedApps" : "ctrl+opt+=",
   "skipEmptyWorkspacesOnSwitch" : false,
   "spaceControlCurrentDisplayWorkspaces" : false,
-  "spaceControlMaxColumns" : 6,
+  "spaceControlNumberOfColumns" : 0,
+  "spaceControlUpdateScreenshotsOnOpen" : true,
   "swipeDown3FingerAction" : "none",
   "swipeDown4FingerAction" : "none",
   "swipeLeft3FingerAction" : "previousWorkspace",

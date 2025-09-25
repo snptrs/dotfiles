@@ -47,9 +47,9 @@
               "name" : "Google Chrome"
             },
             {
-              "bundleIdentifier" : "app.reeder",
-              "iconPath" : "/Applications/Reeder.app/Contents/Resources/AppIcon.icns",
-              "name" : "Reeder"
+              "bundleIdentifier" : "net.ankiweb.launcher",
+              "iconPath" : "/Applications/Anki.app/Contents/Resources/AppIcon.icns",
+              "name" : "Anki"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+b",
@@ -67,14 +67,14 @@
               "name" : "Mail"
             },
             {
-              "bundleIdentifier" : "com.microsoft.teams2",
-              "iconPath" : "/Applications/Microsoft Teams.app/Contents/Resources/AppIcon.icns",
-              "name" : "Microsoft Teams"
-            },
-            {
               "bundleIdentifier" : "com.tinyspeck.slackmacgap",
               "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
               "name" : "Slack"
+            },
+            {
+              "bundleIdentifier" : "com.microsoft.teams2",
+              "iconPath" : "/Applications/Microsoft Teams.app/Contents/Resources/AppIcon.icns",
+              "name" : "Microsoft Teams"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+c",
@@ -86,11 +86,6 @@
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/AppIcon.icns",
-              "name" : "Ghostty"
-            },
             {
               "bundleIdentifier" : "com.usebruno.app",
               "iconPath" : "/Applications/Bruno.app/Contents/Resources/icon.icns",
@@ -117,14 +112,14 @@
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.agiletortoise.Drafts-OSX",
-              "iconPath" : "/Applications/Drafts.app/Contents/Resources/AppIcon.icns",
-              "name" : "Drafts"
-            },
-            {
               "bundleIdentifier" : "com.barebones.bbedit",
               "iconPath" : "/Applications/BBEdit.app/Contents/Resources/BBEditApplication.icns",
               "name" : "BBEdit"
+            },
+            {
+              "bundleIdentifier" : "com.agiletortoise.Drafts-OSX",
+              "iconPath" : "/Applications/Drafts.app/Contents/Resources/AppIcon.icns",
+              "name" : "Drafts"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+n",
@@ -136,7 +131,37 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
+            }
+          ],
+          "assignAppShortcut" : "ctrl+opt+shift+t",
+          "display" : "Built-in Retina Display",
+          "id" : "098D0E95-8D17-4F75-8580-DE61F2E9C427",
+          "name" : "T",
+          "openAppsOnActivation" : false,
+          "shortcut" : "ctrl+opt+t",
+          "symbolIconName" : "apple.terminal"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.apple.MobileSMS",
+              "iconPath" : "/System/Applications/Messages.app/Contents/Resources/AppIcon.icns",
+              "name" : "Messages"
+            },
+            {
+              "bundleIdentifier" : "com.hnc.Discord",
+              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
+              "name" : "Discord"
+            },
+            {
+              "bundleIdentifier" : "app.reeder",
+              "iconPath" : "/Applications/Reeder.app/Contents/Resources/AppIcon.icns",
+              "name" : "Reeder"
+            }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+z",
           "display" : "Built-in Retina Display",
