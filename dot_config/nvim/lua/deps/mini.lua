@@ -423,7 +423,7 @@ deps.later(function()
       todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
       note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
 
-      section_header = { pattern = '^--()####%s.+()$', group = 'MiniHipatternsFixme' },
+      -- section_header = { pattern = '^--()####%s.+()$', group = 'MiniHipatternsFixme' },
 
       -- Highlight hex color strings (`#rrggbb`) using that color
       hex_color = hipatterns.gen_highlighter.hex_color(),
@@ -480,7 +480,7 @@ deps.later(function()
   local miniclue = require 'mini.clue'
   miniclue.setup {
     window = {
-      delay = 750,
+      delay = 500,
       config = {
         width = 'auto',
       },
@@ -533,6 +533,7 @@ deps.later(function()
       { mode = 'n', keys = '<Leader>g', desc = '+Git' },
       { mode = 'n', keys = '<Leader>gd', desc = '+Diff' },
       { mode = 'n', keys = '<Leader>n', desc = '+Notifications' },
+      { mode = 'n', keys = '<Leader>o', desc = '+Opencode' },
       { mode = 'n', keys = '<Leader>t', desc = '+Trouble' },
       { mode = 'n', keys = '<Leader>u', desc = '+Toggle' },
       { mode = 'n', keys = '<Leader>y', desc = '+Yank' },

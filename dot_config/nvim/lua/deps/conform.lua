@@ -24,6 +24,7 @@ deps.later(function()
       fish = { 'fish_indent' },
       kdl = { 'kdlfmt' },
       blade = { 'blade-formatter' },
+      xml = { 'xmlformatter' },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

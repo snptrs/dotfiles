@@ -1,174 +1,175 @@
 {
-  "profiles" : [
+  "profiles": [
     {
-      "id" : "F2448D2A-54AC-4910-99B0-14FDF9049DBA",
-      "name" : "Default",
-      "workspaces" : [
+      "id": "F2448D2A-54AC-4910-99B0-14FDF9049DBA",
+      "name": "Default",
+      "workspaces": [
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.clickup.desktop-app",
-              "iconPath" : "/Applications/ClickUp.app/Contents/Resources/icon.icns",
-              "name" : "ClickUp"
+              "bundleIdentifier": "com.clickup.desktop-app",
+              "iconPath": "/Applications/ClickUp.app/Contents/Resources/icon.icns",
+              "name": "ClickUp"
             },
             {
-              "bundleIdentifier" : "coing.ClockifyDesktop",
-              "iconPath" : "/Applications/Clockify Desktop.app/Contents/Resources/AppIcon.icns",
-              "name" : "Clockify Desktop"
+              "bundleIdentifier": "coing.ClockifyDesktop",
+              "iconPath": "/Applications/Clockify Desktop.app/Contents/Resources/AppIcon.icns",
+              "name": "Clockify Desktop"
             },
             {
-              "bundleIdentifier" : "com.apple.iCal",
-              "iconPath" : "/System/Applications/Calendar.app/Contents/Resources/AppIcon.icns",
-              "name" : "Calendar"
+              "bundleIdentifier": "com.apple.iCal",
+              "iconPath": "/System/Applications/Calendar.app/Contents/Resources/AppIcon.icns",
+              "name": "Calendar"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+a",
-          "display" : "Built-in Retina Display",
-          "id" : "B7AC9A2D-39C3-4E54-812E-613E6B113444",
-          "name" : "A",
-          "shortcut" : "ctrl+opt+a",
-          "symbolIconName" : "checklist"
+          "assignAppShortcut": "ctrl+opt+shift+a",
+          "display": "Built-in Retina Display",
+          "id": "B7AC9A2D-39C3-4E54-812E-613E6B113444",
+          "name": "A",
+          "openAppsOnActivation": false,
+          "shortcut": "ctrl+opt+a",
+          "symbolIconName": "checklist"
         },
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.apple.Safari",
-              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
-              "name" : "Safari"
+              "bundleIdentifier": "com.apple.Safari",
+              "iconPath": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
+              "name": "Safari"
             },
             {
-              "bundleIdentifier" : "org.mozilla.firefoxdeveloperedition",
-              "iconPath" : "/Applications/Firefox Developer Edition.app/Contents/Resources/firefox.icns",
-              "name" : "Firefox Developer Edition"
+              "bundleIdentifier": "org.mozilla.firefoxdeveloperedition",
+              "iconPath": "/Applications/Firefox Developer Edition.app/Contents/Resources/firefox.icns",
+              "name": "Firefox Developer Edition"
             },
             {
-              "bundleIdentifier" : "com.google.Chrome",
-              "iconPath" : "/Applications/Google Chrome.app/Contents/Resources/app.icns",
-              "name" : "Google Chrome"
+              "bundleIdentifier": "net.ankiweb.launcher",
+              "iconPath": "/Applications/Anki.app/Contents/Resources/AppIcon.icns",
+              "name": "Anki"
             },
             {
-              "bundleIdentifier" : "net.ankiweb.launcher",
-              "iconPath" : "/Applications/Anki.app/Contents/Resources/AppIcon.icns",
-              "name" : "Anki"
+              "bundleIdentifier": "com.google.Chrome",
+              "iconPath": "/Applications/Google Chrome.app/Contents/Resources/app.icns",
+              "name": "Google Chrome"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+b",
-          "display" : "Built-in Retina Display",
-          "id" : "9B5105B5-9962-450A-A059-11B1932DE6AA",
-          "name" : "B",
-          "shortcut" : "ctrl+opt+b",
-          "symbolIconName" : "globe"
+          "assignAppShortcut": "ctrl+opt+shift+b",
+          "display": "Built-in Retina Display",
+          "id": "9B5105B5-9962-450A-A059-11B1932DE6AA",
+          "name": "B",
+          "shortcut": "ctrl+opt+b",
+          "symbolIconName": "globe"
         },
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.apple.mail",
-              "iconPath" : "/System/Applications/Mail.app/Contents/Resources/ApplicationIcon.icns",
-              "name" : "Mail"
+              "bundleIdentifier": "com.apple.mail",
+              "iconPath": "/System/Applications/Mail.app/Contents/Resources/ApplicationIcon.icns",
+              "name": "Mail"
             },
             {
-              "bundleIdentifier" : "com.tinyspeck.slackmacgap",
-              "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
-              "name" : "Slack"
+              "bundleIdentifier": "com.tinyspeck.slackmacgap",
+              "iconPath": "/Applications/Slack.app/Contents/Resources/electron.icns",
+              "name": "Slack"
             },
             {
-              "bundleIdentifier" : "com.microsoft.teams2",
-              "iconPath" : "/Applications/Microsoft Teams.app/Contents/Resources/AppIcon.icns",
-              "name" : "Microsoft Teams"
+              "bundleIdentifier": "com.microsoft.teams2",
+              "iconPath": "/Applications/Microsoft Teams.app/Contents/Resources/AppIcon.icns",
+              "name": "Microsoft Teams"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+c",
-          "display" : "Built-in Retina Display",
-          "id" : "02F1AED3-AAF3-4958-BD4B-48270D0115CD",
-          "name" : "C",
-          "shortcut" : "ctrl+opt+c",
-          "symbolIconName" : "phone.bubble"
+          "assignAppShortcut": "ctrl+opt+shift+c",
+          "display": "Built-in Retina Display",
+          "id": "02F1AED3-AAF3-4958-BD4B-48270D0115CD",
+          "name": "C",
+          "shortcut": "ctrl+opt+c",
+          "symbolIconName": "phone.bubble"
         },
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.usebruno.app",
-              "iconPath" : "/Applications/Bruno.app/Contents/Resources/icon.icns",
-              "name" : "Bruno"
+              "bundleIdentifier": "com.usebruno.app",
+              "iconPath": "/Applications/Bruno.app/Contents/Resources/icon.icns",
+              "name": "Bruno"
             },
             {
-              "bundleIdentifier" : "com.tinyapp.TablePlus",
-              "iconPath" : "/Applications/TablePlus.app/Contents/Resources/AppIcon.icns",
-              "name" : "TablePlus"
+              "bundleIdentifier": "com.tinyapp.TablePlus",
+              "iconPath": "/Applications/TablePlus.app/Contents/Resources/AppIcon.icns",
+              "name": "TablePlus"
             },
             {
-              "bundleIdentifier" : "dev.kdrag0n.MacVirt",
-              "iconPath" : "/Applications/OrbStack.app/Contents/Resources/AppIcon.icns",
-              "name" : "OrbStack"
+              "bundleIdentifier": "dev.kdrag0n.MacVirt",
+              "iconPath": "/Applications/OrbStack.app/Contents/Resources/AppIcon.icns",
+              "name": "OrbStack"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+d",
-          "display" : "Built-in Retina Display",
-          "id" : "1DF5D33F-B10B-41FB-99CC-D98FBD35C7FD",
-          "name" : "D",
-          "shortcut" : "ctrl+opt+d",
-          "symbolIconName" : "ellipsis.curlybraces"
+          "assignAppShortcut": "ctrl+opt+shift+d",
+          "display": "Built-in Retina Display",
+          "id": "1DF5D33F-B10B-41FB-99CC-D98FBD35C7FD",
+          "name": "D",
+          "shortcut": "ctrl+opt+d",
+          "symbolIconName": "ellipsis.curlybraces"
         },
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.barebones.bbedit",
-              "iconPath" : "/Applications/BBEdit.app/Contents/Resources/BBEditApplication.icns",
-              "name" : "BBEdit"
+              "bundleIdentifier": "com.barebones.bbedit",
+              "iconPath": "/Applications/BBEdit.app/Contents/Resources/BBEditApplication.icns",
+              "name": "BBEdit"
             },
             {
-              "bundleIdentifier" : "com.agiletortoise.Drafts-OSX",
-              "iconPath" : "/Applications/Drafts.app/Contents/Resources/AppIcon.icns",
-              "name" : "Drafts"
+              "bundleIdentifier": "com.agiletortoise.Drafts-OSX",
+              "iconPath": "/Applications/Drafts.app/Contents/Resources/AppIcon.icns",
+              "name": "Drafts"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+n",
-          "display" : "Built-in Retina Display",
-          "id" : "C757C5A7-619F-4CB5-A645-6EEDCBC7D37F",
-          "name" : "N",
-          "shortcut" : "ctrl+opt+n",
-          "symbolIconName" : "book.pages"
+          "assignAppShortcut": "ctrl+opt+shift+n",
+          "display": "Built-in Retina Display",
+          "id": "C757C5A7-619F-4CB5-A645-6EEDCBC7D37F",
+          "name": "N",
+          "shortcut": "ctrl+opt+n",
+          "symbolIconName": "book.pages"
         },
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
+              "bundleIdentifier": "com.mitchellh.ghostty",
+              "iconPath": "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name": "Ghostty"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+t",
-          "display" : "Built-in Retina Display",
-          "id" : "098D0E95-8D17-4F75-8580-DE61F2E9C427",
-          "name" : "T",
-          "openAppsOnActivation" : false,
-          "shortcut" : "ctrl+opt+t",
-          "symbolIconName" : "apple.terminal"
+          "assignAppShortcut": "ctrl+opt+shift+t",
+          "display": "Built-in Retina Display",
+          "id": "098D0E95-8D17-4F75-8580-DE61F2E9C427",
+          "name": "T",
+          "openAppsOnActivation": false,
+          "shortcut": "ctrl+opt+t",
+          "symbolIconName": "apple.terminal"
         },
         {
-          "apps" : [
+          "apps": [
             {
-              "bundleIdentifier" : "com.apple.MobileSMS",
-              "iconPath" : "/System/Applications/Messages.app/Contents/Resources/AppIcon.icns",
-              "name" : "Messages"
+              "bundleIdentifier": "com.apple.MobileSMS",
+              "iconPath": "/System/Applications/Messages.app/Contents/Resources/AppIcon.icns",
+              "name": "Messages"
             },
             {
-              "bundleIdentifier" : "com.hnc.Discord",
-              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
-              "name" : "Discord"
+              "bundleIdentifier": "com.hnc.Discord",
+              "iconPath": "/Applications/Discord.app/Contents/Resources/electron.icns",
+              "name": "Discord"
             },
             {
-              "bundleIdentifier" : "app.reeder",
-              "iconPath" : "/Applications/Reeder.app/Contents/Resources/AppIcon.icns",
-              "name" : "Reeder"
+              "bundleIdentifier": "app.reeder",
+              "iconPath": "/Applications/Reeder.app/Contents/Resources/AppIcon.icns",
+              "name": "Reeder"
             }
           ],
-          "assignAppShortcut" : "ctrl+opt+shift+z",
-          "display" : "Built-in Retina Display",
-          "id" : "FCEEAA26-F01F-47E9-9BF2-D0B1CA719DE5",
-          "name" : "Z",
-          "shortcut" : "ctrl+opt+z",
-          "symbolIconName" : "appwindow.swipe.rectangle"
+          "assignAppShortcut": "ctrl+opt+shift+z",
+          "display": "Built-in Retina Display",
+          "id": "FCEEAA26-F01F-47E9-9BF2-D0B1CA719DE5",
+          "name": "Z",
+          "shortcut": "ctrl+opt+z",
+          "symbolIconName": "appwindow.swipe.rectangle"
         }
       ]
     }
