@@ -24,6 +24,7 @@ deps.later(function()
       fish = { 'fish_indent' },
       kdl = { 'kdlfmt' },
       blade = { 'blade-formatter' },
+      kotlin = { 'ktfmt' },
       xml = { 'xmlformatter' },
     },
     format_on_save = function(bufnr)
