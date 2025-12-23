@@ -2,7 +2,7 @@ deps.now(function()
   deps.add {
     source = 'Saghen/blink.cmp',
     depends = { 'rafamadriz/friendly-snippets', 'milanglacier/minuet-ai.nvim' },
-    checkout = 'v1.7.0',
+    checkout = 'v1.8.0',
     monitor = 'main',
   }
 

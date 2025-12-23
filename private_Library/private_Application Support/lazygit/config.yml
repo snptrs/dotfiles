@@ -3,7 +3,7 @@ git:
     - colorArg: always
       pager: delta --diff-so-fancy --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 os:
-  editPreset: nvim
+  editPreset: nvim-remote
 gui:
   sidePanelWidth: 0.25
   expandFocusedSidePanel: true
