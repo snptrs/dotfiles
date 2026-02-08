@@ -102,6 +102,8 @@ deps.later(function()
     local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
     local search_count = MiniStatusline.section_searchcount { trunc_width = 75 }
 
+    local statusline = require 'arrow.statusline'
+
     local filename = vim.fn.expand '%:t'
     if filename ~= '' then
       local devicons = require 'nvim-web-devicons'
@@ -121,7 +123,7 @@ deps.later(function()
       '%=', -- End left alignment
       { hl = 'MiniStatuslineFileinfo', strings = { lsp } },
       { hl = mode_hl, strings = { search_count } },
-      { hl = 'MiniStatuslineModeVisual', strings = { macro, diff_overlay, formatting_disabled } },
+      { hl = 'MiniStatuslineModeVisual', strings = { macro, diff_overlay, formatting_disabled, statusline.text_for_statusline_with_icons() } },
     }
   end
 

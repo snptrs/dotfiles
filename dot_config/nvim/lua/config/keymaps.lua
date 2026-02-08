@@ -46,3 +46,6 @@ end, { desc = 'Open with system handler', unique = true })
 
 -- Exit terminal mode
 map('t', '<C-\\><C-\\>', '<C-\\><C-n><C-w>p', { desc = 'Exit terminal mode', silent = true, unique = true })
+
+-- Close all tabs
+map('n', '<Leader>tq', ':tabo<CR>', { desc = 'Close all other tabs', unique = true })

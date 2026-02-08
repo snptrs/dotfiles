@@ -1,0 +1,15 @@
+{
+  "amp.notifications.enabled": false,
+  "amp.notifications.system.enabled": true,
+  "amp.permissions": [
+    {
+      "tool": "Bash",
+      "action": "ask",
+      "matches": {
+        "cmd": ["git push*", "git commit*", "rm*"]
+      }
+    }
+  ],
+  "amp.updates.mode": "auto",
+  "amp.experimental.modes": ["deep"]
+}

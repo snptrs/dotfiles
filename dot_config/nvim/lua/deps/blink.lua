@@ -1,7 +1,7 @@
 deps.now(function()
   deps.add {
     source = 'Saghen/blink.cmp',
-    depends = { 'rafamadriz/friendly-snippets', 'milanglacier/minuet-ai.nvim' },
+    depends = { 'rafamadriz/friendly-snippets' },
     checkout = 'v1.8.0',
     monitor = 'main',
   }
@@ -15,7 +15,6 @@ deps.now(function()
     -- your own keymap.
     keymap = {
       preset = 'default',
-      ['<M-Space>'] = require('minuet').make_blink_map(),
     },
 
     appearance = {
@@ -35,19 +34,9 @@ deps.now(function()
         'path',
         'snippets',
         'buffer',
-        -- 'minuet',
       },
       -- optionally disable cmdline completion
       providers = {
-        minuet = {
-          name = 'minuet',
-          module = 'minuet.blink',
-          async = true,
-          -- Should match minuet.config.request_timeout * 1000,
-          -- since minuet.config.request_timeout is in seconds
-          timeout_ms = 3000,
-          score_offset = 50, -- Gives minuet higher priority among suggestions
-        },
         cmdline = { enabled = true },
       },
     },
