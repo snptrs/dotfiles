@@ -49,6 +49,18 @@ set -gx AIDER_OPENAI_API_KEY {{ .openai_api_key }}
 bind \ec pet-select
 bind \cs history-pager
 bind \ep pj
+
+# Ghostty: `keybind = super+g=text:\x1B\x07`
+# This binds the ESC+BELL sequence (\e\a) to launch the Zellij project switcher.
+function __ghostty_zj --description "Ghostty keybind handler: run zj"
+    # Ensure we don't leave partial escape sequences in the prompt.
+    commandline -f repaint
+    zj
+    commandline -f repaint
+end
+bind \e\a __ghostty_zj
+bind -M insert \e\a __ghostty_zj
+
 set -gx LS_COLORS (vivid generate rose-pine)
 
 abbr -a cht cht.sh

@@ -149,11 +149,6 @@
               "name" : "Messages"
             },
             {
-              "bundleIdentifier" : "com.hnc.Discord",
-              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
-              "name" : "Discord"
-            },
-            {
               "bundleIdentifier" : "app.reeder",
               "iconPath" : "/Applications/Reeder.app/Contents/Resources/AppIcon.icns",
               "name" : "Reeder"
@@ -162,6 +157,16 @@
               "bundleIdentifier" : "net.ankiweb.launcher",
               "iconPath" : "/Applications/Anki.app/Contents/Resources/AppIcon.icns",
               "name" : "Anki"
+            },
+            {
+              "bundleIdentifier" : "com.hnc.Discord",
+              "iconPath" : "/Applications/Discord.app/Contents/Resources/electron.icns",
+              "name" : "Discord"
+            },
+            {
+              "bundleIdentifier" : "net.whatsapp.WhatsApp",
+              "iconPath" : "/Applications/WhatsApp.app/Contents/Resources/AppIconCatalystRelease.icns",
+              "name" : "‎WhatsApp"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+z",

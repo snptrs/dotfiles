@@ -1,0 +1,36 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "permission": {
+    "bash": {
+      "rm *": "ask",
+      "git push *": "deny",
+      "git commit *": "deny",
+      "git *": "ask"
+    },
+  },
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    // "gh_grep": {
+    //   "type": "remote",
+    //   "url": "https://mcp.grep.app",
+    // },
+    "mermaid-mcp": {
+      "url": "https://mcp.mermaidchart.com/mcp",
+      "type": "remote",
+      "enabled": false
+    }
+  },
+  // "keybinds": {
+  //   "session_child_cycle": "shift+right",
+  //   "session_child_cycle_reverse": "shift+left",
+  // },
+}

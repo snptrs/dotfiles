@@ -24,6 +24,11 @@
       "bundleIdentifier" : "com.iconfactory.Tot",
       "iconPath" : "/Applications/Tot.app/Contents/Resources/AppIcon.icns",
       "name" : "Tot"
+    },
+    {
+      "bundleIdentifier" : "com.tinyspeck.slackmacgap",
+      "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
+      "name" : "Slack"
     }
   ],
   "focusFrontmostWindow" : false,

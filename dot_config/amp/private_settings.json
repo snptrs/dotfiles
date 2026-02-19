@@ -10,6 +10,5 @@
       }
     }
   ],
-  "amp.updates.mode": "auto",
-  "amp.experimental.modes": ["deep"]
+  "amp.updates.mode": "auto"
 }
