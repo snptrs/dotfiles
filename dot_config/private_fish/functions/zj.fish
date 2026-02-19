@@ -149,13 +149,17 @@ function zj --description "Fuzzy-pick a project dir (zoxide-ranked) and attach/c
         set -l dir_escaped (string escape --style=script -- "$dir")
         # Including --cwd and --layout lets the plugin create the session at the correct directory
         # when it doesn't yet exist (or resurrect an exited one).
-        set -l payload "--session $session_escaped --cwd $dir_escaped --layout default"
+        # NOTE: The zellij-switch plugin wraps the layout as LayoutInfo::File("<name>.kdl"),
+        # so the layout must exist as a file in the layouts dir (built-in names won't work).
+        set -l payload "--session $session_escaped --cwd $dir_escaped --layout project"
 
         zellij pipe --plugin "file:$zellij_switch_plugin_path" -- "$payload"
         return $status
     end
 
     # Outside Zellij: attach/create normally (Zellij will resurrect prior state if available).
-    cd "$dir"; or return 1
+    # Use pushd/popd so the parent shell's cwd is restored after zellij exits.
+    pushd "$dir"; or return 1
     zellij attach -c "$session"
+    popd
 end
