@@ -16,7 +16,6 @@ function zj --description "Fuzzy-pick a project dir (zoxide-ranked) and attach/c
     # We use a tiny helper plugin (zellij-switch) and trigger it via `zellij pipe`.
     set -l zellij_switch_plugin_path "$HOME/.config/zellij/plugins/zellij-switch.wasm"
     set -l zellij_switch_plugin_url "https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.1/zellij-switch.wasm"
-    set -l zellij_switch_plugin_sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"  # v0.2.1
 
     # Initial query (eg: `zj sidekick`)
     set -l initial_query (string join " " -- $argv)
@@ -136,31 +135,11 @@ function zj --description "Fuzzy-pick a project dir (zoxide-ranked) and attach/c
                 echo "zj: missing $zellij_switch_plugin_path and curl is not available to download it" >&2
                 return 127
             end
-            if not type -q shasum
-                echo "zj: shasum is required to verify plugin integrity" >&2
-                return 127
-            end
-
             mkdir -p (path dirname -- "$zellij_switch_plugin_path")
-            
-            set -l temp_plugin (mktemp)
-            curl -fsSL "$zellij_switch_plugin_url" -o "$temp_plugin"; or begin
+            curl -fsSL "$zellij_switch_plugin_url" -o "$zellij_switch_plugin_path"; or begin
                 echo "zj: failed to download zellij-switch plugin from $zellij_switch_plugin_url" >&2
-                rm -f "$temp_plugin"
                 return 1
             end
-            
-            # Verify SHA256 checksum before using the plugin
-            set -l actual_hash (shasum -a 256 "$temp_plugin" | string split ' ')[1]
-            if test "$actual_hash" != "$zellij_switch_plugin_sha256"
-                echo "zj: plugin checksum mismatch! Expected: $zellij_switch_plugin_sha256" >&2
-                echo "zj: Got: $actual_hash" >&2
-                rm -f "$temp_plugin"
-                return 1
-            end
-            
-            # Atomic move to final location
-            mv "$temp_plugin" "$zellij_switch_plugin_path"
         end
 
         # The plugin payload is parsed with shell-words, so we must quote paths safely.
