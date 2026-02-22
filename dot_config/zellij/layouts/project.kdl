@@ -5,7 +5,10 @@ layout {
             plugin location="zellij:compact-bar"
         }
     }
-    tab name="edit" {
+    tab name="nvim" {
+        pane
+    }
+    tab name="amp" {
         pane
     }
     tab name="cmd" {
