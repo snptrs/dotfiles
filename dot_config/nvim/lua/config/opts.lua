@@ -113,6 +113,8 @@ local function paste()
   }
 end
 
+vim.g.clipboard = 'osc52'
+
 -- vim.g.clipboard = {
 --   name = 'OSC 52',
 --   copy = {
