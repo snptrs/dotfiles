@@ -1,10 +1,14 @@
 {
   "activeWorkspaceOnFocusChange" : true,
   "alternativeDisplays" : "",
+  "autoAssignAppsToWorkspaces" : false,
   "centerCursorOnFocusChange" : false,
   "centerCursorOnWorkspaceChange" : false,
   "changeWorkspaceOnAppAssign" : true,
   "checkForUpdatesAutomatically" : true,
+  "cornerHiddenApps" : [
+
+  ],
   "displayMode" : "static",
   "enableFocusManagement" : true,
   "enableIntegrations" : false,
@@ -29,6 +33,11 @@
       "bundleIdentifier" : "com.tinyspeck.slackmacgap",
       "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
       "name" : "Slack"
+    },
+    {
+      "bundleIdentifier" : "com.agiletortoise.Drafts-OSX",
+      "iconPath" : "/Applications/Drafts.app/Contents/Resources/AppIcon.icns",
+      "name" : "Drafts"
     }
   ],
   "focusFrontmostWindow" : false,
@@ -51,6 +60,7 @@
   "showFloatingNotifications" : true,
   "showMenuBarIcon" : true,
   "showMenuBarTitle" : true,
+  "showRecentWorkspaceWhenActivatedTwice" : false,
   "showSpaceControl" : "ctrl+opt+`",
   "showUnassignedApps" : "ctrl+opt+=",
   "skipEmptyWorkspacesOnSwitch" : false,

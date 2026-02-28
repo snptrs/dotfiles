@@ -20,6 +20,11 @@
               "bundleIdentifier" : "com.apple.iCal",
               "iconPath" : "/System/Applications/Calendar.app/Contents/Resources/AppIcon.icns",
               "name" : "Calendar"
+            },
+            {
+              "bundleIdentifier" : "com.busymac.busycal3",
+              "iconPath" : "/Applications/BusyCal.app/Contents/Resources/BusyCal.icns",
+              "name" : "BusyCal"
             }
           ],
           "assignAppShortcut" : "ctrl+opt+shift+a",

@@ -94,15 +94,22 @@ end)
 
 --#### mini.statusline
 deps.later(function()
+  local diag_signs = {
+    ERROR = '%#DiagnosticError#  %#MiniStatuslineDevinfo#',
+    WARN = '%#DiagnosticWarn#  %#MiniStatuslineDevinfo#',
+    INFO = '%#DiagnosticInfo#  %#MiniStatuslineDevinfo#',
+    HINT = '%#DiagnosticHint#  %#MiniStatuslineDevinfo#',
+  }
+
   local active_content = function()
     local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 999 }
     local git = MiniStatusline.section_git { trunc_width = 40 }
     local diff = MiniStatusline.section_diff { trunc_width = 75 }
-    local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
-    local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
+    local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75, signs = diag_signs }
+    local lsp = MiniStatusline.section_lsp { trunc_width = 75, icon = '' }
     local search_count = MiniStatusline.section_searchcount { trunc_width = 75 }
 
-    local statusline = require 'arrow.statusline'
+    local arrow = require 'arrow.statusline'
 
     local filename = vim.fn.expand '%:t'
     if filename ~= '' then
@@ -117,13 +124,13 @@ deps.later(function()
 
     return MiniStatusline.combine_groups {
       { hl = mode_hl, strings = { mode } },
-      { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics } },
+      { hl = 'MiniStatuslineDevinfo', strings = { git, diagnostics } },
       '%<', -- Mark general truncate point
       { hl = 'MiniStatuslineFilename', strings = { filename } },
       '%=', -- End left alignment
       { hl = 'MiniStatuslineFileinfo', strings = { lsp } },
       { hl = mode_hl, strings = { search_count } },
-      { hl = 'MiniStatuslineModeVisual', strings = { macro, diff_overlay, formatting_disabled, statusline.text_for_statusline_with_icons() } },
+      { hl = 'MiniStatuslineModeVisual', strings = { macro, diff_overlay, formatting_disabled, arrow.text_for_statusline_with_icons() } },
     }
   end
 

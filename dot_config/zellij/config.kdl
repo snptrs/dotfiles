@@ -484,6 +484,9 @@ keybinds clear-defaults=true {
                 tooltip "Shift F1"
             }
         }
+        bind "Super c" {
+            Copy
+        }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl q" {
@@ -668,11 +671,11 @@ default_mode "locked"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "compact"
+default_layout "minimal"
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 //
-// layout_dir "/tmp"
+// layout_dir "~/.config/zellij/layouts"
 // The folder in which Zellij will look for themes
 // (Requires restart)
 //
@@ -736,7 +739,7 @@ pane_frames false
 // Enable automatic copying (and clearing) of selection when releasing mouse
 // Default: true
 //
-// copy_on_select true
+copy_on_select false
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 // scrollback_editor "/usr/bin/vim"

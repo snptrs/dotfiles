@@ -12,22 +12,14 @@ deps.now(function()
     },
     on_highlights = function(highlights, colors)
       local utilities = require 'vague.utilities'
-      highlights.LspReferenceText = { gui = 'underline' }
-      highlights.LspReferenceRead = { gui = 'underline' }
-      highlights.LspReferenceWrite = { gui = 'underline' }
+      highlights.LspReferenceText = { underline = true }
+      highlights.LspReferenceRead = { underline = true }
+      highlights.LspReferenceWrite = { underline = true }
       highlights.SnacksIndent = { fg = colors.line }
       highlights.SnacksIndentScope = { fg = colors.fg }
-      -- highlights.DiffChange = highlights.MiniDiffOverContext
-      -- highlights.DiffText = highlights.MiniDiffOverChange
-      -- More contrasty variants
-      -- highlights.DiffChange = { fg = colors.delta, bg = utilities.blend(colors.delta, colors.bg, 0.2) }
-      -- highlights.DiffText = { fg = colors.delta, bg = utilities.blend(colors.delta, colors.bg, 0.4) }
-      -- highlights.DiffDelete = highlights.MiniDiffOverDelete
-      -- highlights.DiffAdd = highlights.MiniDiffOverAdd
-      highlights.DiffviewFilePanelSelected = { fg = colors.number, gui = 'bold' }
       highlights.CurSearch = { bg = colors.warning, fg = colors.bg }
-      highlights.QuickFixLine = { fg = colors.number, gui = 'bold' }
-
+      highlights.QuickFixLine = { fg = colors.number, bold = true }
+      --
       highlights.MiniFilesBorder = { fg = colors.search }
 
       highlights.GitConflictAncestorLabel = { bg = colors.search }
