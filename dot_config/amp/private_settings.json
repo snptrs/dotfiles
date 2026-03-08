@@ -10,8 +10,5 @@
       }
     }
   ],
-  "amp.updates.mode": "auto",
-  "amp.guardedFiles.allowlist": [
-    "/Users/seanpeters/.local/share/chezmoi/dot_config/private_fish/functions/zj.fish"
-  ]
+  "amp.updates.mode": "auto"
 }

@@ -26,6 +26,8 @@ deps.later(function()
       blade = { 'blade-formatter' },
       kotlin = { 'ktfmt' },
       xml = { 'xmlformatter' },
+      liquid = { 'rustywind', 'djlint' },
+      vento = { 'deno_fmt' },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -55,6 +57,16 @@ deps.later(function()
       },
       phpcbf = {
         prepend_args = { '--standard=PSR12', '--extensions=php' },
+      },
+      deno_fmt = {
+        cond = function(self, ctx)
+          return true
+        end,
+        args = function(self, ctx)
+          local ft = vim.bo[ctx.buf].filetype
+          local ext = ft == 'vento' and 'vto' or ft
+          return { 'fmt', '--unstable-component', '-', '--ext', ext }
+        end,
       },
     },
   }
