@@ -19,7 +19,7 @@ deps.later(function()
       graphql = { 'prettierd', 'prettier', stop_after_first = true },
       lua = { 'stylua' },
       python = { 'isort', 'ruff' },
-      php = { 'pint', 'phpcbf' },
+      php = { 'pint' },
       toml = { 'taplo' },
       fish = { 'fish_indent' },
       kdl = { 'kdlfmt' },
@@ -51,13 +51,13 @@ deps.later(function()
     end,
     -- Customize formatters
     formatters = {
-      pint = {
-        prepend_args = { '--preset', 'laravel' },
-        -- prepend_args = { '--preset', 'psr12' },
-      },
-      phpcbf = {
-        prepend_args = { '--standard=PSR12', '--extensions=php' },
-      },
+      -- pint = {
+      --   prepend_args = { '--preset', 'laravel' },
+      --   -- prepend_args = { '--preset', 'psr12' },
+      -- },
+      -- phpcbf = {
+      --   prepend_args = { '--standard=PSR12', '--extensions=php' },
+      -- },
       deno_fmt = {
         cond = function(self, ctx)
           return true
