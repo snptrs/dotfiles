@@ -21,17 +21,16 @@ brew "rsync"
 brew "sesh"
 brew "tldr"
 brew "tree"
+brew "tree-sitter"
 brew "vivid"
 brew "wget"
 brew "zoxide"
 cask "1password-cli"
-cask "nikitabobko/tap/aerospace"
 cask "bbedit"
 cask "bruno"
 cask "daisydisk"
 cask "dash"
 cask "firefox@developer-edition"
-cask "flashspace"
 cask "ghostty"
 cask "google-chrome"
 cask "hazel"
@@ -45,7 +44,7 @@ cask "orbstack"
 cask "qlmarkdown"
 cask "raycast"
 cask "stats"
-cask "syncthing"
+cask "syncthing-app"
 cask "syntax-highlight", args: { no_quarantine: true }
 cask "tableplus"
 cask "zoom"
@@ -67,28 +66,17 @@ mas "Velja", id: 1607635845
 mas "Wipr", id: 1662217862
 {{- if eq .is_work_mac false }}
 cask "anki"
-cask "black-ink"
 cask "calibre"
 cask "chronosync"
 cask "devonthink"
-cask "reader"
 cask "soulver"
 mas "Mela", id: 1568924476
-mas "Save to Reader", id: 1640236961
 mas "Subtrack", id: 1519946553
 {{- end}}
 EOF
 
-if [ ! -d "/Users/seanpeters/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm /Users/seanpeters/.tmux/plugins/tpm
-fi
-
 if [ ! -e "/Users/seanpeters/.config/fish/functions/fisher.fish" ]; then
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-fi
-
-if [ ! -d "/Users/seanpeters/Library/Application Support/Übersicht/widgets/simple-bar" ]; then
-  git clone https://github.com/Jean-Tinland/simple-bar /Users/seanpeters/Library/Application\ Support/Übersicht/widgets/simple-bar
 fi
 
 {{ end -}}
