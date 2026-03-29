@@ -104,8 +104,6 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
   desc = 'Notify when buffer reloaded',
 })
 
-vim.diagnostic.config { virtual_text = true }
-
 local function paste()
   return {
     vim.split(vim.fn.getreg '', '\n'),
