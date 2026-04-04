@@ -39,7 +39,7 @@ local notify_filter = function(notif_arr)
 end
 require('mini.notify').setup {
   lsp_progress = {
-    enable = true,
+    enable = false,
   },
   content = {
     format = function(notification)
@@ -119,7 +119,7 @@ local active_content = function()
     '%<', -- Mark general truncate point
     { hl = 'MiniStatuslineFilename', strings = { filename } },
     '%=', -- End left alignment
-    { hl = 'MiniStatuslineFileinfo', strings = { lsp } },
+    { hl = 'MiniStatuslineFileinfo', strings = { vim.g.lsp_progress, lsp } },
     { hl = mode_hl, strings = { search_count } },
     { hl = 'MiniStatuslineModeVisual', strings = { macro, diff_overlay, formatting_disabled, arrow.text_for_statusline_with_icons() } },
   }

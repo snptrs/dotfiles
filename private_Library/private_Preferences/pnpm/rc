@@ -1,0 +1,6 @@
+ignore-dep-scripts=true
+min-release-age=4320
+strict-dep-builds=true
+block-exotic-subdeps=true
+verify-deps-before-run=error
+trust-policy=no-downgrade

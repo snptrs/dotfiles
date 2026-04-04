@@ -87,3 +87,35 @@ for server_name, config in pairs(servers) do
   vim.lsp.config(server_name, config)
 end
 vim.lsp.enable(vim.tbl_keys(servers))
+
+-- Drive Ghostty's native progress bar via OSC 9;4 sequences
+vim.api.nvim_create_autocmd('LspProgress', {
+  callback = function(ev)
+    local value = ev.data.params.value or {}
+    local msg = value.message or 'done'
+
+    if #msg > 40 then
+      msg = msg:sub(1, 37) .. '...'
+    end
+
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local name = client and client.name or 'LSP'
+
+    if value.kind == 'end' then
+      vim.g.lsp_progress = ''
+    else
+      local pct = value.percentage and (value.percentage .. '%% ') or ''
+      vim.g.lsp_progress = string.format('%s %s%s', name, pct, value.title or msg)
+    end
+
+    vim.api.nvim_echo({ { msg } }, false, {
+      id = 'lsp',
+      kind = 'progress',
+      source = 'vim.lsp',
+      title = value.title,
+      status = value.kind ~= 'end' and 'running' or 'success',
+      percent = value.percentage,
+    })
+    vim.cmd.redrawstatus()
+  end,
+})

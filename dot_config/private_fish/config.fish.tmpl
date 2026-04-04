@@ -5,7 +5,6 @@ fish_add_path /Users/seanpeters/.cargo/bin
 fish_add_path /Users/seanpeters/.orbstack/bin
 fish_add_path /opt/homebrew/opt/sqlite/bin
 fish_add_path /Users/seanpeters/.lando/bin
-fish_add_path /Users/seanpeters/.lando/bin
 fish_add_path /Users/seanpeters/.local/bin # uv
 fish_add_path /Users/seanpeters/.opencode/bin
 fish_add_path /Users/seanpeters/.deno/bin
@@ -78,9 +77,6 @@ abbr -a dcd "docker compose down"
 abbr -a dce "docker compose exec app sh"
 abbr -a updatepj "fd -d 1 -t d . ~/Work/Code/Projects ~/Code/Projects ~/Code/Projects/elevate 2>/dev/null | xargs -I {} zoxide add -s 0 {}"
 
-set -gx FNM_COREPACK_ENABLED true
-/usr/bin/env fnm env --use-on-cd --log-level quiet --shell fish | source
-
 zoxide init fish | source
 
 #rbenv init - fish | source
@@ -90,3 +86,10 @@ zoxide init fish | source
 #starship init fish | source
 
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/seanpeters/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
