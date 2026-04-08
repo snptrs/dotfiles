@@ -5,7 +5,6 @@ require('vague').setup {
     strings = 'none',
   },
   on_highlights = function(highlights, colors)
-    local utilities = require 'vague.utilities'
     highlights.LspReferenceText = { underline = true }
     highlights.LspReferenceRead = { underline = true }
     highlights.LspReferenceWrite = { underline = true }

@@ -4,7 +4,7 @@ require('mason').setup {}
 -- Diagnostics
 vim.diagnostic.config {
   severity_sort = true,
-  float = { source = 'if_many' },
+  float = { source = true },
   underline = { severity = vim.diagnostic.severity.ERROR },
   virtual_text = {
     source = 'if_many',
