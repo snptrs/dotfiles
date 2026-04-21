@@ -15,6 +15,5 @@ node_modules
 !.yarn/versions
 .aider*
 .npmrc
-CLAUDE.md
 GEMINI.md
 CONVENTIONS.md
