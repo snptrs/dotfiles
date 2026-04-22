@@ -2,6 +2,8 @@
 **/.DS_Store
 **/stylua.toml
 **/.git/**
+/AGENTS.md
+/CLAUDE.md
 {{- if eq .is_work_mac true }} # Ignore these on a work machine (i.e. only manage on personal Mac)
 Library/Application Scripts/com.devon-technologies.think3/Menu/Export
 Work 
