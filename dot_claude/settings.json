@@ -1,4 +1,7 @@
 {
+  "attribution": {
+    "commit": ""
+  },
   "permissions": {
     "allow": [
       "Bash(npm run *)",
@@ -9,22 +12,49 @@
       "Bash(find *)",
       "Bash(docker compose *)",
       "Read",
-      "WebFetch"
+      "WebFetch",
+      "mcp__val-town__read_file",
+      "mcp__val-town__list_files",
+      "mcp__val-town__list_vals",
+      "mcp__val-town__get_logs",
+      "mcp__val-town__get_val_detail",
+      "mcp__val-town__get_traces",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__read_network_requests",
+      "mcp__claude-in-chrome__read_page"
     ],
-    "ask": ["Bash(git commit *)", "Bash(git add *)"],
-    "deny": ["Bash(git push *)"]
+    "deny": [
+      "Bash(git push *)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git add *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; pnpm dlx prettier --write --ignore-unknown \"$f\"; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
-  "attribution": {
-    "commit": ""
-  },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true
-  }
+    "code-simplifier@claude-plugins-official": true,
+    "php-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "tui": "fullscreen"
 }
