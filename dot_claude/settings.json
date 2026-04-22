@@ -23,13 +23,8 @@
       "mcp__claude-in-chrome__read_network_requests",
       "mcp__claude-in-chrome__read_page"
     ],
-    "deny": [
-      "Bash(git push *)"
-    ],
-    "ask": [
-      "Bash(git commit *)",
-      "Bash(git add *)"
-    ]
+    "deny": ["Bash(git push *)"],
+    "ask": ["Bash(git commit *)", "Bash(git add *)"]
   },
   "hooks": {
     "PostToolUse": [
@@ -38,7 +33,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; pnpm dlx prettier --write --ignore-unknown \"$f\"; } 2>/dev/null || true"
+            "command": "jq -r '.tool_input.file_path' | xargs pnpm dlx prettier --write --ignore-unknown || true"
           }
         ]
       }
