@@ -69,14 +69,16 @@ If the project has no files at all (fresh repo), skip the smoke test and note th
 
 ### 3. Laravel PHP formatter hook (conditional)
 
-**Detect Laravel first.** Both must be true:
+**Detect Laravel first.** Laravel may live at the project root _or_ in a `backend/` subdirectory. Check both locations:
 
-- An `artisan` file exists at the project root
-- `composer.json` has `laravel/framework` in `require` (not just `require-dev`)
+- `artisan` exists at the project root **or** at `backend/artisan`
+- The corresponding `composer.json` (same directory as `artisan`) has `laravel/framework` in `require` (not just `require-dev`)
+
+Record which location was found (`root` or `backend/`) — you'll need it for the vendor path below.
 
 If not Laravel → skip this check; note "skipped — not a Laravel project" in the report. Do not fail.
 
-**If Laravel**, check `.claude/settings.local.json` for a `PostToolUse` hook on `Write|Edit` that invokes either `vendor/bin/pint` or `vendor/bin/phpcbf`:
+**If Laravel**, check `.claude/settings.local.json` for a `PostToolUse` hook on `Write|Edit` that invokes either `pint` or `phpcbf` under the correct vendor path. If Laravel is at the root, the path is `vendor/bin/pint` or `vendor/bin/phpcbf`; if it's under `backend/`, the path is `backend/vendor/bin/pint` or `backend/vendor/bin/phpcbf`.
 
 ```bash
 [ -f .claude/settings.local.json ] && jq -e '
