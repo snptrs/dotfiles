@@ -10,6 +10,8 @@
       "Bash(* --help *)",
       "Bash(grep *)",
       "Bash(find *)",
+      "Bash(jq *)",
+      "Bash(command -v *)",
       "Bash(docker compose *)",
       "Read",
       "WebFetch",
