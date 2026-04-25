@@ -1,6 +1,6 @@
 ---
 name: execute-plan
-description: Use when executing implementation plans with independent tasks in the current session. Explicit invocation only.
+description: Use to execute an implementation plan from `docs/plans/` task-by-task via subagent dispatch, with two-stage review (spec compliance, then code quality) per task. Explicit invocation only.
 disable-model-invocation: true
 allowed-tools: Read, Edit, Bash(git rev-parse:*), Bash(git log:*), TodoWrite, Task
 ---

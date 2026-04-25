@@ -50,29 +50,28 @@ Skip any step = lying, not verifying
 | Agent completed       | VCS diff shows changes          | Agent reports "success"        |
 | Requirements met      | Line-by-line checklist          | Tests passing                  |
 
-## Red Flags - STOP
+## When to Stop and Run the Command
+
+If you catch yourself in any of these patterns, you don't have evidence yet — go run the verification command before continuing.
+
+**Behavioral patterns:**
 
 - Using "should", "probably", "seems to"
-- Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
-- About to commit/push/PR without verification
-- Trusting agent success reports
-- Relying on partial verification
-- Thinking "just this once"
-- Tired and wanting work over
-- **ANY wording implying success without having run verification**
+- Expressing satisfaction before verification ("Great!", "Perfect!", "Done!")
+- About to commit, push, or open a PR without verification
+- Trusting an agent's success report instead of checking the diff
+- Relying on partial verification (linter passed → assume tests pass)
 
-## Rationalization Prevention
+**Rationalizations and their counters:**
 
-| Excuse                                  | Reality                |
-| --------------------------------------- | ---------------------- |
-| "Should work now"                       | RUN the verification   |
-| "I'm confident"                         | Confidence ≠ evidence  |
-| "Just this once"                        | No exceptions          |
-| "Linter passed"                         | Linter ≠ compiler      |
-| "Agent said success"                    | Verify independently   |
-| "I'm tired"                             | Exhaustion ≠ excuse    |
-| "Partial check is enough"               | Partial proves nothing |
-| "Different words so rule doesn't apply" | Spirit over letter     |
+| Excuse                                      | Counter                                                                |
+| ------------------------------------------- | ---------------------------------------------------------------------- |
+| "Should work now"                           | Confidence ≠ evidence. Run the verification.                           |
+| "Linter passed"                             | Linter doesn't check compilation, and compiler doesn't check behavior. |
+| "Agent said success"                        | Verify independently — check the diff.                                 |
+| "I'm tired / just this once"                | Tired-and-wanting-it-over is exactly when bugs ship.                   |
+| "Partial check is enough"                   | Partial proves nothing about the part you didn't check.                |
+| "Different words so the rule doesn't apply" | Spirit over letter — any implication of success counts.                |
 
 ## Key Patterns
 
@@ -120,26 +119,4 @@ Skip any step = lying, not verifying
 
 ## When To Apply
 
-**ALWAYS before:**
-
-- ANY variation of success/completion claims
-- ANY expression of satisfaction
-- ANY positive statement about work state
-- Committing, PR creation, task completion
-- Moving to next task
-- Delegating to agents
-
-**Rule applies to:**
-
-- Exact phrases
-- Paraphrases and synonyms
-- Implications of success
-- ANY communication suggesting completion/correctness
-
-## The Bottom Line
-
-**No shortcuts for verification.**
-
-Run the command. Read the output. THEN claim the result.
-
-This is non-negotiable.
+Run verification before any claim of success — committing, opening a PR, completing a task, moving to the next task, or delegating to an agent. The rule covers exact phrases, paraphrases, synonyms, and any communication that implies completion or correctness. Saying it differently doesn't exempt the claim.

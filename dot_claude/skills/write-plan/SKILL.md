@@ -1,6 +1,6 @@
 ---
 name: write-plan
-description: Use when generating a detailed implementation plan from an approved spec, before execution.
+description: Use when an approved spec exists in `docs/specs/` and you need a task-by-task implementation plan written to `docs/plans/`, before execution. If no spec exists yet, use `brainstorm` first.
 allowed-tools: Read, Write, Bash(git add:*), Bash(git commit:*), Bash(mkdir:*), Grep, Glob, Task
 ---
 
