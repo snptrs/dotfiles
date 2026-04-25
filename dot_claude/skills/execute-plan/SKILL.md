@@ -1,13 +1,13 @@
 ---
 name: execute-plan
-description: Use to execute an implementation plan from `docs/plans/` task-by-task via subagent dispatch, with two-stage review (spec compliance, then code quality) per task. Explicit invocation only.
+description: Use when the user is ready to execute an approved implementation plan from `docs/plans/` — produced by the `write-plan` skill. Dispatches one subagent per task with two-stage review (spec compliance, then code quality). Invoke when the user says something like "let's start", "execute the plan", "go", or "run it".
 disable-model-invocation: true
 allowed-tools: Read, Edit, Bash(git rev-parse:*), Bash(git log:*), TodoWrite, Task
 ---
 
 # Execute Plan
 
-Execute a plan by dispatching a fresh subagent per task, with two-stage review after each: spec compliance first, then code quality.
+Execute a plan (from `docs/plans/`, produced by `write-plan`) by dispatching a fresh subagent per task, with two-stage review after each: spec compliance first, then code quality.
 
 **Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. Subagents never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
 

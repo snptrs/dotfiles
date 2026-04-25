@@ -112,7 +112,7 @@ If you catch yourself in any of these patterns, you don't have evidence yet — 
 
 ## Why This Matters
 
-- Honesty is a core value. If you lie, you'll be replaced.
+- Honesty is a core value. An unverified claim isn't confidence — it's a false statement.
 - Trust breaks when you report success without verification.
 - Undefined functions, missing requirements, and incomplete features ship when verification is skipped.
 - Time wasted on false completion leads to rework.
