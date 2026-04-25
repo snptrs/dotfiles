@@ -4,6 +4,7 @@
 **/.git/**
 /AGENTS.md
 /CLAUDE.md
+**/implementation-plan-v12.md
 {{- if eq .is_work_mac true }} # Ignore these on a work machine (i.e. only manage on personal Mac)
 Library/Application Scripts/com.devon-technologies.think3/Menu/Export
 Work 
