@@ -13,7 +13,6 @@ node_modules
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-.aider*
 .npmrc
-GEMINI.md
-CONVENTIONS.md
+.sketches/
+.claude/.runtime/
