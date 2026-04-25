@@ -18,10 +18,10 @@ Execute a plan by dispatching a fresh subagent per task, with two-stage review a
 1. Find the plan file: use the path from the user's invocation, or locate the most recent file in `docs/plans/`.
 2. Read the plan header to find the spec path (the `Spec:` line in the header).
 3. Read the spec file.
-4. Build a TodoWrite list from all unchecked `- [ ]` task headings in the plan.
+4. Build a TodoWrite list from all task headings in the plan — lines matching `### Task N:` that do **not** already have ✅. Each todo entry should be the full task heading text.
 5. Note the SHA before the first task: `FIRST_SHA = $(git rev-parse HEAD)`
 
-**Resuming after interruption:** If the plan already has some checked `- [x]` items, skip those. Only iterate over unchecked tasks. Don't redo completed work.
+**Resuming after interruption:** If the plan already has tasks with ✅ appended to their heading, skip those. Only iterate over tasks without ✅. Don't redo completed work.
 
 ## Per-Task Loop
 
@@ -108,9 +108,9 @@ Provide:
 
 **If still blocked after 3 iterations total:** Surface to user. Ask how to proceed. Do not loop indefinitely.
 
-### 7. Tick the task checkbox
+### 7. Mark the task complete in the plan file
 
-Use the Edit tool to change `- [ ]` to `- [x]` for the completed task in the plan file.
+Use the Edit tool to append ` ✅` to the `### Task N:` heading for the completed task. Do not modify the step checkboxes (`- [ ]` / `- [x]`) — those belong to the implementer.
 
 ### 8. Mark complete in TodoWrite
 

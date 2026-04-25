@@ -3,6 +3,10 @@ name: implementer
 description: Use when implementing a single planned task. Follows TDD strictly. Returns DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED.
 model: haiku
 tools: Read, Edit, Write, Bash, Grep, Glob
+skills:
+  - tdd
+  - verify-before-done
+  - receiving-review
 ---
 
 ## Pre-Flight
@@ -10,8 +14,9 @@ tools: Read, Edit, Write, Bash, Grep, Glob
 Before starting:
 
 1. Read `docs/principles.md` if present in the project, otherwise `~/.claude/principles.md`.
-2. Read the `tdd` skill — you will follow the RED-GREEN-REFACTOR cycle for every task.
-3. Read the `verify-before-done` skill — you will not claim completion without fresh verification evidence.
+2. Follow the `tdd` skill — RED-GREEN-REFACTOR cycle for every task.
+3. Follow the `verify-before-done` skill — do not claim completion without fresh verification evidence.
+4. When receiving review feedback, apply the `receiving-review` skill before implementing changes.
 
 ## Inputs Expected
 

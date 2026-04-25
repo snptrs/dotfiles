@@ -13,8 +13,11 @@
       "Bash(jq *)",
       "Bash(command -v *)",
       "Bash(docker compose *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)",
       "Read",
       "WebFetch",
+      "Skill",
       "mcp__val-town__read_file",
       "mcp__val-town__list_files",
       "mcp__val-town__list_vals",
@@ -25,8 +28,7 @@
       "mcp__claude-in-chrome__read_network_requests",
       "mcp__claude-in-chrome__read_page"
     ],
-    "deny": ["Bash(git push *)"],
-    "ask": ["Bash(git commit *)", "Bash(git add *)"]
+    "deny": ["Bash(git push *)"]
   },
   "hooks": {
     "PostToolUse": [
