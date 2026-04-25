@@ -41,6 +41,8 @@ Assess the task's complexity to choose a model:
 - **`sonnet`** — touches multiple files, requires pattern-matching across the codebase, or has integration concerns
 - **`opus`** — requires design judgment or broad codebase understanding
 
+**Test-design difficulty bump:** test design is design. If the task's `Test:` type is `integration`, or its `Test difficulty:` is marked `high`, or the task involves non-trivial async / mocking / fixture setup, bump one tier (haiku → sonnet, sonnet → opus). Writing good tests against complex setup is judgment work the implementer can't fake.
+
 Pass the chosen model as the `model` parameter when dispatching (overrides the agent's `haiku` default).
 
 Provide the implementer with:

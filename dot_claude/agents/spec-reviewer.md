@@ -52,9 +52,22 @@ Read the implementation code and verify:
 - Did they solve the wrong problem?
 - Did they implement the right feature but wrong way?
 
+**Test quality (when the task's `Test:` type is `behavior` or `integration`):**
+
+The plan provides a behavior contract per task — listed behaviors and edge cases. Verify the tests cover it.
+
+- Does every behavior listed in the plan's contract have a corresponding test assertion?
+- Are the listed edge cases covered?
+- Do tests exercise real code, or do they assert on mock interactions (`mock.toHaveBeenCalledWith(...)`, `expect(spy).toHaveBeenCalled()` standing in for the real assertion)? The latter is testing the mock, not the code.
+- Are test names describing behavior in caller-facing terms, or implementation details? `test_rejects_empty_email` is good; `test_validate_input_helper_returns_false` is a smell.
+- For `smoke` tasks: is there at least one happy-path assertion, and is `smoke` actually appropriate (vs. dodging real coverage)?
+- For `none` tasks: does the plan's justification hold up against what was actually built? If they added logic to a "config-only" task, the test type was wrong.
+
+Treat shallow tests as `[BLOCK]` — they fail the acceptance-gate purpose.
+
 ## Calibration
 
-**Only flag issues that would cause real problems during implementation.** An implementer building the wrong thing or producing code that doesn't match the spec is an issue. Minor wording, stylistic preferences, and "nice to have" suggestions are not. Approve unless there are serious gaps — missing requirements, contradictory implementation, placeholder content, or behaviour that diverges materially from the spec.
+**Only flag issues that would cause real problems during implementation.** An implementer building the wrong thing, producing code that doesn't match the spec, or producing tests that don't actually verify the contract is an issue. Minor wording, stylistic preferences, and "nice to have" suggestions are not. Approve unless there are serious gaps — missing requirements, contradictory implementation, placeholder content, behaviour that diverges materially from the spec, or tests that don't cover the plan's behavior contract.
 
 ## Output Format
 
