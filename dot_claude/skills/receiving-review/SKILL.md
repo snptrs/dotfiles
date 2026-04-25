@@ -1,6 +1,7 @@
 ---
 name: receiving-review
 description: Use when receiving code review feedback, before implementing reviewer suggestions, especially if feedback seems unclear or technically questionable.
+user-invocable: false
 ---
 
 # Receiving Code Review

@@ -1,6 +1,7 @@
 ---
 name: verify-before-done
 description: Use before claiming work is complete, before reporting test passes, fixes, or success. Requires running the verification command and reading the output before any claim.
+user-invocable: false
 ---
 
 # Verification Before Completion
