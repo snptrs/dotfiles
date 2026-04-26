@@ -27,13 +27,13 @@ Not invoked directly — referenced from agent prompts and read on demand:
 
 Dispatched by skills, not invoked directly:
 
-| Agent           | Model  | Role                                                               |
-| --------------- | ------ | ------------------------------------------------------------------ |
-| `architect`     | Opus   | Deep design thinking; 2–3 distinct approaches; YAGNI               |
-| `implementer`   | Haiku  | Executes a single task; TDD-strict; four-category self-review      |
-| `spec-reviewer` | Sonnet | Verifies code matches spec; "Do Not Trust the Report" posture      |
-| `code-reviewer` | Sonnet | Six-section quality review; `[BLOCK]`/`[CONCERN]`/`[NIT]` severity |
-| `plan-reviewer` | Sonnet | Pre-execution plan QA; completeness, spec alignment, buildability  |
+| Agent           | Model  | Role                                                                                        |
+| --------------- | ------ | ------------------------------------------------------------------------------------------- |
+| `architect`     | Opus   | Deep design thinking; 2–3 distinct approaches; YAGNI                                        |
+| `implementer`   | Haiku  | Executes a single task; TDD-strict; four-category self-review                               |
+| `spec-reviewer` | Sonnet | Verifies code matches spec; "Do Not Trust the Report" posture                               |
+| `code-reviewer` | Sonnet | End-of-plan whole-diff quality review (architecture, decomposition, cross-task consistency) |
+| `plan-reviewer` | Sonnet | Pre-execution plan QA; completeness, spec alignment, buildability                           |
 
 ## Other skills
 

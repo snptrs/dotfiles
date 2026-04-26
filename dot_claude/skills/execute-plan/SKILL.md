@@ -1,17 +1,17 @@
 ---
 name: execute-plan
-description: Use when the user is ready to execute an approved implementation plan from `docs/plans/` — produced by the `write-plan` skill. Dispatches one subagent per task with two-stage review (spec compliance, then code quality). Invoke when the user says something like "let's start", "execute the plan", "go", or "run it".
+description: Use when the user is ready to execute an approved implementation plan from `docs/plans/` — produced by the `write-plan` skill. Dispatches one subagent per task with spec-compliance review per task, plus a single end-of-plan code-quality review across the full change. Invoke when the user says something like "let's start", "execute the plan", "go", or "run it".
 disable-model-invocation: true
 allowed-tools: Read, Edit, Bash(git rev-parse:*), Bash(git log:*), TodoWrite, Task
 ---
 
 # Execute Plan
 
-Execute a plan (from `docs/plans/`, produced by `write-plan`) by dispatching a fresh subagent per task, with two-stage review after each: spec compliance first, then code quality.
+Execute a plan (from `docs/plans/`, produced by `write-plan`) by dispatching a fresh subagent per task with spec-compliance review after each, plus a single code-quality review across the full change once every task is done.
 
 **Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. Subagents never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
 
-**Core principle:** Fresh subagent per task + two-stage review (spec then quality) = high quality, fast iteration.
+**Core principle:** Fresh subagent per task + spec-compliance review per task + a single code-quality review at the end = high quality without per-task review overhead.
 
 ## Setup
 
@@ -85,42 +85,25 @@ Provide:
 - Path to the spec file
 - The implementer's full report
 
-**Branch on findings (max 3 review iterations per task):**
+**Branch on findings (max 3 spec-review iterations per task):**
 
 - Any `[BLOCK]` → re-dispatch `@implementer` with the findings and instruction to apply the `receiving-review` skill (verify before implementing, ask before assuming). After re-implementation, update HEAD_SHA and re-run spec review.
-- Any `[CONCERN]` → log and continue to code review.
-- Only `[NIT]` or no findings → continue to code review.
+- Any `[CONCERN]` → log and continue to next step.
+- Only `[NIT]` or no findings → continue to next step.
 
-**Do NOT start code quality review until spec compliance is ✅.**
+**If spec-reviewer still finds BLOCKs after 3 iterations:** surface to user. Ask how to proceed. Do not loop indefinitely.
 
-### 6. Dispatch @code-reviewer
-
-Provide:
-
-- `BASE_SHA` and `HEAD_SHA`
-- Path to the plan file
-- Path to the spec file
-- Summary of what the implementer built
-
-**Branch on findings (same 3-iteration budget shared with spec review):**
-
-- Any `[BLOCK]` → re-dispatch `@implementer` with findings and `receiving-review` instruction; after re-implementation, re-run code review.
-- Any `[CONCERN]` → log and continue.
-- Only `[NIT]` or no findings → continue.
-
-**If still blocked after 3 iterations total:** Surface to user. Ask how to proceed. Do not loop indefinitely.
-
-### 7. Mark the task complete in the plan file
+### 6. Mark the task complete in the plan file
 
 Use the Edit tool to append ` ✅` to the `### Task N:` heading for the completed task. Do not modify the step checkboxes (`- [ ]` / `- [x]`) — those belong to the implementer.
 
-### 8. Mark complete in TodoWrite
+### 7. Mark complete in TodoWrite
 
 Mark the task done. Continue to next unchecked task.
 
 ## After All Tasks
 
-Dispatch `@code-reviewer` once over the entire implementation:
+Dispatch `@code-reviewer` once over the entire implementation. **This is the only code-quality review in the flow** — per-task code review is not done. Scope the review to whole-implementation concerns: architectural coherence, decomposition across the change, cross-task consistency, file-growth across the whole effort. Do not duplicate per-task spec-compliance checks (`spec-reviewer` already ran on each task).
 
 - `BASE_SHA` = `FIRST_SHA` (the SHA before the first task)
 - `HEAD_SHA` = current HEAD
@@ -138,16 +121,15 @@ When a task returns `BLOCKED` and you re-dispatch with a more capable model, don
 
 **Never:**
 
-- Skip spec compliance review OR code quality review
-- Start code quality review before spec compliance is ✅
+- Skip the per-task spec-compliance review or the end-of-plan code-quality review
 - Proceed with unfixed `[BLOCK]` findings
 - Dispatch multiple implementation subagents in parallel (conflicts)
 - Make subagents read the plan file directly — provide the task text to them
 - Ignore subagent questions — answer before letting them proceed
 - Accept "close enough" on spec compliance
-- Skip review loops when reviewer found issues (re-review is required)
-- Let implementer self-review replace actual review (both are needed)
-- Move to next task while either review has open issues
+- Skip the spec-reviewer re-review loop when it found issues (re-review is required)
+- Let implementer self-review replace actual review (spec-reviewer per task + code-reviewer end-of-plan are both still needed)
+- Move to next task while spec-reviewer has open BLOCKs
 
 **If subagent asks questions:**
 

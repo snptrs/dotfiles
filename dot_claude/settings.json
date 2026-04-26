@@ -64,6 +64,7 @@
     "php-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true
   },
+  "model": "opusplan",
   "advisorModel": "opus",
   "tui": "fullscreen"
 }
