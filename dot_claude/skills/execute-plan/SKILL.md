@@ -1,7 +1,6 @@
 ---
 name: execute-plan
 description: Use when the user is ready to execute an approved implementation plan from `docs/plans/` — produced by the `write-plan` skill. Dispatches one subagent per task with spec-compliance review per task, plus a single end-of-plan code-quality review across the full change. Invoke when the user says something like "let's start", "execute the plan", "go", or "run it".
-disable-model-invocation: true
 allowed-tools: Read, Edit, Bash(git rev-parse:*), Bash(git log:*), TodoWrite, Task
 ---
 
