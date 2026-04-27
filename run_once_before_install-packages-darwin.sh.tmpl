@@ -15,6 +15,7 @@ brew "git"
 brew "git-delta"
 brew "jesseduffield/lazygit/lazygit"
 brew "mas"
+brew "mise"
 brew "ripgrep"
 brew "rsync"
 brew "sesh"
@@ -34,17 +35,16 @@ cask "ghostty"
 cask "google-chrome"
 cask "hazel"
 cask "imageoptim"
-cask "jordanbaird-ice"
 cask "karabiner-elements"
 cask "keyboard-maestro"
 cask "launchcontrol"
-cask "microsoft-teams"
 cask "orbstack"
 cask "qlmarkdown"
 cask "raycast"
 cask "syncthing-app"
 cask "syntax-highlight", args: { no_quarantine: true }
 cask "tableplus"
+cask "thaw@beta"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Consent-O-Matic", id: 1606897889
@@ -52,6 +52,7 @@ mas "Drafts", id: 1435957248
 mas "Kagi for Safari", id: 1622835804
 mas "Keeper for Safari", id: 6444685332
 mas "Keynote", id: 409183694
+mas "Little Snitch Mini", id: 1629008763
 mas "Noir", id: 1592917505
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
@@ -62,6 +63,9 @@ mas "StopTheMadness Pro", id: 6471380298
 mas "TableFlip", id: 1462643128
 mas "Velja", id: 1607635845
 mas "Wipr", id: 1662217862
+{{- if eq .is_work_mac true }}
+cask "microsoft-teams"
+{{- end}}
 {{- if eq .is_work_mac false }}
 cask "anki"
 cask "calibre"
