@@ -1,0 +1,7 @@
+[tools]
+node = "lts"
+
+[settings]
+
+[settings.node]
+corepack = true

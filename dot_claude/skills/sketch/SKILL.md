@@ -1,7 +1,7 @@
 ---
 name: sketch
 description: Use when the user asks to mock something up, see design variants, or compare visual options.
-allowed-tools: Read, Write, Bash(mkdir *), Bash(pnpm dlx serve *), Bash(pnpm dlx serve), Bash(echo *)
+allowed-tools: Read, Write, Bash(mkdir *), Bash(pnpm dlx serve *), Bash(pnpm dlx serve), Bash(echo *), Task
 ---
 
 # sketch
@@ -25,10 +25,20 @@ The frame contains the chrome (DOCTYPE, head, base reset, nav buttons, fragment 
 ## Process
 
 1. Confirm the design subject. Ask how many variants (default 3, max 5).
-2. Plan the distinct design choices each variant explores. Choices should be different fundamental directions — different layouts, hierarchies, aesthetic approaches — not minor tweaks.
+2. Plan the distinct design choices each variant explores. Choices should be different fundamental directions — different layouts, hierarchies, aesthetic approaches — not minor tweaks. **Be specific** — e.g. "minimalist single-column with serif display type and generous whitespace," not just "minimalist." These directions drive the index.html labels, the subagent prompts, and the creative lane each subagent commits to. Vague directions produce converging variants.
 3. Write `index.html` using the template below. Update the button list to match the actual number of variants and substitute the variant labels (e.g. `1: minimalist single-column`).
-4. For each variant, write `variant-N.html` containing only body content. May start with a `<style>` block for variant-specific styles. Must NOT include `<html>`, `<head>`, `<body>`, or DOCTYPE.
-5. Run `mkdir -p <project>/.claude/.runtime` to create the runtime directory. Start `pnpm dlx serve` in the sketch directory in the background. Write the PID using a bash echo redirect — **do not use the Write tool** (it will prompt for confirmation on new files): `echo $SERVER_PID > "<project>/.claude/.runtime/sketch-server.pid"`
+4. Dispatch one general-purpose subagent per variant **in parallel** (single message, multiple `Task` tool calls). Subagents have no access to this conversation — construct a self-contained prompt for each. Each prompt must include:
+   - **Output contract:** Write exactly one file at the absolute path `<sketch-dir>/variant-N.html`. Body fragment only — no DOCTYPE, no `<html>`, no `<head>`, no `<body>`. May start with a `<style>` block for variant-specific CSS. No JavaScript unless the variant specifically demonstrates an interaction.
+   - **What the frame already provides:** box-sizing reset, system-ui body font, base color `#111`, line-height 1.5, sticky variant-switcher nav. Do not redefine these unless the variant intentionally overrides them.
+   - **The assigned direction** (verbatim from step 2). This is the creative lane — the subagent chooses all details inside it but must not drift to a different aesthetic.
+   - **Project context** for placeholder content: a short summary of what the product/page is about, real-feeling copy hooks, target audience. No Lorem ipsum.
+   - **Polish guidance** (conditional on the user's signal):
+     - If the request implies real design exploration ("design", "polish", "show me what you'd build") — instruct the subagent to invoke the `frontend-design` skill.
+     - If the request is a quick comparative mockup ("throw together some layouts", "just show me options") — skip `frontend-design`; the subagent writes the variant directly.
+
+   Wait for all subagents to complete before continuing. If a subagent produces a full HTML document instead of a fragment, re-dispatch that variant with a corrective prompt.
+
+5. After all variant subagents have returned, run `mkdir -p <project>/.claude/.runtime` to create the runtime directory. Start `pnpm dlx serve` in the sketch directory in the background. Write the PID using a bash echo redirect — **do not use the Write tool** (it will prompt for confirmation on new files): `echo $SERVER_PID > "<project>/.claude/.runtime/sketch-server.pid"`
 6. Tell the user the URL (default port 3000; capture the actual port from serve's output if it differs) and a one-line description of what each variant explores.
 
 ## Frame template
@@ -150,3 +160,4 @@ The `~/.claude/hooks/session-end-cleanup.sh` hook reads the PID file at session 
 - No JavaScript in fragments unless a variant specifically demonstrates an interaction. The frame's loader correctly re-executes inline scripts after fragment swap.
 - Realistic placeholder content based on the project context — not "Lorem ipsum."
 - `.sketches/` is in the global gitignore — no per-project action needed.
+- Variant subagents are dispatched in parallel and have no shared context — the orchestrator's directions in step 2 are the only mechanism keeping variants distinct. Make them specific.
