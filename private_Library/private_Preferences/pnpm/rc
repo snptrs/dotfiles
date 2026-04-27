@@ -1,5 +1,5 @@
 ignore-dep-scripts=true
-min-release-age=4320
+min-release-age=10080
 strict-dep-builds=true
 block-exotic-subdeps=true
 verify-deps-before-run=error
