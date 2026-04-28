@@ -14,7 +14,7 @@ A phased, implementation-ready plan to replace Superpowers with a native-first s
 
 **No per-project setup required.** New projects work immediately. The TDD discipline is enforced by the `tdd` skill (which the implementer reads), the implementer's self-review checklist, the spec-reviewer's distrust posture, and the code-reviewer's quality checks — not by hooks.
 
-**Plan-mode-vs-brainstorm split:** Brainstorm skill is *what to build*, native plan mode (Shift+Tab) is *quick how-to-build for ad-hoc exploration*, the brainstorm→spec→plan→execute pipeline is *structured how-to-build for real work*. Different lanes, no overlap.
+**Plan-mode-vs-brainstorm split:** Brainstorm skill is _what to build_, native plan mode (Shift+Tab) is _quick how-to-build for ad-hoc exploration_, the brainstorm→spec→plan→execute pipeline is _structured how-to-build for real work_. Different lanes, no overlap.
 
 **Skill invocation: manual-first, model-invocation as soft fallback.** Skills have clean, descriptive `description` fields — Claude can pick them up on natural phrases like "let's brainstorm this," but we're not engineering for aggressive auto-trigger. No meta-skill, no SessionStart injection, no "1% Rule." `execute-plan` is explicitly opt-in via `disable-model-invocation: true`. `sketch` is model-invocable because deciding when visual variants help is reasonably a model judgement.
 
@@ -81,24 +81,25 @@ If a project has no `docs/principles.md`, agents fall back to `~/.claude/princip
 ## Adapting from Superpowers
 
 Superpowers is MIT licensed (© Jesse Vincent / Prime Radiant). Files substantially derived from Superpowers must:
+
 1. Bear an inline comment header: `# Adapted from obra/superpowers (MIT)`
 2. Be listed in the dotfiles repo's `NOTICES.md` (content provided in Implementation reference below)
 
 ### High-level mapping
 
-| Superpowers source | Our destination | Notes |
-|---|---|---|
-| `agents/code-reviewer.md` | `agents/code-reviewer.md` | Port directly; adjust severity tags; `model: sonnet` not `inherit` |
-| `skills/subagent-driven-development/implementer-prompt.md` | `agents/implementer.md` body | Convert to agent format; preserve self-review checklist |
-| `skills/subagent-driven-development/spec-reviewer-prompt.md` | `agents/spec-reviewer.md` body | Preserve "Do Not Trust the Report" posture; add Calibration |
-| `skills/subagent-driven-development/code-quality-reviewer-prompt.md` | merged into `agents/code-reviewer.md` and the dispatch logic | The upstream uses code-reviewer agent + SDD-specific checks |
-| `skills/writing-plans/plan-document-reviewer-prompt.md` | `agents/plan-reviewer.md` | Pre-execution plan QA gate |
-| `skills/brainstorming/SKILL.md` | `skills/brainstorm/SKILL.md` | Strip framework-enforcement; update paths |
-| `skills/writing-plans/SKILL.md` | `skills/write-plan/SKILL.md` | Keep the verbose task template structure verbatim |
-| `skills/subagent-driven-development/SKILL.md` | `skills/execute-plan/SKILL.md` | Strip worktree refs; preserve dispatch flow |
-| `skills/test-driven-development/SKILL.md` | `skills/tdd/SKILL.md` | Port mostly verbatim — this is core discipline content |
-| `skills/verification-before-completion/SKILL.md` | `skills/verify-before-done/SKILL.md` | Port mostly verbatim |
-| `skills/receiving-code-review/SKILL.md` | `skills/receiving-review/SKILL.md` | Port the READ → UNDERSTAND → VERIFY → EVALUATE → RESPOND → IMPLEMENT protocol |
+| Superpowers source                                                   | Our destination                                              | Notes                                                                         |
+| -------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `agents/code-reviewer.md`                                            | `agents/code-reviewer.md`                                    | Port directly; adjust severity tags; `model: sonnet` not `inherit`            |
+| `skills/subagent-driven-development/implementer-prompt.md`           | `agents/implementer.md` body                                 | Convert to agent format; preserve self-review checklist                       |
+| `skills/subagent-driven-development/spec-reviewer-prompt.md`         | `agents/spec-reviewer.md` body                               | Preserve "Do Not Trust the Report" posture; add Calibration                   |
+| `skills/subagent-driven-development/code-quality-reviewer-prompt.md` | merged into `agents/code-reviewer.md` and the dispatch logic | The upstream uses code-reviewer agent + SDD-specific checks                   |
+| `skills/writing-plans/plan-document-reviewer-prompt.md`              | `agents/plan-reviewer.md`                                    | Pre-execution plan QA gate                                                    |
+| `skills/brainstorming/SKILL.md`                                      | `skills/brainstorm/SKILL.md`                                 | Strip framework-enforcement; update paths                                     |
+| `skills/writing-plans/SKILL.md`                                      | `skills/write-plan/SKILL.md`                                 | Keep the verbose task template structure verbatim                             |
+| `skills/subagent-driven-development/SKILL.md`                        | `skills/execute-plan/SKILL.md`                               | Strip worktree refs; preserve dispatch flow                                   |
+| `skills/test-driven-development/SKILL.md`                            | `skills/tdd/SKILL.md`                                        | Port mostly verbatim — this is core discipline content                        |
+| `skills/verification-before-completion/SKILL.md`                     | `skills/verify-before-done/SKILL.md`                         | Port mostly verbatim                                                          |
+| `skills/receiving-code-review/SKILL.md`                              | `skills/receiving-review/SKILL.md`                           | Port the READ → UNDERSTAND → VERIFY → EVALUATE → RESPOND → IMPLEMENT protocol |
 
 ### What to skip entirely
 
@@ -116,30 +117,32 @@ Superpowers is MIT licensed (© Jesse Vincent / Prime Radiant). Files substantia
 
 Superpowers uses imperative language heavily. Some of it is operational discipline that does the skill's actual job — keep it. Some of it is framework-enforcement language designed to compensate for unreliable skill triggering — strip it.
 
-**The test:** does the language enforce the *work* (TDD, spec review, quality gates) or enforce the *framework* (which skill to invoke next, when to use the skill system, how to keep the workflow on rails)?
+**The test:** does the language enforce the _work_ (TDD, spec review, quality gates) or enforce the _framework_ (which skill to invoke next, when to use the skill system, how to keep the workflow on rails)?
 
 **Strip — framework-enforcement examples:**
-- "You MUST use this before any creative work" *(invoke-the-skill pressure)*
-- "Do NOT invoke any other skill" *(skill routing)*
-- "The terminal state is invoking writing-plans" *(skill routing)*
-- "Do NOT invoke frontend-design, mcp-builder, or any other implementation skill" *(skill routing)*
-- "ALWAYS use the Skill tool first" *(meta-skill / 1% Rule)*
-- "Even a 1% chance a skill might apply means..." *(meta-skill)*
-- "REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development" *(skill routing)*
-- "If a skill exists, use it. Skills evolve. Read current version." *(meta-skill)*
+
+- "You MUST use this before any creative work" _(invoke-the-skill pressure)_
+- "Do NOT invoke any other skill" _(skill routing)_
+- "The terminal state is invoking writing-plans" _(skill routing)_
+- "Do NOT invoke frontend-design, mcp-builder, or any other implementation skill" _(skill routing)_
+- "ALWAYS use the Skill tool first" _(meta-skill / 1% Rule)_
+- "Even a 1% chance a skill might apply means..." _(meta-skill)_
+- "REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development" _(skill routing)_
+- "If a skill exists, use it. Skills evolve. Read current version." _(meta-skill)_
 
 **Keep — work-enforcement examples:**
-- "You MUST write the failing test first" *(TDD discipline)*
-- "Do NOT proceed until the user approves the design" *(quality gate — spec review is our review gate)*
-- "Do NOT use placeholders or TODO markers" *(quality gate)*
-- "ALWAYS commit per task" *(process discipline)*
-- "You MUST verify the test fails for the right reason before implementing" *(TDD discipline)*
-- "Apply YAGNI ruthlessly" *(design discipline)*
-- "One question at a time" *(skill behaviour, even if phrased as imperative)*
-- "Do Not Trust the Report... You MUST verify everything independently" *(reviewer discipline — central to spec review)*
-- "Evidence before claims, always" *(verification discipline)*
 
-When in doubt, lean toward keeping. A skill that prompts itself confidently into doing its job well is what we want; we just don't want skills that prompt the *agent* to keep using the framework.
+- "You MUST write the failing test first" _(TDD discipline)_
+- "Do NOT proceed until the user approves the design" _(quality gate — spec review is our review gate)_
+- "Do NOT use placeholders or TODO markers" _(quality gate)_
+- "ALWAYS commit per task" _(process discipline)_
+- "You MUST verify the test fails for the right reason before implementing" _(TDD discipline)_
+- "Apply YAGNI ruthlessly" _(design discipline)_
+- "One question at a time" _(skill behaviour, even if phrased as imperative)_
+- "Do Not Trust the Report... You MUST verify everything independently" _(reviewer discipline — central to spec review)_
+- "Evidence before claims, always" _(verification discipline)_
+
+When in doubt, lean toward keeping. A skill that prompts itself confidently into doing its job well is what we want; we just don't want skills that prompt the _agent_ to keep using the framework.
 
 Line-by-line porting transformation rules are in the **Implementation reference** appendix at the end of this document.
 
@@ -169,7 +172,7 @@ Non-negotiable defaults for code work in this kit. A project's `docs/principles.
 
 ## Code
 
-- Plain prose in comments and commit messages. No marketing language, no hype, no emoji unless explicitly requested.
+- Conventional commits. Use `type: subject` format (`feat:`, `fix:`, `chore:`, `refactor:`, `test:`, `docs:`). Subject is plain prose — no marketing language, no hype, no emoji unless explicitly requested. Add a body only when the why isn't obvious from the subject.
 - YAGNI — only build what the spec says. "While I'm here" features are out of scope.
 - DRY within reason. Three-strikes rule: extract on the third occurrence, not the second.
 - Tests describe behaviour, not implementation. A passing test should still pass after a reasonable refactor.
@@ -215,6 +218,7 @@ You return well-structured prose. The skill that invoked you handles persistence
 **Source:** `skills/subagent-driven-development/implementer-prompt.md` (Superpowers').
 
 Required frontmatter:
+
 ```yaml
 ---
 name: implementer
@@ -236,10 +240,12 @@ The body must include these sections, ported from the upstream prompt with workt
    - Working directory
 
 4. **"Before You Begin" section** — port verbatim:
+
    > If you have questions about the requirements, approach, dependencies, or anything unclear: **ask them now.** Raise concerns before starting work.
    > While you work: if you encounter something unexpected or unclear, **ask questions**. It's always OK to pause and clarify.
 
 5. **"Your Job" section** — port verbatim:
+
    > 1. Implement exactly what the task specifies
    > 2. Write tests (following TDD per the `tdd` skill)
    > 3. Verify implementation works (per the `verify-before-done` skill)
@@ -248,11 +254,14 @@ The body must include these sections, ported from the upstream prompt with workt
    > 6. Report back
 
 6. **"Code Organization" section** — port verbatim, drop worktree-specific guidance:
+
    > If a file is growing beyond the plan's intent, report `DONE_WITH_CONCERNS` (don't split files without plan guidance).
    > In existing codebases, follow established patterns — improve code you're touching but don't restructure outside your task.
 
 7. **"When You're in Over Your Head" section** — port verbatim:
+
    > Report `BLOCKED` or `NEEDS_CONTEXT` rather than producing uncertain work.
+   >
    > - `NEEDS_CONTEXT`: The plan or spec is missing information you need.
    > - `BLOCKED`: You can't make progress (environmental issue, missing dependency, contradiction in spec, etc.).
 
@@ -286,6 +295,7 @@ The body must include these sections, ported from the upstream prompt with workt
 
 9. **"Report Format" section** — port verbatim:
    > When done, report:
+   >
    > - **Status:** DONE | DONE_WITH_CONCERNS | BLOCKED | NEEDS_CONTEXT
    > - What you implemented (or attempted, if blocked)
    > - What you tested and test results
@@ -300,6 +310,7 @@ The body must include these sections, ported from the upstream prompt with workt
 **Source:** `skills/subagent-driven-development/spec-reviewer-prompt.md` (Superpowers').
 
 Required frontmatter:
+
 ```yaml
 ---
 name: spec-reviewer
@@ -319,48 +330,58 @@ Body content (port verbatim where indicated):
    - The implementer's report (what they claim they built)
 
 3. **"Do Not Trust the Report" section** — port verbatim, this is the central posture of the spec reviewer:
+
    > The implementer finished suspiciously quickly. Their report may be incomplete, inaccurate, or optimistic. You MUST verify everything independently.
    >
    > **DO NOT:**
+   >
    > - Take their word for what they implemented
    > - Trust their claims about completeness
    > - Accept their interpretation of requirements
    >
    > **DO:**
+   >
    > - Read the actual code they wrote (run `git diff $BASE_SHA $HEAD_SHA`)
    > - Compare actual implementation to requirements line by line
    > - Check for missing pieces they claimed to implement
    > - Look for extra features they didn't mention
 
 4. **"Your Job" section** — port verbatim:
+
    > Read the implementation code and verify:
    >
    > **Missing requirements:**
+   >
    > - Did they implement everything that was requested?
    > - Are there requirements they skipped or missed?
    > - Did they claim something works but didn't actually implement it?
    >
    > **Extra/unneeded work:**
+   >
    > - Did they build things that weren't requested?
    > - Did they over-engineer or add unnecessary features?
    > - Did they add "nice to haves" that weren't in spec?
    >
    > **Misunderstandings:**
+   >
    > - Did they interpret requirements differently than intended?
    > - Did they solve the wrong problem?
    > - Did they implement the right feature but wrong way?
 
 5. **Calibration section** — bespoke (matches upstream's recent change):
+
    > **Only flag issues that would cause real problems during implementation.** An implementer building the wrong thing or producing code that doesn't match the spec is an issue. Minor wording, stylistic preferences, and "nice to have" suggestions are not. Approve unless there are serious gaps — missing requirements, contradictory implementation, placeholder content, or behaviour that diverges materially from the spec.
 
 6. **Output Format section** — bespoke:
    > Return findings as a structured list. For each finding:
+   >
    > - Tag with `[BLOCK]`, `[CONCERN]`, or `[NIT]`
    > - Reference the file and line
    > - State the issue concisely
    > - For BLOCK only: state what change would resolve it
    >
    > Severity meanings:
+   >
    > - `BLOCK`: implementation does not match the spec; must be fixed before continuing
    > - `CONCERN`: matches spec but with reservations worth noting; doesn't block
    > - `NIT`: minor preference; informational only
@@ -372,6 +393,7 @@ Body content (port verbatim where indicated):
 **Source:** `agents/code-reviewer.md` (Superpowers'). The actual upstream is 48 lines with `model: inherit` and a six-section structure.
 
 Required frontmatter:
+
 ```yaml
 ---
 name: code-reviewer
@@ -388,6 +410,7 @@ Body content — port the upstream structure (six sections), with these adaptati
 1. **Header:** `# Adapted from obra/superpowers (MIT)`
 
 2. **Opening paragraph** — port verbatim:
+
    > You are a Senior Code Reviewer with expertise in software architecture, design patterns, and best practices. Your role is to review completed project steps against original plans and ensure code quality standards are met.
 
 3. **Inputs the code-reviewer expects:**
@@ -409,16 +432,20 @@ Body content — port the upstream structure (six sections), with these adaptati
    - `Suggestions (nice to have)` → `[NIT]`
 
 6. **Calibration section** — bespoke addition (mirrors spec-reviewer):
+
    > **Only flag issues that would cause real problems.** Minor wording, stylistic preferences, and formatting quibbles should not block. Approve unless there are real correctness, security, or maintainability issues.
 
 7. **Additional checks for code-quality-reviewer role** — bespoke addition (from upstream `code-quality-reviewer-prompt.md`):
+
    > Beyond the six standard sections, also check:
+   >
    > - Did this implementation create new files that are already large, or significantly grow existing files?
    > - Are there logical decomposition opportunities that should have been taken?
    > - Are there testing anti-patterns (mocking the system under test, tests that mirror implementation rather than verify behaviour)?
 
 8. **Output Format section** — bespoke:
    > Return findings as a structured list. For each finding:
+   >
    > - Tag with `[BLOCK]`, `[CONCERN]`, or `[NIT]`
    > - Reference the file and line
    > - State the issue concisely
@@ -431,6 +458,7 @@ Body content — port the upstream structure (six sections), with these adaptati
 **Source:** `skills/writing-plans/plan-document-reviewer-prompt.md` (Superpowers').
 
 Required frontmatter:
+
 ```yaml
 ---
 name: plan-reviewer
@@ -457,9 +485,11 @@ Body content (port verbatim where indicated):
    | Buildability | Could an engineer follow this plan without getting stuck? |
 
 4. **Calibration section** — port verbatim:
+
    > **Only flag issues that would cause real problems during implementation.** An implementer building the wrong thing or getting stuck is an issue. Minor wording, stylistic preferences, and "nice to have" suggestions are not. Approve unless there are serious gaps — missing requirements from the spec, contradictory steps, placeholder content, or tasks so vague they can't be acted on.
 
 5. **Output Format section:**
+
    ```
    ## Plan Review
 
@@ -476,6 +506,7 @@ Body content (port verbatim where indicated):
 **Source:** `skills/test-driven-development/SKILL.md` (Superpowers'). Major file (~372 lines) — port substantially verbatim.
 
 Required frontmatter:
+
 ```yaml
 ---
 name: tdd
@@ -506,6 +537,7 @@ Body content — port the upstream skill's full content, with these adaptations:
 **Source:** `skills/verification-before-completion/SKILL.md` (Superpowers').
 
 Required frontmatter:
+
 ```yaml
 ---
 name: verify-before-done
@@ -532,6 +564,7 @@ Body content — port the upstream skill verbatim, with these adaptations:
 **Source:** `skills/receiving-code-review/SKILL.md` (Superpowers'). Used by the implementer when reviewer findings come back.
 
 Required frontmatter:
+
 ```yaml
 ---
 name: receiving-review
@@ -544,10 +577,13 @@ Body content — port verbatim where indicated:
 1. **Header:** `# Adapted from obra/superpowers (MIT)`
 
 2. **Core principle** — port verbatim:
+
    > Verify before implementing. Ask before assuming. Technical correctness over social comfort.
 
 3. **The protocol** — port verbatim:
+
    > WHEN receiving code review feedback:
+   >
    > 1. **READ:** Complete feedback without reacting
    > 2. **UNDERSTAND:** Restate requirement in own words (or ask)
    > 3. **VERIFY:** Check against codebase reality
@@ -556,9 +592,11 @@ Body content — port verbatim where indicated:
    > 6. **IMPLEMENT:** One item at a time, test each
 
 4. **"If any item is unclear" rule** — port verbatim:
+
    > IF any item is unclear: **STOP** — do not implement anything yet. ASK for clarification on unclear items. WHY: items may be related; partial understanding = wrong implementation.
 
 5. **"Before implementing" checklist** — port verbatim:
+
    > 1. Check: Technically correct for THIS codebase?
    > 2. Check: Breaks existing functionality?
    > 3. Check: Reason for current implementation?
@@ -588,6 +626,7 @@ See **Implementation reference > Ports > Skill files > execute-plan**.
 ### Validation
 
 Move files into place via Chezmoi, start a fresh Claude Code session in a real project, run a small feature through the full pipeline. Check:
+
 - Brainstorm fires on natural phrases or `/brainstorm`, produces a spec the user wants to review
 - Spec is editable; the next phase respects edits
 - Plan has TDD-baked tasks following the canonical task template (see write-plan port instructions); plan-reviewer runs after generation
@@ -659,10 +698,10 @@ Each sketch session writes to `<project>/sketches/<YYYY-MM-DD>-<topic>/`:
 
 \`\`\`
 sketches/2026-04-25-checkout-form/
-├── index.html       # frame: chrome, nav, base styles, fragment loader
-├── variant-1.html   # body fragment for variant 1 (no DOCTYPE/head/body)
-├── variant-2.html   # body fragment for variant 2
-└── variant-3.html   # body fragment for variant 3
+├── index.html # frame: chrome, nav, base styles, fragment loader
+├── variant-1.html # body fragment for variant 1 (no DOCTYPE/head/body)
+├── variant-2.html # body fragment for variant 2
+└── variant-3.html # body fragment for variant 3
 \`\`\`
 
 The frame contains the chrome (DOCTYPE, head, base reset, nav buttons, fragment loader); variants contain only the body content of the design itself, plus an optional `<style>` block for variant-specific CSS. This keeps each variant focused on its actual design choice rather than HTML boilerplate, and keeps the chrome consistent across variants.
@@ -681,6 +720,7 @@ The frame contains the chrome (DOCTYPE, head, base reset, nav buttons, fragment 
 Save this verbatim as `index.html`, updating the button list and labels to match the actual variants:
 
 \`\`\`html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -732,6 +772,7 @@ Save this verbatim as `index.html`, updating the button list and labels to match
     }
     buttons.forEach(b => b.addEventListener('click', () => load(b.dataset.variant)));
     load((location.hash || '#variant-1').slice(1));
+
   </script>
 </body>
 </html>
@@ -783,6 +824,7 @@ exit 0
 **Goal:** real usage on real projects. Tune prompts based on what you see.
 
 Things to evolve:
+
 - **`~/.claude/principles.md`** — add counter-principles when the agent does something annoying. Promote project-specific principles when they apply across projects.
 - **Brainstorm prompt** — refine question style, defaults, when it should push back
 - **Plan format** — if implementer often returns `NEEDS_CONTEXT`, plans need more detail; if too much ceremony, trim back. Empirical.
@@ -802,21 +844,21 @@ This appendix contains the porting URLs, frontmatter, and transformation rules f
 
 All Superpowers files are at https://github.com/obra/superpowers (main branch). Raw content URLs:
 
-| Source | Raw URL |
-|---|---|
-| `LICENSE` | https://raw.githubusercontent.com/obra/superpowers/main/LICENSE |
-| `agents/code-reviewer.md` | https://raw.githubusercontent.com/obra/superpowers/main/agents/code-reviewer.md |
-| `skills/subagent-driven-development/SKILL.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/SKILL.md |
-| `skills/subagent-driven-development/implementer-prompt.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/implementer-prompt.md |
-| `skills/subagent-driven-development/spec-reviewer-prompt.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/spec-reviewer-prompt.md |
+| Source                                                               | Raw URL                                                                                                                    |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `LICENSE`                                                            | https://raw.githubusercontent.com/obra/superpowers/main/LICENSE                                                            |
+| `agents/code-reviewer.md`                                            | https://raw.githubusercontent.com/obra/superpowers/main/agents/code-reviewer.md                                            |
+| `skills/subagent-driven-development/SKILL.md`                        | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/SKILL.md                        |
+| `skills/subagent-driven-development/implementer-prompt.md`           | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/implementer-prompt.md           |
+| `skills/subagent-driven-development/spec-reviewer-prompt.md`         | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/spec-reviewer-prompt.md         |
 | `skills/subagent-driven-development/code-quality-reviewer-prompt.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/subagent-driven-development/code-quality-reviewer-prompt.md |
-| `skills/brainstorming/SKILL.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/brainstorming/SKILL.md |
-| `skills/writing-plans/SKILL.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/writing-plans/SKILL.md |
-| `skills/writing-plans/plan-document-reviewer-prompt.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/writing-plans/plan-document-reviewer-prompt.md |
-| `skills/test-driven-development/SKILL.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/test-driven-development/SKILL.md |
-| `skills/test-driven-development/testing-anti-patterns.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/test-driven-development/testing-anti-patterns.md |
-| `skills/verification-before-completion/SKILL.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/verification-before-completion/SKILL.md |
-| `skills/receiving-code-review/SKILL.md` | https://raw.githubusercontent.com/obra/superpowers/main/skills/receiving-code-review/SKILL.md |
+| `skills/brainstorming/SKILL.md`                                      | https://raw.githubusercontent.com/obra/superpowers/main/skills/brainstorming/SKILL.md                                      |
+| `skills/writing-plans/SKILL.md`                                      | https://raw.githubusercontent.com/obra/superpowers/main/skills/writing-plans/SKILL.md                                      |
+| `skills/writing-plans/plan-document-reviewer-prompt.md`              | https://raw.githubusercontent.com/obra/superpowers/main/skills/writing-plans/plan-document-reviewer-prompt.md              |
+| `skills/test-driven-development/SKILL.md`                            | https://raw.githubusercontent.com/obra/superpowers/main/skills/test-driven-development/SKILL.md                            |
+| `skills/test-driven-development/testing-anti-patterns.md`            | https://raw.githubusercontent.com/obra/superpowers/main/skills/test-driven-development/testing-anti-patterns.md            |
+| `skills/verification-before-completion/SKILL.md`                     | https://raw.githubusercontent.com/obra/superpowers/main/skills/verification-before-completion/SKILL.md                     |
+| `skills/receiving-code-review/SKILL.md`                              | https://raw.githubusercontent.com/obra/superpowers/main/skills/receiving-code-review/SKILL.md                              |
 
 If a URL 404s, the upstream file may have moved. Browse https://github.com/obra/superpowers/tree/main and find the equivalent file by name.
 
@@ -864,6 +906,7 @@ For all three workflow ports below: apply the framework-vs-work language rule fr
 **Source:** `skills/brainstorming/SKILL.md` (Superpowers'). The current upstream version is ~96 lines with this structure: `# Brainstorming Ideas Into Designs` heading, then sections `## Overview`, `## Anti-Pattern: "This Is Too Simple To Need A Design"`, `## Checklist` (6 items), `## Process Flow` (digraph), `## The Process`, `## After the Design`, `## Key Principles`. The skill currently saves design docs to `docs/plans/YYYY-MM-DD-<topic>-design.md`.
 
 **Required frontmatter (replace upstream's table-style frontmatter with this YAML):**
+
 ```yaml
 ---
 name: brainstorm
@@ -876,7 +919,8 @@ Note the description follows the writing-skills rule: triggering conditions only
 
 **Body transformations:**
 
-*Strip (framework-enforcement):*
+_Strip (framework-enforcement):_
+
 1. The "You MUST use this before any creative work" framing in the description (already replaced via the new frontmatter above)
 2. "Do NOT invoke any other skill. writing-plans is the next step." — delete entirely
 3. "The terminal state is invoking writing-plans" — delete entirely
@@ -885,7 +929,8 @@ Note the description follows the writing-skills rule: triggering conditions only
 6. The "## After the Design > Implementation" subsection's "Invoke the writing-plans skill to create a detailed implementation plan" line — replace with "Suggest /write-plan when the user is ready, after reviewing the spec."
 7. References to `elements-of-style:writing-clearly-and-concisely skill` — that's a Superpowers-specific dependency we don't have.
 
-*Keep (work-enforcement):*
+_Keep (work-enforcement):_
+
 1. "Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it" — this enforces the spec-as-review-gate, which is core to our design. **Keep.**
 2. "Every project goes through this process. A todo list, a single-function utility, a config change — all of them" — keep the anti-pattern section's discipline.
 3. "you MUST present it and get approval" in the anti-pattern section — keep; this is review-gate enforcement.
@@ -893,10 +938,12 @@ Note the description follows the writing-skills rule: triggering conditions only
 5. All the one-question-at-a-time, multiple-choice-preferred, YAGNI-ruthlessly content — keep verbatim.
 6. The 2–3 approaches, design sections, present-and-get-approval pattern — keep.
 
-*Path substitutions:*
+_Path substitutions:_
+
 - `docs/plans/YYYY-MM-DD-<topic>-design.md` → `docs/specs/<YYYY-MM-DD>-<topic>.md`.
 
-*Checklist update:*
+_Checklist update:_
+
 - Step 6 currently reads: "Transition to implementation — invoke writing-plans skill to create implementation plan"
 - Replace with: "Suggest the user reviews and edits the spec, then runs `/write-plan` or says 'plan it' when ready"
 
@@ -905,6 +952,7 @@ Note the description follows the writing-skills rule: triggering conditions only
 **Source:** `skills/writing-plans/SKILL.md` (Superpowers').
 
 **Required frontmatter:**
+
 ```yaml
 ---
 name: write-plan
@@ -917,27 +965,30 @@ Description follows the writing-skills rule.
 
 **Body transformations:**
 
-*Strip (framework-enforcement):*
+_Strip (framework-enforcement):_
+
 1. The "REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans" header in the generated plan template — replace with a simple comment or remove.
 2. References to `using-git-worktrees` — including "Context: This should be run in a dedicated worktree".
 3. "Invoke subagent-driven-development" / "Invoke executing-plans" instructions — replace with "Suggest `/execute-plan` when the user is ready."
 4. Any `superpowers:` skill prefixes in cross-references.
 
-*Keep (work-enforcement):*
+_Keep (work-enforcement):_
+
 1. The verbose detail level — plan template, per-task breakdown structure, exact file paths, code-level guidance. **This is what makes Haiku viable as implementer.** Do not trim.
 2. The TDD checkbox structure per task: failing test → run → verify red → implement → run → verify green → commit.
-3. Any imperative language about *what each task must contain* — that's work-enforcement.
+3. Any imperative language about _what each task must contain_ — that's work-enforcement.
 4. The "design units with clear boundaries", "one clear responsibility per file" guidance.
 
-*Path substitutions:*
+_Path substitutions:_
+
 - Whatever upstream uses for plan output → `docs/plans/<YYYY-MM-DD>-<feature>.md`
 - Spec input path → `docs/specs/<YYYY-MM-DD>-<topic>.md`
 
-*Canonical task template — preserve in the generated plan format:*
+_Canonical task template — preserve in the generated plan format:_
 
 The upstream uses a specific structure that's the most important part of the plan format. Each task in a generated plan must follow this template (port verbatim, adjust to project's actual language):
 
-```
+````
 ### Task N: [Component Name]
 
 **Files:**
@@ -950,39 +1001,43 @@ The upstream uses a specific structure that's the most important part of the pla
   def test_specific_behavior():
       result = function(input)
       assert result == expected
-  ```
+````
 
 - [ ] **Step 2: Run test to verify it fails**
-  Run: `pytest tests/path/test.py::test_name -v`
-  Expected: FAIL with "function not defined"
+      Run: `pytest tests/path/test.py::test_name -v`
+      Expected: FAIL with "function not defined"
 
 - [ ] **Step 3: Write minimal implementation**
+
   ```python
   def function(input):
       return expected
   ```
 
 - [ ] **Step 4: Run test to verify it passes**
-  Run: `pytest tests/path/test.py::test_name -v`
-  Expected: PASS
+      Run: `pytest tests/path/test.py::test_name -v`
+      Expected: PASS
 
 - [ ] **Step 5: Commit**
   ```bash
   git add tests/path/test.py src/path/file.py
   git commit -m "feat: add specific feature"
   ```
+
 ```
 
 The implementer subagent reads this template directly and executes it. Every step must contain the actual content the engineer needs — file paths, code blocks, exact test commands, expected outputs. The plan is implementer-facing, not human-facing; verbosity is a feature.
 
 *Plan header — required:*
 ```
+
 # Plan: <feature name>
 
 Spec: docs/specs/<YYYY-MM-DD>-<topic>.md
 
 ## Tasks
-```
+
+````
 This lets `execute-plan` find the spec.
 
 *Plan-review step — bespoke addition:*
@@ -1003,7 +1058,7 @@ description: Use when executing implementation plans with independent tasks in t
 disable-model-invocation: true
 allowed-tools: Read, Edit, Bash(git rev-parse:*), Bash(git log:*), TodoWrite, Task
 ---
-```
+````
 
 The description follows the writing-skills rule — triggering conditions only, no workflow summary. The bad version (avoid): "...dispatches implementer, spec-reviewer, and code-reviewer subagents" (this summarises the workflow and the agent skips reading the body).
 
@@ -1011,24 +1066,27 @@ The description follows the writing-skills rule — triggering conditions only, 
 
 **Body transformations:**
 
-*Strip (framework-enforcement):*
+_Strip (framework-enforcement):_
+
 1. References to `using-git-worktrees` — we don't use worktrees.
 2. References to `finishing-a-development-branch` — we use a simpler final review pass instead.
 3. The "1% Rule" / meta-skill references.
 4. Any "always invoke X skill" routing language.
 5. `superpowers:` skill prefixes — strip.
 
-*Keep (work-enforcement):*
+_Keep (work-enforcement):_
+
 1. The DONE/DONE_WITH_CONCERNS/NEEDS_CONTEXT/BLOCKED status protocol enforcement.
 2. The implement → spec-review → code-review per-task loop discipline.
-3. Imperative language about *not* skipping reviews, *not* batching tasks, *not* moving on with red tests — these are quality gates we want.
+3. Imperative language about _not_ skipping reviews, _not_ batching tasks, _not_ moving on with red tests — these are quality gates we want.
 4. The dispatch-prompt patterns Superpowers uses for each subagent — they're well-tuned. Just substitute paths and remove worktree references.
 5. The model-selection guidance: "cheap models (e.g. Haiku) for mechanical 1-2 file tasks; standard models for multi-file integration; capable models for architecture and review."
 6. The context isolation principle — "subagents receive only the context they need."
 
-*Per-task loop:*
+_Per-task loop:_
 
 The skill should:
+
 - Read the plan file (find it from the user's invocation, or look for the most recent file in `docs/plans/`).
 - Read the spec referenced in the plan's header.
 - Build a TodoWrite list from unchecked checkboxes in the plan.
@@ -1052,19 +1110,20 @@ The skill should:
   10. Mark task complete in TodoWrite. Continue to next.
 - After all tasks: dispatch `@code-reviewer` once over the entire diff (`BASE_SHA` = the SHA before the first task; `HEAD_SHA` = current HEAD).
 
-*Resume from interruption:*
+_Resume from interruption:_
 
 If the skill is invoked when the plan already has some checked items, only iterate over unchecked ones. Don't redo completed work.
 
 ### Verification step (recommended after porting)
 
 After all ports are done, do a final pass:
+
 1. Read each ported file and grep for: `worktree`, `1% Rule`, `using-superpowers`, `superpowers:`, `finishing-a-development-branch`. Any hits indicate incomplete adaptation.
 2. Read each file and grep for `docs/superpowers/`, `docs/plans/.*-design`. Any hits indicate stale paths.
 3. Verify each file's frontmatter is valid YAML and contains the required fields above.
 4. Verify the inline `# Adapted from obra/superpowers (MIT)` header is present in each ported file.
 5. Verify each skill description follows the triggering-conditions-only rule (no workflow summaries — see the writing-skills section above for the test).
-6. Read each file as a whole and judge: does any remaining "MUST" / "Do NOT" language enforce the *work* (TDD, quality gates, process discipline) or the *framework* (skill routing, meta-skill behaviour)? Strip framework-enforcement language only. When in doubt, keep.
+6. Read each file as a whole and judge: does any remaining "MUST" / "Do NOT" language enforce the _work_ (TDD, quality gates, process discipline) or the _framework_ (skill routing, meta-skill behaviour)? Strip framework-enforcement language only. When in doubt, keep.
 7. Verify `agents/implementer.md` includes the four-category self-review checklist (Completeness / Quality / Discipline / Testing) verbatim from upstream.
 8. Verify `agents/spec-reviewer.md` includes the "Do Not Trust the Report" posture verbatim from upstream.
 9. Verify the canonical task template structure is in `skills/write-plan/SKILL.md`.

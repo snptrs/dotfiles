@@ -13,7 +13,7 @@ Non-negotiable defaults for code work in this kit. A project's `docs/principles.
 
 ## Code
 
-- Plain prose in comments and commit messages. No marketing language, no hype, no emoji unless explicitly requested.
+- Conventional commits. Use `type: subject` format (`feat:`, `fix:`, `chore:`, `refactor:`, `test:`, `docs:`). Subject is plain prose — no marketing language, no hype, no emoji unless explicitly requested. Add a body only when the why isn't obvious from the subject.
 - YAGNI — only build what the spec says. "While I'm here" features are out of scope.
 - DRY within reason. Three-strikes rule: extract on the third occurrence, not the second.
 - Tests describe behaviour, not implementation. A passing test should still pass after a reasonable refactor.
