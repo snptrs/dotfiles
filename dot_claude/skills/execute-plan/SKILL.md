@@ -17,10 +17,10 @@ Execute a plan (from `docs/plans/`, produced by `write-plan`) by dispatching a f
 1. Find the plan file: use the path from the user's invocation, or locate the most recent file in `docs/plans/`.
 2. Read the plan header to find the spec path (the `Spec:` line in the header).
 3. Read the spec file.
-4. Build a TodoWrite list from all task headings in the plan — lines matching `### Task N:` that do **not** already have ✅. Each todo entry should be the full task heading text.
+4. Build a TodoWrite list from all task headings in the plan — lines matching `### Task N:`. A task is already complete if every step checkbox under it is `- [x]`; skip those. Each remaining todo entry should be the full task heading text.
 5. Note the SHA before the first task: `FIRST_SHA = $(git rev-parse HEAD)`
 
-**Resuming after interruption:** If the plan already has tasks with ✅ appended to their heading, skip those. Only iterate over tasks without ✅. Don't redo completed work.
+**Resuming after interruption:** Tasks whose step checkboxes are all `- [x]` are done — skip them. Only iterate over tasks with at least one unchecked step. Don't redo completed work.
 
 ## Per-Task Loop
 
@@ -92,13 +92,9 @@ Provide:
 
 **If spec-reviewer still finds BLOCKs after 3 iterations:** surface to user. Ask how to proceed. Do not loop indefinitely.
 
-### 6. Mark the task complete in the plan file
+### 6. Mark complete in TodoWrite
 
-Use the Edit tool to append ` ✅` to the `### Task N:` heading for the completed task. Do not modify the step checkboxes (`- [ ]` / `- [x]`) — those belong to the implementer.
-
-### 7. Mark complete in TodoWrite
-
-Mark the task done. Continue to next unchecked task.
+Mark the task done. Continue to next unchecked task. The implementer already checks off the step checkboxes (`- [ ]` → `- [x]`) inside the task as part of its commit — that's the persistent resumption signal, so no further edits to the plan file are needed.
 
 ## After All Tasks
 
