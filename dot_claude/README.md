@@ -25,28 +25,34 @@ Not invoked directly — referenced from agent prompts and read on demand:
 
 ## Agents
 
-Dispatched by skills, not invoked directly:
+Workflow agents — dispatched by skills, not invoked directly:
 
-| Agent           | Model  | Role                                                                                        |
-| --------------- | ------ | ------------------------------------------------------------------------------------------- |
-| `architect`     | Opus   | Deep design thinking; 2–3 distinct approaches; YAGNI                                        |
-| `implementer`   | Haiku  | Executes a single task; TDD-strict; four-category self-review                               |
-| `spec-reviewer` | Sonnet | Verifies code matches spec; "Do Not Trust the Report" posture                               |
-| `code-reviewer` | Sonnet | End-of-plan whole-diff quality review (architecture, decomposition, cross-task consistency) |
-| `plan-reviewer` | Sonnet | Pre-execution plan QA; completeness, spec alignment, buildability                           |
+| Agent                   | Model  | Role                                                                                        |
+| ----------------------- | ------ | ------------------------------------------------------------------------------------------- |
+| `architect`             | Opus   | Deep design thinking; 2–3 distinct approaches; YAGNI                                        |
+| `implementer`           | Haiku  | Executes a single task; TDD-strict; four-category self-review                               |
+| `spec-reviewer`         | Sonnet | Verifies code matches spec; "Do Not Trust the Report" posture                               |
+| `execute-plan-reviewer` | Sonnet | End-of-plan whole-diff quality review (architecture, decomposition, cross-task consistency) |
+| `plan-reviewer`         | Sonnet | Pre-execution plan QA; completeness, spec alignment, buildability                           |
+
+User-invokable:
+
+| Agent         | Model | Role                                                                                                    |
+| ------------- | ----- | ------------------------------------------------------------------------------------------------------- |
+| `code-review` | Opus  | Ad-hoc review of local changes, a branch diff, a commit, or a file (numbered output, pairs with `/fix`) |
 
 ## Other skills
 
-| Skill                  | When to use                                             |
-| ---------------------- | ------------------------------------------------------- |
-| `/pr-summary`          | Draft a PR title and description for the current branch |
-| `/check-project-setup` | Audit a project's standard config (docs, hooks)         |
-| `/init-agents`         | Set up AGENTS.md / CLAUDE.md for a new project          |
-| `/init-php-formatter`  | One-time Laravel Pint/phpcbf hook setup                 |
+| Skill                  | When to use                                                         |
+| ---------------------- | ------------------------------------------------------------------- |
+| `/pr-summary`          | Draft a PR title and description for the current branch             |
+| `/fix`                 | Apply fixes for numbered issues from the most recent `@code-review` |
+| `/check-project-setup` | Audit a project's standard config (docs, hooks)                     |
+| `/init-agents`         | Set up AGENTS.md / CLAUDE.md for a new project                      |
+| `/init-php-formatter`  | One-time Laravel Pint/phpcbf hook setup                             |
 
 ## Key files
 
 - `principles.md` — non-negotiable defaults; project `docs/principles.md` overrides
 - `docs/specs/` — spec outputs from `/brainstorm` (human-reviewable)
 - `docs/plans/` — plan outputs from `/write-plan` (implementer-facing)
-- `NOTICES.md` — MIT attribution for files adapted from [Superpowers](https://github.com/obra/superpowers)

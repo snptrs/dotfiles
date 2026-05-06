@@ -1,6 +1,6 @@
 ---
 name: brainstorm
-description: Use when turning a rough feature idea into a written spec — before any spec exists. For early-stage design conversations: refining what to build, exploring approaches, and writing the spec to `docs/specs/`. If a spec already exists and you're moving to implementation planning, use `write-plan` instead.
+description: "Use when turning a rough feature idea into a written spec — before any spec exists. For early-stage design conversations: refining what to build, exploring approaches, and writing the spec to `docs/specs/`. If a spec already exists and you're moving to implementation planning, use `write-plan` instead."
 allowed-tools: Read, Write, Bash(git add:*), Bash(git commit:*), Bash(mkdir:*), Grep, Glob, Task
 ---
 

@@ -98,7 +98,7 @@ Mark the task done. Continue to next unchecked task. The implementer already che
 
 ## After All Tasks
 
-Dispatch `@code-reviewer` once over the entire implementation. **This is the only code-quality review in the flow** — per-task code review is not done. Scope the review to whole-implementation concerns: architectural coherence, decomposition across the change, cross-task consistency, file-growth across the whole effort. Do not duplicate per-task spec-compliance checks (`spec-reviewer` already ran on each task).
+Dispatch `@execute-plan-reviewer` once over the entire implementation. **This is the only code-quality review in the flow** — per-task code review is not done. Scope the review to whole-implementation concerns: architectural coherence, decomposition across the change, cross-task consistency, file-growth across the whole effort. Do not duplicate per-task spec-compliance checks (`spec-reviewer` already ran on each task).
 
 - `BASE_SHA` = `FIRST_SHA` (the SHA before the first task)
 - `HEAD_SHA` = current HEAD
@@ -123,7 +123,7 @@ When a task returns `BLOCKED` and you re-dispatch with a more capable model, don
 - Ignore subagent questions — answer before letting them proceed
 - Accept "close enough" on spec compliance
 - Skip the spec-reviewer re-review loop when it found issues (re-review is required)
-- Let implementer self-review replace actual review (spec-reviewer per task + code-reviewer end-of-plan are both still needed)
+- Let implementer self-review replace actual review (spec-reviewer per task + execute-plan-reviewer end-of-plan are both still needed)
 - Move to next task while spec-reviewer has open BLOCKs
 
 **If subagent asks questions:**
