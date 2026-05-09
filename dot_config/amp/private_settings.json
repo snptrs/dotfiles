@@ -6,9 +6,14 @@
       "tool": "Bash",
       "action": "ask",
       "matches": {
-        "cmd": ["git push*", "git commit*", "rm*"]
+        "cmd": [
+          "git push*",
+          "git commit*",
+          "rm*"
+        ]
       }
     }
   ],
-  "amp.updates.mode": "auto"
+  "amp.updates.mode": "auto",
+  "amp.gauge": "cost"
 }

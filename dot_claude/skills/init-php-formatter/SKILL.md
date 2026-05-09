@@ -153,7 +153,7 @@ Then continue to the **shared steps** below.
 
 ### S1. Ensure `.claude/settings.local.json` is gitignored
 
-Check `.gitignore` for an entry covering `.claude/settings.local.json`. If it's missing, append it:
+Check whether `.claude/settings.local.json` is gitignored. If it's missing, append it:
 
 ```bash
 echo '.claude/settings.local.json' >> .gitignore

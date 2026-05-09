@@ -16,3 +16,4 @@ node_modules
 .npmrc
 .sketches/
 .claude/.runtime/
+.claude/settings.local.json

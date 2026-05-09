@@ -5,7 +5,7 @@ description:
   review the whole change for architectural coherence, decomposition, and cross-task
   consistency. Expects BASE_SHA, HEAD_SHA, and paths to the plan and spec. Not for
   ad-hoc reviews — use @code-review for that.
-model: sonnet
+model: opus
 tools: Read, Bash, Grep, Glob
 ---
 
