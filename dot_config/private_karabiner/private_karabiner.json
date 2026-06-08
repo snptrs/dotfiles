@@ -5,6 +5,7 @@
                 "rules": [
                     {
                         "description": "Launch apps by right option+letters.",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -73,6 +74,7 @@
                         ]
                     },
                     {
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Change § to control+option+shift.",
@@ -92,6 +94,7 @@
                         ]
                     },
                     {
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Change caps_lock to command+control+option+shift.",
@@ -117,6 +120,7 @@
                     },
                     {
                         "description": "Change double tap right ⇧ key to caps lock",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -171,6 +175,7 @@
                     },
                     {
                         "description": "Fn + n/m to tab navigation",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -208,6 +213,7 @@
                     },
                     {
                         "description": "Change fn+hjkl to arrow keys",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

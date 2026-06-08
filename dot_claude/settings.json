@@ -16,6 +16,7 @@
       "Bash(mkdir *)",
       "Bash(ls *)",
       "Read",
+      "Read(~/.claude/**)",
       "WebFetch",
       "Skill",
       "mcp__val-town__read_file",
@@ -28,11 +29,9 @@
       "mcp__claude-in-chrome__read_network_requests",
       "mcp__claude-in-chrome__read_page"
     ],
-    "deny": [
-      "Bash(git push *)"
-    ]
+    "deny": ["Bash(git push *)"]
   },
-  "model": "opus",
+  "model": "opusplan",
   "hooks": {
     "PostToolUse": [
       {

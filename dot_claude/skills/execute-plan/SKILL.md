@@ -51,9 +51,11 @@ Provide the implementer with:
 - Path to the principles file (`docs/principles.md` if present, otherwise `~/.claude/principles.md`)
 - Working directory
 
-Wait for status: `DONE` | `DONE_WITH_CONCERNS` | `NEEDS_CONTEXT` | `BLOCKED`
+Wait for the implementer's report.
 
 ### 3. Handle implementer status
+
+The implementer returns one of the statuses defined in `@implementer` — handle each:
 
 **DONE:** Proceed to spec review.
 
@@ -84,7 +86,7 @@ Provide:
 - Path to the spec file
 - The implementer's full report
 
-**Branch on findings (max 3 spec-review iterations per task):**
+**Branch on the severity tags defined in `@spec-reviewer` (max 3 spec-review iterations per task):**
 
 - Any `[BLOCK]` → re-dispatch `@implementer` with the findings and instruction to apply the `receiving-review` skill (verify before implementing, ask before assuming). After re-implementation, update HEAD_SHA and re-run spec review.
 - Any `[CONCERN]` → log and continue to next step.
