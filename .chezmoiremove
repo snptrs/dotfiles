@@ -1,0 +1,39 @@
+# Targets to delete from the home directory on `chezmoi apply`.
+#
+# chezmoi never deletes: a file removed from this repo keeps living in the home
+# directory on every machine that already applied it. Listing it here is what
+# actually removes it. Entries are paths relative to home, no leading `~/`.
+#
+# FOOTGUN: never list a path that is still managed here, including a parent
+# directory of one. chezmoi aborts the entire apply with `inconsistent state`
+# and removes nothing at all, not even the valid entries. That is why the
+# skills below are listed one by one instead of as `.claude/skills`, and why
+# the agents and hooks are individual files rather than their directories,
+# which would break the moment an agent or hook is added back.
+#
+# Entries are safe to prune once every machine has applied them.
+
+.claude/README.md
+.claude/principles.md
+
+.claude/hooks/session-end-cleanup.sh
+
+.claude/agents/architect.md
+.claude/agents/code-review.md
+.claude/agents/execute-plan-reviewer.md
+.claude/agents/implementer.md
+.claude/agents/plan-reviewer.md
+.claude/agents/spec-reviewer.md
+
+.claude/skills/brainstorm
+.claude/skills/check-project-setup
+.claude/skills/execute-plan
+.claude/skills/fix
+.claude/skills/receiving-review
+.claude/skills/review-local
+.claude/skills/sketch
+.claude/skills/tdd
+.claude/skills/verify-before-done
+.claude/skills/write-plan
+
+.config/nvim/lua/plugins/amp.lua
