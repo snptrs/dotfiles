@@ -8,6 +8,7 @@ fish_add_path /Users/seanpeters/.lando/bin
 fish_add_path /Users/seanpeters/.local/bin # uv
 fish_add_path /Users/seanpeters/.opencode/bin
 fish_add_path /Users/seanpeters/.deno/bin
+fish_add_path /Users/seanpeters/go/bin
 
 # Hydro prompt
 set -g hydro_cmd_duration_threshold 5000
@@ -86,3 +87,10 @@ zoxide init fish | source
 #starship init fish | source
 
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/seanpeters/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
