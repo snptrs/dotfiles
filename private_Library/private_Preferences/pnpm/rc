@@ -4,3 +4,4 @@ strict-dep-builds=true
 block-exotic-subdeps=true
 verify-deps-before-run=error
 trust-policy=no-downgrade
+trust-policy-ignore-after=129600

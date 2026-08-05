@@ -1,9 +1,11 @@
 [tools]
 node = "lts"
 "npm:intelephense" = "1.16.5"
-pnpm = "10.33.2"
+pnpm = "11.9.0"
+yarn = "1.22.22"
 
 [settings]
 
 [settings.node]
-corepack = true
+# corepack shims in node's bin dir shadow mise-managed pnpm/yarn
+corepack = false
