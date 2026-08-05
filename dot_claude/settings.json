@@ -58,7 +58,7 @@
       }
     }
   },
-  "model": "opusplan",
+  "model": "opus[1m]",
   "advisorModel": "opus",
   "tui": "fullscreen",
   "plansDirectory": "./docs/plans"
