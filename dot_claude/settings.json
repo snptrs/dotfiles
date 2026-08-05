@@ -19,19 +19,11 @@
       "Read(~/.claude/**)",
       "WebFetch",
       "Skill",
-      "mcp__val-town__read_file",
-      "mcp__val-town__list_files",
-      "mcp__val-town__list_vals",
-      "mcp__val-town__get_logs",
-      "mcp__val-town__get_val_detail",
-      "mcp__val-town__get_traces",
       "mcp__claude-in-chrome__tabs_context_mcp",
       "mcp__claude-in-chrome__read_network_requests",
       "mcp__claude-in-chrome__read_page"
-    ],
-    "deny": ["Bash(git push *)"]
+    ]
   },
-  "model": "opusplan",
   "hooks": {
     "PostToolUse": [
       {
@@ -39,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path' | xargs pnpm dlx prettier --write --ignore-unknown || true"
+            "command": "jq -r '.tool_input.file_path' | xargs npx prettier --write --ignore-unknown || true"
           }
         ]
       }
@@ -66,6 +58,8 @@
       }
     }
   },
+  "model": "opusplan",
   "advisorModel": "opus",
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "plansDirectory": "./docs/plans"
 }
