@@ -14,6 +14,7 @@ A [chezmoi](https://www.chezmoi.io/) dotfiles repository managing macOS configur
 - `run_once_before_*` scripts run once on `chezmoi apply` (tracked by hash)
 - Template data variables: `{{ .personal_email }}`, `{{ .work_email }}`, `{{ .is_work_mac }}`
 - Secrets are pulled from 1Password via `onepasswordRead "op://..."` in the config template
+- `chezmoi apply` **never deletes**. Removing a file here leaves the applied copy in place on every machine, so deletions must also be listed in `.chezmoiremove`. Never list a path that is still managed, including a parent directory of one — chezmoi aborts the whole apply with `inconsistent state` and removes nothing at all
 
 ## Key commands
 
@@ -32,6 +33,7 @@ chezmoi diff           # Show diff (uses delta)
 - **Editor**: Neovim (`dot_config/nvim/`) — Lua config using `vim.pack` (native Neovim 0.11+ package manager, no lazy.nvim). Plugins in `lua/plugins/`, core settings in `lua/config/`.
 - **Terminal**: Ghostty (primary), with Zellij as multiplexer (`dot_config/zellij/`)
 - **Git**: `dot_gitconfig.tmpl` — uses delta for diffs, conditional includes for work vs personal identity
+- **Claude Code**: `dot_claude/` — global `CLAUDE.md`, `settings.json`, skills, `statusline-command.sh`. Claude Code writes to `~/.claude/settings.json` at runtime (`/model`, `/config`, plugin toggles), so run `chezmoi diff` before applying it or you'll silently revert live changes.
 
 ### Neovim plugin architecture
 
