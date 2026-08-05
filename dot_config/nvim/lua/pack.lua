@@ -45,7 +45,6 @@ vim.pack.add {
   'https://github.com/wakatime/vim-wakatime',
   'https://github.com/nmac427/guess-indent.nvim',
   'https://github.com/stevearc/quicker.nvim',
-  'https://github.com/sourcegraph/amp.nvim',
   'https://github.com/umutondersu/smart-newline.nvim',
   'https://github.com/HiPhish/rainbow-delimiters.nvim',
 }
