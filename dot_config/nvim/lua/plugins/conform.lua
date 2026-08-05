@@ -39,7 +39,9 @@ require('conform').setup {
       return
     end
 
-    if not vim.bo[bufnr].filetype == 'php' then
+    -- Must stay `~=`. `not x == 'php'` parses as `(not x) == 'php'`, always
+    -- false, which lets every filetype through and formats it twice.
+    if vim.bo[bufnr].filetype ~= 'php' then
       return
     end
     return { lsp_fallback = true }
