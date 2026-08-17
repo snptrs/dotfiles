@@ -4,7 +4,6 @@
   },
   "permissions": {
     "allow": [
-      "Bash(npm run *)",
       "Bash(git *)",
       "Bash(* --version)",
       "Bash(* --help *)",
@@ -24,6 +23,7 @@
       "mcp__claude-in-chrome__read_page"
     ]
   },
+  "model": "opus[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -58,8 +58,7 @@
       }
     }
   },
-  "model": "opus[1m]",
   "advisorModel": "opus",
-  "tui": "fullscreen",
-  "plansDirectory": "./docs/plans"
+  "plansDirectory": "./docs/plans",
+  "tui": "fullscreen"
 }
