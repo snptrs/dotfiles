@@ -1,6 +1,6 @@
 git:
-  pagers:
-    - pager: delta --diff-so-fancy --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+  diffRenderers:
+    - command: delta --diff-so-fancy --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
       colorArg: always
 os:
   editPreset: nvim
